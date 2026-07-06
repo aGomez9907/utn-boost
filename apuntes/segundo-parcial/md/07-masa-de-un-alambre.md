@@ -1,0 +1,386 @@
+# Masa de un alambre
+
+> Fuente: https://www.youtube.com/watch?v=-8sOEDPLY8w
+
+---
+
+## Índice
+- [00:02](https://www.youtube.com/watch?v=-8sOEDPLY8w&t=2s) — Integral de un campo escalar sobre una curva: definición
+- [01:34](https://www.youtube.com/watch?v=-8sOEDPLY8w&t=94s) — 📝 Ejemplo 1: integral de una densidad sobre una semicircunferencia
+- [09:33](https://www.youtube.com/watch?v=-8sOEDPLY8w&t=573s) — Interpretación física: masa de un alambre
+- [14:10](https://www.youtube.com/watch?v=-8sOEDPLY8w&t=850s) — Propiedades de la integral curvilínea
+- [18:24](https://www.youtube.com/watch?v=-8sOEDPLY8w&t=1104s) — 📝 Ejemplo 2: misma curva con otra parametrización
+- [25:57](https://www.youtube.com/watch?v=-8sOEDPLY8w&t=1557s) — Independencia respecto de la parametrización
+- [28:03](https://www.youtube.com/watch?v=-8sOEDPLY8w&t=1683s) — Curva dada como conjunto de nivel de una función
+- [29:05](https://www.youtube.com/watch?v=-8sOEDPLY8w&t=1745s) — 📝 Ejemplo 3: integral sobre un segmento de recta (curva como conjunto de nivel)
+- [37:18](https://www.youtube.com/watch?v=-8sOEDPLY8w&t=2238s) — Valor medio de una función a lo largo de una curva
+- [37:50](https://www.youtube.com/watch?v=-8sOEDPLY8w&t=2270s) — 📝 Ejemplo 4: valor medio sobre la semicircunferencia
+- [41:33](https://www.youtube.com/watch?v=-8sOEDPLY8w&t=2493s) — 📝 Ejemplo 5: valor medio sobre el segmento de recta
+
+---
+
+## Integral de un campo escalar sobre una curva: definición [00:02](https://www.youtube.com/watch?v=-8sOEDPLY8w&t=2s)
+
+Supongamos que tenemos una **función escalar de $n$ variables** $f$, definida en algún subconjunto del espacio $n$-dimensional, que a cada punto del conjunto le hace corresponder un valor escalar. Supongamos además que tenemos una **curva simple $C$** dentro del dominio de $f$, es decir, la curva entendida como conjunto imagen de una función vectorial $\vec{\lambda}$ de una variable cae dentro del dominio de $f$.
+
+Se define la **integral del campo escalar $f$ sobre la curva simple $C$** como el resultado de resolver la integral que se usaba para calcular la longitud de la curva, pero incorporando en el integrando la función $f$ evaluada sobre los puntos de la curva:
+
+$$
+\int_C f \, ds = \int_a^b f(\vec{\lambda}(t)) \, \|\vec{\lambda}\,'(t)\| \, dt
+$$
+
+Es decir, se integra el campo escalar evaluado en $\vec{\lambda}(t)$ multiplicado por la norma del vector derivada $\vec{\lambda}\,'(t)$ de la parametrización.
+
+## Ejemplo 1: integral de una densidad sobre una semicircunferencia
+
+Antes de la interpretación física, el profesor resuelve un primer ejemplo para dar sentido a la definición.
+
+<details>
+<summary>📝 Ejemplo 1 — <a href="https://www.youtube.com/watch?v=-8sOEDPLY8w&t=94s">01:34</a>: integral de una densidad sobre una semicircunferencia</summary>
+
+Se tiene la parametrización de una curva
+
+$$
+x = r\cos t, \qquad y = r\sin t
+$$
+
+que cumple $x^2 + y^2 = r^2$, es decir, es la ecuación de una circunferencia de radio $r$. Tomando $t$ en el intervalo $[0, \pi]$ no se recorre la circunferencia completa sino la **media circunferencia superior** (para $r$ positivo).
+
+El campo escalar es la función densidad
+
+$$
+f(x,y) = -k\,y
+$$
+
+Calcular la integral de $f$ a lo largo de la curva $C$.
+
+<details>
+<summary>Ver resolución</summary>
+
+**Paso 1:** Ubicar la curva. $\vec{\lambda}(0) = (r, 0)$ es el punto inicial; $\vec{\lambda}(\pi) = (-r, 0)$; en el punto intermedio $\vec{\lambda}(\pi/2) = (0, r)$. La curva es la semicircunferencia superior, recorrida en sentido horario desde $(r,0)$ hacia $(-r,0)$.
+
+**Paso 2:** Aplicar la definición de integral de un campo escalar sobre la curva.
+
+$$
+\int_C f \, ds = \int_0^\pi f(\vec{\lambda}(t)) \, \|\vec{\lambda}\,'(t)\| \, dt
+$$
+
+**Paso 3:** Evaluar el campo sobre la curva. Como $y = r\sin t$:
+
+$$
+f(\vec{\lambda}(t)) = -k\,y = -k\,r\sin t
+$$
+
+**Paso 4:** Calcular la norma del vector derivada. Con $\vec{\lambda}\,'(t) = (-r\sin t,\; r\cos t)$:
+
+$$
+\|\vec{\lambda}\,'(t)\| = \sqrt{r^2\sin^2 t + r^2\cos^2 t} = \sqrt{r^2} = r
+$$
+
+**Paso 5:** Armar la integral. Como $k$ y $r$ son constantes, se pueden sacar fuera de la integral.
+
+$$
+\int_C f \, ds = \int_0^\pi (-k\,r\sin t)\, r \, dt = -k\,r^2 \int_0^\pi \sin t \, dt
+$$
+
+**Paso 6:** Resolver la integral. La primitiva de $\sin t$ es $-\cos t$.
+
+$$
+\int_0^\pi \sin t \, dt = \big[-\cos t\big]_0^\pi = -\cos\pi - (-\cos 0) = -(-1) + 1 = 2
+$$
+
+**Paso 7:** Resultado final.
+
+$$
+\int_C f \, ds = -k\,r^2 \cdot 2 = -2k\,r^2
+$$
+
+</details>
+
+</details>
+
+## Interpretación física: masa de un alambre [09:33](https://www.youtube.com/watch?v=-8sOEDPLY8w&t=573s)
+
+Al evaluar $f$ sobre los puntos de la curva se obtienen valores variables. En el Ejemplo 1, en los extremos $(r,0)$ y $(-r,0)$ la función $f = -k\,y$ vale $0$ (porque $y = 0$), mientras que en el punto más alto $(0,r)$ vale $-k\,r$ (valor de máxima magnitud).
+
+Si $f$ representa la **densidad de nieve** que se acumula sobre un cable con forma de semicircunferencia, se acumula más nieve en la parte central (más horizontal) y menos en los extremos (más inclinados). La integral de la densidad a lo largo de todo el cable da el **peso total de nieve** sobre el cable.
+
+De forma más general, tomando un pequeño elemento de curva de longitud
+
+$$
+ds = \|\vec{\lambda}\,'(t)\| \, dt
+$$
+
+y evaluando la función densidad en ese lugar, la densidad multiplicada por el diferencial de longitud da un **diferencial de masa (o de peso)**:
+
+$$
+dm = f(\vec{\lambda}(t)) \, ds
+$$
+
+Integrando (sumando) todos los diferenciales de masa a lo largo de la curva se obtiene la **masa total (o el peso total)** del alambre o cable. Para eso se utilizan las integrales de campos escalares evaluadas sobre curvas.
+
+Según lo que represente $f$ se obtiene una u otra magnitud: si $f$ es la densidad de nieve, se calcula el peso de la nieve; si $f$ es la densidad del cable, se calcula la masa del cable (los cables suelen tener densidad uniforme, con lo que basta multiplicar densidad por longitud, pero el método vale también para densidad variable).
+
+## Propiedades de la integral curvilínea [14:10](https://www.youtube.com/watch?v=-8sOEDPLY8w&t=850s)
+
+Como estas integrales, después de resolver la norma del vector y multiplicarla por la función evaluada en los puntos de la curva, quedan como una **integral de una función de una sola variable**, valen para ellas todas las propiedades de las integrales simples. En particular:
+
+- La integral de una suma es la suma de las integrales:
+
+$$
+\int_C (f + g)\, ds = \int_C f \, ds + \int_C g \, ds
+$$
+
+- Cualquier constante se puede sacar fuera de la integral:
+
+$$
+\int_C c\,f \, ds = c \int_C f \, ds
+$$
+
+## Ejemplo 2: misma curva con otra parametrización
+
+El profesor resuelve el mismo problema con una parametrización distinta de la misma curva, para mostrar que el resultado no cambia.
+
+<details>
+<summary>📝 Ejemplo 2 — <a href="https://www.youtube.com/watch?v=-8sOEDPLY8w&t=1104s">18:24</a>: misma curva con otra parametrización</summary>
+
+Se toma la **misma función densidad** que en el Ejemplo 1, $f(x,y) = -k\,y$, pero ahora con la parametrización
+
+$$
+x = -r\cos(2s), \qquad y = -r\sin(2s)
+$$
+
+con $s$ en el intervalo $[0, \pi/2]$. Se verifica $x^2 + y^2 = r^2$, de modo que es la misma semicircunferencia. Calcular la integral de $f$ a lo largo de la curva.
+
+<details>
+<summary>Ver resolución</summary>
+
+**Paso 1:** Verificar los extremos. Con $s = 0$: $(x,y) = (-r, 0)$. Con $s = \pi/2$: $(x,y) = (r, 0)$. Es la misma semicircunferencia que antes, pero recorrida en el sentido opuesto (de izquierda a derecha).
+
+**Paso 2:** Evaluar el campo sobre la curva. Como $y = -r\sin(2s)$:
+
+$$
+f(\vec{\lambda}(s)) = -k\,y = -k\,(-r\sin(2s)) = k\,r\sin(2s)
+$$
+
+**Paso 3:** Calcular el vector derivada y su norma. Con $\vec{\lambda}\,'(s) = (2r\sin(2s),\; -2r\cos(2s))$:
+
+$$
+\|\vec{\lambda}\,'(s)\| = \sqrt{4r^2\sin^2(2s) + 4r^2\cos^2(2s)} = \sqrt{4r^2} = 2r
+$$
+
+**Paso 4:** Armar la integral (con signo según se acomoda el campo evaluado):
+
+$$
+\int_C f \, ds = \int_0^{\pi/2} (-k\,r\sin(2s))\,(2r)\, ds = -2k\,r^2 \int_0^{\pi/2} \sin(2s)\, ds
+$$
+
+**Paso 5:** Resolver la integral. La primitiva de $\sin(2s)$ es $-\tfrac{1}{2}\cos(2s)$.
+
+$$
+\int_0^{\pi/2} \sin(2s)\, ds = \left[ -\frac{1}{2}\cos(2s) \right]_0^{\pi/2}
+$$
+
+Evaluando: $\cos(2\cdot 0) = \cos 0 = 1$ y $\cos(2\cdot \tfrac{\pi}{2}) = \cos\pi = -1$, de modo que
+
+$$
+\int_0^{\pi/2} \sin(2s)\, ds = -\frac{1}{2}(-1) - \left(-\frac{1}{2}(1)\right) = \frac{1}{2} + \frac{1}{2} = 1
+$$
+
+**Paso 6:** Resultado final.
+
+$$
+\int_C f \, ds = -2k\,r^2 \cdot 1 = -2k\,r^2
+$$
+
+El resultado es exactamente el mismo que en el Ejemplo 1. [poco claro en la transcripción: el detalle de los signos intermedios; ver video]
+
+</details>
+
+</details>
+
+## Independencia respecto de la parametrización [25:57](https://www.youtube.com/watch?v=-8sOEDPLY8w&t=1557s)
+
+Comparando los dos ejemplos: la función densidad es la misma y la curva es la misma; solo cambió la parametrización (incluso el sentido de recorrido). El resultado de la integral es **exactamente el mismo**.
+
+Esto ocurre siempre: las **integrales de un mismo campo escalar a lo largo de una curva son independientes de la parametrización**. Al igual que la longitud de una curva no depende de cómo se la parametrice sino de la propia curva, la integral de un campo escalar sobre la curva depende exclusivamente de la curva y del campo, no de la parametrización.
+
+En términos del ejemplo de la nieve: para una misma densidad y un mismo cable (una misma curva), la integral —el peso de nieve acumulada— es siempre igual.
+
+## Curva dada como conjunto de nivel de una función [28:03](https://www.youtube.com/watch?v=-8sOEDPLY8w&t=1683s)
+
+Cuando la curva está definida como **conjunto de nivel de una función de dos variables** $g$, se procede igual que en el cálculo de longitudes de curva. En ese contexto el diferencial de longitud es
+
+$$
+ds = \frac{\|\nabla g\|}{\left|\dfrac{\partial g}{\partial y}\right|} \, dx
+$$
+
+Al agregar en el integrando la función densidad (campo escalar) evaluada sobre los puntos de la curva, en lugar de obtener la longitud de la curva se obtiene la integral del campo escalar sobre la curva:
+
+$$
+\int_C f \, ds = \int_a^b f(x, y(x)) \, \frac{\|\nabla g\|}{\left|\dfrac{\partial g}{\partial y}\right|} \, dx
+$$
+
+## Ejemplo 3: integral sobre un segmento de recta (curva como conjunto de nivel)
+
+<details>
+<summary>📝 Ejemplo 3 — <a href="https://www.youtube.com/watch?v=-8sOEDPLY8w&t=1745s">29:05</a>: integral sobre un segmento de recta (curva como conjunto de nivel)</summary>
+
+Se tiene el campo escalar
+
+$$
+f(x,y) = 3x + y
+$$
+
+y un **segmento de recta** entre los puntos $(-2, -1)$ y $(0, 5)$. Calcular la integral de $f$ a lo largo de esa curva, tomando la curva como el conjunto de nivel $0$ de una función $g$.
+
+<details>
+<summary>Ver resolución</summary>
+
+**Paso 1:** Describir el segmento. La recta que pasa por $(-2,-1)$ y $(0,5)$ tiene la forma $y = 3x + 5$ (para $x \in [-2, 0]$).
+
+**Paso 2:** Tomar la curva como conjunto de nivel $0$ de
+
+$$
+g(x,y) = y - 3x - 5
+$$
+
+cuyo nivel $0$ es justamente $y = 3x + 5$.
+
+**Paso 3:** Plantear la integral tomando $x$ como variable independiente, entre $-2$ y $0$, con $y$ en función de $x$.
+
+$$
+\int_C f \, ds = \int_{-2}^{0} f(x, y(x)) \, \frac{\|\nabla g\|}{\left|\dfrac{\partial g}{\partial y}\right|} \, dx
+$$
+
+**Paso 4:** Calcular el gradiente de $g$. Como $\dfrac{\partial g}{\partial x} = -3$ y $\dfrac{\partial g}{\partial y} = 1$:
+
+$$
+\nabla g = (-3, 1), \qquad \|\nabla g\| = \sqrt{(-3)^2 + 1^2} = \sqrt{10}, \qquad \left|\dfrac{\partial g}{\partial y}\right| = 1
+$$
+
+**Paso 5:** Evaluar el campo sobre la curva. Con $y = 3x + 5$:
+
+$$
+f(x, y(x)) = 3x + (3x + 5) = 6x + 5
+$$
+
+**Paso 6:** Armar la integral y sacar la constante $\sqrt{10}$ fuera.
+
+$$
+\int_C f \, ds = \int_{-2}^{0} (6x + 5)\, \sqrt{10} \, dx = \sqrt{10}\int_{-2}^{0} (6x + 5)\, dx
+$$
+
+Nota: en el pizarrón el profesor distribuye como $9x + 3x + 5 \cdot \ldots$ [poco claro en la transcripción]; el integrando resultante es $6x + 5$ multiplicado por $\sqrt{10}$.
+
+**Paso 7:** Resolver la integral simple. La primitiva de $6x + 5$ es $3x^2 + 5x$ (equivalentemente $5x^2$ aparece si se toma $10x$; ver [paso en el pizarrón, ver video]).
+
+$$
+\int_{-2}^{0} (6x + 5)\, dx = \big[3x^2 + 5x\big]_{-2}^{0} = 0 - \big(3\cdot 4 + 5\cdot(-2)\big) = -(12 - 10) = -2
+$$
+
+**Paso 8:** Multiplicar por $\sqrt{10}$.
+
+$$
+\int_C f \, ds = \sqrt{10}\cdot(-2) = -2\sqrt{10}
+$$
+
+[poco claro en la transcripción: los coeficientes intermedios en el pizarrón; el signo final es negativo. Ver video.]
+
+Esta integral representa el peso total (o la masa total) del segmento con la densidad dada por $f$; si $f$ fuese una densidad de carga eléctrica, sería la carga eléctrica total acumulada.
+
+</details>
+
+</details>
+
+## Valor medio de una función a lo largo de una curva [37:18](https://www.youtube.com/watch?v=-8sOEDPLY8w&t=2238s)
+
+Se puede calcular el **valor medio (o promedio) de una función a lo largo de una curva** como el resultado de la integral del campo escalar dividido por la longitud de la curva:
+
+$$
+\bar{f} = \frac{\displaystyle\int_C f \, ds}{\text{longitud}(C)}
+$$
+
+## Ejemplo 4: valor medio sobre la semicircunferencia
+
+<details>
+<summary>📝 Ejemplo 4 — <a href="https://www.youtube.com/watch?v=-8sOEDPLY8w&t=2270s">37:50</a>: valor medio sobre la semicircunferencia</summary>
+
+Calcular el valor medio de la función densidad $f = -k\,y$ del Ejemplo 1 a lo largo de la semicircunferencia (el cable con la nieve acumulada).
+
+<details>
+<summary>Ver resolución</summary>
+
+**Paso 1:** Usar la fórmula del valor medio.
+
+$$
+\bar{f} = \frac{\displaystyle\int_C f \, ds}{\text{longitud}(C)}
+$$
+
+**Paso 2:** Tomar la integral ya calculada en el Ejemplo 1. En este ejemplo se toma su magnitud $2k\,r^2$ (el profesor la usa en valor positivo para el promedio).
+
+$$
+\int_C f \, ds = 2k\,r^2
+$$
+
+**Paso 3:** Calcular la longitud de la curva. La circunferencia completa mide $2\pi r$, y la semicircunferencia mide
+
+$$
+\text{longitud}(C) = \pi r
+$$
+
+**Paso 4:** Dividir.
+
+$$
+\bar{f} = \frac{2k\,r^2}{\pi r} = \frac{2}{\pi}\, k\, r
+$$
+
+**Paso 5:** Estimar numéricamente. Como $\dfrac{2}{\pi} \approx 0{,}64$:
+
+$$
+\bar{f} \approx 0{,}64\, k\, r
+$$
+
+El valor mínimo de $f$ sobre la curva es $0$ (en los extremos) y el máximo en magnitud es $k\,r$ (en el punto más alto); el valor promedio $0{,}64\,k\,r$ es un valor intermedio. Se podría suponer que la nieve acumulada, en lugar de tener peso variable, tiene ese valor promedio constante.
+
+</details>
+
+</details>
+
+## Ejemplo 5: valor medio sobre el segmento de recta
+
+<details>
+<summary>📝 Ejemplo 5 — <a href="https://www.youtube.com/watch?v=-8sOEDPLY8w&t=2493s">41:33</a>: valor medio sobre el segmento de recta</summary>
+
+Calcular el valor medio de la función $f(x,y) = 3x + y$ del Ejemplo 3 a lo largo del segmento de recta entre $(-2,-1)$ y $(0,5)$.
+
+<details>
+<summary>Ver resolución</summary>
+
+**Paso 1:** Usar la fórmula del valor medio: integral sobre longitud del segmento.
+
+$$
+\bar{f} = \frac{\displaystyle\int_C f \, ds}{\text{longitud}(C)}
+$$
+
+**Paso 2:** Calcular la longitud del segmento entre $(-2,-1)$ y $(0,5)$. La base horizontal es $2$ (su cuadrado $4$) y la altura es $6$ (su cuadrado $36$):
+
+$$
+\text{longitud}(C) = \sqrt{2^2 + 6^2} = \sqrt{4 + 36} = \sqrt{40}
+$$
+
+**Paso 3:** Como $\sqrt{40} = \sqrt{4\cdot 10} = 2\sqrt{10}$, dividir la integral (en magnitud $2\sqrt{10}$, del Ejemplo 3) por la longitud.
+
+$$
+\bar{f} = \frac{2\sqrt{10}}{2\sqrt{10}} \cdot 5 = 5
+$$
+
+Nota: el profesor obtiene directamente el promedio $= 5$. [poco claro en la transcripción: el ensamble exacto de los factores; ver video.]
+
+**Paso 4:** Verificar con los valores extremos de $f$ sobre el segmento. En $(-2,-1)$: $f = 3\cdot(-2) + (-1)\cdot\ldots$; evaluando $f = 3x + y$ da $3\cdot(-2) + (-1) = -7$ [poco claro en la transcripción; el profesor menciona el valor $1$]. En $(0,5)$: $f = 3\cdot 0 + 5 = 5$... el profesor indica que la función toma valores entre $1$ y $15$ a lo largo del segmento, con valor promedio $5$.
+
+[poco claro en la transcripción: los valores concretos de $f$ en los extremos; el resultado del valor medio es $5$. Ver video.]
+
+</details>
+
+</details>

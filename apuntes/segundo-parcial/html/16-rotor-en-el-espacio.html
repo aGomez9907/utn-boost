@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rotor en el espacio</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<style>
+:root { color-scheme: light dark; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  line-height: 1.65; max-width: 820px; margin: 2.5rem auto; padding: 0 1.25rem;
+  color: #1a1a1a; background: #fff;
+}
+@media (prefers-color-scheme: dark) {
+  body { color: #e6e6e6; background: #16181c; }
+  a { color: #6cb6ff; }
+  details { background: #1f2228; border-color: #30343c; }
+  summary { background: #232730; }
+  blockquote { color: #aab; border-color: #30343c; }
+  code { background: #232730; }
+}
+h1, h2, h3 { line-height: 1.25; margin-top: 1.8rem; }
+h1 { border-bottom: 2px solid currentColor; padding-bottom: .3rem; }
+h2 { border-bottom: 1px solid #ddd; padding-bottom: .25rem; }
+a { color: #0969da; text-decoration: none; }
+a:hover { text-decoration: underline; }
+blockquote { margin: 1rem 0; padding: .2rem 1rem; border-left: 4px solid #ddd; color: #555; }
+code { background: #f3f4f6; padding: .12em .35em; border-radius: 4px; font-size: .9em; }
+details {
+  border: 1px solid #e1e4e8; border-radius: 8px; padding: 0 1rem; margin: .8rem 0;
+  background: #fafbfc;
+}
+details[open] { padding-bottom: .6rem; }
+summary {
+  cursor: pointer; font-weight: 600; padding: .7rem 1rem; margin: 0 -1rem;
+  background: #f1f3f5; border-radius: 8px; user-select: none;
+}
+details details { margin-left: .2rem; }
+.katex-display { overflow-x: auto; overflow-y: hidden; padding: .3rem 0; }
+.katex-error { color: #d1242f; }
+@media print {
+  body { margin: 1.2cm; max-width: none; color: #000; background: #fff; }
+  summary { background: none; margin: 0; padding: .2rem 0; }
+  details { border-color: #ccc; background: #fff; padding: 0; }
+  a { color: #000; }
+}
+</style>
+</head>
+<body>
+<div id="content">Renderizando…</div>
+
+<script type="text/markdown" id="md-source">
+# Rotor en el espacio
+
+> Fuente: https://www.youtube.com/watch?v=EPpyWckw-uE
+
+---
+
+## Índice
+- [00:03](https://www.youtube.com/watch?v=EPpyWckw-uE&t=3s) — Definición de rotor en el espacio
+- [01:06](https://www.youtube.com/watch?v=EPpyWckw-uE&t=66s) — El operador nabla: gradiente y divergencia
+- [03:13](https://www.youtube.com/watch?v=EPpyWckw-uE&t=193s) — El rotor como producto vectorial (regla del determinante)
+- [05:23](https://www.youtube.com/watch?v=EPpyWckw-uE&t=323s) — 📝 Ejercicio 1: Rotor del campo $(-y, x, 0)$
+- [07:28](https://www.youtube.com/watch?v=EPpyWckw-uE&t=448s) — 📝 Ejercicio 2: Rotor de un campo radial inverso-cuadrático
+- [14:33](https://www.youtube.com/watch?v=EPpyWckw-uE&t=873s) — Campos irrotacionales
+- [15:35](https://www.youtube.com/watch?v=EPpyWckw-uE&t=935s) — Rotor y campos conservativos
+- [20:24](https://www.youtube.com/watch?v=EPpyWckw-uE&t=1224s) — Teorema del rotor (Stokes)
+- [28:26](https://www.youtube.com/watch?v=EPpyWckw-uE&t=1706s) — 📝 Ejercicio 3: Circulación sobre el borde de un plano (por definición y por Stokes)
+- [52:32](https://www.youtube.com/watch?v=EPpyWckw-uE&t=3152s) — 📝 Ejercicio 4: Circulación sobre la intersección cilindro-plano
+- [1:10:32](https://www.youtube.com/watch?v=EPpyWckw-uE&t=4232s) — Circulación de un campo conservativo sobre curvas cerradas
+- [1:13:19](https://www.youtube.com/watch?v=EPpyWckw-uE&t=4399s) — Teorema de Green como caso particular de Stokes
+
+---
+
+## Definición de rotor en el espacio [00:03](https://www.youtube.com/watch?v=EPpyWckw-uE&t=3s)
+
+Se parte de un campo vectorial definido de un subconjunto de $\mathbb{R}^3$ cuyas imágenes caen en el espacio tridimensional. Si $x, y, z$ son las variables del dominio y $f_1, f_2, f_3$ las funciones componentes de la función vectorial $\vec{F}$, se denomina **rotor de $\vec{F}$** al vector formado por derivadas parciales de las funciones componentes:
+
+$$
+\operatorname{rot}\vec{F} = \left( \frac{\partial f_3}{\partial y} - \frac{\partial f_2}{\partial z},\; \frac{\partial f_1}{\partial z} - \frac{\partial f_3}{\partial x},\; \frac{\partial f_2}{\partial x} - \frac{\partial f_1}{\partial y} \right)
+$$
+
+## El operador nabla: gradiente y divergencia [01:06](https://www.youtube.com/watch?v=EPpyWckw-uE&t=66s)
+
+Una forma práctica de recordar la definición de rotor es tratar al **operador nabla** (operador de Hamilton), que se identifica como un vector formado con las derivadas parciales respecto de $x$, $y$ y $z$:
+
+$$
+\nabla = \left( \frac{\partial}{\partial x}, \frac{\partial}{\partial y}, \frac{\partial}{\partial z} \right)
+$$
+
+Este operador, aplicado a distintas funciones, da distintos resultados:
+
+- Aplicado a un **campo escalar** (por ejemplo una función de dos o tres variables) se obtiene el **gradiente** de ese campo escalar.
+- Aplicado a un **campo vectorial** como producto escalar se obtiene la **divergencia** del campo. Siendo $\vec{F} = (f_1, f_2, f_3)$ función de $x, y, z$, la divergencia se interpreta como el producto escalar del operador nabla por el campo vectorial:
+
+$$
+\operatorname{div}\vec{F} = \nabla \cdot \vec{F}
+$$
+
+## El rotor como producto vectorial (regla del determinante) [03:13](https://www.youtube.com/watch?v=EPpyWckw-uE&t=193s)
+
+El rotor se obtiene resolviendo el **producto vectorial** entre el operador nabla y el campo vectorial. Los productos vectoriales se pueden resolver mediante un **determinante**, donde el primer vector (nabla) se coloca en el segundo renglón y el segundo vector (las componentes del campo) en el tercer renglón:
+
+$$
+\operatorname{rot}\vec{F} = \nabla \times \vec{F} =
+\begin{vmatrix}
+\vec{i} & \vec{j} & \vec{k} \\
+\dfrac{\partial}{\partial x} & \dfrac{\partial}{\partial y} & \dfrac{\partial}{\partial z} \\
+f_1 & f_2 & f_3
+\end{vmatrix}
+$$
+
+Al resolver el determinante, en lugar de multiplicar se aplica la derivada correspondiente:
+
+- Primera componente: $\dfrac{\partial f_3}{\partial y} - \dfrac{\partial f_2}{\partial z}$.
+- Segunda componente (cambiando el signo, o resolviendo el determinante en forma inversa): $\dfrac{\partial f_1}{\partial z} - \dfrac{\partial f_3}{\partial x}$.
+- Tercera componente: $\dfrac{\partial f_2}{\partial x} - \dfrac{\partial f_1}{\partial y}$.
+
+Así queda conformada la definición del rotor de un campo vectorial. La resolución del determinante (o del producto vectorial) es simplemente una regla mnemotécnica para obtener la expresión.
+
+<details>
+<summary>📝 Ejercicio 1 — <a href="https://www.youtube.com/watch?v=EPpyWckw-uE&t=323s">05:23</a>: Rotor del campo $(-y, x, 0)$</summary>
+
+Calcular el rotor del campo vectorial
+
+$$
+\vec{F}(x,y,z) = (-y,\; x,\; 0)
+$$
+
+<details>
+<summary>Ver resolución</summary>
+
+**Paso 1:** No hace falta recordar la definición de memoria; basta recordar cómo se construye el rotor. Se colocan las componentes del campo vectorial en el tercer renglón del determinante.
+
+$$
+\operatorname{rot}\vec{F} =
+\begin{vmatrix}
+\vec{i} & \vec{j} & \vec{k} \\
+\dfrac{\partial}{\partial x} & \dfrac{\partial}{\partial y} & \dfrac{\partial}{\partial z} \\
+-y & x & 0
+\end{vmatrix}
+$$
+
+**Paso 2:** Primera componente: derivada de $0$ respecto de $y$ (que es $0$) menos la derivada de $x$ respecto de $z$ (que es $0$).
+
+$$
+\frac{\partial (0)}{\partial y} - \frac{\partial (x)}{\partial z} = 0 - 0 = 0
+$$
+
+**Paso 3:** Segunda componente: derivada de $-y$ respecto de $z$ (que es $0$) menos la derivada de $0$ respecto de $x$ (que es $0$).
+
+$$
+\frac{\partial (-y)}{\partial z} - \frac{\partial (0)}{\partial x} = 0 - 0 = 0
+$$
+
+**Paso 4:** Tercera componente: derivada de $x$ respecto de $x$ (que es $1$) menos la derivada de $-y$ respecto de $y$ (que es $-1$).
+
+$$
+\frac{\partial (x)}{\partial x} - \frac{\partial (-y)}{\partial y} = 1 - (-1) = 2
+$$
+
+**Paso 5:** El rotor resulta un vector sencillo.
+
+$$
+\operatorname{rot}\vec{F} = (0,\; 0,\; 2)
+$$
+
+Cualquiera sea el punto $(x, y, z)$ del espacio que se tome, el rotor vale siempre $(0, 0, 2)$.
+
+</details>
+
+</details>
+
+<details>
+<summary>📝 Ejercicio 2 — <a href="https://www.youtube.com/watch?v=EPpyWckw-uE&t=448s">07:28</a>: Rotor de un campo radial inverso-cuadrático</summary>
+
+Calcular el rotor del campo vectorial
+
+$$
+\vec{F}(x,y,z) = \left( \frac{x}{(x^2+y^2+z^2)^{3/2}},\; \frac{y}{(x^2+y^2+z^2)^{3/2}},\; \frac{z}{(x^2+y^2+z^2)^{3/2}} \right)
+$$
+
+donde la norma se escribió como $\|(x,y,z)\| = (x^2+y^2+z^2)^{1/2}$ y, elevada al cubo, queda a la $3/2$.
+
+<details>
+<summary>Ver resolución</summary>
+
+**Paso 1:** Construir el determinante con las componentes del campo en el tercer renglón (el denominador $(x^2+y^2+z^2)^{3/2}$ es el mismo en las tres componentes).
+
+$$
+\operatorname{rot}\vec{F} =
+\begin{vmatrix}
+\vec{i} & \vec{j} & \vec{k} \\
+\dfrac{\partial}{\partial x} & \dfrac{\partial}{\partial y} & \dfrac{\partial}{\partial z} \\
+\dfrac{x}{(x^2+y^2+z^2)^{3/2}} & \dfrac{y}{(x^2+y^2+z^2)^{3/2}} & \dfrac{z}{(x^2+y^2+z^2)^{3/2}}
+\end{vmatrix}
+$$
+
+**Paso 2:** Primera componente: derivar la tercera componente respecto de $y$ menos la segunda componente respecto de $z$. Al derivar $z\,(x^2+y^2+z^2)^{-3/2}$ respecto de $y$, la $z$ se comporta como constante y por la regla de la cadena aparece $-\frac{3}{2}(x^2+y^2+z^2)^{-5/2}$ multiplicado por la derivada del argumento ($2y$):
+
+$$
+\frac{\partial f_3}{\partial y} = z \cdot \left(-\frac{3}{2}\right)(x^2+y^2+z^2)^{-5/2} \cdot 2y
+$$
+
+Análogamente, derivando la segunda componente $y\,(x^2+y^2+z^2)^{-3/2}$ respecto de $z$:
+
+$$
+\frac{\partial f_2}{\partial z} = y \cdot \left(-\frac{3}{2}\right)(x^2+y^2+z^2)^{-5/2} \cdot 2z
+$$
+
+**Paso 3:** Segunda componente: derivada de $f_1$ respecto de $z$ menos derivada de $f_3$ respecto de $x$.
+
+$$
+\frac{\partial f_1}{\partial z} = x \cdot \left(-\frac{3}{2}\right)(x^2+y^2+z^2)^{-5/2} \cdot 2z, \qquad
+\frac{\partial f_3}{\partial x} = z \cdot \left(-\frac{3}{2}\right)(x^2+y^2+z^2)^{-5/2} \cdot 2x
+$$
+
+**Paso 4:** Tercera componente: derivada de $f_2$ respecto de $x$ menos derivada de $f_1$ respecto de $y$.
+
+$$
+\frac{\partial f_2}{\partial x} = y \cdot \left(-\frac{3}{2}\right)(x^2+y^2+z^2)^{-5/2} \cdot 2x, \qquad
+\frac{\partial f_1}{\partial y} = x \cdot \left(-\frac{3}{2}\right)(x^2+y^2+z^2)^{-5/2} \cdot 2y
+$$
+
+**Paso 5:** En cada componente los dos términos son idénticos y se cancelan (por ejemplo, en la primera componente ambos términos contienen $y\,z$; en la segunda, $x\,z$; en la tercera, $x\,y$).
+
+$$
+\operatorname{rot}\vec{F} = (0,\; 0,\; 0)
+$$
+
+En los casos en que el rotor es el vector nulo, se dice que $\vec{F}$ es **irrotacional**.
+
+</details>
+
+</details>
+
+## Campos irrotacionales [14:33](https://www.youtube.com/watch?v=EPpyWckw-uE&t=873s)
+
+Se llama **irrotacional** al campo vectorial cuyo rotor es el **vector nulo**:
+
+$$
+\operatorname{rot}\vec{F} = (0,\; 0,\; 0)
+$$
+
+Es algo similar a lo que pasaba con los campos en el plano: cuando su rotor era cero también los denominábamos irrotacionales. En el espacio, los rotores de campos irrotacionales son vectores nulos.
+
+## Rotor y campos conservativos [15:35](https://www.youtube.com/watch?v=EPpyWckw-uE&t=935s)
+
+Si un campo vectorial $\vec{F}(x,y,z) = (f_1, f_2, f_3)$ es **conservativo**, se puede demostrar que las derivadas cruzadas de las funciones componentes coinciden (se transforman en identidades):
+
+$$
+\frac{\partial f_2}{\partial x} = \frac{\partial f_1}{\partial y}, \qquad
+\frac{\partial f_1}{\partial z} = \frac{\partial f_3}{\partial x}, \qquad
+\frac{\partial f_2}{\partial z} = \frac{\partial f_3}{\partial y}
+$$
+
+Recordando la definición del rotor:
+
+$$
+\operatorname{rot}\vec{F} = \left( \frac{\partial f_3}{\partial y} - \frac{\partial f_2}{\partial z},\; \frac{\partial f_1}{\partial z} - \frac{\partial f_3}{\partial x},\; \frac{\partial f_2}{\partial x} - \frac{\partial f_1}{\partial y} \right)
+$$
+
+Como en un campo conservativo esas derivadas son iguales, cada diferencia se anula y el rotor resulta el vector nulo:
+
+$$
+\operatorname{rot}\vec{F} = (0,\; 0,\; 0)
+$$
+
+Esas igualdades eran una **condición necesaria** para que $\vec{F}$ sea conservativo, lo que es equivalente a decir que el rotor de $\vec{F}$ es el vector nulo, es decir, que $\vec{F}$ es **irrotacional**. Que el campo sea irrotacional es **necesario pero no suficiente** para que sea conservativo: si $\vec{F}$ es conservativo, entonces es irrotacional y su rotor es cero, pero el recíproco no siempre vale.
+
+## Teorema del rotor (Stokes) [20:24](https://www.youtube.com/watch?v=EPpyWckw-uE&t=1224s)
+
+**Hipótesis:**
+- $\vec{F}$ es un campo vectorial definido de $\mathbb{R}^3 \to \mathbb{R}^3$ (o de un subconjunto de $\mathbb{R}^3$), con **buen comportamiento**: todas sus derivadas parciales continuas, es decir, es de **clase $C^1$**.
+- Existe una superficie $S$ incluida dentro del dominio del campo, que es una **superficie simple y orientable**, con una parametrización $\sigma$ (definida sobre una región $D$ del plano) tal que el borde de la superficie es una **curva regular y simple**.
+- *Simple* quiere decir que admite plano tangente en sus puntos; *orientable* quiere decir que queda perfectamente definido un campo de versores normales continuo $\vec{n}$.
+- El **borde de $S$** queda orientado **en correspondencia** con el campo de versores normales: si caminamos con la cabeza apuntando en la dirección de $\vec{n}$ y recorremos el borde dejando siempre la superficie a nuestra izquierda, el borde queda orientado en correspondencia con $\vec{n}$.
+
+**Tesis:** La **circulación** (o trabajo) del campo $\vec{F}$ a lo largo del borde de $S$, orientado en correspondencia con el campo de versores normales, es igual al **flujo del rotor** de $\vec{F}$ a través de la superficie $S$ orientada según ese mismo campo de versores normales:
+
+$$
+\oint_{\partial S} \vec{F} \cdot d\vec{r} = \iint_{S} \operatorname{rot}\vec{F} \cdot d\vec{S}
+$$
+
+Esta expresión es mucho más sintética que toda la descripción en palabras.
+
+<details>
+<summary>📝 Ejercicio 3 — <a href="https://www.youtube.com/watch?v=EPpyWckw-uE&t=1706s">28:26</a>: Circulación sobre el borde de un plano (por definición y por Stokes)</summary>
+
+Calcular la circulación (trabajo) del campo vectorial
+
+$$
+\vec{F}(x,y,z) = (-y,\; x,\; 0)
+$$
+
+a lo largo del borde de la superficie $S$ dada por el plano de ecuación $x + y + z = 1$ (que corta los ejes $x$, $y$, $z$ en $1$), con las coordenadas $x, y, z$ de los puntos mayores o iguales a $0$. El borde de $S$ es la unión de tres segmentos de recta $S_1$, $S_2$, $S_3$. Resolver **por definición** y **aplicando el teorema del rotor**.
+
+<details>
+<summary>Ver resolución — por definición</summary>
+
+**Paso 1:** Parametrizar los tres segmentos, orientándolos en sentido antihorario. El segmento $C_1$ va del punto $(1,0,0)$ al punto $(0,1,0)$; su vector director es $(0,1,0) - (1,0,0) = (-1, 1, 0)$:
+
+$$
+\lambda_1(t) = (1 - t,\; t,\; 0), \qquad t \in [0, 1]
+$$
+
+Para $t = 0$ se está en $(1,0,0)$ y para $t = 1$ en $(0,1,0)$.
+
+**Paso 2:** El segmento $C_2$ va del punto $(0,1,0)$ al $(0,0,1)$; vector director $(0,0,1) - (0,1,0) = (0, -1, 1)$:
+
+$$
+\lambda_2(t) = (0,\; 1 - t,\; t), \qquad t \in [0, 1]
+$$
+
+**Paso 3:** El segmento $C_3$ va del punto $(0,0,1)$ al $(1,0,0)$; vector director $(1,0,0) - (0,0,1) = (1, 0, -1)$:
+
+$$
+\lambda_3(t) = (t,\; 0,\; 1 - t), \qquad t \in [0, 1]
+$$
+
+**Paso 4:** Trabajo a lo largo de $C_1$. El campo $\vec{F} = (-y, x, 0)$ evaluado en $\lambda_1$ es $(-t,\; 1 - t,\; 0)$, y $\lambda_1'(t) = (-1, 1, 0)$:
+
+$$
+W_{C_1} = \int_0^1 (-t,\; 1 - t,\; 0) \cdot (-1, 1, 0)\, dt = \int_0^1 \big[ t + (1 - t) \big]\, dt = \int_0^1 dt = 1
+$$
+
+**Paso 5:** Trabajo a lo largo de $C_2$. El campo evaluado en $\lambda_2 = (0, 1-t, t)$ es $(-(1-t),\; 0,\; 0)$, y $\lambda_2'(t) = (0, -1, 1)$:
+
+$$
+W_{C_2} = \int_0^1 \big(-(1-t),\; 0,\; 0\big) \cdot (0, -1, 1)\, dt = \int_0^1 0\, dt = 0
+$$
+
+**Paso 6:** Trabajo a lo largo de $C_3$. El campo evaluado en $\lambda_3 = (t, 0, 1-t)$ es $(0,\; t,\; 0)$, y $\lambda_3'(t) = (1, 0, -1)$:
+
+$$
+W_{C_3} = \int_0^1 (0,\; t,\; 0) \cdot (1, 0, -1)\, dt = \int_0^1 0\, dt = 0
+$$
+
+**Paso 7:** El trabajo a lo largo del borde de $S$ (la frontera), orientado según lo indicado, es la suma de los tres trabajos.
+
+$$
+\oint_{\partial S} \vec{F} \cdot d\vec{r} = W_{C_1} + W_{C_2} + W_{C_3} = 1 + 0 + 0 = 1
+$$
+
+El cálculo por definición resulta bastante laborioso.
+
+</details>
+
+<details>
+<summary>Ver resolución — por el teorema del rotor</summary>
+
+**Paso 1:** Por el teorema del rotor, la circulación del campo a lo largo del borde de $S$ orientada con su campo de versores normales es igual al flujo del rotor de $\vec{F}$ a través de $S$.
+
+$$
+\oint_{\partial S} \vec{F} \cdot d\vec{r} = \iint_{S} \operatorname{rot}\vec{F} \cdot d\vec{S}
+$$
+
+**Paso 2:** El rotor de $\vec{F} = (-y, x, 0)$ ya se calculó al principio (Ejercicio 1): vale $(0, 0, 2)$.
+
+$$
+\operatorname{rot}\vec{F} = (0,\; 0,\; 2)
+$$
+
+**Paso 3:** La superficie es el conjunto de nivel cero de $g(x,y,z) = x + y + z - 1$. Su gradiente es el vector normal a la superficie:
+
+$$
+\nabla g = (1,\; 1,\; 1)
+$$
+
+Por ser un plano, el vector normal es uniforme en toda la superficie.
+
+**Paso 4:** Visualizando $S$ como gráfica de $z = 1 - x - y$, se integra respecto de $x, y$ sobre la proyección de la superficie en el plano $xy$, dividiendo por el módulo de $g'_z$ (que vale $1$):
+
+$$
+\iint_{S} \operatorname{rot}\vec{F} \cdot d\vec{S} = \iint_{S_{xy}} (0, 0, 2) \cdot \frac{(1,1,1)}{|g'_z|}\, dx\, dy = \iint_{S_{xy}} 2\, dx\, dy
+$$
+
+**Paso 5:** La integral vale $2$ veces el área de la proyección $S_{xy}$, que es el triángulo de base $1$ y altura $1$:
+
+$$
+\text{área}(S_{xy}) = \frac{1 \cdot 1}{2} = \frac{1}{2}
+$$
+
+**Paso 6:** Resultado final.
+
+$$
+\iint_{S_{xy}} 2\, dx\, dy = 2 \cdot \frac{1}{2} = 1
+$$
+
+El resultado coincide con el obtenido por definición. La orientación del normal $(1,1,1)$ tiene todas sus componentes positivas, y el borde queda orientado en concordancia con ese campo (recorriéndolo se deja la superficie a la izquierda). Se ve la ventaja del teorema del rotor: prácticamente en un renglón.
+
+</details>
+
+</details>
+
+<details>
+<summary>📝 Ejercicio 4 — <a href="https://www.youtube.com/watch?v=EPpyWckw-uE&t=3152s">52:32</a>: Circulación sobre la intersección cilindro-plano</summary>
+
+Calcular la circulación del campo vectorial
+
+$$
+\vec{F}(x,y,z) = (x^2,\; xy,\; z^2)
+$$
+
+a lo largo de la curva intersección de las superficies $x^2 + y^2 = 1$ (cilindro de simetría en el eje $z$) y el plano $x + y + z = 1$. La curva cerrada está contenida tanto en el cilindro como en el plano inclinado. Resolver **por definición** y **por el teorema del rotor**.
+
+<details>
+<summary>Ver resolución — por definición (planteo)</summary>
+
+**Paso 1:** Parametrizar la curva. Como $x^2 + y^2 = 1$, se relacionan $x$ e $y$ con coseno y seno, y $z$ se despeja del plano ($z = 1 - x - y$):
+
+$$
+\lambda(t) = (\cos t,\; \sin t,\; 1 - \cos t - \sin t), \qquad t \in [0, 2\pi]
+$$
+
+Para $t \in [0, 2\pi]$ se da toda la vuelta a la circunferencia y la curva queda cerrada y simple.
+
+**Paso 2:** El trabajo es la integral del campo evaluado en $\lambda$ por la derivada de la parametrización. El campo evaluado da primera componente $\cos^2 t$, segunda componente $\cos t \cdot \sin t$, tercera $(1 - \cos t - \sin t)^2$, cuyo binomio al cuadrado desarrolla términos como $1 + \cos^2 t + \sin^2 t - 2\cos t - 2\sin t + 2\cos t\sin t$. La derivada de la parametrización es:
+
+$$
+\lambda'(t) = (-\sin t,\; \cos t,\; \sin t - \cos t)
+$$
+
+**Paso 3:** El producto escalar y su integración resultan extensos y laboriosos [paso en el pizarrón, ver video]. Por eso conviene resolver alternativamente por el teorema del rotor. El planteo por definición queda propuesto:
+
+$$
+W = \int_0^{2\pi} \vec{F}(\lambda(t)) \cdot \lambda'(t)\, dt
+$$
+
+</details>
+
+<details>
+<summary>Ver resolución — por el teorema del rotor</summary>
+
+**Paso 1:** Calcular el rotor de $\vec{F} = (x^2, xy, z^2)$ mediante el determinante. Primera componente: $\partial(z^2)/\partial y - \partial(xy)/\partial z = 0 - 0 = 0$. Segunda componente: $\partial(x^2)/\partial z - \partial(z^2)/\partial x = 0 - 0 = 0$. Tercera componente: $\partial(xy)/\partial x - \partial(x^2)/\partial y = y - 0 = y$.
+
+$$
+\operatorname{rot}\vec{F} = (0,\; 0,\; y)
+$$
+
+**Paso 2:** Por el teorema del rotor, la circulación es igual al flujo del rotor a través de una superficie cuyo borde sea la curva. Se elige el pedacito del plano $x + y + z = 1$ encerrado dentro del cilindro.
+
+$$
+\oint \vec{F} \cdot d\vec{r} = \iint_{S} \operatorname{rot}\vec{F} \cdot d\vec{S}
+$$
+
+**Paso 3:** La superficie es el conjunto de nivel cero de $g(x,y,z) = x + y + z - 1$, con gradiente (vector normal) $\nabla g = (1, 1, 1)$. Tomando $z$ en función de $x, y$, se integra respecto de $x, y$ dividiendo por el módulo de $g'_z$ (que vale $1$):
+
+$$
+\iint_{S} (0, 0, y) \cdot \frac{(1,1,1)}{|g'_z|}\, dx\, dy = \iint_{S_{xy}} y\, dx\, dy
+$$
+
+**Paso 4:** La proyección $S_{xy}$ es el interior del cilindro, es decir el disco $x^2 + y^2 \le 1$. Conviene usar **coordenadas polares** con jacobiano $|J| = r$:
+
+$$
+\iint_{S_{xy}} y\, dx\, dy = \int_0^{2\pi} \int_0^1 (r\sin\varphi)\, r\, dr\, d\varphi = \int_0^{2\pi} \int_0^1 r^2 \sin\varphi\, dr\, d\varphi
+$$
+
+**Paso 5:** La integral respecto de $\varphi$ del $\sin\varphi$ es $-\cos\varphi$; evaluada entre $0$ y $2\pi$ da $\cos 0 - \cos 2\pi = 1 - 1 = 0$.
+
+$$
+\int_0^{2\pi} \sin\varphi\, d\varphi = 0
+$$
+
+**Paso 6:** Como ese factor se anula, toda la integral vale $0$.
+
+$$
+\oint \vec{F} \cdot d\vec{r} = 0
+$$
+
+Con el teorema del rotor se evita trabajar con todas las funciones trigonométricas del planteo por definición; ambas vías dan el mismo resultado.
+
+</details>
+
+</details>
+
+## Circulación de un campo conservativo sobre curvas cerradas [1:10:32](https://www.youtube.com/watch?v=EPpyWckw-uE&t=4232s)
+
+Es simple verificar que la circulación de un campo conservativo a lo largo del borde de una superficie que cumpla las hipótesis del teorema del rotor es **cero**. Si $\vec{F}$ es conservativo, su rotor es el vector nulo:
+
+$$
+\operatorname{rot}\vec{F} = (0,\; 0,\; 0)
+$$
+
+Por lo tanto, la circulación de $\vec{F}$ a lo largo del borde de esa superficie es igual al flujo del rotor de $\vec{F}$ a través de ella, y como el rotor es nulo:
+
+$$
+\oint_{\partial S} \vec{F} \cdot d\vec{r} = \iint_{S} \operatorname{rot}\vec{F} \cdot d\vec{S} = \iint_{S} \vec{0} \cdot d\vec{S} = 0
+$$
+
+Cuando los campos son conservativos, las circulaciones sobre curvas cerradas son $0$. Esto ya se había estudiado: la condición de circulación nula alrededor de curvas cerradas es equivalente a la definición de campo conservativo (que exista un campo escalar cuyo gradiente sea igual al campo vectorial).
+
+## Teorema de Green como caso particular de Stokes [1:13:19](https://www.youtube.com/watch?v=EPpyWckw-uE&t=4399s)
+
+El teorema de Green (teorema del rotor en el plano) no es más que un **caso particular** del teorema de Stokes en el espacio. Se considera un campo vectorial con una particularidad: definido en todo el espacio $(x,y,z)$, pero cuya primera componente no depende de $z$, la segunda no depende de $z$ y la tercera vale $0$:
+
+$$
+\vec{F} = (f_1(x,y),\; f_2(x,y),\; 0)
+$$
+
+En este caso los vectores del campo son **horizontales** (la tercera componente es $0$): en cualquier punto que se tome, el vector campo es horizontal, y si las coordenadas $x, y$ son las mismas, el campo es el mismo.
+
+**Paso — la superficie:** Se toma en el plano $xy$ (plano $z = 0$) una superficie $S$ orientada con los normales apuntando hacia arriba. Caminando alrededor del borde dejando la superficie a la izquierda, el borde queda orientado en correspondencia (sentido antihorario). Por el teorema del rotor:
+
+$$
+\oint_{\partial S} \vec{F} \cdot d\vec{r} = \iint_{S} \operatorname{rot}\vec{F} \cdot d\vec{S}
+$$
+
+**Paso — el rotor:** Con $\vec{F} = (f_1, f_2, 0)$ y $f_1, f_2$ dependiendo solo de $x, y$, las dos primeras componentes del rotor se anulan (derivadas respecto de $z$ de funciones que no dependen de $z$ son $0$, y la derivada de $0$ también). Queda:
+
+$$
+\operatorname{rot}\vec{F} = \left( 0,\; 0,\; \frac{\partial f_2}{\partial x} - \frac{\partial f_1}{\partial y} \right)
+$$
+
+**Paso — el flujo:** La superficie ($z = 0$) es el conjunto de nivel cero de $g = z$, con gradiente (versor normal) $\nabla g = (0, 0, 1)$. El flujo se calcula multiplicando el rotor por $(0,0,1)$ dividido por el módulo de $g'_z$ (que vale $1$), integrando en $x, y$ sobre la proyección de la superficie, que coincide con $S_{xy}$:
+
+$$
+\iint_{S} \operatorname{rot}\vec{F} \cdot d\vec{S} = \iint_{S_{xy}} \left( \frac{\partial f_2}{\partial x} - \frac{\partial f_1}{\partial y} \right) dx\, dy
+$$
+
+Esto es exactamente la expresión del **teorema de Green**. En Green, que el borde de la superficie esté orientado en sentido antihorario significa que está orientado en forma positiva, porque el eje $z$ (o el normal a la superficie) apunta en la dirección en la cual, al caminar por el borde, se deja la superficie a la izquierda. Cuando los campos tienen esta forma y las superficies se encuentran en el plano $xy$, el teorema de Stokes se reduce a Green: **Green es un caso particular del teorema de Stokes**.
+
+Con esto se cierran los temas de cálculo vectorial. Los tres teoremas integrales (Stokes, teorema de la divergencia de Gauss y Green o teorema del rotor en el plano) se encuentran en la Unidad 11 de la guía de práctica. Restan por ver los temas de ecuaciones diferenciales de orden 2.
+
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/markdown-it@14.1.0/dist/markdown-it.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/markdown-it-texmath@1.0.0/texmath.js"></script>
+<script>
+  const source = document.getElementById("md-source").textContent;
+  const md = window.markdownit({ html: true, linkify: true })
+    .use(window.texmath, {
+      engine: window.katex,
+      delimiters: "dollars",
+      katexOptions: { throwOnError: false },
+    });
+  document.getElementById("content").innerHTML = md.render(source);
+</script>
+</body>
+</html>

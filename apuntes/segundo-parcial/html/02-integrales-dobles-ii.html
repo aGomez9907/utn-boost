@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Integrales dobles II</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<style>
+:root { color-scheme: light dark; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  line-height: 1.65; max-width: 820px; margin: 2.5rem auto; padding: 0 1.25rem;
+  color: #1a1a1a; background: #fff;
+}
+@media (prefers-color-scheme: dark) {
+  body { color: #e6e6e6; background: #16181c; }
+  a { color: #6cb6ff; }
+  details { background: #1f2228; border-color: #30343c; }
+  summary { background: #232730; }
+  blockquote { color: #aab; border-color: #30343c; }
+  code { background: #232730; }
+}
+h1, h2, h3 { line-height: 1.25; margin-top: 1.8rem; }
+h1 { border-bottom: 2px solid currentColor; padding-bottom: .3rem; }
+h2 { border-bottom: 1px solid #ddd; padding-bottom: .25rem; }
+a { color: #0969da; text-decoration: none; }
+a:hover { text-decoration: underline; }
+blockquote { margin: 1rem 0; padding: .2rem 1rem; border-left: 4px solid #ddd; color: #555; }
+code { background: #f3f4f6; padding: .12em .35em; border-radius: 4px; font-size: .9em; }
+details {
+  border: 1px solid #e1e4e8; border-radius: 8px; padding: 0 1rem; margin: .8rem 0;
+  background: #fafbfc;
+}
+details[open] { padding-bottom: .6rem; }
+summary {
+  cursor: pointer; font-weight: 600; padding: .7rem 1rem; margin: 0 -1rem;
+  background: #f1f3f5; border-radius: 8px; user-select: none;
+}
+details details { margin-left: .2rem; }
+.katex-display { overflow-x: auto; overflow-y: hidden; padding: .3rem 0; }
+.katex-error { color: #d1242f; }
+@media print {
+  body { margin: 1.2cm; max-width: none; color: #000; background: #fff; }
+  summary { background: none; margin: 0; padding: .2rem 0; }
+  details { border-color: #ccc; background: #fff; padding: 0; }
+  a { color: #000; }
+}
+</style>
+</head>
+<body>
+<div id="content">Renderizando…</div>
+
+<script type="text/markdown" id="md-source">
+# Integrales dobles II
+
+> Fuente: https://www.youtube.com/watch?v=H4IQhAS0y9I
+
+---
+
+## Índice
+- [00:09](https://www.youtube.com/watch?v=H4IQhAS0y9I&t=9s) — Matriz jacobiana y jacobiano
+- [04:29](https://www.youtube.com/watch?v=H4IQhAS0y9I&t=269s) — Teorema de cambio de variables en integrales dobles
+- [07:10](https://www.youtube.com/watch?v=H4IQhAS0y9I&t=430s) — 📝 Ejercicio 1: Volumen de una esfera con coordenadas polares
+- [18:34](https://www.youtube.com/watch?v=H4IQhAS0y9I&t=1114s) — 📝 Ejercicio 2: Integral de $x+y$ con cambio lineal de variables
+- [29:25](https://www.youtube.com/watch?v=H4IQhAS0y9I&t=1765s) — El jacobiano como corrector de áreas
+- [31:31](https://www.youtube.com/watch?v=H4IQhAS0y9I&t=1891s) — Jacobiano de la función inversa
+- [36:17](https://www.youtube.com/watch?v=H4IQhAS0y9I&t=2177s) — Regiones de tipo 1 y tipo 2. Orden de integración
+- [38:26](https://www.youtube.com/watch?v=H4IQhAS0y9I&t=2306s) — 📝 Ejercicio 3: Permutar el orden de integración
+- [50:06](https://www.youtube.com/watch?v=H4IQhAS0y9I&t=3006s) — 📝 Ejercicio 4: Integral de $e^{y/x}$ y el orden que decide la resolubilidad
+
+---
+
+## Matriz jacobiana y jacobiano [00:09](https://www.youtube.com/watch?v=H4IQhAS0y9I&t=9s)
+
+Para una función de transformación de coordenadas (o, en general, una función vectorial de varias variables) se define la **matriz jacobiana** como la matriz formada por todas las derivadas parciales de todas las funciones componentes.
+
+Si la función tiene dos funciones componentes (que llamamos $x$ e $y$) y depende de dos variables (por ejemplo $\rho$ y $\varphi$), cada función componente tiene dos derivadas parciales. La matriz jacobiana queda formada por esas cuatro derivadas parciales:
+
+$$
+J = \begin{pmatrix} \dfrac{\partial x}{\partial \rho} & \dfrac{\partial x}{\partial \varphi} \\[2mm] \dfrac{\partial y}{\partial \rho} & \dfrac{\partial y}{\partial \varphi} \end{pmatrix}
+$$
+
+Al **determinante** de esa matriz jacobiana se lo llama **jacobiano**.
+
+Como ejemplo se toma la transformación de coordenadas polares a cartesianas, donde cada componente depende de $\rho$ y $\varphi$:
+
+$$
+x = \rho\cos\varphi, \qquad y = \rho\sin\varphi
+$$
+
+El jacobiano se construye derivando la primera componente respecto de una variable y luego respecto de la otra, y análogamente con la segunda componente:
+
+$$
+J = \begin{vmatrix} \cos\varphi & -\rho\sin\varphi \\ \sin\varphi & \rho\cos\varphi \end{vmatrix} = \rho\cos^2\varphi - (-\rho\sin^2\varphi) = \rho\cos^2\varphi + \rho\sin^2\varphi
+$$
+
+Sacando factor común $\rho$ queda $\rho(\cos^2\varphi + \sin^2\varphi) = \rho$. Por lo tanto, el jacobiano de la transformación de coordenadas polares a cartesianas es:
+
+$$
+J = \rho
+$$
+
+Se recuerda del repaso que si en el plano $xy$ se tiene un punto genérico de coordenadas $(x,y)$, entonces $\rho$ representa la distancia al origen de ese punto y $\varphi$ el ángulo que forma ese segmento respecto del eje $x$.
+
+## Teorema de cambio de variables en integrales dobles [04:29](https://www.youtube.com/watch?v=H4IQhAS0y9I&t=269s)
+
+Este teorema es el que permite calcular integrales dobles mediante convenientes cambios de variables. Es el equivalente al método de sustitución de las integrales simples.
+
+**Idea:** se tiene una función continua sobre una región de integración $D$ (en las variables $x,y$) y una función $g$ de transformación de coordenadas, definida en una región $D^*$ (en las nuevas variables $u,v$), que manda los puntos de $D^*$ a la región $D$.
+
+**Hipótesis** que debe cumplir la transformación $g$:
+- Debe ser **inyectiva**: a cada elemento de $D^*$ le corresponde uno y solo un elemento de $D$. Esto equivale a que admite función inversa $g^{-1}$.
+- Debe tener **derivadas parciales continuas**.
+- Su **jacobiano** (determinante de la matriz jacobiana) debe ser **distinto de cero**, al menos en el interior de $D^*$. Lo que ocurra en el borde o frontera no importa.
+
+**Tesis:** resolver la integral de la función continua sobre la región $D$ (variables $x,y$) es lo mismo que resolver la integral de la función evaluada en términos de las nuevas variables $u,v$ sobre la región $D^*$, multiplicando el integrando por el módulo del jacobiano de la transformación:
+
+$$
+\iint_{D} f(x,y)\,dx\,dy = \iint_{D^*} f\big(x(u,v),\, y(u,v)\big)\,\left| J \right|\,du\,dv
+$$
+
+<details>
+<summary>📝 Ejercicio 1 — <a href="https://www.youtube.com/watch?v=H4IQhAS0y9I&t=430s">07:10</a>: Volumen de una esfera con coordenadas polares</summary>
+
+Calcular el volumen limitado por una superficie esférica de radio $R$, resolviendo la integral doble mediante un cambio a coordenadas polares. Partiendo del planteo en coordenadas cartesianas, el volumen se expresa como el doble de la integral del casquete superior sobre la región $D$ (interior de la circunferencia de radio $R$):
+
+$$
+V = \iint_{D} 2\sqrt{R^2 - x^2 - y^2}\;dx\,dy
+$$
+
+<details>
+<summary>Ver resolución</summary>
+
+**Paso 1:** Como la región de integración es el interior de una circunferencia de radio $R$, conviene pasar a coordenadas polares. El jacobiano de esa transformación vale $\rho$, y usando $x^2 + y^2 = \rho^2$ el integrando se reescribe.
+
+$$
+V = \iint_{D^*} 2\sqrt{R^2 - \rho^2}\;\rho\;d\rho\,d\varphi
+$$
+
+**Paso 2:** Determinar los límites de integración. Para cualquier punto dentro del conjunto $D$, la distancia al origen $\rho$ varía entre $0$ y $R$, y el ángulo $\varphi$ varía entre $0$ y $2\pi$.
+
+$$
+0 \le \rho \le R, \qquad 0 \le \varphi \le 2\pi
+$$
+
+**Paso 3:** Integrar primero respecto de $\varphi$. El $2$ sale fuera de la integral y, como el resto no depende de $\varphi$, se mantiene constante; la integral de $d\varphi$ entre $0$ y $2\pi$ da $2\pi$.
+
+$$
+V = 2 \cdot 2\pi \int_{0}^{R} \sqrt{R^2 - \rho^2}\;\rho\;d\rho = 4\pi \int_{0}^{R} \rho\sqrt{R^2 - \rho^2}\;d\rho
+$$
+
+**Paso 4:** Resolver la integral en $\rho$ por sustitución. Llamando $u = R^2 - \rho^2$, se tiene $du = -2\rho\,d\rho$, de donde $\rho\,d\rho = -\dfrac{du}{2}$.
+
+$$
+\int \rho\sqrt{R^2 - \rho^2}\;d\rho = -\frac{1}{2}\int \sqrt{u}\;du = -\frac{1}{2}\cdot\frac{u^{3/2}}{3/2} = -\frac{1}{3}\left(R^2 - \rho^2\right)^{3/2}
+$$
+
+**Paso 5:** Reincorporar el $4\pi$ y evaluar entre $0$ y $R$.
+
+$$
+V = 4\pi\left[-\frac{1}{3}\left(R^2 - \rho^2\right)^{3/2}\right]_{0}^{R}
+$$
+
+**Paso 6:** Al reemplazar $\rho = R$ el paréntesis se anula; al reemplazar $\rho = 0$ queda $-\dfrac{1}{3}(R^2)^{3/2} = -\dfrac{1}{3}R^3$. La resta de ambos, con el signo negativo, da el resultado.
+
+$$
+V = 4\pi\left[0 - \left(-\frac{1}{3}R^3\right)\right] = \frac{4}{3}\pi R^3
+$$
+
+El volumen limitado por la superficie esférica de radio $R$ es $\frac{4}{3}\pi R^3$, tal como debía dar. Queda así ilustrado cómo calcular una integral doble mediante un conveniente cambio de coordenadas; las coordenadas polares son especialmente convenientes cuando las regiones de integración son interiores de circunferencias.
+
+</details>
+
+</details>
+
+<details>
+<summary>📝 Ejercicio 2 — <a href="https://www.youtube.com/watch?v=H4IQhAS0y9I&t=1114s">18:34</a>: Integral de $x+y$ con cambio lineal de variables</summary>
+
+Resolver la integral de la función $f(x,y) = x + y$ sobre la región $D$, mediante un cambio de variables. En la primera parte de la clase esta integral se había planteado partiendo el conjunto $D$ en sub-regiones y resolviendo integrales en cada partición, lo que resultaba muy laborioso y daba como resultado $4$.
+
+<details>
+<summary>Ver resolución</summary>
+
+**Paso 1:** Proponer el cambio de variables que simplifica la región. Se reemplaza $x+y$ por una nueva variable $u$ y se define una segunda variable $v$.
+
+$$
+u = x + y, \qquad v = x - y
+$$
+
+**Paso 2:** Identificar la nueva región $D^*$. Con este cambio, $u$ varía entre $1$ y $3$, y $v$ varía entre $-1$ y $1$. En el plano $uv$ la región es un **cuadrado**, cuyos lados no están rotados (a diferencia de $D$), lo que simplifica los límites de integración.
+
+$$
+1 \le u \le 3, \qquad -1 \le v \le 1
+$$
+
+**Paso 3:** Calcular el jacobiano. Como el dato es la transformación inversa (de $(x,y)$ a $(u,v)$), primero se despejan $x$ e $y$. Restando ambas ecuaciones se cancela $y$ y queda $u - v = 2y$, o sea $y = \frac{u-v}{2}$; sumándolas se cancela la $y$ y queda $x = \frac{u+v}{2}$.
+
+$$
+x = \frac{u+v}{2}, \qquad y = \frac{u-v}{2}
+$$
+
+**Paso 4:** Armar la matriz jacobiana de $g$ y calcular su determinante.
+
+$$
+J = \begin{vmatrix} \dfrac{1}{2} & \dfrac{1}{2} \\[2mm] \dfrac{1}{2} & -\dfrac{1}{2} \end{vmatrix} = \frac{1}{2}\cdot\left(-\frac{1}{2}\right) - \frac{1}{2}\cdot\frac{1}{2} = -\frac{1}{4} - \frac{1}{4} = -\frac{1}{2}
+$$
+
+**Paso 5:** Plantear la integral en las nuevas variables, multiplicando el integrando ($x+y = u$) por el módulo del jacobiano $\left|-\frac{1}{2}\right| = \frac{1}{2}$. El $\frac{1}{2}$ sale fuera de la integral doble.
+
+$$
+\iint_{D} (x+y)\,dx\,dy = \frac{1}{2}\int_{1}^{3}\int_{-1}^{1} u\;dv\,du
+$$
+
+**Paso 6:** Integrar respecto de $v$ entre $-1$ y $1$. Como $u$ no depende de $v$, queda multiplicado por la longitud del intervalo: $1 - (-1) = 2$.
+
+$$
+\frac{1}{2}\int_{1}^{3} u\,\big[v\big]_{-1}^{1}\,du = \frac{1}{2}\int_{1}^{3} 2u\;du = \int_{1}^{3} u\;du
+$$
+
+**Paso 7:** Integrar respecto de $u$ entre $1$ y $3$. El $2$ se cancela con el $\frac{1}{2}$.
+
+$$
+\int_{1}^{3} u\;du = \left[\frac{u^2}{2}\right]_{1}^{3} = \frac{9}{2} - \frac{1}{2} = \frac{8}{2} = 4
+$$
+
+El resultado es $4$, el mismo que se había obtenido de la forma laboriosa, pero ahora con muchísimo menos trabajo. Esto muestra la ventaja de hacer un cambio de variables para resolver una integral de este tipo.
+
+</details>
+
+</details>
+
+## El jacobiano como corrector de áreas [29:25](https://www.youtube.com/watch?v=H4IQhAS0y9I&t=1765s)
+
+Volviendo al Ejercicio 2, se observa el papel del módulo del jacobiano. El área de la región original $D$ vale $2$ (es un cuadrado de lado $\sqrt{2}$, con lados $\sqrt{2}\times\sqrt{2}$). El área de la nueva región $D^*$ se calcula como base por altura: la base va de $1$ a $3$ (mide $2$) y la altura de $-1$ a $1$ (mide $2$), por lo que su área es $4$.
+
+Al trabajar en la nueva región $D^*$ el área **se agrandó** (pasó de $2$ a $4$). Para que la integral dé lo mismo, hubo que corregir multiplicando por un factor que es justamente la relación entre esas áreas: se multiplicó por $\frac{1}{2}$, que es el módulo del jacobiano.
+
+- El módulo del jacobiano **corrige las áreas** de las regiones de integración cuando la transformación las deforma.
+- Como en este caso la transformación es **lineal**, el jacobiano dio una **constante**. Pero no siempre es constante: por ejemplo, en coordenadas polares el jacobiano es $\rho$, que es variable (varía con la distancia al origen). En todos los casos está asociado a una relación de tamaños de áreas.
+
+## Jacobiano de la función inversa [31:31](https://www.youtube.com/watch?v=H4IQhAS0y9I&t=1891s)
+
+A veces no se dispone de la función de transformación $g$ (que va de $D^*$ a $D$, es decir, de las coordenadas nuevas a las originales), sino de su inversa $g^{-1}$ (que va de las coordenadas originales a las nuevas). En ese caso es muy simple obtener el jacobiano de $g$ invirtiendo el jacobiano de $g^{-1}$.
+
+Esto se apoya en una propiedad análoga a la de Análisis I, donde la derivada de la función inversa era igual a uno dividido la derivada de la función. Aquí:
+
+$$
+J_{g} = \frac{1}{J_{g^{-1}}}
+$$
+
+Como ejemplo, en el Ejercicio 2 se puede calcular directamente el jacobiano de $g^{-1}$ (la transformación $u = x+y$, $v = x - y$) y luego invertirlo:
+
+$$
+J_{g^{-1}} = \begin{vmatrix} 1 & 1 \\ 1 & -1 \end{vmatrix} = (1)(-1) - (1)(1) = -2
+$$
+
+Invirtiendo se obtiene $J_g = \dfrac{1}{-2} = -\dfrac{1}{2}$, el mismo jacobiano calculado antes.
+
+Hay que tener claro cuál es la orientación: las coordenadas **originales** son las de la integral doble planteada; $g$ es la función que a las **nuevas** coordenadas les hace corresponder las originales. La notación $J_g = 1/J_{g^{-1}}$ es útil porque coincide con las reglas algebraicas, aunque en realidad expresa que el determinante de una matriz es igual a uno dividido el determinante de otra matriz relacionada.
+
+Un requisito clave es que el jacobiano sea distinto de cero, pero esto se exige solo en el **interior** del conjunto, no en el borde o la frontera. Por ejemplo, el jacobiano de las coordenadas polares vale cero en el origen ($\rho = 0$), pero eso no importa, porque en el problema de la esfera $\rho$ toma el valor $0$ solo en la frontera del intervalo.
+
+## Regiones de tipo 1 y tipo 2. Orden de integración [36:17](https://www.youtube.com/watch?v=H4IQhAS0y9I&t=2177s)
+
+Hasta ahora la integral doble se planteó sobre regiones limitadas por $x$ variando entre dos constantes $a$ y $b$, y por $y$ entre dos funciones de $x$. En algunos libros a estas regiones se las llama **regiones de tipo 1**:
+
+$$
+\iint_{D} f(x,y)\,dy\,dx = \int_{a}^{b}\int_{g_1(x)}^{g_2(x)} f(x,y)\;dy\,dx
+$$
+
+Pero también se puede definir la integral doble al revés: con $y$ variando entre dos constantes $c$ y $d$, y $x$ entre dos funciones de $y$. Estas son las **regiones de tipo 2**, donde se integra primero respecto de $x$ y después respecto de $y$:
+
+$$
+\iint_{D} f(x,y)\,dx\,dy = \int_{c}^{d}\int_{h_1(y)}^{h_2(y)} f(x,y)\;dx\,dy
+$$
+
+No son regiones distintas por naturaleza: simplemente se puede describir la misma región de una u otra forma, cambiando el orden de integración de las variables.
+
+<details>
+<summary>📝 Ejercicio 3 — <a href="https://www.youtube.com/watch?v=H4IQhAS0y9I&t=2306s">38:26</a>: Permutar el orden de integración</summary>
+
+Se retoma el problema con el que se inició la clase: la región $D$ donde $x$ varía de $0$ a $2$ y la recta superior es $y = 2x$ (con $y$ variando entre $0$ y $4$), integrando la función $6 - x$. Se pide **plantear la integral permutando el orden de integración** de las variables y verificar que da el mismo resultado. El planteo original (tipo 1) es:
+
+$$
+\int_{0}^{2}\int_{0}^{2x} (6 - x)\;dy\,dx
+$$
+
+<details>
+<summary>Ver resolución</summary>
+
+**Paso 1:** Reescribir la región como tipo 2. La variable $y$ varía entre $0$ y $4$. Para cada valor de $y$, $x$ va como mínimo del eje $y$ (valor $0$... en realidad de la recta) y como máximo hasta $x = 2$. Despejando $x$ de la recta $y = 2x$ se obtiene la cota inferior: $2x = 4 - y$ no; de $y = 2x$ resulta $x = \frac{y}{2}$ como cota izquierda y $x = 2$ como cota derecha. [poco claro en la transcripción: el profesor despeja $x = \frac{4-y}{2}$ a partir de una recta $2x = 4 - y$]
+
+$$
+x = \frac{4 - y}{2}
+$$
+
+**Paso 2:** Plantear la integral con el orden permutado, integrando primero respecto de $x$ y luego respecto de $y$.
+
+$$
+\int_{0}^{4}\int_{\,\cdot\,}^{\,\frac{4-y}{2}} (6 - x)\;dx\,dy
+$$
+
+**Paso 3:** Integrar respecto de $x$. La primitiva de $6 - x$ es $6x - \dfrac{x^2}{2}$, que se evalúa en los límites.
+
+$$
+\int_{0}^{4}\left[6x - \frac{x^2}{2}\right]_{0}^{\frac{4-y}{2}} dy
+$$
+
+**Paso 4:** Reemplazar $x = \dfrac{4-y}{2}$. El $6$ multiplica a $\dfrac{4-y}{2}$, simplificando $6$ con $2$ queda $3(4-y)$; y el término cuadrático es $\dfrac{(4-y)^2}{8}$.
+
+$$
+\int_{0}^{4}\left[3(4 - y) - \frac{(4-y)^2}{8}\right] dy
+$$
+
+**Paso 5:** Desarrollar. $3(4-y) = 12 - 3y$; y $(4-y)^2 = 16 - 8y + y^2$. [paso en el pizarrón, ver video]
+
+$$
+\int_{0}^{4}\left[12 - 3y - \frac{16 - 8y + y^2}{8}\right] dy = \int_{0}^{4}\left[\frac{y^2}{8} - \cdots\right] dy
+$$
+
+**Paso 6:** Reagrupando términos, la integral a resolver queda con un término cuadrático y términos lineales; el profesor la integra término a término. [paso en el pizarrón, ver video]
+
+$$
+\left[\frac{y^3}{8} - y^2 + 10y\,\right]_{0}^{4}
+$$
+
+**Paso 7:** Evaluar entre $0$ y $4$. Con $y = 4$: $\dfrac{64}{8} = 8$, luego $2\cdot 4 = 8$ y las demás cuentas dan el resultado.
+
+$$
+= 16
+$$
+
+La integral da $16$, igual que con el orden original. **Conclusión:** el orden de integración no altera el resultado de la integral doble. Se puede pensar como un barrido: si se está calculando un volumen, el volumen es el mismo se integre primero respecto de $x$ o primero respecto de $y$. Con el teorema de cambio de variables se puede demostrar esta propiedad.
+
+</details>
+
+</details>
+
+En otro ejemplo, para reforzar la idea, se considera una integral cuya región de integración en el plano $xy$ tiene $x$ variando de $0$ a $1$, limitada por la recta $y = x$ y la parábola acostada $y = \sqrt{x}$ (equivalente a $x = y^2$), que se cortan en el punto donde $x = 1$. Al permutar el orden: $y$ toma valores entre $0$ y $1$, y para cada $y$, $x$ varía entre la parábola ($x = y^2$, como mínimo) y la recta ($x = y$, como máximo). La función a integrar es la misma; solo cambia el orden.
+
+<details>
+<summary>📝 Ejercicio 4 — <a href="https://www.youtube.com/watch?v=H4IQhAS0y9I&t=3006s">50:06</a>: Integral de $e^{y/x}$ y el orden que decide la resolubilidad</summary>
+
+Calcular la integral, integrando primero respecto de $y$ y luego respecto de $x$:
+
+$$
+\int_{0}^{1}\int_{0}^{x} e^{\,y/x}\;dy\,dx
+$$
+
+Luego, mostrar qué ocurre si se permuta el orden de integración.
+
+<details>
+<summary>Ver resolución</summary>
+
+**Paso 1:** Integrar respecto de $y$. La primitiva de $e^{y/x}$ respecto de $y$ es $x\,e^{y/x}$, porque al derivar $x\,e^{y/x}$ respecto de $y$ se obtiene $x\cdot e^{y/x}\cdot\dfrac{1}{x} = e^{y/x}$.
+
+$$
+\int_{0}^{1}\left[x\,e^{y/x}\right]_{0}^{x} dx
+$$
+
+**Paso 2:** Evaluar en los límites. Al reemplazar $y = x$ queda $x\,e^{x/x} = x\,e$; al reemplazar $y = 0$ queda $x\,e^{0} = x$. La resta da $x\,e - x = x(e - 1)$.
+
+$$
+\int_{0}^{1} \left(x e - x\right) dx = \int_{0}^{1} x(e-1)\;dx
+$$
+
+**Paso 3:** Integrar respecto de $x$ entre $0$ y $1$. La primitiva es $(e-1)\dfrac{x^2}{2}$.
+
+$$
+\left[(e-1)\frac{x^2}{2}\right]_{0}^{1} = \frac{e-1}{2}
+$$
+
+[poco claro en la transcripción: el profesor menciona el valor $-\tfrac{1}{2}$ al hablar del resultado, pero el desarrollo conduce a $\frac{e-1}{2}$]
+
+**Paso 4:** Ahora permutar el orden de integración. Describiendo la región como tipo 2: $y$ varía entre $0$ y $1$, y para cada $y$, $x$ varía entre $x = y$ (mínimo) y $x = 1$ (máximo). La integral quedaría:
+
+$$
+\int_{0}^{1}\int_{y}^{1} e^{\,y/x}\;dx\,dy
+$$
+
+**Paso 5:** Al intentar integrar primero respecto de $x$, aparece el problema: **no existe ninguna función elemental** cuya derivada respecto de $x$ sea $e^{y/x}$. No hay primitiva elemental, así que no se puede aplicar la regla de Barrow en este orden.
+
+**Conclusión:** en un caso extremo como este, el orden en que se plantea la integración de las variables puede ser **determinante para la posibilidad de resolver o no** el problema. En un orden la integral no tiene primitiva elemental (no se puede resolver manualmente), mientras que permutando el orden sí se resuelve. Esto no significa que la integral no tenga solución, sino que no se puede calcular su primitiva de esa forma.
+
+</details>
+
+</details>
+
+Este último es un caso extremo y poco habitual. Lo más frecuente es que, si una integral se plantea en un orden que la deja muy complicada (muchos pasos), permutando el orden de integración salga en uno o dos renglones. Cómo darse cuenta a priori del orden conveniente se aprende con la práctica.
+
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/markdown-it@14.1.0/dist/markdown-it.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/markdown-it-texmath@1.0.0/texmath.js"></script>
+<script>
+  const source = document.getElementById("md-source").textContent;
+  const md = window.markdownit({ html: true, linkify: true })
+    .use(window.texmath, {
+      engine: window.katex,
+      delimiters: "dollars",
+      katexOptions: { throwOnError: false },
+    });
+  document.getElementById("content").innerHTML = md.render(source);
+</script>
+</body>
+</html>

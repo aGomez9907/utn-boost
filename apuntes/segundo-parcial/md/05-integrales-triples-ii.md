@@ -1,0 +1,319 @@
+# Integrales triples II
+
+> Fuente: https://www.youtube.com/watch?v=GkH_TKIVu8M
+
+---
+
+## Índice
+- [01:04](https://www.youtube.com/watch?v=GkH_TKIVu8M&t=64s) — Masa de un cuerpo y función densidad
+- [03:39](https://www.youtube.com/watch?v=GkH_TKIVu8M&t=219s) — 📝 Ejercicio 1: Masa de un cuerpo limitado por un paraboloide
+- [13:39](https://www.youtube.com/watch?v=GkH_TKIVu8M&t=819s) — Momentos estáticos (momentos de primer orden)
+- [15:16](https://www.youtube.com/watch?v=GkH_TKIVu8M&t=916s) — 📝 Ejercicio 2: Momentos estáticos del cuerpo respecto a los planos coordenados
+- [27:02](https://www.youtube.com/watch?v=GkH_TKIVu8M&t=1622s) — Baricentro o centro de masa
+- [27:33](https://www.youtube.com/watch?v=GkH_TKIVu8M&t=1653s) — 📝 Ejercicio 3: Centro de masa del paraboloide
+- [31:54](https://www.youtube.com/watch?v=GkH_TKIVu8M&t=1914s) — Momentos de inercia (momentos de segundo orden)
+- [34:32](https://www.youtube.com/watch?v=GkH_TKIVu8M&t=2072s) — 📝 Ejercicio 4: Momento de inercia del cuerpo respecto al eje z
+
+---
+
+## Masa de un cuerpo y función densidad [01:04](https://www.youtube.com/watch?v=GkH_TKIVu8M&t=64s)
+
+Se llama **cuerpo** a un conjunto $\Omega$ definido en el espacio tridimensional. Sobre ese cuerpo se define una **función densidad** $\delta$, de modo que a cada punto del cuerpo le corresponde una determinada densidad.
+
+Físicamente, la densidad se mide como masa por unidad de volumen (por ejemplo, gramos por centímetro cúbico, kilogramos por metro cúbico), y en general puede variar punto a punto.
+
+Si $\delta$ define la densidad de un cuerpo, entonces el producto de la densidad por un **diferencial de volumen** $dV = dx\,dy\,dz$ se identifica con un **diferencial de masa**:
+
+$$
+dm = \delta\,dx\,dy\,dz
+$$
+
+Por lo tanto, la **masa del cuerpo** es la integral triple de la función densidad evaluada sobre todo el cuerpo:
+
+$$
+m_\Omega = \iiint_{\Omega} \delta\,dx\,dy\,dz
+$$
+
+<details>
+<summary>📝 Ejercicio 1 — <a href="https://www.youtube.com/watch?v=GkH_TKIVu8M&t=219s">03:39</a>: Masa de un cuerpo limitado por un paraboloide</summary>
+
+Hallar la masa del cuerpo limitado por debajo por el plano $z = 0$ (plano $xy$) y por encima por el paraboloide
+
+$$
+z = 1 - x^2 - y^2
+$$
+
+sabiendo que la densidad es uniforme e igual a una constante $k$, es decir $\delta = k$.
+
+<details>
+<summary>Ver resolución</summary>
+
+**Paso 1:** Identificar el cuerpo. El paraboloide $z = 1 - x^2 - y^2$ es cóncavo hacia abajo, con vértice en el punto $(0, 0, 1)$ (cuando $x = y = 0$, vale $z = 1$). El cuerpo $\Omega$ queda encerrado entre ese paraboloide (por arriba) y el plano $z = 0$ (por debajo).
+
+**Paso 2:** Plantear la masa con densidad constante $\delta = k$.
+
+$$
+m_\Omega = \iiint_{\Omega} k\,dx\,dy\,dz
+$$
+
+**Paso 3:** Proyectar sobre el plano $xy$ e integrar primero respecto de $z$, que varía entre $0$ y el paraboloide. Por linealidad, la constante $k$ sale fuera de la integral.
+
+$$
+m_\Omega = k \iint_{D_{xy}} \left( \int_{0}^{1 - x^2 - y^2} dz \right) dx\,dy = k \iint_{D_{xy}} \left(1 - x^2 - y^2\right) dx\,dy
+$$
+
+**Paso 4:** Determinar la región $D_{xy}$. La intersección del paraboloide con el plano $z = 0$ da $x^2 + y^2 = 1$, una circunferencia de radio $1$. Entonces $D_{xy}$ es el interior de esa circunferencia, y conviene usar **coordenadas polares**.
+
+$$
+x = \rho\cos\varphi, \quad y = \rho\sin\varphi, \quad |J| = \rho
+$$
+
+con $x^2 + y^2 = \rho^2$, $\rho$ entre $0$ y $1$, y $\varphi$ entre $0$ y $2\pi$.
+
+**Paso 5:** Reescribir el integrando y multiplicar por el módulo del jacobiano $\rho$.
+
+$$
+m_\Omega = k \int_{0}^{2\pi} \int_{0}^{1} \left(1 - \rho^2\right)\rho \,d\rho\,d\varphi
+$$
+
+**Paso 6:** Integrar respecto de $\varphi$: como el integrando no depende de $\varphi$, se comporta como constante y aporta un factor $2\pi$.
+
+$$
+m_\Omega = 2\pi k \int_{0}^{1} \left(\rho - \rho^3\right) d\rho
+$$
+
+**Paso 7:** Resolver la integral en $\rho$, distribuyendo el $\rho$ en cada término.
+
+$$
+\int_{0}^{1} \left(\rho - \rho^3\right) d\rho = \left[ \frac{\rho^2}{2} - \frac{\rho^4}{4} \right]_{0}^{1} = \frac{1}{2} - \frac{1}{4} = \frac{1}{4}
+$$
+
+**Paso 8:** Multiplicar y simplificar.
+
+$$
+m_\Omega = 2\pi k \cdot \frac{1}{4} = \frac{k\pi}{2}
+$$
+
+La masa del cuerpo de densidad constante es $m_\Omega = \dfrac{k\pi}{2}$.
+
+</details>
+
+</details>
+
+Este procedimiento —integrar primero respecto de $z$ y luego pasar las variables $x, y$ a coordenadas polares en el plano— también se conoce como **coordenadas cilíndricas**: una variable (en este caso $z$) permanece igual ($z = z$) y las otras dos ($x, y$) se transforman en coordenadas polares en el plano.
+
+## Momentos estáticos (momentos de primer orden) [13:39](https://www.youtube.com/watch?v=GkH_TKIVu8M&t=819s)
+
+Se definen los **momentos estáticos** o **momentos de primer orden** de un cuerpo de densidad $\delta$ respecto a los distintos planos coordenados. Cada plano coordenado corresponde a anular una variable: $x = 0$ es el plano $yz$, $y = 0$ es el plano $xz$ y $z = 0$ es el plano $xy$.
+
+El momento estático respecto al plano $x = 0$ (plano $yz$) se define multiplicando el integrando por la distancia $x$ al plano:
+
+$$
+M_{x=0} = \iiint_{\Omega} x\,\delta\,dx\,dy\,dz
+$$
+
+Análogamente, respecto a los otros dos planos coordenados:
+
+$$
+M_{y=0} = \iiint_{\Omega} y\,\delta\,dx\,dy\,dz, \qquad M_{z=0} = \iiint_{\Omega} z\,\delta\,dx\,dy\,dz
+$$
+
+<details>
+<summary>📝 Ejercicio 2 — <a href="https://www.youtube.com/watch?v=GkH_TKIVu8M&t=916s">15:16</a>: Momentos estáticos del cuerpo respecto a los planos coordenados</summary>
+
+Calcular los momentos estáticos del cuerpo del Ejercicio 1 (limitado por el paraboloide $z = 1 - x^2 - y^2$ y el plano $z = 0$, con densidad $\delta = k$) respecto a los tres planos coordenados.
+
+<details>
+<summary>Ver resolución</summary>
+
+**Paso 1:** Plantear el momento respecto al plano $x = 0$.
+
+$$
+M_{x=0} = \iiint_{\Omega} x\,k\,dx\,dy\,dz
+$$
+
+**Paso 2:** Observar la simetría. El conjunto $\Omega$ es **simétrico** respecto al plano $x = 0$ (el plano $yz$ lo divide en dos partes iguales), pero el integrando $x \cdot k$ es **antisimétrico**: del lado de las $x$ positivas toma los mismos valores que del lado de las $x$ negativas pero con signo cambiado.
+
+**Paso 3:** La integral triple de una función antisimétrica sobre un recinto simétrico vale $0$ (es análogo a integrar una función impar, como $\sin$, sobre un intervalo simétrico respecto al origen).
+
+$$
+M_{x=0} = 0
+$$
+
+**Paso 4:** Por el mismo argumento de simetría/antisimetría respecto al plano $y = 0$:
+
+$$
+M_{y=0} = 0
+$$
+
+**Paso 5:** Para el plano $z = 0$ la situación es distinta: el conjunto $\Omega$ **no** es simétrico respecto a $z = 0$ (está todo del mismo lado), así que hay que resolver la integral.
+
+$$
+M_{z=0} = \iiint_{\Omega} z\,k\,dx\,dy\,dz = k \iint_{D_{xy}} \left( \int_{0}^{1 - x^2 - y^2} z\,dz \right) dx\,dy
+$$
+
+**Paso 6:** Integrar respecto de $z$ (queda $\frac{z^2}{2}$ evaluado entre $0$ y $1 - x^2 - y^2$).
+
+$$
+M_{z=0} = \frac{k}{2} \iint_{D_{xy}} \left(1 - x^2 - y^2\right)^2 dx\,dy
+$$
+
+**Paso 7:** Pasar a coordenadas polares ($x^2 + y^2 = \rho^2$, $|J| = \rho$, $\rho$ entre $0$ y $1$, $\varphi$ entre $0$ y $2\pi$). Al integrar respecto de $\varphi$ aparece el factor $2\pi$.
+
+$$
+M_{z=0} = \frac{k}{2} \int_{0}^{2\pi} \int_{0}^{1} \left(1 - \rho^2\right)^2 \rho \,d\rho\,d\varphi = \frac{k}{2} \cdot 2\pi \int_{0}^{1} \left(1 - \rho^2\right)^2 \rho \,d\rho
+$$
+
+**Paso 8:** Desarrollar el binomio y multiplicar cada término por $\rho$.
+
+$$
+\left(1 - \rho^2\right)^2 \rho = \left(1 - 2\rho^2 + \rho^4\right)\rho = \rho - 2\rho^3 + \rho^5
+$$
+
+**Paso 9:** Integrar en $\rho$ entre $0$ y $1$.
+
+$$
+\int_{0}^{1} \left(\rho - 2\rho^3 + \rho^5\right) d\rho = \left[ \frac{\rho^2}{2} - \frac{\rho^4}{2} + \frac{\rho^6}{6} \right]_{0}^{1} = \frac{1}{2} - \frac{1}{2} + \frac{1}{6} = \frac{1}{6}
+$$
+
+**Paso 10:** Reunir el resultado (el $\frac{1}{2}$ y el $2\pi$ dejan $k\pi$).
+
+$$
+M_{z=0} = k\pi \cdot \frac{1}{6} = \frac{k\pi}{6}
+$$
+
+En resumen: $M_{x=0} = 0$, $M_{y=0} = 0$ y $M_{z=0} = \dfrac{k\pi}{6}$.
+
+</details>
+
+</details>
+
+## Baricentro o centro de masa [27:02](https://www.youtube.com/watch?v=GkH_TKIVu8M&t=1622s)
+
+Al igual que con integrales dobles en el plano, se define el **baricentro** o **centro de masa** de un cuerpo como el punto de coordenadas $(x_c, y_c, z_c)$, donde cada coordenada es el cociente entre el momento estático respecto al plano coordenado correspondiente y la masa del cuerpo:
+
+$$
+x_c = \frac{M_{x=0}}{m_\Omega}, \qquad y_c = \frac{M_{y=0}}{m_\Omega}, \qquad z_c = \frac{M_{z=0}}{m_\Omega}
+$$
+
+Así se determinan de forma analítica las coordenadas del centro de masa, incluso cuando la densidad es variable. (Empíricamente, en un cuerpo de densidad uniforme, si se lo cuelga de distintos puntos y se traza la vertical desde cada uno, todas esas verticales pasan por el centro de gravedad.)
+
+<details>
+<summary>📝 Ejercicio 3 — <a href="https://www.youtube.com/watch?v=GkH_TKIVu8M&t=1653s">27:33</a>: Centro de masa del paraboloide</summary>
+
+Calcular las coordenadas del centro de masa del cuerpo que se viene analizando (paraboloide $z = 1 - x^2 - y^2$ sobre $z = 0$, densidad $\delta = k$), usando los momentos estáticos y la masa ya calculados.
+
+<details>
+<summary>Ver resolución</summary>
+
+**Paso 1:** Coordenada $x_c$. Como $M_{x=0} = 0$:
+
+$$
+x_c = \frac{M_{x=0}}{m_\Omega} = \frac{0}{m_\Omega} = 0
+$$
+
+**Paso 2:** Coordenada $y_c$. Como $M_{y=0} = 0$:
+
+$$
+y_c = \frac{M_{y=0}}{m_\Omega} = 0
+$$
+
+Que $x_c = y_c = 0$ indica, como es razonable, que el centro de masa está sobre el eje $z$.
+
+**Paso 3:** Coordenada $z_c$. Usar $M_{z=0} = \dfrac{k\pi}{6}$ y $m_\Omega = \dfrac{k\pi}{2}$.
+
+$$
+z_c = \frac{M_{z=0}}{m_\Omega} = \frac{\frac{k\pi}{6}}{\frac{k\pi}{2}}
+$$
+
+**Paso 4:** Simplificar ($k\pi$ se cancela con $k\pi$, y $\frac{2}{6} = \frac{1}{3}$).
+
+$$
+z_c = \frac{1}{3}
+$$
+
+**Paso 5:** El centro de masa tiene coordenadas $\left(0,\, 0,\, \tfrac{1}{3}\right)$. Como el vértice del paraboloide está en $(0, 0, 1)$, el baricentro queda sobre el eje $z$ a un tercio de altura.
+
+</details>
+
+</details>
+
+## Momentos de inercia (momentos de segundo orden) [31:54](https://www.youtube.com/watch?v=GkH_TKIVu8M&t=1914s)
+
+De manera análoga a los momentos estáticos, se definen los **momentos de inercia** o **momentos de segundo orden** de un cuerpo de densidad $\delta$ respecto a los distintos **ejes** coordenados. La diferencia es que el integrando se multiplica por la **distancia al eje elevada al cuadrado**.
+
+La distancia de un punto a cada eje es:
+
+$$
+d_{\text{eje }z} = \sqrt{x^2 + y^2}, \qquad d_{\text{eje }y} = \sqrt{x^2 + z^2}, \qquad d_{\text{eje }x} = \sqrt{y^2 + z^2}
+$$
+
+Cualquiera de esas distancias, elevada al cuadrado, aparece en el integrando del momento de inercia correspondiente. Por ejemplo, respecto al eje $z$:
+
+$$
+I_z = \iiint_{\Omega} \left(x^2 + y^2\right)\delta\,dx\,dy\,dz
+$$
+
+<details>
+<summary>📝 Ejercicio 4 — <a href="https://www.youtube.com/watch?v=GkH_TKIVu8M&t=2072s">34:32</a>: Momento de inercia del cuerpo respecto al eje z</summary>
+
+Calcular el momento de inercia respecto al eje $z$ del cuerpo limitado por el paraboloide $z = 1 - x^2 - y^2$ y el plano $z = 0$, con densidad $\delta = k$.
+
+<details>
+<summary>Ver resolución</summary>
+
+**Paso 1:** Plantear el momento de inercia. La distancia al eje $z$ al cuadrado es $x^2 + y^2$.
+
+$$
+I_z = \iiint_{\Omega} \left(x^2 + y^2\right)k\,dz\,dy\,dx
+$$
+
+**Paso 2:** Integrar primero respecto de $z$ (usar coordenadas cilíndricas). Como $x^2 + y^2$ y $k$ no dependen de $z$, salen fuera de la integral en $z$.
+
+$$
+I_z = k \iint_{D_{xy}} \left(x^2 + y^2\right)\left( \int_{0}^{1 - x^2 - y^2} dz \right) dy\,dx = k \iint_{D_{xy}} \left(x^2 + y^2\right)\left(1 - x^2 - y^2\right) dy\,dx
+$$
+
+**Paso 3:** Pasar a coordenadas polares. La región $D_{xy}$ es el interior de la circunferencia de radio $1$; $x^2 + y^2 = \rho^2$, $|J| = \rho$, $\rho$ entre $0$ y $1$, $\varphi$ entre $0$ y $2\pi$.
+
+$$
+I_z = k \int_{0}^{2\pi} \int_{0}^{1} \rho^2 \left(1 - \rho^2\right)\rho \,d\rho\,d\varphi
+$$
+
+**Paso 4:** Integrar en $\varphi$: aporta el factor $2\pi$.
+
+$$
+I_z = 2\pi k \int_{0}^{1} \rho^3 \left(1 - \rho^2\right) d\rho
+$$
+
+**Paso 5:** Distribuir $\rho^3$ en cada término.
+
+$$
+\rho^3 \left(1 - \rho^2\right) = \rho^3 - \rho^5
+$$
+
+**Paso 6:** Integrar en $\rho$ entre $0$ y $1$.
+
+$$
+\int_{0}^{1} \left(\rho^3 - \rho^5\right) d\rho = \left[ \frac{\rho^4}{4} - \frac{\rho^6}{6} \right]_{0}^{1} = \frac{1}{4} - \frac{1}{6}
+$$
+
+**Paso 7:** Restar con denominador común $12$.
+
+$$
+\frac{1}{4} - \frac{1}{6} = \frac{3}{12} - \frac{2}{12} = \frac{1}{12}
+$$
+
+**Paso 8:** Reunir el resultado (el $2\pi$ se simplifica con el $12$ dejando $6$ en el denominador).
+
+$$
+I_z = 2\pi k \cdot \frac{1}{12} = \frac{k\pi}{6}
+$$
+
+El momento de inercia del cuerpo respecto al eje $z$ es $I_z = \dfrac{k\pi}{6}$.
+
+</details>
+
+</details>
+
+Estas son algunas de las aplicaciones de las integrales triples (masa, momentos estáticos, centro de masa y momentos de inercia). En la guía también aparece, entre las principales aplicaciones, el **cálculo de volúmenes** con integrales triples.

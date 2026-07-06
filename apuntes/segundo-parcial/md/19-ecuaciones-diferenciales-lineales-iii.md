@@ -1,0 +1,511 @@
+# Ecuaciones diferenciales lineales III
+
+> Fuente: https://www.youtube.com/watch?v=vItwhVo7Kfs
+
+---
+
+## Índice
+
+- [00:02](https://www.youtube.com/watch?v=vItwhVo7Kfs&t=2s) — EDO lineales de segundo orden NO homogéneas
+- [00:33](https://www.youtube.com/watch?v=vItwhVo7Kfs&t=33s) — Estructura de la solución general (homogénea + particular)
+- [01:35](https://www.youtube.com/watch?v=vItwhVo7Kfs&t=95s) — Verificación de que $y = y_c + y_p$ es solución
+- [08:00](https://www.youtube.com/watch?v=vItwhVo7Kfs&t=480s) — 📝 Ejercicio 1: verificar que una función es solución general
+- [13:22](https://www.youtube.com/watch?v=vItwhVo7Kfs&t=802s) — Método de variación de parámetros
+- [15:28](https://www.youtube.com/watch?v=vItwhVo7Kfs&t=928s) — 📝 Ejercicio 2: solución particular por variación de parámetros
+- [37:27](https://www.youtube.com/watch?v=vItwhVo7Kfs&t=2247s) — Justificación (deducción) del método de variación de parámetros
+- [53:04](https://www.youtube.com/watch?v=vItwhVo7Kfs&t=3184s) — Método de coeficientes indeterminados
+- [55:09](https://www.youtube.com/watch?v=vItwhVo7Kfs&t=3309s) — 📝 Ejercicio 3: solución particular por coeficientes indeterminados
+- [1:00:53](https://www.youtube.com/watch?v=vItwhVo7Kfs&t=3653s) — Principio de superposición
+- [1:06:16](https://www.youtube.com/watch?v=vItwhVo7Kfs&t=3976s) — 📝 Ejercicio 4: superposición y coeficientes indeterminados con exponencial
+- [1:11:06](https://www.youtube.com/watch?v=vItwhVo7Kfs&t=4266s) — Casos de resonancia (multiplicar por $x$ o $x^2$)
+- [1:13:51](https://www.youtube.com/watch?v=vItwhVo7Kfs&t=4431s) — Teorema de existencia y unicidad
+
+---
+
+## EDO lineales de segundo orden NO homogéneas — [00:02](https://www.youtube.com/watch?v=vItwhVo7Kfs&t=2s)
+
+Se analiza ahora el caso en que el miembro de la derecha **no es nulo**, es decir la ecuación diferencial lineal de segundo orden no homogénea:
+
+$$
+a_2\,y'' + a_1\,y' + a_0\,y = f(x)
+$$
+
+La única diferencia con la ecuación homogénea asociada es que en la homogénea el miembro de la derecha es cero; los coeficientes $a_2$, $a_1$, $a_0$ son los mismos:
+
+$$
+a_2\,y'' + a_1\,y' + a_0\,y = 0
+$$
+
+## Estructura de la solución general — [00:33](https://www.youtube.com/watch?v=vItwhVo7Kfs&t=33s)
+
+Si $y_c$ (solución complementaria) es la solución general de la ecuación homogénea asociada, y $y_p$ es una solución particular cualquiera de la ecuación no homogénea, entonces la solución general de la ecuación no homogénea es:
+
+$$
+y = y_c + y_p
+$$
+
+## Verificación de que $y = y_c + y_p$ es solución — [01:35](https://www.youtube.com/watch?v=vItwhVo7Kfs&t=95s)
+
+Para verificar que $y = y_c + y_p$ es solución de la no homogénea, se reemplaza en la ecuación, derivando dos veces previamente:
+
+$$
+y' = y_c' + y_p'
+$$
+
+$$
+y'' = y_c'' + y_p''
+$$
+
+Reemplazando en la ecuación:
+
+$$
+a_2\,(y_c'' + y_p'') + a_1\,(y_c' + y_p') + a_0\,(y_c + y_p)
+$$
+
+Distribuyendo los coeficientes y reagrupando términos:
+
+$$
+\big(a_2\,y_c'' + a_1\,y_c' + a_0\,y_c\big) + \big(a_2\,y_p'' + a_1\,y_p' + a_0\,y_p\big)
+$$
+
+Por hipótesis, $y_c$ es solución de la homogénea, así que el primer paréntesis vale $0$. Y $y_p$ es solución de la no homogénea, así que el segundo paréntesis vale $f(x)$. Por lo tanto:
+
+$$
+0 + f(x) = f(x)
+$$
+
+Queda verificado que $y = y_c + y_p$ transforma la ecuación en una identidad. Además, como $y_c$ (solución general de una ecuación de segundo orden) aporta **dos constantes arbitrarias**, la función $y = y_c + y_p$ no es solo una solución, sino la **solución general** de la ecuación no homogénea.
+
+**Conclusión práctica:** para resolver una EDO lineal de segundo orden no homogénea hay que, por un lado, hallar la solución general de la homogénea asociada ($y_c$), y por otro lado, calcular una solución particular ($y_p$) de la no homogénea. La dificultad está en hallar $y_p$.
+
+<details>
+<summary>📝 Ejercicio 1 — <a href="https://www.youtube.com/watch?v=vItwhVo7Kfs&t=480s">08:00</a>: verificar que una función es solución general</summary>
+
+Verificar que la función
+
+$$
+y = C_1\,e^{2x} + C_2\,x\,e^{2x} + x
+$$
+
+es solución general de la ecuación diferencial no homogénea
+
+$$
+y'' - 4y' + 4y = 4x - 4
+$$
+
+<details>
+<summary>Ver resolución</summary>
+
+**Paso 1:** La idea es mostrar que la función dada es igual a la solución general de la homogénea asociada más una solución particular. Se toma primero la ecuación homogénea asociada:
+
+$$
+y'' - 4y' + 4y = 0
+$$
+
+**Paso 2:** Se construye la ecuación característica:
+
+$$
+m^2 - 4m + 4 = 0 \;\Longrightarrow\; (m-2)^2 = 0
+$$
+
+de donde $m = 2$ es una raíz real doble.
+
+**Paso 3:** Con raíz real doble, la solución general de la homogénea (solución complementaria) es:
+
+$$
+y_c = C_1\,e^{2x} + C_2\,x\,e^{2x}
+$$
+
+**Paso 4:** Se propone que $y_p = x$ sea solución particular de la no homogénea. Para verificarlo se reemplaza en la ecuación. Sus derivadas son:
+
+$$
+y_p' = 1, \qquad y_p'' = 0
+$$
+
+**Paso 5:** Reemplazando en $y'' - 4y' + 4y$:
+
+$$
+0 - 4\cdot 1 + 4\cdot x = 4x - 4
+$$
+
+lo cual es cierto para todo $x \in \mathbb{R}$, así que $y_p = x$ es solución particular.
+
+**Paso 6:** Como $y_c$ es solución general de la homogénea y $y_p = x$ es solución particular de la no homogénea, la suma
+
+$$
+y = C_1\,e^{2x} + C_2\,x\,e^{2x} + x
+$$
+
+es la solución general de la ecuación no homogénea. (Alternativamente se podría haber derivado dos veces toda la función y reemplazado en la ecuación para verificar que la satisface.)
+
+</details>
+
+</details>
+
+## Método de variación de parámetros — [13:22](https://www.youtube.com/watch?v=vItwhVo7Kfs&t=802s)
+
+La dificultad está en calcular la solución particular. El **método de variación de parámetros** se aplica cuando ya se tiene perfectamente determinada la solución complementaria
+
+$$
+y_c = C_1\,y_1 + C_2\,y_2
+$$
+
+donde $y_1$ e $y_2$ son funciones conocidas. Entonces se propone como solución particular una combinación
+
+$$
+y_p = u_1(x)\,y_1 + u_2(x)\,y_2
+$$
+
+donde $u_1$ y $u_2$ son dos funciones a determinar mediante las integrales (regla de Cramer):
+
+$$
+u_1 = \int \frac{\begin{vmatrix} 0 & y_2 \\ f & y_2' \end{vmatrix}}{\begin{vmatrix} y_1 & y_2 \\ y_1' & y_2' \end{vmatrix}}\,dx
+$$
+
+$$
+u_2 = \int \frac{\begin{vmatrix} y_1 & 0 \\ y_1' & f \end{vmatrix}}{\begin{vmatrix} y_1 & y_2 \\ y_1' & y_2' \end{vmatrix}}\,dx
+$$
+
+(El determinante del denominador es el wronskiano de $y_1$, $y_2$.)
+
+<details>
+<summary>📝 Ejercicio 2 — <a href="https://www.youtube.com/watch?v=vItwhVo7Kfs&t=928s">15:28</a>: solución particular por variación de parámetros</summary>
+
+Para la ecuación
+
+$$
+y'' - 4y' + 4y = 4x - 4
+$$
+
+hallar una solución particular por variación de parámetros, sabiendo que la solución complementaria es $y_c = C_1\,e^{2x} + C_2\,x\,e^{2x}$.
+
+<details>
+<summary>Ver resolución</summary>
+
+**Paso 1:** Identificar $y_1$ e $y_2$ a partir de la solución complementaria:
+
+$$
+y_1 = e^{2x}, \qquad y_2 = x\,e^{2x}
+$$
+
+con sus derivadas:
+
+$$
+y_1' = 2e^{2x}, \qquad y_2' = e^{2x} + 2x\,e^{2x}
+$$
+
+**Paso 2:** Plantear $u_1$ (con $f = 4x - 4$):
+
+$$
+u_1 = \int \frac{\begin{vmatrix} 0 & x\,e^{2x} \\ 4x-4 & e^{2x}+2x\,e^{2x} \end{vmatrix}}{\begin{vmatrix} e^{2x} & x\,e^{2x} \\ 2e^{2x} & e^{2x}+2x\,e^{2x} \end{vmatrix}}\,dx
+$$
+
+**Paso 3:** El determinante del denominador (wronskiano) es $e^{4x}$. El numerador es $-(4x-4)\,x\,e^{2x}$. Al simplificar el denominador queda el factor $e^{-2x}$:
+
+$$
+u_1 = \int -(4x-4)\,x\,e^{-2x}\,dx
+$$
+
+**Paso 4:** Distribuyendo:
+
+$$
+u_1 = \int 4x\,e^{-2x}\,dx - \int 4x^2\,e^{-2x}\,dx
+$$
+
+**Paso 5:** Usando la tabla de integrales (integrales con exponenciales, pág. 42) para resolver cada término:
+
+$$
+\int x\,e^{-2x}\,dx = e^{-2x}\!\left(\frac{x}{-2} - \frac{1}{(-2)^2}\right)
+$$
+
+$$
+\int x^2\,e^{-2x}\,dx = e^{-2x}\!\left(\frac{x^2}{-2} - \frac{2x}{(-2)^2} + \frac{2}{(-2)^3}\right)\;\;[\text{paso en el pizarrón, ver video}]
+$$
+
+**Paso 6:** Reemplazando, sacando factor común $e^{-2x}$ y simplificando términos (los términos constantes y lineales se cancelan), resulta:
+
+$$
+u_1 = 2x^2\,e^{-2x}
+$$
+
+(Se asigna arbitrariamente el valor $0$ a las constantes de integración, ya que se busca una sola solución particular que no depende de constantes arbitrarias.)
+
+**Paso 7:** Calcular $u_2$. El denominador es el mismo wronskiano $e^{4x}$. El numerador es
+
+$$
+\begin{vmatrix} y_1 & 0 \\ y_1' & f \end{vmatrix} = e^{2x}\cdot(4x-4)
+$$
+
+de donde:
+
+$$
+u_2 = \int \frac{e^{2x}(4x-4)}{e^{4x}}\,dx = \int (4x-4)\,e^{-2x}\,dx
+$$
+
+**Paso 8:** Distribuyendo:
+
+$$
+u_2 = \int 4x\,e^{-2x}\,dx - \int 4\,e^{-2x}\,dx
+$$
+
+Resolviendo con la tabla y sacando factor común $e^{-2x}$, se simplifica a:
+
+$$
+u_2 = -2x\,e^{-2x}\;\;[\text{paso en el pizarrón, ver video}]
+$$
+
+**Paso 9:** Armar la solución particular $y_p = u_1\,y_1 + u_2\,y_2$:
+
+$$
+y_p = \big(2x^2\,e^{-2x}\big)\,e^{2x} + \big(-2x\,e^{-2x}\big)\,x\,e^{2x}
+$$
+
+**Paso 10:** Usando producto de potencias de igual base ($e^{-2x}\cdot e^{2x} = e^0 = 1$):
+
+$$
+y_p = 2x^2 - 2x^2 = \;[\text{simplificación en el pizarrón}]
+$$
+
+Al cancelarse los términos, la solución particular resulta
+
+$$
+y_p = x
+$$
+
+**Paso 11:** La solución general es entonces $y = y_c + y_p$:
+
+$$
+y = C_1\,e^{2x} + C_2\,x\,e^{2x} + x
+$$
+
+que coincide con la función verificada en el Ejercicio 1. Como se ve, el método de variación de parámetros es engorroso (las integrales quedan bastante feas), aunque el resultado final sea sencillo.
+
+</details>
+
+</details>
+
+## Justificación (deducción) del método de variación de parámetros — [37:27](https://www.youtube.com/watch?v=vItwhVo7Kfs&t=2247s)
+
+Se quiere demostrar que $y_p = u_1\,y_1 + u_2\,y_2$ es solución de la ecuación no homogénea. Para eso se deriva dos veces y se reemplaza en la ecuación.
+
+**Primera derivada** (derivando cada producto):
+
+$$
+y_p' = u_1'\,y_1 + u_1\,y_1' + u_2'\,y_2 + u_2\,y_2'
+$$
+
+Reagrupando:
+
+$$
+y_p' = \big(u_1'\,y_1 + u_2'\,y_2\big) + \big(u_1\,y_1' + u_2\,y_2'\big)
+$$
+
+**Condición impuesta:** como se busca una solución particular, se impone arbitrariamente la restricción de que los dos primeros términos sean nulos:
+
+$$
+u_1'\,y_1 + u_2'\,y_2 = 0
+$$
+
+Con esa condición, la derivada segunda queda:
+
+$$
+y_p'' = u_1'\,y_1' + u_1\,y_1'' + u_2'\,y_2' + u_2\,y_2''
+$$
+
+**Reemplazo en la ecuación:** al sustituir $y_p$, $y_p'$, $y_p''$ en $a_2\,y'' + a_1\,y' + a_0\,y = f(x)$, distribuir $a_2$, $a_1$, $a_0$ y reagrupar sacando factor común $u_1$ y $u_2$:
+
+$$
+u_1\big(a_2\,y_1'' + a_1\,y_1' + a_0\,y_1\big) + u_2\big(a_2\,y_2'' + a_1\,y_2' + a_0\,y_2\big) + a_2\big(u_1'\,y_1' + u_2'\,y_2'\big) = f(x)
+$$
+
+Como $y_1$ e $y_2$ son soluciones de la homogénea asociada, los dos primeros paréntesis valen $0$. Queda:
+
+$$
+a_2\big(u_1'\,y_1' + u_2'\,y_2'\big) = f(x)
+$$
+
+**Sistema de ecuaciones:** se obtiene así un sistema de dos ecuaciones con dos incógnitas ($u_1'$ y $u_2'$):
+
+$$
+\begin{cases} u_1'\,y_1 + u_2'\,y_2 = 0 \\[4pt] u_1'\,y_1' + u_2'\,y_2' = \dfrac{f}{a_2} \end{cases}
+$$
+
+(la segunda surge de dividir por $a_2 \neq 0$). Resolviendo por **regla de Cramer**:
+
+$$
+u_1' = \frac{\begin{vmatrix} 0 & y_2 \\ f/a_2 & y_2' \end{vmatrix}}{\begin{vmatrix} y_1 & y_2 \\ y_1' & y_2' \end{vmatrix}}, \qquad u_2' = \frac{\begin{vmatrix} y_1 & 0 \\ y_1' & f/a_2 \end{vmatrix}}{\begin{vmatrix} y_1 & y_2 \\ y_1' & y_2' \end{vmatrix}}
+$$
+
+e integrando se obtienen $u_1$ y $u_2$. (En rigor, el término del miembro de la derecha debe estar dividido por $a_2$; en el ejercicio anterior $a_2 = 1$, por eso no apareció.)
+
+## Método de coeficientes indeterminados — [53:04](https://www.youtube.com/watch?v=vItwhVo7Kfs&t=3184s)
+
+En algunas ocasiones es más sencillo hallar soluciones particulares cuando la función $f(x)$ del miembro de la derecha tiene una **forma particular** y la ecuación tiene **coeficientes constantes**. El método consiste en proponer como solución particular una función con el **mismo formato** que $f(x)$:
+
+- Si $f(x)$ es un polinomio de grado $n$, se propone un polinomio de grado $n$ (a veces de grado un poco mayor).
+- Si $f(x)$ es un seno o coseno, se propone una combinación de senos y cosenos.
+- Si $f(x)$ es una exponencial, se propone una función exponencial.
+
+La razón: como la solución propuesta se deriva un par de veces y se compara con $f(x)$, hay que proponer algo cuyas derivadas conserven el formato de $f(x)$ (un polinomio deriva a polinomios, una exponencial a exponenciales, etc.). El método se llama **de coeficientes indeterminados** y es bastante más sencillo que variación de parámetros, aunque no siempre sirve.
+
+<details>
+<summary>📝 Ejercicio 3 — <a href="https://www.youtube.com/watch?v=vItwhVo7Kfs&t=3309s">55:09</a>: solución particular por coeficientes indeterminados</summary>
+
+Hallar una solución particular de
+
+$$
+y'' - 4y' + 4y = 4x - 4
+$$
+
+por coeficientes indeterminados.
+
+<details>
+<summary>Ver resolución</summary>
+
+**Paso 1:** Como $f(x) = 4x - 4$ es un polinomio de grado 1, se propone una solución particular polinómica de grado 1:
+
+$$
+y_p = a\,x + b
+$$
+
+**Paso 2:** Sus derivadas son $y_p' = a$ y $y_p'' = 0$. Reemplazando en la ecuación:
+
+$$
+0 - 4a + 4(a\,x + b) = 4x - 4
+$$
+
+**Paso 3:** Reordenando el miembro izquierdo:
+
+$$
+4a\,x + (-4a + 4b) = 4x - 4
+$$
+
+**Paso 4:** Por comparación de coeficientes de ambos polinomios:
+
+$$
+4a = 4 \;\Longrightarrow\; a = 1
+$$
+
+$$
+-4a + 4b = -4 \;\Longrightarrow\; -4 + 4b = -4 \;\Longrightarrow\; b = 0
+$$
+
+**Paso 5:** La solución particular es entonces:
+
+$$
+y_p = 1\cdot x + 0 = x
+$$
+
+Mucho más sencillo que por variación de parámetros, aunque este método no siempre es aplicable.
+
+</details>
+
+</details>
+
+## Principio de superposición — [1:00:53](https://www.youtube.com/watch?v=vItwhVo7Kfs&t=3653s)
+
+En las ecuaciones lineales vale el **principio de superposición**. Consideremos dos ecuaciones con los mismos coeficientes $a_2$, $a_1$, $a_0$ pero distinto miembro de la derecha:
+
+$$
+a_2\,y'' + a_1\,y' + a_0\,y = f_1(x)
+$$
+
+$$
+a_2\,y'' + a_1\,y' + a_0\,y = f_2(x)
+$$
+
+Si $y_{p1}$ es solución particular de la primera y $y_{p2}$ de la segunda, entonces una solución particular de la ecuación cuyo miembro derecho es la suma $f_1 + f_2$ es:
+
+$$
+y_p = y_{p1} + y_{p2}
+$$
+
+**Interpretación física:** en los sistemas físicos, $a_0$, $a_1$, $a_2$ son características propias del sistema (por ejemplo la rigidez de una estructura), mientras que $f(x)$ representa una **excitación externa** (viento, sismo). La solución particular es la **respuesta** del sistema. En un sistema lineal, la respuesta a dos acciones simultáneas es la suma de las respuestas a cada acción por separado.
+
+<details>
+<summary>📝 Ejercicio 4 — <a href="https://www.youtube.com/watch?v=vItwhVo7Kfs&t=3976s">1:06:16</a>: superposición y coeficientes indeterminados con exponencial</summary>
+
+Hallar la solución general de
+
+$$
+y'' - 4y' + 4y = e^{x} + 4x - 1
+$$
+
+sabiendo que la solución complementaria es $y_c = C_1\,e^{2x} + C_2\,x\,e^{2x}$.
+
+<details>
+<summary>Ver resolución</summary>
+
+**Paso 1:** Por superposición, se descompone el miembro de la derecha en $f_1 = e^{x}$ y $f_2 = 4x - 1$, y se busca una solución particular para cada uno.
+
+**Paso 2:** Para $f_2 = 4x - 1$ (polinomio de grado 1), por analogía con el caso $4x - 4$ resuelto antes, la solución particular es:
+
+$$
+y_{p2} = x
+$$
+
+**Paso 3:** Para $f_1 = e^{x}$ se propone (coeficientes indeterminados) una exponencial:
+
+$$
+y_{p1} = A\,e^{x}
+$$
+
+con derivadas $y_{p1}' = A\,e^{x}$ y $y_{p1}'' = A\,e^{x}$.
+
+**Paso 4:** Reemplazando en la ecuación (con miembro derecho $e^{x}$):
+
+$$
+A\,e^{x} - 4A\,e^{x} + 4A\,e^{x} = e^{x}
+$$
+
+$$
+A\,e^{x} = e^{x} \;\Longrightarrow\; A = 1
+$$
+
+Por lo tanto $y_{p1} = e^{x}$.
+
+**Paso 5:** Por superposición, la solución particular total es:
+
+$$
+y_p = y_{p1} + y_{p2} = e^{x} + x
+$$
+
+**Paso 6:** La solución general de la ecuación diferencial es $y = y_c + y_p$:
+
+$$
+y = C_1\,e^{2x} + C_2\,x\,e^{2x} + e^{x} + x
+$$
+
+</details>
+
+</details>
+
+## Casos de resonancia (multiplicar por $x$ o $x^2$) — [1:11:06](https://www.youtube.com/watch?v=vItwhVo7Kfs&t=4266s)
+
+Cuando la solución complementaria es $y_c = C_1\,y_1 + C_2\,y_2$, las funciones $y_1$, $y_2$ se corresponden con las raíces $m_1$, $m_2$ de la ecuación característica.
+
+- Si la función $f(x)$ del miembro de la derecha contiene $e^{m_1 x}$ (es decir, coincide con una raíz simple), entonces la solución particular propuesta hay que **multiplicarla por $x$**:
+
+$$
+y_p = x\cdot(\text{polinomio})\,e^{m_1 x}
+$$
+
+- Si además $m_1 = m_2$ (raíz doble) y $f$ contiene $e^{m x}$, entonces hay que **multiplicar por $x^2$** la solución particular propuesta.
+
+En la práctica: si al proponer la solución particular se llega a un **sistema incompatible**, se multiplica por $x$; si vuelve a dar incompatible, por $x^2$, y así se supera el problema. (Son casos no tan comunes; se entienden mejor haciendo prácticas.)
+
+## Teorema de existencia y unicidad — [1:13:51](https://www.youtube.com/watch?v=vItwhVo7Kfs&t=4431s)
+
+Comentario final, relacionado con el tema inicial de la clase. Hay un teorema que garantiza la existencia y unicidad de solución para una EDO lineal de segundo orden (homogénea o no):
+
+**Hipótesis:** si las funciones $a_2$, $a_1$, $a_0$ (y $f$) son **continuas** en un conjunto abierto, y $a_2 \neq 0$ en dicho conjunto.
+
+**Tesis:** entonces la solución de la ecuación diferencial que satisface dos condiciones iniciales dadas —la función evaluada en un punto toma un valor, y su derivada en ese mismo punto toma otro valor:
+
+$$
+y(x_0) = y_0, \qquad y'(x_0) = y_1
+$$
+
+—**existe y es única**.
+
+Bajo esas hipótesis (las consideradas en todos los problemas resueltos), las ecuaciones siempre tienen solución, y esa solución es única.

@@ -1,0 +1,355 @@
+# Masa de una chapa
+
+> Fuente: https://www.youtube.com/watch?v=MswDmKXZpBc
+
+---
+
+## Índice
+- [00:01](https://www.youtube.com/watch?v=MswDmKXZpBc&t=1s) — Integrales de campos escalares sobre superficies
+- [01:39](https://www.youtube.com/watch?v=MswDmKXZpBc&t=99s) — Definición: integral de un campo escalar sobre una superficie
+- [02:10](https://www.youtube.com/watch?v=MswDmKXZpBc&t=130s) — 📝 Ejercicio 1: Integral de $k z$ sobre la semiesfera (parametrización)
+- [09:43](https://www.youtube.com/watch?v=MswDmKXZpBc&t=583s) — Interpretación física: peso de la nieve sobre una cúpula
+- [12:25](https://www.youtube.com/watch?v=MswDmKXZpBc&t=745s) — Propiedades de linealidad
+- [13:28](https://www.youtube.com/watch?v=MswDmKXZpBc&t=808s) — Independencia de la parametrización
+- [14:29](https://www.youtube.com/watch?v=MswDmKXZpBc&t=869s) — Integral sobre una superficie dada como gráfica (conjunto de nivel)
+- [16:02](https://www.youtube.com/watch?v=MswDmKXZpBc&t=962s) — 📝 Ejercicio 2: Masa de la semiesfera (superficie como gráfica)
+- [24:09](https://www.youtube.com/watch?v=MswDmKXZpBc&t=1449s) — Valor medio de un campo escalar sobre una superficie
+- [24:40](https://www.youtube.com/watch?v=MswDmKXZpBc&t=1480s) — 📝 Ejercicio 3: Valor medio de $kz$ sobre la semiesfera
+- [27:19](https://www.youtube.com/watch?v=MswDmKXZpBc&t=1639s) — 📝 Ejercicio 4: Valor medio del potencial de una carga sobre una superficie esférica
+
+---
+
+## Integrales de campos escalares sobre superficies [00:01](https://www.youtube.com/watch?v=MswDmKXZpBc&t=1s)
+
+Las integrales de **campos escalares sobre superficies** permiten calcular, por ejemplo, la masa de elementos superficiales (así como las integrales de campos escalares sobre curvas permitían calcular la masa de alambres o cables).
+
+Se parte de un campo escalar definido sobre un conjunto $A \subseteq \mathbb{R}^3 \to \mathbb{R}$, es decir, a cada punto del espacio le corresponde un escalar.
+
+Se supone una **superficie simple** parametrizada por una función vectorial $\sigma$, de manera tal que la superficie resulta ser el conjunto imagen de esa función. Esa función parametriza la superficie a partir de una región $V$ del plano (dominio de los parámetros).
+
+## Definición: integral de un campo escalar sobre una superficie [01:39](https://www.youtube.com/watch?v=MswDmKXZpBc&t=99s)
+
+Si se puede evaluar el campo escalar $f$ en cada punto de la superficie, esto es en $\sigma(u,v)$, y se multiplica ese valor por un **diferencial de área**, al integrar se obtiene la integral del campo escalar sobre la superficie.
+
+Recordando que el diferencial de área es lo que, integrado por sí solo, da el área de la superficie, al multiplicarlo por el valor de la función se obtiene la integral del campo escalar evaluado sobre la superficie:
+
+$$
+\iint_S f \, dS = \iint_V f(\sigma(u,v)) \, \left\| \sigma'_u \times \sigma'_v \right\| \, du\, dv
+$$
+
+donde la región de integración $V$ corresponde al campo de variación de las variables (parámetros) que definen a la superficie.
+
+<details>
+<summary>📝 Ejercicio 1 — <a href="https://www.youtube.com/watch?v=MswDmKXZpBc&t=130s">02:10</a>: Integral de $kz$ sobre la semiesfera (por parametrización)</summary>
+
+Dado el campo escalar $f(x,y,z) = k\,z$ (a cada punto del espacio le corresponde el valor $k$ por su cota $z$), calcular la integral de $f$ sobre la superficie parametrizada correspondiente a **media superficie esférica** de radio $r$: la mitad que se encuentra por encima del plano $xy$. Se usa la parametrización de la superficie esférica con $\theta$ (tita) variando entre $0$ y $\frac{\pi}{2}$ y $\varphi$ (fi) entre $0$ y $2\pi$.
+
+<details>
+<summary>Ver resolución</summary>
+
+**Paso 1:** Plantear la integral del campo escalar sobre la superficie parametrizada como una integral doble.
+
+$$
+\iint_S f \, dS = \iint_V f(\sigma(\varphi,\theta)) \, \left\| \sigma'_\varphi \times \sigma'_\theta \right\| \, d\theta\, d\varphi
+$$
+
+**Paso 2:** Evaluar el campo en los puntos de la superficie. Como el campo es $k\,z$ y la tercera componente de la parametrización es $z = r\,\text{sen}\,\theta$, se tiene:
+
+$$
+f(\sigma) = k\, r\, \text{sen}\,\theta
+$$
+
+**Paso 3:** Usar la norma del producto vectorial de las derivadas parciales, ya calculada al obtener el área de la superficie esférica.
+
+$$
+\left\| \sigma'_\varphi \times \sigma'_\theta \right\| = r^2 \cos\theta
+$$
+
+(Como es la **norma** del producto vectorial, plantear el producto en un orden o en el otro es indistinto: da igual salvo el signo, que la norma elimina.)
+
+**Paso 4:** Armar la integral con los límites $\theta \in [0, \frac{\pi}{2}]$ y $\varphi \in [0, 2\pi]$, sacando la constante $k\,r^3$ (queda $r$ de la componente $z$ por $r^2$ de la norma) fuera de la integral.
+
+$$
+\iint_S f \, dS = k\, r^3 \int_0^{2\pi} \int_0^{\pi/2} \text{sen}\,\theta \, \cos\theta \, d\theta\, d\varphi
+$$
+
+**Paso 5:** Integrar respecto de $\varphi$. Como el integrando no depende de $\varphi$, se obtiene $2\pi$.
+
+$$
+\int_0^{2\pi} d\varphi = 2\pi
+$$
+
+**Paso 6:** Resolver la integral en $\theta$ por sustitución. Tomando $u = \text{sen}\,\theta$, entonces $du = \cos\theta\, d\theta$, y la integral queda $\int u\, du = \frac{u^2}{2} = \frac{\text{sen}^2\theta}{2}$.
+
+$$
+\int_0^{\pi/2} \text{sen}\,\theta\, \cos\theta \, d\theta = \left[ \frac{\text{sen}^2\theta}{2} \right]_0^{\pi/2} = \frac{\text{sen}^2\frac{\pi}{2} - \text{sen}^2 0}{2} = \frac{1 - 0}{2} = \frac{1}{2}
+$$
+
+**Paso 7:** Reunir los resultados. El $2$ del $2\pi$ se simplifica con el $2$ del denominador.
+
+$$
+\iint_S f \, dS = k\, r^3 \cdot 2\pi \cdot \frac{1}{2} = k\, \pi\, r^3
+$$
+
+</details>
+
+</details>
+
+## Interpretación física: peso de la nieve sobre una cúpula [09:43](https://www.youtube.com/watch?v=MswDmKXZpBc&t=583s)
+
+El cálculo anterior admite una interpretación física. Se imagina una **cúpula semiesférica** (la cubierta de una construcción) en una zona donde nieva. La acumulación de nieve sigue una ley tal que en la parte superior de la cúpula se acumula mayor densidad de nieve, y a medida que se baja hacia los bordes —debido a la pendiente— se acumula menos, hasta que en el borde ($z = 0$) no se acumula nieve. En el punto más alto ($z = r$) la densidad de nieve es máxima.
+
+Con el campo $f = k\,z$:
+- Cuando $z = 0$, $f = 0$ (en el borde no hay nieve).
+- Cuando $z = r$ (arriba de todo), $f = k\,r$ (densidad máxima).
+
+Al evaluar la densidad $f$ (la carga de nieve) sobre los puntos de la superficie y multiplicar por el diferencial de área, se obtiene un **diferencial de peso (o masa) de nieve**. Sumando (integrando) todos esos diferenciales sobre toda la superficie se obtiene el **peso total de la nieve** acumulada sobre la cúpula. En este ejemplo, $k\,\pi\,r^3$ representa ese peso total.
+
+Estas integrales tienen sentido cuando se tiene una función variable sobre toda la superficie y se quiere integrar el producto de la función por los diferenciales de área. (Con curvas se había hecho un ejemplo análogo: la nieve acumulada sobre un alambre o cable; aquí se acumula sobre una superficie.)
+
+## Propiedades de linealidad [12:25](https://www.youtube.com/watch?v=MswDmKXZpBc&t=745s)
+
+Como las integrales de superficie de campos escalares terminan siendo **integrales dobles** (previa operatoria), las propiedades de linealidad de las integrales dobles se extienden a ellas:
+
+- Las constantes se pueden sacar fuera de la integral.
+- La integral de una suma es la suma de las integrales.
+
+## Independencia de la parametrización [13:28](https://www.youtube.com/watch?v=MswDmKXZpBc&t=808s)
+
+Así como el área de una superficie no depende de la parametrización elegida, la integral de un campo escalar sobre una superficie **tampoco depende de la parametrización**. Si se cambia la parametrización de la superficie, el resultado (por ejemplo, el peso de la nieve) no cambia.
+
+La integral depende únicamente del **campo** y de **cuál sea la superficie**, no de cómo se la parametrice.
+
+## Integral sobre una superficie dada como gráfica (conjunto de nivel) [14:29](https://www.youtube.com/watch?v=MswDmKXZpBc&t=869s)
+
+Cuando la superficie se define como el **conjunto de nivel** $0$ de una función $g$ de tres variables (de modo que la superficie puede verse como la gráfica de una función de dos variables), el área se calculaba integrando un diferencial de área expresado mediante el gradiente de $g$.
+
+De la misma forma, si a ese diferencial de área se lo multiplica por el campo escalar $f$ evaluado en los puntos de la superficie, se obtiene la integral del campo escalar sobre la superficie. La lógica es la misma que para el área; la única diferencia es que ahora el integrando aparece multiplicado por el campo escalar:
+
+$$
+\iint_S f \, dS = \iint_R f(x, y, z(x,y)) \, \frac{\left\| \nabla g \right\|}{\left| g'_z \right|} \, dx\, dy
+$$
+
+donde $R$ es la proyección de la superficie sobre el plano $xy$.
+
+<details>
+<summary>📝 Ejercicio 2 — <a href="https://www.youtube.com/watch?v=MswDmKXZpBc&t=962s">16:02</a>: Masa de la semiesfera (tratando la superficie como gráfica)</summary>
+
+Calcular la masa de la **semiesfera de radio $r$** (la parte que está por encima del plano $xy$), con densidad dada por el campo $f = k\,z$. Es decir, calcular la integral de $f$ sobre la superficie semiesférica $S$, ahora tratando la superficie como el conjunto de nivel $0$ de una función $g$ (una variable en función de las otras dos).
+
+<details>
+<summary>Ver resolución</summary>
+
+**Paso 1:** Ver la superficie como gráfica de una función de las variables $x, y$: despejar $z$.
+
+$$
+z = \sqrt{r^2 - x^2 - y^2}
+$$
+
+**Paso 2:** Plantear la integral con la expresión de la gráfica.
+
+$$
+\iint_S f \, dS = \iint_R f(x,y,z) \, \frac{\left\| \nabla g \right\|}{\left| g'_z \right|} \, dx\, dy
+$$
+
+donde $R$ es la proyección de la superficie sobre el plano $xy$.
+
+**Paso 3:** Tomar $g$ cuya superficie de nivel $0$ es la esfera.
+
+$$
+g = x^2 + y^2 + z^2 - r^2
+$$
+
+**Paso 4:** Calcular el gradiente de $g$ y su norma.
+
+$$
+\nabla g = (2x, \, 2y, \, 2z)
+$$
+
+$$
+\left\| \nabla g \right\| = \sqrt{4x^2 + 4y^2 + 4z^2}
+$$
+
+**Paso 5:** Reemplazar en la integral. El campo es $k\,z$ con $z = \sqrt{r^2 - x^2 - y^2}$; la norma del gradiente es $\sqrt{4x^2 + 4y^2 + 4z^2}$; y $\left| g'_z \right| = \left| 2z \right| = 2z$.
+
+$$
+\iint_R k\, \sqrt{r^2 - x^2 - y^2} \, \frac{\sqrt{4x^2 + 4y^2 + 4z^2}}{\left| 2z \right|} \, dx\, dy
+$$
+
+**Paso 6:** Simplificar la norma del gradiente. Sacando factor común $4$, queda $\sqrt{4(x^2 + y^2 + z^2)}$, y sobre la superficie esférica $x^2 + y^2 + z^2 = r^2$, de modo que $\sqrt{4 r^2} = 2r$.
+
+$$
+\left\| \nabla g \right\| = \sqrt{4(x^2+y^2+z^2)} = \sqrt{4 r^2} = 2r
+$$
+
+**Paso 7:** El $\left| g'_z \right| = 2z$ con $z = \sqrt{r^2 - x^2 - y^2}$. Como ese radicando es positivo, las barras de módulo se eliminan. Notar que la raíz $\sqrt{r^2 - x^2 - y^2}$ del campo y la del denominador son iguales y se cancelan.
+
+$$
+\iint_R k\, \sqrt{r^2 - x^2 - y^2} \, \frac{2r}{2\,\sqrt{r^2 - x^2 - y^2}} \, dx\, dy
+$$
+
+**Paso 8:** Sacar las constantes fuera de la integral. El $\frac{2}{2}$ se simplifica y queda $k\,r$ por la integral del diferencial de área sobre $R$.
+
+$$
+= k\, r \iint_R dx\, dy
+$$
+
+**Paso 9:** La integral $\iint_R dx\, dy$ es el **área de la región de integración** $R$, que es el interior de la circunferencia de radio $r$ (proyección de la superficie sobre el plano $xy$).
+
+$$
+\iint_R dx\, dy = \pi r^2
+$$
+
+**Paso 10:** Resultado final.
+
+$$
+\iint_S f \, dS = k\, r \cdot \pi r^2 = k\, \pi\, r^3
+$$
+
+Da **exactamente igual** que en el Ejercicio 1: la función y la superficie son las mismas, de modo que la integral es la misma, independientemente de cómo se parametrice o describa la superficie.
+
+</details>
+
+</details>
+
+## Valor medio de un campo escalar sobre una superficie [24:09](https://www.youtube.com/watch?v=MswDmKXZpBc&t=1449s)
+
+El **valor medio** de un campo escalar $f$ (una función definida sobre una superficie simple $S$) se calcula como la integral de la función sobre la superficie dividida por el **área** de la superficie:
+
+$$
+f_{\text{medio}} = \frac{\displaystyle\iint_S f \, dS}{\text{Área}(S)}
+$$
+
+<details>
+<summary>📝 Ejercicio 3 — <a href="https://www.youtube.com/watch?v=MswDmKXZpBc&t=1480s">24:40</a>: Valor medio de $kz$ sobre la semiesfera</summary>
+
+Calcular el valor medio de la función $f = k\,z$ (la de los problemas anteriores) sobre la superficie semiesférica $S$ de radio $r$.
+
+<details>
+<summary>Ver resolución</summary>
+
+**Paso 1:** Aplicar la definición: integral del campo sobre la superficie dividida por el área.
+
+$$
+f_{\text{medio}} = \frac{\displaystyle\iint_S f \, dS}{\text{Área}(S)}
+$$
+
+**Paso 2:** La integral del campo ya se calculó en los ejemplos anteriores.
+
+$$
+\iint_S f \, dS = k\, \pi\, r^3
+$$
+
+**Paso 3:** El área de la semiesfera es la mitad del área de la esfera completa ($4\pi r^2$).
+
+$$
+\text{Área}(S) = \frac{4\pi r^2}{2} = 2\pi r^2
+$$
+
+**Paso 4:** Calcular el cociente. El $\pi\,r^2$ se simplifica.
+
+$$
+f_{\text{medio}} = \frac{k\, \pi\, r^3}{2\pi r^2} = \frac{k\, r}{2}
+$$
+
+El valor promedio del campo sobre la superficie semiesférica es $\frac{k\,r}{2}$. Como en cualquier punto con cota $z = 0$ (el piso) la función vale $0$, y arriba de todo (donde $z = r$) vale $k\,r$, el valor medio resulta ser justo la mitad del máximo. (En este caso particular coincide con la mitad entre el mínimo y el máximo; no necesariamente tiene que ser así.)
+
+</details>
+
+</details>
+
+<details>
+<summary>📝 Ejercicio 4 — <a href="https://www.youtube.com/watch?v=MswDmKXZpBc&t=1639s">27:19</a>: Valor medio del potencial de una carga sobre una superficie esférica</summary>
+
+Calcular el valor medio, sobre una superficie esférica de radio $r$ centrada en el origen, de la **función potencial** generada por una masa (o carga) ubicada en el punto de coordenadas $(0, 0, a)$ sobre el eje $z$, con $a$ y $r$ positivos y $a < r$ (la carga queda encerrada por la superficie esférica). El potencial es
+
+$$
+f(x,y,z) = \frac{k}{\sqrt{x^2 + y^2 + (z - a)^2}}
+$$
+
+<details>
+<summary>Ver resolución</summary>
+
+**Paso 1:** Para el valor medio hay que calcular primero la integral de la función sobre la superficie esférica de radio $r$. Parametrizar la superficie esférica centrada en el origen:
+
+$$
+\sigma(\varphi,\theta) = (r\cos\theta\cos\varphi, \; r\cos\theta\,\text{sen}\,\varphi, \; r\,\text{sen}\,\theta)
+$$
+
+con $\theta \in \left[-\frac{\pi}{2}, \frac{\pi}{2}\right]$ y $\varphi \in [0, 2\pi]$.
+
+**Paso 2:** Plantear la integral del campo escalar sobre la superficie parametrizada, evaluando el campo en los puntos de la superficie y multiplicando por el diferencial de área, que para la superficie esférica es $\left\| \sigma'_\varphi \times \sigma'_\theta \right\| = r^2 \cos\theta$.
+
+$$
+\iint_S f \, dS = \iint_V \frac{k}{\sqrt{x^2 + y^2 + (z-a)^2}} \, r^2 \cos\theta \, d\theta\, d\varphi
+$$
+
+**Paso 3:** Sustituir las componentes de la parametrización en el radicando del denominador:
+
+$$
+x^2 + y^2 + (z-a)^2 = r^2\cos^2\theta\cos^2\varphi + r^2\cos^2\theta\,\text{sen}^2\varphi + \left(r\,\text{sen}\,\theta - a\right)^2
+$$
+
+**Paso 4:** En los dos primeros términos sacar factor común $r^2\cos^2\theta$; queda multiplicado por $\cos^2\varphi + \text{sen}^2\varphi = 1$. Desarrollar el binomio al cuadrado del tercer término.
+
+$$
+= r^2\cos^2\theta + r^2\,\text{sen}^2\theta - 2\,r\,a\,\text{sen}\,\theta + a^2
+$$
+
+**Paso 5:** Entre $r^2\cos^2\theta$ y $r^2\,\text{sen}^2\theta$ sacar factor común $r^2$ (queda $\cos^2\theta + \text{sen}^2\theta = 1$). El radicando del denominador queda:
+
+$$
+r^2 - 2\,r\,a\,\text{sen}\,\theta + a^2
+$$
+
+**Paso 6:** Integrar respecto de $\varphi$. Como el integrando no depende de $\varphi$, se obtiene $2\pi$. Sacar los factores constantes $k\,r^2$ fuera de la integral.
+
+$$
+\iint_S f \, dS = 2\pi\, k\, r^2 \int_{-\pi/2}^{\pi/2} \frac{\cos\theta}{\sqrt{r^2 - 2\,r\,a\,\text{sen}\,\theta + a^2}} \, d\theta
+$$
+
+**Paso 7:** Resolver la integral en $\theta$ por sustitución. Tomando $u = r^2 - 2\,r\,a\,\text{sen}\,\theta + a^2$, se tiene $du = -2\,r\,a\,\cos\theta\, d\theta$, de modo que $\cos\theta\, d\theta = \dfrac{du}{-2\,r\,a}$.
+
+$$
+\int \frac{\cos\theta}{\sqrt{r^2 - 2ra\,\text{sen}\,\theta + a^2}}\, d\theta = \int \frac{1}{\sqrt{u}} \cdot \frac{du}{-2\,r\,a} = \frac{1}{-2\,r\,a}\int u^{-1/2}\, du
+$$
+
+**Paso 8:** Integrar $u^{-1/2}$: da $2\,u^{1/2}$. El $2$ se simplifica con el $-2$, quedando $-\dfrac{\sqrt{u}}{r\,a}$.
+
+$$
+= -\frac{\sqrt{r^2 - 2\,r\,a\,\text{sen}\,\theta + a^2}}{r\, a}
+$$
+
+**Paso 9:** Evaluar entre los límites. Para tener en cuenta el signo negativo, se intercambian los límites y se evalúa $\theta$ entre $-\frac{\pi}{2}$ y $\frac{\pi}{2}$. En $\theta = \frac{\pi}{2}$, $\text{sen}\,\theta = 1$; en $\theta = -\frac{\pi}{2}$, $\text{sen}\,\theta = -1$.
+
+$$
+\int_{-\pi/2}^{\pi/2}(\cdots)\, d\theta = \frac{1}{r\,a}\left[ \sqrt{r^2 + 2\,r\,a + a^2} - \sqrt{r^2 - 2\,r\,a + a^2} \right]
+$$
+
+**Paso 10:** Reconocer los radicandos como cuadrados perfectos: $r^2 + 2ra + a^2 = (r+a)^2$ y $r^2 - 2ra + a^2 = (r-a)^2$. Como $\sqrt{(\,\cdot\,)^2}$ es el módulo y $r, a$ son positivos con $r > a$:
+
+$$
+\sqrt{(r+a)^2} = r + a, \qquad \sqrt{(r-a)^2} = r - a
+$$
+
+$$
+(r+a) - (r-a) = 2a
+$$
+
+**Paso 11:** Reunir todo. La integral en $\theta$ vale $\dfrac{2a}{r\,a}$. Multiplicar por el $2\pi\,k\,r^2$ del Paso 6. El $a$ se simplifica y una $r$ del $r^2$ se cancela con la del denominador.
+
+$$
+\iint_S f \, dS = 2\pi\, k\, r^2 \cdot \frac{2a}{r\, a} = 4\pi\, k\, r
+$$
+
+**Paso 12:** Calcular el valor medio: dividir por el área de la superficie esférica de radio $r$, que es $4\pi r^2$.
+
+$$
+f_{\text{medio}} = \frac{\displaystyle\iint_S f \, dS}{\text{Área}(S)} = \frac{4\pi\, k\, r}{4\pi r^2} = \frac{k}{r}
+$$
+
+**Conclusión:** el valor medio del potencial sobre la superficie esférica es $\dfrac{k}{r}$, **totalmente independiente de la posición** $a$ de la carga dentro de la esfera. Es decir, esté la carga más próxima a la superficie o más próxima al centro, el valor medio del potencial es el mismo, e inversamente proporcional al radio $r$ de la superficie esférica.
+
+</details>
+
+</details>

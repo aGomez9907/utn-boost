@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rotor en el plano</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<style>
+:root { color-scheme: light dark; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  line-height: 1.65; max-width: 820px; margin: 2.5rem auto; padding: 0 1.25rem;
+  color: #1a1a1a; background: #fff;
+}
+@media (prefers-color-scheme: dark) {
+  body { color: #e6e6e6; background: #16181c; }
+  a { color: #6cb6ff; }
+  details { background: #1f2228; border-color: #30343c; }
+  summary { background: #232730; }
+  blockquote { color: #aab; border-color: #30343c; }
+  code { background: #232730; }
+}
+h1, h2, h3 { line-height: 1.25; margin-top: 1.8rem; }
+h1 { border-bottom: 2px solid currentColor; padding-bottom: .3rem; }
+h2 { border-bottom: 1px solid #ddd; padding-bottom: .25rem; }
+a { color: #0969da; text-decoration: none; }
+a:hover { text-decoration: underline; }
+blockquote { margin: 1rem 0; padding: .2rem 1rem; border-left: 4px solid #ddd; color: #555; }
+code { background: #f3f4f6; padding: .12em .35em; border-radius: 4px; font-size: .9em; }
+details {
+  border: 1px solid #e1e4e8; border-radius: 8px; padding: 0 1rem; margin: .8rem 0;
+  background: #fafbfc;
+}
+details[open] { padding-bottom: .6rem; }
+summary {
+  cursor: pointer; font-weight: 600; padding: .7rem 1rem; margin: 0 -1rem;
+  background: #f1f3f5; border-radius: 8px; user-select: none;
+}
+details details { margin-left: .2rem; }
+.katex-display { overflow-x: auto; overflow-y: hidden; padding: .3rem 0; }
+.katex-error { color: #d1242f; }
+@media print {
+  body { margin: 1.2cm; max-width: none; color: #000; background: #fff; }
+  summary { background: none; margin: 0; padding: .2rem 0; }
+  details { border-color: #ccc; background: #fff; padding: 0; }
+  a { color: #000; }
+}
+</style>
+</head>
+<body>
+<div id="content">Renderizando…</div>
+
+<script type="text/markdown" id="md-source">
+# Rotor en el plano
+
+> Fuente: https://www.youtube.com/watch?v=tCim6SO5R3Q
+
+---
+
+## Índice
+- [00:32](https://www.youtube.com/watch?v=tCim6SO5R3Q&t=32s) — Rotor de un campo vectorial en el plano
+- [01:35](https://www.youtube.com/watch?v=tCim6SO5R3Q&t=95s) — 📝 Ejercicio 1: Rotor del campo $(-y, x)$
+- [03:47](https://www.youtube.com/watch?v=tCim6SO5R3Q&t=227s) — 📝 Ejercicio 2: Rotor de un campo con norma al cuadrado
+- [07:57](https://www.youtube.com/watch?v=tCim6SO5R3Q&t=477s) — Campos irrotacionales
+- [09:02](https://www.youtube.com/watch?v=tCim6SO5R3Q&t=542s) — Región regular en el plano
+- [10:38](https://www.youtube.com/watch?v=tCim6SO5R3Q&t=638s) — Orientación positiva de la frontera
+- [13:16](https://www.youtube.com/watch?v=tCim6SO5R3Q&t=796s) — Orientación de curvas cerradas
+- [15:26](https://www.youtube.com/watch?v=tCim6SO5R3Q&t=926s) — Teorema del rotor en el plano (Teorema de Green)
+- [17:36](https://www.youtube.com/watch?v=tCim6SO5R3Q&t=1056s) — 📝 Ejercicio 3: Circulación alrededor de una circunferencia
+- [22:24](https://www.youtube.com/watch?v=tCim6SO5R3Q&t=1344s) — 📝 Ejercicio 4: Circulación alrededor del borde de un triángulo
+- [31:40](https://www.youtube.com/watch?v=tCim6SO5R3Q&t=1900s) — Circulación en sentido horario
+- [32:47](https://www.youtube.com/watch?v=tCim6SO5R3Q&t=1967s) — Regiones regulares por partes
+- [36:31](https://www.youtube.com/watch?v=tCim6SO5R3Q&t=2191s) — Conjuntos múltiplemente conexos
+- [39:08](https://www.youtube.com/watch?v=tCim6SO5R3Q&t=2348s) — 📝 Ejercicio 5: Circulación alrededor de un anillo
+- [42:27](https://www.youtube.com/watch?v=tCim6SO5R3Q&t=2547s) — Corolario: cálculo de áreas con el teorema de Green
+- [44:34](https://www.youtube.com/watch?v=tCim6SO5R3Q&t=2674s) — 📝 Ejercicio 6: Área encerrada por una elipse
+- [53:34](https://www.youtube.com/watch?v=tCim6SO5R3Q&t=3214s) — Interpretación física del rotor en el plano
+- [58:17](https://www.youtube.com/watch?v=tCim6SO5R3Q&t=3497s) — 📝 Ejercicio 7: Rotor como límite de circulación sobre área
+
+---
+
+## Rotor de un campo vectorial en el plano [00:32](https://www.youtube.com/watch?v=tCim6SO5R3Q&t=32s)
+
+Dado un campo vectorial $\vec{F}$ definido en un subconjunto del plano, que a cada punto del plano le hace corresponder un vector de componentes $\vec{F} = (f_1, f_2)$, donde cada componente es una función de las variables $x, y$, se denomina **rotor** de ese campo vectorial al escalar que resulta de la diferencia entre la derivada parcial de la segunda componente respecto de $x$ y la derivada parcial de la primera componente respecto de $y$:
+
+$$
+\operatorname{rot} \vec{F} = \frac{\partial f_2}{\partial x} - \frac{\partial f_1}{\partial y}
+$$
+
+<details>
+<summary>📝 Ejercicio 1 — <a href="https://www.youtube.com/watch?v=tCim6SO5R3Q&t=95s">01:35</a>: Rotor del campo $(-y, x)$</summary>
+
+Calcular el rotor del campo vectorial cuya primera componente es $f_1 = -y$ y cuya segunda componente es $f_2 = x$, es decir
+
+$$
+\vec{F}(x,y) = (-y, x)
+$$
+
+<details>
+<summary>Ver resolución</summary>
+
+**Paso 1:** Aplicar la definición del rotor: derivada de $f_2$ respecto de $x$ menos la derivada de $f_1$ respecto de $y$.
+
+$$
+\operatorname{rot} \vec{F} = \frac{\partial f_2}{\partial x} - \frac{\partial f_1}{\partial y} = \frac{\partial}{\partial x}(x) - \frac{\partial}{\partial y}(-y)
+$$
+
+**Paso 2:** Calcular cada derivada. La derivada de $x$ respecto de $x$ es $1$, y la derivada de $-y$ respecto de $y$ es $-1$.
+
+$$
+\operatorname{rot} \vec{F} = 1 - (-1) = 2
+$$
+
+Para este campo vectorial el rotor vale $2$ en todo punto.
+
+</details>
+
+</details>
+
+A veces el rotor se puede representar como un vector normal al plano $xy$ cuya norma vale, en este caso, $2$. Sin embargo, por ahora esta representación no aporta demasiado desde el punto de vista físico o geométrico. Análogamente a cuando se calcula el gradiente de un campo escalar (que se obtiene de las derivadas parciales), acá tenemos un campo vectorial y el rotor resulta de la diferencia entre derivadas parciales. Más adelante se le dará una interpretación.
+
+<details>
+<summary>📝 Ejercicio 2 — <a href="https://www.youtube.com/watch?v=tCim6SO5R3Q&t=227s">03:47</a>: Rotor de un campo con norma al cuadrado</summary>
+
+Calcular el rotor del campo vectorial
+
+$$
+\vec{F}(x,y) = c\,\frac{(-y, x)}{x^2 + y^2}
+$$
+
+donde $c$ es una constante. Es decir, distribuyendo la norma al cuadrado en cada componente:
+
+$$
+f_1 = \frac{-c\,y}{x^2 + y^2}, \qquad f_2 = \frac{c\,x}{x^2 + y^2}
+$$
+
+<details>
+<summary>Ver resolución</summary>
+
+**Paso 1:** Derivar la segunda componente $f_2 = \dfrac{c\,x}{x^2+y^2}$ respecto de $x$, usando la regla del cociente (derivada del numerador por el denominador sin derivar, menos el numerador por la derivada del denominador respecto de $x$, todo dividido el denominador al cuadrado). Sacando la constante $c$ afuera:
+
+$$
+\frac{\partial f_2}{\partial x} = c\,\frac{1 \cdot (x^2+y^2) - x \cdot 2x}{(x^2+y^2)^2}
+$$
+
+**Paso 2:** Derivar la primera componente $f_1 = \dfrac{-c\,y}{x^2+y^2}$ respecto de $y$, de nuevo con la regla del cociente:
+
+$$
+\frac{\partial f_1}{\partial y} = c\,\frac{-1 \cdot (x^2+y^2) - (-y) \cdot 2y}{(x^2+y^2)^2}
+$$
+
+**Paso 3:** Armar el rotor como $\dfrac{\partial f_2}{\partial x} - \dfrac{\partial f_1}{\partial y}$, con denominador común $(x^2+y^2)^2$ y sacando la constante $c$ como factor.
+
+$$
+\operatorname{rot} \vec{F} = c\,\frac{\big(x^2+y^2 - 2x^2\big) - \big(-(x^2+y^2) - (-2y^2)\big)}{(x^2+y^2)^2}
+$$
+
+**Paso 4:** Desarrollar el numerador. El primer paréntesis da $x^2 + y^2 - 2x^2$. Del segundo, el signo negativo delante del término hace que quede $+x^2 + y^2 - 2y^2$. Así:
+
+$$
+\text{numerador} = \big(x^2 + y^2 - 2x^2\big) + \big(x^2 + y^2 - 2y^2\big)
+$$
+
+**Paso 5:** Simplificar. Se cancelan $-2x^2$ con los $x^2$ positivos y $-2y^2$ con los $y^2$ positivos, por lo que el numerador se anula.
+
+$$
+\operatorname{rot} \vec{F} = 0
+$$
+
+Para este campo vectorial en particular el rotor es igual a $0$.
+
+</details>
+
+</details>
+
+## Campos irrotacionales [07:57](https://www.youtube.com/watch?v=tCim6SO5R3Q&t=477s)
+
+Cuando el rotor de un campo vectorial es igual a **cero**, se dice que el campo vectorial es **irrotacional**:
+
+$$
+\operatorname{rot} \vec{F} = 0
+$$
+
+Es el nombre que se les da a los campos vectoriales cuyos rotores son iguales a $0$. Lo único que hace falta para calcular el rotor de cualquier campo es saber derivar.
+
+## Región regular en el plano [09:02](https://www.youtube.com/watch?v=tCim6SO5R3Q&t=542s)
+
+Se define **región regular** en el plano a un pedazo de plano con ciertas particularidades. Si tenemos una región del plano, llamémosla $D$, delimitada de manera tal que su **frontera resulta de la unión de curvas regulares** (curvas que admiten recta tangente en cada uno de sus puntos), la llamamos región regular.
+
+Por ejemplo, es el tipo de regiones de integración en $\mathbb{R}^2$: una región limitada lateralmente por dos segmentos de rectas verticales (u horizontales) y, por arriba y por debajo, por curvas regulares.
+
+## Orientación positiva de la frontera [10:38](https://www.youtube.com/watch?v=tCim6SO5R3Q&t=638s)
+
+Se dice que una región regular está **orientada en sentido positivo** si su borde (frontera) está recorrido en **sentido antihorario**. La simbología $\partial D$ indica el borde o frontera de la región regular $D$.
+
+- Si el borde está recorrido en sentido antihorario, la orientación es **positiva**.
+- Si el borde está recorrido en sentido horario, la orientación es **negativa**.
+
+Es una **convención**: nos ponemos de acuerdo en llamar positivo al sentido antihorario y negativo al horario, para que todos digamos lo mismo.
+
+## Orientación de curvas cerradas [13:16](https://www.youtube.com/watch?v=tCim6SO5R3Q&t=796s)
+
+Cuando una región del plano está bordeada por una **curva cerrada**, si al parametrizarla la recorremos en sentido antihorario decimos que está recorrida en sentido positivo; si la recorremos en sentido contrario (horario), decimos que está orientada en sentido negativo. Es la misma convención, alineada con la que usan otros cursos y universidades.
+
+Esto es válido **solamente para curvas cerradas**: si la curva está abierta, no tiene sentido hablar de sentido horario o antihorario, ni de orientación positiva o negativa.
+
+## Teorema del rotor en el plano (Teorema de Green) [15:26](https://www.youtube.com/watch?v=tCim6SO5R3Q&t=926s)
+
+También conocido como **teorema de Green**. Relaciona una integral de línea a lo largo de una curva cerrada con una integral doble.
+
+**Hipótesis:**
+- $\vec{F}$ es un campo vectorial en el plano, definido en un subconjunto de $\mathbb{R}^2$, con componentes $\vec{F} = (f_1, f_2)$, de **clase $C^1$** (las derivadas parciales de las funciones componentes son continuas).
+- $D$ es una **región regular del plano** (limitada por curvas regulares que admiten recta tangente), incluida dentro del dominio del campo, de modo que $\vec{F}$ pueda evaluarse en cada punto de $D$.
+
+**Tesis:** La integral del campo vectorial a lo largo de la curva frontera $\partial D$, orientada en sentido positivo (antihorario), es igual a la integral doble del rotor de $\vec{F}$ sobre la región $D$:
+
+$$
+\oint_{\partial D} \vec{F} \cdot d\vec{r} = \iint_{D} \operatorname{rot} \vec{F} \, dx \, dy
+$$
+
+Este teorema relaciona una **integral de línea** a lo largo de una curva cerrada con una **integral doble** (las integrales de funciones de dos variables vistas en la unidad anterior).
+
+<details>
+<summary>📝 Ejercicio 3 — <a href="https://www.youtube.com/watch?v=tCim6SO5R3Q&t=1056s">17:36</a>: Circulación alrededor de una circunferencia</summary>
+
+Calcular la circulación (integral de línea) del campo vectorial
+
+$$
+\vec{F}(x,y) = c\,\frac{(-y, x)}{x^2 + y^2}
+$$
+
+alrededor de una circunferencia de radio $r$ (el mismo campo del Ejercicio 2).
+
+<details>
+<summary>Ver resolución</summary>
+
+**Paso 1:** Por el teorema de Green, la integral de línea es igual a la integral doble del rotor de $\vec{F}$ sobre la región $D$, cuyo borde es la circunferencia, orientada en forma positiva (antihoraria).
+
+$$
+\oint_{\partial D} \vec{F} \cdot d\vec{r} = \iint_{D} \operatorname{rot} \vec{F} \, dx \, dy
+$$
+
+**Paso 2:** Evaluar el rotor del campo. En el Ejercicio 2 se calculó que para este campo el rotor vale $0$.
+
+**Paso 3:** Como el rotor es $0$, la integral doble se anula.
+
+$$
+\oint_{\partial D} \vec{F} \cdot d\vec{r} = \iint_{D} 0 \, dx \, dy = 0
+$$
+
+[poco claro en la transcripción] En este tramo el audio mezcla este campo con otro cuyo rotor vale $1$; el planteo desarrollado corresponde a un campo con $\operatorname{rot}\vec{F} = 1$, en cuyo caso la integral doble de la función unitaria sobre $D$ da el área encerrada por la circunferencia de radio $r$, es decir $\pi r^2$.
+
+$$
+\iint_{D} 1 \, dx \, dy = \text{área}(D) = \pi r^2
+$$
+
+</details>
+
+</details>
+
+Una utilidad del teorema de Green es calcular **circulaciones** (integrales de campos vectoriales alrededor de curvas cerradas), transformándolas en integrales dobles a menudo más sencillas.
+
+<details>
+<summary>📝 Ejercicio 4 — <a href="https://www.youtube.com/watch?v=tCim6SO5R3Q&t=1344s">22:24</a>: Circulación alrededor del borde de un triángulo</summary>
+
+Calcular la circulación del campo vectorial
+
+$$
+\vec{F}(x,y) = (y, x)
+$$
+
+alrededor del borde de la región $D$ del primer cuadrante ($x \ge 0$, $y \ge 0$) limitada por la recta $x + y = 3$. El borde está orientado en sentido positivo (antihorario).
+
+<details>
+<summary>Ver resolución</summary>
+
+**Paso 1:** Identificar la región. $D$ es el triángulo del primer cuadrante limitado por los ejes y por el segmento de recta $x + y = 3$, cuyo borde está formado por tres segmentos de recta.
+
+**Paso 2:** Aplicar el teorema del rotor: la circulación es igual a la integral doble del rotor de $\vec{F}$ sobre $D$.
+
+$$
+\oint_{\partial D} \vec{F} \cdot d\vec{r} = \iint_{D} \operatorname{rot} \vec{F} \, dx \, dy
+$$
+
+**Paso 3:** Calcular el rotor. La derivada de $f_2 = x$ respecto de $x$ es $1$, y la derivada de $f_1 = y$ respecto de $y$ es $1$.
+
+$$
+\operatorname{rot} \vec{F} = \frac{\partial f_2}{\partial x} - \frac{\partial f_1}{\partial y} = 1 - 1
+$$
+
+[poco claro en la transcripción] El profesor menciona que el rotor "vale $2$"; sin embargo, con $\vec{F} = (y, x)$ resulta $1 - 1 = 0$. El desarrollo que sigue en la clase usa $\operatorname{rot}\vec{F} = 2$, por lo que se transcribe según lo verbalizado.
+
+**Paso 4:** Con $\operatorname{rot}\vec{F} = 2$, sacar el $2$ afuera de la integral. Queda $2$ por la integral de la función unitaria sobre $D$, que es el área de $D$.
+
+$$
+\iint_{D} 2 \, dx \, dy = 2 \iint_{D} dx \, dy = 2 \cdot \text{área}(D)
+$$
+
+**Paso 5:** El área del triángulo es base por altura sobre $2$.
+
+$$
+\text{área}(D) = \frac{\text{base} \cdot \text{altura}}{2} = \frac{3 \cdot 3}{2} = \frac{9}{2}
+$$
+
+**Paso 6:** Calcular la circulación final.
+
+$$
+\oint_{\partial D} \vec{F} \cdot d\vec{r} = 2 \cdot \frac{9}{2} = 9
+$$
+
+**Paso 7 (alternativa por integral doble planteada explícitamente):** El profesor también plantea la integral doble directamente. Con $x$ variando entre $0$ y $3$, e $y$ entre $0$ y $3 - x$:
+
+$$
+\int_{0}^{3} \int_{0}^{3-x} 2 \, dy \, dx
+$$
+
+Integrando en $y$ y luego en $x$ [paso en el pizarrón, ver video], aparecen los términos $3x - \dfrac{x^2}{2}$ que, evaluados, conducen a $9 - \dfrac{9}{2} = \dfrac{9}{2}$, y al multiplicar por $2$ se recupera $9$.
+
+</details>
+
+</details>
+
+Alternativamente, este problema se podría resolver **sin** el teorema de Green: parametrizando cada uno de los tres segmentos de recta con su orientación, y calculando la circulación como la suma de las tres integrales de línea.
+
+$$
+\oint_{\partial D} \vec{F} \cdot d\vec{r} = \int_{C_1} \vec{F} \cdot d\vec{r} + \int_{C_2} \vec{F} \cdot d\vec{r} + \int_{C_3} \vec{F} \cdot d\vec{r}
+$$
+
+El teorema de Green garantiza que, bajo las condiciones dadas, esta suma de integrales da el mismo resultado, pero el cálculo directo es bastante más laborioso.
+
+## Circulación en sentido horario [31:40](https://www.youtube.com/watch?v=tCim6SO5R3Q&t=1900s)
+
+Cuando se usa el teorema de Green, se obtiene la circulación orientada en sentido **antihorario** (positivo), que coincide con la integral del rotor. Si en cambio se quisiera calcular la circulación en sentido **horario** (negativo), el resultado es el opuesto: por ejemplo, si en sentido positivo dio $9$, en sentido horario da $-9$. La única salvedad al aplicar el teorema es integrar el rotor del campo sobre la región.
+
+## Regiones regulares por partes [32:47](https://www.youtube.com/watch?v=tCim6SO5R3Q&t=1967s)
+
+El teorema es válido no sólo para regiones regulares, sino también para **regiones regulares por partes**: si se pega una región regular al lado de otra (o encima de otra), y así sucesivamente, se conforma una región regular por partes.
+
+En cuanto a la orientación: si cada región regular está orientada en sentido antihorario (positivo), en los **bordes comunes** entre dos pedazos las orientaciones se **compensan** (una está recorrida en un sentido y la otra en el opuesto). Los únicos bordes donde no se compensan son los **bordes externos**, que quedan orientados en sentido antihorario. Por eso el teorema de Green se puede generalizar a regiones regulares por partes.
+
+## Conjuntos múltiplemente conexos [36:31](https://www.youtube.com/watch?v=tCim6SO5R3Q&t=2191s)
+
+Consideremos una región $D$ del plano que está **por fuera** de una circunferencia de radio $1$ y **por dentro** de una circunferencia de radio $2$, ambas centradas en el origen: una región con forma de **anillo**.
+
+Por convención, una región regular por partes con forma de anillo está orientada en forma **positiva** cuando:
+- el **borde externo** está orientado en sentido **antihorario**, y
+- el **borde interno** está orientado en sentido **horario**.
+
+Estos conjuntos con algún agujero se llaman **múltiplemente conexos** (a diferencia de los simplemente conexos). Para ellos, los bordes internos se consideran recorridos en sentido positivo cuando están en sentido horario, justo al revés que los bordes externos.
+
+<details>
+<summary>📝 Ejercicio 5 — <a href="https://www.youtube.com/watch?v=tCim6SO5R3Q&t=2348s">39:08</a>: Circulación alrededor de un anillo</summary>
+
+Calcular la circulación del campo vectorial
+
+$$
+\vec{F}(x,y) = c\,\frac{(-y, x)}{x^2 + y^2}
+$$
+
+alrededor del borde de la región anular $D$ (entre las circunferencias de radio $1$ y radio $2$ centradas en el origen), orientado en forma positiva.
+
+<details>
+<summary>Ver resolución</summary>
+
+**Paso 1:** El campo está definido en todos los puntos de $D$ (el anillo no contiene al origen), por lo que se puede aplicar el teorema de Green sin problema.
+
+$$
+\oint_{\partial D} \vec{F} \cdot d\vec{r} = \iint_{D} \operatorname{rot} \vec{F} \, dx \, dy
+$$
+
+**Paso 2:** Recordar que el rotor de este campo ya fue calculado (Ejercicio 2) y vale $0$ en todo su dominio.
+
+$$
+\operatorname{rot} \vec{F} = 0
+$$
+
+**Paso 3:** Como el integrando es $0$, la integral doble se anula y la circulación es nula.
+
+$$
+\oint_{\partial D} \vec{F} \cdot d\vec{r} = \iint_{D} 0 \, dx \, dy = 0
+$$
+
+**Paso 4 (alternativa):** Se podría descomponer el borde en la curva externa $C_1$ (radio $2$, antihoraria, positiva) y la interna $C_2$ (radio $1$, horaria, negativa) y sumar sus circulaciones. Es fácil comprobar que la suma da lo mismo (cero), justamente por el teorema del rotor.
+
+$$
+\oint_{\partial D} \vec{F} \cdot d\vec{r} = \int_{C_1} \vec{F} \cdot d\vec{r} + \int_{C_2} \vec{F} \cdot d\vec{r} = 0
+$$
+
+</details>
+
+</details>
+
+## Corolario: cálculo de áreas con el teorema de Green [42:27](https://www.youtube.com/watch?v=tCim6SO5R3Q&t=2547s)
+
+Una aplicación del teorema de Green. Sabemos que la circulación de un campo a lo largo del borde de una región del plano, orientado en forma positiva, es igual a la integral doble del rotor sobre la región. Si elegimos **arbitrariamente** un campo vectorial $\vec{F}$ tal que su rotor sea igual a $1$:
+
+$$
+\operatorname{rot} \vec{F} = 1
+$$
+
+entonces la integral doble del rotor sobre $D$ es la integral doble de la función unitaria, que es el **área** de la región $D$:
+
+$$
+\oint_{\partial D} \vec{F} \cdot d\vec{r} = \iint_{D} 1 \, dx \, dy = \text{área}(D)
+$$
+
+**Conclusión:** para calcular el área de una región del plano, se puede elegir arbitrariamente un campo vectorial cuyo rotor valga $1$ y calcular la circulación de ese campo alrededor del borde de la región, orientado positivamente.
+
+<details>
+<summary>📝 Ejercicio 6 — <a href="https://www.youtube.com/watch?v=tCim6SO5R3Q&t=2674s">44:34</a>: Área encerrada por una elipse</summary>
+
+Calcular el área encerrada por una elipse de semiejes $a$ y $b$, usando el corolario del teorema del rotor.
+
+<details>
+<summary>Ver resolución</summary>
+
+**Paso 1:** Elegir arbitrariamente un campo vectorial cuyo rotor valga $1$. Por ejemplo:
+
+$$
+\vec{F}(x,y) = (0, x)
+$$
+
+En efecto, el rotor es la derivada de $f_2 = x$ respecto de $x$ (que vale $1$) menos la derivada de $f_1 = 0$ respecto de $y$ (que vale $0$):
+
+$$
+\operatorname{rot} \vec{F} = \frac{\partial}{\partial x}(x) - \frac{\partial}{\partial y}(0) = 1
+$$
+
+**Paso 2:** Por el corolario, el área de la región $D$ encerrada por la elipse es igual a la circulación de $\vec{F}$ alrededor de la frontera $\partial D$ positivamente orientada.
+
+$$
+\text{área}(D) = \oint_{\partial D} \vec{F} \cdot d\vec{r}
+$$
+
+**Paso 3:** Parametrizar la elipse con
+
+$$
+\lambda(t) = (a\cos t, \, b\sin t), \qquad t \in [0, 2\pi]
+$$
+
+Se verifica que es la elipse: con $x = a\cos t$ e $y = b\sin t$, elevando al cuadrado y sumando miembro a miembro,
+
+$$
+\frac{x^2}{a^2} + \frac{y^2}{b^2} = \cos^2 t + \sin^2 t = 1
+$$
+
+Al ir $t$ de $0$ a $2\pi$ la curva se recorre en sentido antihorario (positivo).
+
+**Paso 4:** Plantear el trabajo del campo evaluado en la parametrización, multiplicado por la derivada de la parametrización $\lambda'(t) = (-a\sin t, \, b\cos t)$. Como $\vec{F} = (0, x)$, la primera componente se anula y sólo sobrevive el producto de la segunda componente ($x = a\cos t$) por $b\cos t$:
+
+$$
+\oint_{\partial D} \vec{F} \cdot d\vec{r} = \int_{0}^{2\pi} \big(0 \cdot (-a\sin t) + a\cos t \cdot b\cos t\big) \, dt = \int_{0}^{2\pi} a\,b\,\cos^2 t \, dt
+$$
+
+**Paso 5:** Sacar $a\,b$ fuera de la integral e integrar $\cos^2 t$ usando su primitiva $\dfrac{t}{2} + \dfrac{\sin(2t)}{4}$.
+
+$$
+a\,b \int_{0}^{2\pi} \cos^2 t \, dt = a\,b \left[ \frac{t}{2} + \frac{\sin(2t)}{4} \right]_{0}^{2\pi}
+$$
+
+**Paso 6:** Evaluar entre $0$ y $2\pi$. En $t = 2\pi$ el primer término da $\pi$ y el seno se anula; en $t = 0$ todo vale $0$.
+
+$$
+\text{área}(D) = a\,b \cdot \pi = \pi\,a\,b
+$$
+
+El área encerrada por la elipse de semiejes $a$ y $b$ es $\pi\,a\,b$, calculada mediante una integral curvilínea en lugar de una integral doble.
+
+</details>
+
+</details>
+
+## Interpretación física del rotor en el plano [53:34](https://www.youtube.com/watch?v=tCim6SO5R3Q&t=3214s)
+
+Sea un campo vectorial $\vec{F}$ definido en el plano con buen comportamiento (de clase $C^1$, con derivadas parciales continuas), y sea un punto $(x_0, y_0)$ del dominio del campo. Tomemos una región regular $D$ con forma de circunferencia centrada en $(x_0, y_0)$, de radio $r$, de modo que podamos parametrizar su borde $\partial D$.
+
+Se puede demostrar que el **cociente entre el trabajo (circulación) del campo alrededor de la frontera $\partial D$ positivamente orientada y el área encerrada**, cuando el radio de la circunferencia tiende a cero, coincide con el rotor de $\vec{F}$ en ese punto:
+
+$$
+\operatorname{rot} \vec{F}(x_0, y_0) = \lim_{r \to 0} \frac{\displaystyle\oint_{\partial D} \vec{F} \cdot d\vec{r}}{\text{área}(D)}
+$$
+
+Cuando $r \to 0$, tanto el trabajo como el área tienden a cero, pero el cociente de estos dos infinitésimos tiende al valor del rotor. Así, el rotor de $\vec{F}$ se interpreta como el cociente entre una circulación (trabajo) y el área encerrada.
+
+<details>
+<summary>📝 Ejercicio 7 — <a href="https://www.youtube.com/watch?v=tCim6SO5R3Q&t=3497s">58:17</a>: Rotor como límite de circulación sobre área</summary>
+
+Para el campo $\vec{F}(x,y) = (-y, x)$ (pensado como campo de velocidades), verificar en un ejemplo concreto que el límite del cociente circulación/área, cuando el radio tiende a cero, coincide con el rotor.
+
+<details>
+<summary>Ver resolución</summary>
+
+**Paso 1:** Calcular el rotor del campo. La derivada de $f_2 = x$ respecto de $x$ es $1$, y la de $f_1 = -y$ respecto de $y$ es $-1$.
+
+$$
+\operatorname{rot} \vec{F} = \frac{\partial}{\partial x}(x) - \frac{\partial}{\partial y}(-y) = 1 - (-1) = 2
+$$
+
+El rotor vale $2$ en todo el dominio del campo.
+
+**Paso 2:** Calcular la circulación del campo alrededor de una circunferencia de radio $r$ centrada en el origen, parametrizándola con
+
+$$
+\lambda(t) = (r\cos t, \, r\sin t), \qquad t \in [0, 2\pi]
+$$
+
+con derivada $\lambda'(t) = (-r\sin t, \, r\cos t)$.
+
+**Paso 3:** Evaluar el campo $\vec{F} = (-y, x)$ en la parametrización: $(-r\sin t, \, r\cos t)$. Plantear el producto escalar con $\lambda'(t)$.
+
+$$
+\oint \vec{F} \cdot d\vec{r} = \int_{0}^{2\pi} \big[(-r\sin t)(-r\sin t) + (r\cos t)(r\cos t)\big] \, dt
+$$
+
+**Paso 4:** Simplificar el integrando sacando factor común $r^2$ y usando $\sin^2 t + \cos^2 t = 1$.
+
+$$
+= \int_{0}^{2\pi} r^2\big(\sin^2 t + \cos^2 t\big) \, dt = \int_{0}^{2\pi} r^2 \, dt = 2\pi r^2
+$$
+
+Ésta es la circulación del campo alrededor de la circunferencia de radio $r$.
+
+**Paso 5:** Calcular el límite del cociente entre la circulación y el área de la circunferencia ($\pi r^2$) cuando $r \to 0$.
+
+$$
+\lim_{r \to 0} \frac{2\pi r^2}{\pi r^2} = 2
+$$
+
+**Paso 6:** El cociente vale $2$, que coincide con el rotor de $\vec{F}$ calculado en el Paso 1. Queda mostrado en un ejemplo concreto que el cociente circulación/área converge al rotor del campo en el punto.
+
+</details>
+
+</details>
+
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/markdown-it@14.1.0/dist/markdown-it.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/markdown-it-texmath@1.0.0/texmath.js"></script>
+<script>
+  const source = document.getElementById("md-source").textContent;
+  const md = window.markdownit({ html: true, linkify: true })
+    .use(window.texmath, {
+      engine: window.katex,
+      delimiters: "dollars",
+      katexOptions: { throwOnError: false },
+    });
+  document.getElementById("content").innerHTML = md.render(source);
+</script>
+</body>
+</html>

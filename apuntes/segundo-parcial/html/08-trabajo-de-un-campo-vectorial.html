@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Trabajo de un campo vectorial</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<style>
+:root { color-scheme: light dark; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  line-height: 1.65; max-width: 820px; margin: 2.5rem auto; padding: 0 1.25rem;
+  color: #1a1a1a; background: #fff;
+}
+@media (prefers-color-scheme: dark) {
+  body { color: #e6e6e6; background: #16181c; }
+  a { color: #6cb6ff; }
+  details { background: #1f2228; border-color: #30343c; }
+  summary { background: #232730; }
+  blockquote { color: #aab; border-color: #30343c; }
+  code { background: #232730; }
+}
+h1, h2, h3 { line-height: 1.25; margin-top: 1.8rem; }
+h1 { border-bottom: 2px solid currentColor; padding-bottom: .3rem; }
+h2 { border-bottom: 1px solid #ddd; padding-bottom: .25rem; }
+a { color: #0969da; text-decoration: none; }
+a:hover { text-decoration: underline; }
+blockquote { margin: 1rem 0; padding: .2rem 1rem; border-left: 4px solid #ddd; color: #555; }
+code { background: #f3f4f6; padding: .12em .35em; border-radius: 4px; font-size: .9em; }
+details {
+  border: 1px solid #e1e4e8; border-radius: 8px; padding: 0 1rem; margin: .8rem 0;
+  background: #fafbfc;
+}
+details[open] { padding-bottom: .6rem; }
+summary {
+  cursor: pointer; font-weight: 600; padding: .7rem 1rem; margin: 0 -1rem;
+  background: #f1f3f5; border-radius: 8px; user-select: none;
+}
+details details { margin-left: .2rem; }
+.katex-display { overflow-x: auto; overflow-y: hidden; padding: .3rem 0; }
+.katex-error { color: #d1242f; }
+@media print {
+  body { margin: 1.2cm; max-width: none; color: #000; background: #fff; }
+  summary { background: none; margin: 0; padding: .2rem 0; }
+  details { border-color: #ccc; background: #fff; padding: 0; }
+  a { color: #000; }
+}
+</style>
+</head>
+<body>
+<div id="content">Renderizando…</div>
+
+<script type="text/markdown" id="md-source">
+# Trabajo de un campo vectorial
+
+> Fuente: https://www.youtube.com/watch?v=uOgWYaD63EA
+
+---
+
+## Índice
+- [00:01](https://www.youtube.com/watch?v=uOgWYaD63EA&t=1s) — Integral de un campo vectorial a lo largo de una curva
+- [02:37](https://www.youtube.com/watch?v=uOgWYaD63EA&t=157s) — Notaciones y circulación en curvas cerradas
+- [03:38](https://www.youtube.com/watch?v=uOgWYaD63EA&t=218s) — Interpretación física: trabajo de un campo
+- [09:25](https://www.youtube.com/watch?v=uOgWYaD63EA&t=565s) — La integral se reduce a una integral simple (propiedades)
+- [10:28](https://www.youtube.com/watch?v=uOgWYaD63EA&t=628s) — 📝 Ejercicio 1: Trabajo a lo largo de una parábola
+- [17:17](https://www.youtube.com/watch?v=uOgWYaD63EA&t=1037s) — 📝 Ejercicio 2: La misma curva recorrida en sentido contrario
+- [25:24](https://www.youtube.com/watch?v=uOgWYaD63EA&t=1524s) — Teorema de reparametrización
+- [26:28](https://www.youtube.com/watch?v=uOgWYaD63EA&t=1588s) — 📝 Ejercicio 3: Trabajo a lo largo de un segmento de recta
+- [31:53](https://www.youtube.com/watch?v=uOgWYaD63EA&t=1913s) — 📝 Ejercicio 4: Trabajo a lo largo de una circunferencia
+- [39:50](https://www.youtube.com/watch?v=uOgWYaD63EA&t=2390s) — Cómo determinar el sentido de recorrido y cómo invertirlo
+- [51:02](https://www.youtube.com/watch?v=uOgWYaD63EA&t=3062s) — 📝 Ejercicio 5: Trabajo a lo largo de un segmento con parametrización por $x$
+- [55:26](https://www.youtube.com/watch?v=uOgWYaD63EA&t=3326s) — Curvas que son gráfica de una función y notación diferencial
+
+---
+
+## Integral de un campo vectorial a lo largo de una curva [00:01](https://www.youtube.com/watch?v=uOgWYaD63EA&t=1s)
+
+Dado un campo vectorial definido de un subconjunto del espacio $n$-dimensional en $\mathbb{R}^n$ (la dimensión del dominio y la del conjunto de llegada son iguales), se trabaja habitualmente con:
+
+- Campos $\vec{F}: A \subseteq \mathbb{R}^2 \to \mathbb{R}^2$, donde a cada punto del plano le corresponde un vector del plano.
+- Campos $\vec{F}: A \subseteq \mathbb{R}^3 \to \mathbb{R}^3$, donde a cada punto del espacio le corresponde un vector del espacio.
+
+Se supone además definida una **curva simple** $C$, incluida dentro del dominio del campo (para poder evaluar el campo en cada uno de sus puntos). La curva no es más ni menos que el conjunto imagen de una función vectorial continua de una variable $\lambda$ (la parametrización).
+
+La **integral del campo vectorial $\vec{F}$ a lo largo de la curva** $C$, parametrizada por $\lambda$ con $t \in [a,b]$, se define como:
+
+$$
+\int_C \vec{F} \cdot d\vec{\lambda} = \int_a^b \vec{F}(\lambda(t)) \cdot \lambda'(t)\,dt
+$$
+
+## Notaciones y circulación en curvas cerradas [02:37](https://www.youtube.com/watch?v=uOgWYaD63EA&t=157s)
+
+Existen varias notaciones equivalentes para indicar la integral de un campo vectorial a lo largo de una curva parametrizada. El último miembro (la integral respecto de $t$) es la forma en que efectivamente se **resuelve** o se **define** la integral.
+
+Si la curva es **cerrada** (el punto inicial y el final de la parametrización coinciden), en algunas ocasiones se indica la integral con el símbolo de la integral con un círculo:
+
+$$
+\oint_C \vec{F} \cdot d\vec{\lambda}
+$$
+
+A la integral de un campo vectorial a lo largo de una curva cerrada se la llama **circulación** del campo a lo largo de la curva (hay quienes llaman circulación a cualquier integral de este tipo; en esta clase se usa "circulación" cuando la curva es cerrada).
+
+## Interpretación física: trabajo de un campo [03:38](https://www.youtube.com/watch?v=uOgWYaD63EA&t=218s)
+
+Una forma de interpretar la integral de un campo vectorial a lo largo de una curva es la siguiente. Dada la curva, se toma un arco de longitud diferencial. El **diferencial de longitud** se expresa como la norma de la derivada de la parametrización por el diferencial de la variable independiente:
+
+$$
+d\lambda = \|\lambda'(t)\|\,dt
+$$
+
+Al integrar los diferenciales de longitud se obtiene la longitud total de la curva.
+
+**Vector tangente y versor tangente.** La derivada de la parametrización $\lambda'(t)$ es un **vector tangente** a la curva. En las curvas regulares estas derivadas son vectores no nulos, por lo que se puede definir el **versor tangente** dividiendo por su norma:
+
+$$
+\breve{T} = \frac{\lambda'(t)}{\|\lambda'(t)\|}
+$$
+
+**Proyección del campo.** Si se evalúa el campo $\vec{F}$ en un punto de la curva y se lo proyecta en la dirección tangente (multiplicándolo escalarmente por el versor tangente $\breve{T}$), se obtiene la componente del campo en la dirección del desplazamiento:
+
+$$
+F_T = \vec{F} \cdot \breve{T}
+$$
+
+**Diferencial de trabajo.** Al multiplicar esa proyección por un diferencial de longitud se obtiene un diferencial de trabajo (recordando que en física el trabajo es *fuerza en la dirección del desplazamiento por el desplazamiento*):
+
+$$
+dW = \left(\vec{F} \cdot \breve{T}\right) d\lambda = \left(\vec{F} \cdot \frac{\lambda'(t)}{\|\lambda'(t)\|}\right) \|\lambda'(t)\|\,dt = \vec{F}(\lambda(t)) \cdot \lambda'(t)\,dt
+$$
+
+La norma de $\lambda'(t)$ se simplifica y queda $\vec{F} \cdot \lambda'(t)\,dt$. Integrando ese diferencial de trabajo a lo largo de toda la curva se obtiene el **trabajo total** del campo de fuerza $\vec{F}$ a lo largo de la curva:
+
+$$
+W = \int_a^b \vec{F}(\lambda(t)) \cdot \lambda'(t)\,dt
+$$
+
+Esta es la interpretación física de la integral: el trabajo realizado por el campo de fuerza $\vec{F}$ a lo largo de la curva.
+
+## La integral se reduce a una integral simple (propiedades) [09:25](https://www.youtube.com/watch?v=uOgWYaD63EA&t=565s)
+
+Al resolver el producto escalar $\vec{F}(\lambda(t)) \cdot \lambda'(t)$ del integrando se obtiene una **función de una sola variable**. Por lo tanto, la integral de un campo vectorial a lo largo de una curva termina siendo una **integral simple**, y todas las propiedades de las integrales simples se extienden a ella:
+
+- La integral de una suma es la suma de las integrales.
+- Cualquier constante se puede extraer fuera de la integral.
+
+<details>
+<summary>📝 Ejercicio 1 — <a href="https://www.youtube.com/watch?v=uOgWYaD63EA&t=628s">10:28</a>: Trabajo a lo largo de una parábola</summary>
+
+Calcular la integral del campo vectorial $\vec{F}(x,y) = (1, x)$ a lo largo de la curva parametrizada por
+
+$$
+\lambda(t) = (t,\, t^2), \qquad t \in [0,1]
+$$
+
+e interpretar gráficamente el resultado.
+
+<details>
+<summary>Ver resolución</summary>
+
+**Paso 1:** Aplicar la definición de la integral de un campo vectorial a lo largo de una curva.
+
+$$
+\int_C \vec{F} \cdot d\vec{\lambda} = \int_0^1 \vec{F}(\lambda(t)) \cdot \lambda'(t)\,dt
+$$
+
+**Paso 2:** Calcular la derivada de la parametrización.
+
+$$
+\lambda'(t) = (1,\, 2t)
+$$
+
+**Paso 3:** Evaluar el campo en los puntos de la curva. Como $\vec{F}(x,y) = (1, x)$ y para esta curva $x = t$:
+
+$$
+\vec{F}(\lambda(t)) = (1,\, t)
+$$
+
+**Paso 4:** Hacer el producto escalar entre $\vec{F}(\lambda(t))$ y $\lambda'(t)$, obteniendo una función de una sola variable.
+
+$$
+\vec{F}(\lambda(t)) \cdot \lambda'(t) = (1, t) \cdot (1, 2t) = 1 + 2t^2
+$$
+
+**Paso 5:** Integrar respecto de $t$ entre $0$ y $1$.
+
+$$
+\int_0^1 \left(1 + 2t^2\right) dt = \left[ t + \frac{2}{3}t^3 \right]_0^1 = 1 + \frac{2}{3}
+$$
+
+**Paso 6:** Obtener el resultado.
+
+$$
+\int_C \vec{F} \cdot d\vec{\lambda} = \frac{5}{3}
+$$
+
+**Interpretación gráfica:** la curva parametrizada es la parábola $y = x^2$ con $x$ variando entre $0$ y $1$. Como $t$ crece de $0$ a $1$, los puntos de la parábola se recorren desde $(0,0)$ hasta $(1,1)$. El trabajo realizado por el campo $\vec{F} = (1,x)$ a lo largo de ese arco de parábola, desde $(0,0)$ hasta $(1,1)$, es igual a $\frac{5}{3}$.
+
+</details>
+
+</details>
+
+<details>
+<summary>📝 Ejercicio 2 — <a href="https://www.youtube.com/watch?v=uOgWYaD63EA&t=1037s">17:17</a>: La misma curva recorrida en sentido contrario</summary>
+
+Con el mismo campo vectorial $\vec{F}(x,y) = (1, x)$, calcular la integral a lo largo del mismo arco de parábola $y = x^2$, pero **recorrido en sentido contrario**, usando la parametrización
+
+$$
+\lambda(s) = \left(1 - s,\; (1-s)^2\right), \qquad s \in [0,1]
+$$
+
+Notar que cuando $s = 0$ el punto es $(1,1)$ y cuando $s = 1$ el punto es $(0,0)$: se recorre la parábola desde $(1,1)$ hacia $(0,0)$.
+
+<details>
+<summary>Ver resolución</summary>
+
+**Paso 1:** Calcular la derivada de la parametrización (regla de la cadena en la segunda componente).
+
+$$
+\lambda'(s) = \left(-1,\; 2(1-s)\cdot(-1)\right) = \left(-1,\; -2(1-s)\right)
+$$
+
+**Paso 2:** Evaluar el campo en los puntos de la curva. Como $\vec{F}(x,y) = (1, x)$ y $x = 1-s$:
+
+$$
+\vec{F}(\lambda(s)) = (1,\; 1-s)
+$$
+
+**Paso 3:** Plantear la integral con el producto escalar.
+
+$$
+\int_0^1 (1,\, 1-s) \cdot \left(-1,\; -2(1-s)\right) ds
+$$
+
+**Paso 4:** Resolver el producto escalar.
+
+$$
+(1)(-1) + (1-s)\big(-2(1-s)\big) = -1 - 2(1-s)^2
+$$
+
+**Paso 5:** Desarrollar $-2(1-s)^2 = -2\left(1 - 2s + s^2\right) = -2 + 4s - 2s^2$, de modo que el integrando queda:
+
+$$
+-1 - 2 + 4s - 2s^2 = -2s^2 + 4s - 3
+$$
+
+**Paso 6:** Integrar respecto de $s$ entre $0$ y $1$.
+
+$$
+\int_0^1 \left(-2s^2 + 4s - 3\right) ds = \left[ -\frac{2}{3}s^3 + 2s^2 - 3s \right]_0^1
+$$
+
+**Paso 7:** Evaluar. En $s=1$: $-\frac{2}{3} + 2 - 3 = -\frac{2}{3} - 1 = -\frac{5}{3}$. En $s=0$: $0$.
+
+$$
+\int_C \vec{F} \cdot d\vec{\lambda} = -\frac{5}{3}
+$$
+
+**Conclusión:** con el mismo campo, la misma curva y los mismos puntos extremos, al invertir el sentido de recorrido la integral da el mismo valor absoluto pero con **signo opuesto**. Las integrales de campos vectoriales a lo largo de curvas **dependen de cómo se recorra la curva** (de su orientación), no solo del campo y de los puntos extremos.
+
+</details>
+
+</details>
+
+## Teorema de reparametrización [25:24](https://www.youtube.com/watch?v=uOgWYaD63EA&t=1524s)
+
+Generaliza la propiedad observada en los dos ejemplos anteriores. Si se tiene una **reparametrización** de una curva simple (mediante una función de cambio de variable con derivada continua y no nula, de modo que la curva siga siendo simple), entonces:
+
+- Si la reparametrización **conserva la orientación** de la curva, las integrales a lo largo de ambas parametrizaciones son **iguales**.
+- Si la reparametrización **invierte la orientación** de la curva, la integral tiene el **signo opuesto**.
+
+## Dependencia del camino [26:28](https://www.youtube.com/watch?v=uOgWYaD63EA&t=1588s)
+
+Otra característica de estas integrales: el resultado también depende de la **curva** por la que se calcula el trabajo, no solo del campo y de los puntos extremos. Se ilustra recorriendo, con el mismo campo, un segmento de recta entre los mismos puntos que la parábola de los ejercicios anteriores.
+
+<details>
+<summary>📝 Ejercicio 3 — <a href="https://www.youtube.com/watch?v=uOgWYaD63EA&t=1588s">26:28</a>: Trabajo a lo largo de un segmento de recta</summary>
+
+Con el mismo campo $\vec{F}(x,y) = (1, x)$, calcular la integral a lo largo del segmento de recta de ecuación $y = x$ entre los puntos $(0,0)$ y $(1,1)$, parametrizado por
+
+$$
+\alpha(t) = (t,\, t), \qquad t \in [0,1]
+$$
+
+Comparar el resultado con el del arco de parábola.
+
+<details>
+<summary>Ver resolución</summary>
+
+**Paso 1:** Calcular la derivada de la parametrización.
+
+$$
+\alpha'(t) = (1,\, 1)
+$$
+
+**Paso 2:** Evaluar el campo en los puntos de la curva. Como $\vec{F}(x,y) = (1,x)$ y $x = t$:
+
+$$
+\vec{F}(\alpha(t)) = (1,\, t)
+$$
+
+**Paso 3:** Plantear la integral con el producto escalar.
+
+$$
+\int_0^1 (1,\, t) \cdot (1,\, 1)\, dt = \int_0^1 (1 + t)\, dt
+$$
+
+**Paso 4:** Integrar respecto de $t$ entre $0$ y $1$.
+
+$$
+\int_0^1 (1 + t)\, dt = \left[ t + \frac{t^2}{2} \right]_0^1 = 1 + \frac{1}{2} = \frac{3}{2}
+$$
+
+**Conclusión:** el trabajo entre los mismos puntos $(0,0)$ y $(1,1)$ vale $\frac{3}{2}$ a lo largo del segmento de recta, mientras que a lo largo del arco de parábola valía $\frac{5}{3}$. El resultado depende de la **curva** por la que se calcula el trabajo.
+
+</details>
+
+</details>
+
+<details>
+<summary>📝 Ejercicio 4 — <a href="https://www.youtube.com/watch?v=uOgWYaD63EA&t=1913s">31:53</a>: Trabajo a lo largo de una circunferencia</summary>
+
+Con el mismo campo $\vec{F}(x,y) = (1, x)$, calcular la circulación (trabajo a lo largo de una curva cerrada) a lo largo de una circunferencia de radio $r$ centrada en el origen, recorrida en sentido antihorario, parametrizada por
+
+$$
+\beta(t) = (r\cos t,\; r\sin t), \qquad t \in [0, 2\pi]
+$$
+
+<details>
+<summary>Ver resolución</summary>
+
+**Paso 1:** Verificar que es una curva cerrada. Cuando $t = 0$ el punto es $(r, 0)$; a medida que $t$ crece se recorre la circunferencia en sentido antihorario hasta que en $t = 2\pi$ se vuelve al punto inicial.
+
+**Paso 2:** Calcular la derivada de la parametrización.
+
+$$
+\beta'(t) = (-r\sin t,\; r\cos t)
+$$
+
+**Paso 3:** Evaluar el campo en los puntos de la curva. Como $\vec{F}(x,y) = (1,x)$ y $x = r\cos t$:
+
+$$
+\vec{F}(\beta(t)) = (1,\; r\cos t)
+$$
+
+**Paso 4:** Plantear la integral con el producto escalar.
+
+$$
+\int_0^{2\pi} (1,\; r\cos t) \cdot (-r\sin t,\; r\cos t)\, dt
+$$
+
+**Paso 5:** Resolver el producto escalar.
+
+$$
+-r\sin t + r^2\cos^2 t
+$$
+
+**Paso 6:** Separar en dos integrales usando las propiedades (extraer constantes).
+
+$$
+-r \int_0^{2\pi} \sin t\, dt + r^2 \int_0^{2\pi} \cos^2 t\, dt
+$$
+
+**Paso 7:** La integral del seno entre $0$ y $2\pi$ es nula (el área positiva y la negativa se compensan).
+
+$$
+\int_0^{2\pi} \sin t\, dt = 0
+$$
+
+**Paso 8:** Resolver la integral del coseno cuadrado usando la tabla:
+
+$$
+\int \cos^2 t\, dt = \frac{1}{2}\left(t + \frac{1}{2}\sin 2t\right) + C
+$$
+
+Entonces:
+
+$$
+r^2 \int_0^{2\pi} \cos^2 t\, dt = \frac{r^2}{2}\left[ t + \tfrac{1}{2}\sin 2t \right]_0^{2\pi}
+$$
+
+**Paso 9:** Evaluar. En $t = 2\pi$: $\sin 4\pi = 0$, queda $2\pi$. En $t = 0$: todo se anula.
+
+$$
+\frac{r^2}{2}\left(2\pi + 0\right) = \pi r^2
+$$
+
+**Nota sobre el signo:** en el desarrollo verbal del video el docente llega a un valor asociado a $\pi r^2$ y observa que, de haberse recorrido la circunferencia en sentido contrario, la circulación habría dado el valor opuesto $-\pi r^2$ [poco claro en la transcripción el signo final; ver video]. El valor $\pi r^2$ coincide numéricamente con el área del círculo, pero el docente aclara que **eso no es general**: depende del campo vectorial elegido (con otro campo la cuenta daría otra cosa).
+
+</details>
+
+</details>
+
+## Cómo determinar el sentido de recorrido y cómo invertirlo [39:50](https://www.youtube.com/watch?v=uOgWYaD63EA&t=2390s)
+
+Para determinar en qué sentido se recorre una curva parametrizada hay dos formas:
+
+- **Asignar valores crecientes** a la variable independiente y observar cómo se va desplazando el punto. Por ejemplo, en la circunferencia $\beta(t) = (r\cos t, r\sin t)$: en $t=0$ el punto es $(r,0)$; en $t=\pi/2$ el punto es $(0, r)$, etc., lo que muestra que el recorrido es antihorario.
+- **Analizar el vector velocidad** $\lambda'(t)$ (la derivada de la parametrización), que apunta en la dirección del movimiento. Ubicándolo en un punto de la curva se ve hacia dónde avanza el recorrido.
+
+**Cómo invertir una parametrización.** Una forma práctica de invertir el recorrido es reemplazar la variable. Por ejemplo, en un intervalo $[0,1]$ se sustituye $t = 1 - s$, de modo que las imágenes se recorren en orden inverso.
+
+Para la circunferencia, otra forma de invertir el sentido (pasar de antihorario a horario) es **cambiar el signo de la coordenada** $y$, dejando la coordenada $x$ igual:
+
+$$
+\gamma(t) = (r\cos t,\; -r\sin t), \qquad t \in [0, 2\pi]
+$$
+
+Así el punto se mueve igual en $x$, pero las alturas se recorren invertidas, resultando el sentido horario.
+
+<details>
+<summary>📝 Ejercicio 5 — <a href="https://www.youtube.com/watch?v=uOgWYaD63EA&t=3062s">51:02</a>: Trabajo a lo largo de un segmento con parametrización por $x$</summary>
+
+Con el mismo campo $\vec{F}(x,y) = (1, x)$, calcular la integral a lo largo del segmento de recta que va desde el punto $(-2, -1)$ hasta el punto $(0, 5)$. La recta tiene ecuación $y = 3x + 5$; se parametriza usando directamente la variable $x$:
+
+$$
+\lambda(x) = (x,\; 3x + 5), \qquad x \in [-2, 0]
+$$
+
+<details>
+<summary>Ver resolución</summary>
+
+**Paso 1:** Calcular la derivada de la parametrización respecto de $x$.
+
+$$
+\lambda'(x) = (1,\; 3)
+$$
+
+**Paso 2:** Evaluar el campo en los puntos de la curva. Como $\vec{F}(x,y) = (1, x)$, sigue siendo $(1, x)$.
+
+$$
+\vec{F}(\lambda(x)) = (1,\; x)
+$$
+
+**Paso 3:** Plantear la integral con el producto escalar, integrando respecto de $x$ entre $-2$ y $0$.
+
+$$
+\int_{-2}^{0} (1,\; x) \cdot (1,\; 3)\, dx = \int_{-2}^{0} (1 + 3x)\, dx
+$$
+
+**Paso 4:** Integrar.
+
+$$
+\int_{-2}^{0} (1 + 3x)\, dx = \left[ x + \frac{3x^2}{2} \right]_{-2}^{0}
+$$
+
+**Paso 5:** Evaluar. En $x=0$: $0$. En $x=-2$: $-2 + \frac{3\cdot 4}{2} = -2 + 6 = 4$.
+
+$$
+0 - 4 = -4
+$$
+
+**Resultado:** el trabajo realizado por el campo $\vec{F} = (1,x)$ entre $(-2,-1)$ y $(0,5)$ es igual a $-4$.
+
+</details>
+
+</details>
+
+## Curvas que son gráfica de una función y notación diferencial [55:26](https://www.youtube.com/watch?v=uOgWYaD63EA&t=3326s)
+
+Cuando la curva es la **gráfica de una función de una variable** $y = f(x)$, siempre se puede parametrizar de este modo:
+
+$$
+\lambda(x) = (x,\; f(x))
+$$
+
+En ese caso $\lambda'(x) = (1,\; f'(x))$, y para un campo de componentes $\vec{F} = (f_1, f_2)$ el trabajo se calcula como:
+
+$$
+\int_C \vec{F} \cdot d\vec{\lambda} = \int f_1\,dx + \int f_2\, y'\,dx
+$$
+
+Teniendo en cuenta que $y'\,dx = dy$, se obtiene la **notación diferencial** equivalente que aparece en parte de la bibliografía:
+
+$$
+\int_C f_1\, dx + f_2\, dy
+$$
+
+Esta notación no es más ni menos que otra forma de escribir la misma integral del campo vectorial a lo largo de la curva.
+
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/markdown-it@14.1.0/dist/markdown-it.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/markdown-it-texmath@1.0.0/texmath.js"></script>
+<script>
+  const source = document.getElementById("md-source").textContent;
+  const md = window.markdownit({ html: true, linkify: true })
+    .use(window.texmath, {
+      engine: window.katex,
+      delimiters: "dollars",
+      katexOptions: { throwOnError: false },
+    });
+  document.getElementById("content").innerHTML = md.render(source);
+</script>
+</body>
+</html>
