@@ -31,7 +31,7 @@ fuente (transcripción/PDF), sin inventar contenido.
 
 ```
 CLAUDE.md                  ← este archivo
-README.md                  ← documentación para humanos
+README.md                  ← walkthrough para el usuario (humanos)
 tools/                     ← scripts Python compartidos (ver "Herramientas")
 plantillas/                ← plantillas para materias/evaluaciones nuevas
 venv/                      ← entorno Python (usar venv/bin/python)
