@@ -211,7 +211,7 @@
 
 ## Índice inverso: tema → fechas (para búsqueda rápida)
 
-> Frecuencias sobre **15 exámenes de contenido distinto** (17 archivos menos 2 equivalencias: 2022-07-22≡2019-08-15 y 2022-10-05≡2019-10-11). Los 2 simulacros de cátedra (2022-10-05, 2024-05-17) se marcan `(sim)`.
+> Frecuencias sobre **16 exámenes reales de contenido distinto** (N = 16), más 2 simulacros de cátedra (2024-05-17 único; 2022-10-05 ≡ 2019-10-11). Se descuentan las 2 equivalencias (2022-07-22≡2019-08-15, 2022-10-05≡2019-10-11). Los simulacros se marcan `(sim)` y no cuentan en los porcentajes.
 
 | Tag | Aparece en | Frecuencia |
 |---|---|---|
@@ -264,4 +264,4 @@
 
 ---
 
-*Índice generado el 2026-07-10 a partir de la lectura con visión (5 subagentes en paralelo) de 24 archivos de `examenes/`: 17 exámenes de contenido distinto (15 reales + 2 simulacros de cátedra), 4 duplicados/equivalencias y 1 segundo parcial mal archivado. Los enunciados de exámenes escaneados/foto pueden tener detalles menores aproximados («≈»). Cobertura temporal: 2017–2026.*
+*Índice generado el 2026-07-10 a partir de la lectura con visión (5 subagentes en paralelo) de 24 archivos de `examenes/`: 16 exámenes reales de contenido distinto + 2 simulacros de cátedra (uno ≡ a un real), 4 duplicados/equivalencias y 1 segundo parcial mal archivado. Los enunciados de exámenes escaneados/foto pueden tener detalles menores aproximados («≈»). Cobertura temporal: 2017–2026.*

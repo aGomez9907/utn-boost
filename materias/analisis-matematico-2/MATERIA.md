@@ -60,8 +60,8 @@
 - **Videos:** clases grabadas en YouTube _(canal del profesor; completar nombre/playlist)_.
   Transcripciones cacheadas en `<eval>/apuntes/transcripts/`.
 - **Exámenes reales:** 24 archivos del segundo parcial (2014–2026, incluido el
-  tomado el 2026-07-08) en `segundo-parcial/examenes/`. Primer parcial: **17 exámenes de
-  contenido distinto** (15 reales + 2 simulacros de cátedra, 2017–2026) indexados en
+  tomado el 2026-07-08) en `segundo-parcial/examenes/`. Primer parcial: **16 exámenes
+  reales de contenido distinto** (+ 2 simulacros de cátedra, 2017–2026) indexados en
   `primer-parcial/examenes/INDICE.md`, con `resueltos/` (11 resoluciones de cátedra +
   compilación) y `duplicados/` aparte.
 
@@ -85,4 +85,4 @@ Compartidos entre parciales: `#EDO` `#Demostracion`
 | Evaluación | Apuntes | INDICE | Estrategia | Poda | Plan | Registro | Flashcards | Machete | Simulacros |
 |---|---|---|---|---|---|---|---|---|---|
 | Segundo parcial (+recu) | ✅ 19 | ✅ 17 exámenes distintos | ✅ | ✅ | pendiente (usar `/plan` para el recu) | ✅ (vacío, listo para usar) | ✅ 61 cartas | ✅ | ✅ 1 |
-| Primer parcial (+recu) | — | ✅ 17 archivos (15 reales + 2 sim.) | — | — | — | — | — | — | — |
+| Primer parcial (+recu) | — | ✅ 16 reales + 2 sim. | ✅ | — | — | — | — | — | — |
