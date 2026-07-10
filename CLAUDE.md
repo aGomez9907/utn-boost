@@ -49,11 +49,12 @@ materias/
       examenes/            ← exámenes reales (AAAA-MM-DD_Parcial.pdf|png|jpg)
         INDICE.md          ← transcripción curada + tags (capa 2)
       simulacros/          ← exámenes simulados generados
+      repaso/              ← material de repaso final: flashcards.md (+ .tsv), machete.md
+      exports/             ← renders regenerables (html/pdf) de los docs de la evaluación
       estrategia.md        ← análisis frecuencias + brechas + banco + checklist
       que-saltear.md       ← poda sección por sección de cada apunte
       plan.md              ← plan de días recalculable
       registro.md          ← registro de práctica y errores
-      flashcards.md        ← mazo de repaso teórico (+ flashcards-anki.tsv)
 ```
 
 ## Skills disponibles
@@ -69,13 +70,14 @@ materias/
 | `/que-saltear` | Genera/actualiza `que-saltear.md` (poda 🗑️/📖/✅ por apunte). |
 | `/plan` | Recalcula `plan.md` según días restantes, avance y registro de errores. |
 | `/simulacro` | Genera un examen simulado nuevo respetando estructura y frecuencias. |
-| `/flashcards` | Genera `flashcards.md` + `flashcards-anki.tsv` desde el checklist teórico. |
+| `/flashcards` | Genera `repaso/flashcards.md` + `flashcards-anki.tsv` desde el checklist teórico. |
+| `/machete` | Genera/itera `repaso/machete.md` (hoja final de fórmulas); `--pdf` exporta la versión cerrada a `exports/`. |
 | `/registrar` | Anota una sesión de práctica/errores en `registro.md` y actualiza su tablero. |
 
 **Flujo típico de una evaluación nueva:** `/apuntes-batch` (o `/apunte-doc`) →
 `/indexar-examenes` → `/estrategia` → `/que-saltear` → `/plan` → estudiar +
-`/registrar` → `/flashcards` para la teoría → `/simulacro` en los últimos días →
-`/plan` de nuevo cuando cambia el panorama.
+`/registrar` → `/flashcards` para la teoría → `/machete` + `/simulacro` en los últimos
+días → `/plan` de nuevo cuando cambia el panorama.
 
 ## Resolución de contexto (materia/evaluación)
 
@@ -105,6 +107,9 @@ el usuario no la da:
   reciclados y equivalencias entre exámenes (mismo examen ≠ practicar dos veces).
 - **No re-leer exámenes:** para análisis usar SIEMPRE `INDICE.md` (grep). Las
   imágenes/PDFs de `examenes/` solo se leen con visión al indexarlos por primera vez.
+- **Renders:** los `.md` son la verdad canónica. Todo html/pdf de los documentos de la
+  evaluación (machete, flashcards…) va a `<eval>/exports/` (regenerable, no editar a
+  mano); los apuntes usan sus subcarpetas `apuntes/html/` y `apuntes/pdf/`.
 - **Fechas:** siempre absolutas (AAAA-MM-DD). Los documentos generados llevan al pie
   la fecha de generación y sus fuentes.
 - **Prioridades:** la escala compartida es 🔴 dominar / 🟠 alta / 🟡 media / ⚪ baja-

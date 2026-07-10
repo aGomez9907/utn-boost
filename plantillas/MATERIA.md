@@ -60,7 +60,7 @@ _(la completa `/indexar-examenes` al indexar los primeros exámenes)_
 <!-- Tablero de avance por evaluación. Actualizarlo cuando una skill genera material.
      Valores típicos: ✅ (con cantidad si aplica), pendiente, — (no corresponde/todavía). -->
 
-| Evaluación | Apuntes | INDICE | Estrategia | Poda | Plan | Registro | Flashcards |
-|---|---|---|---|---|---|---|---|
-| _(Evaluación)_ | — | pendiente | — | — | — | — | — |
-<!-- | Segundo parcial | ✅ 19 | ✅ 16 exámenes distintos | ✅ | ✅ | ✅ | ✅ | ✅ | -->
+| Evaluación | Apuntes | INDICE | Estrategia | Poda | Plan | Registro | Flashcards | Machete | Simulacros |
+|---|---|---|---|---|---|---|---|---|---|
+| _(Evaluación)_ | — | pendiente | — | — | — | — | — | — | — |
+<!-- | Segundo parcial | ✅ 19 | ✅ 16 exámenes distintos | ✅ | ✅ | ✅ | ✅ | ✅ 61 cartas | ✅ | ✅ 1 | -->

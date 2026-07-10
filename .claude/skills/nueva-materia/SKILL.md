@@ -65,6 +65,8 @@ materias/<slug>/<eval>/
     transcripts/  ← .gitkeep
   examenes/       ← .gitkeep
   simulacros/     ← .gitkeep
+  repaso/         ← .gitkeep  (flashcards + machete)
+  exports/        ← .gitkeep  (html/pdf regenerables de los docs de la evaluación)
 ```
 
 - El `.gitkeep` va en cada hoja vacía para que git conserve la estructura. Crealo todo
@@ -80,8 +82,8 @@ materias/<slug>/<eval>/
   `## Evaluaciones` (tabla Evaluación | Carpeta | Fecha | Estado, marcando la próxima);
   `## Estructura del examen`; `## Temario por evaluación`; `## Fuentes`;
   `## Leyenda de tags (para examenes/INDICE.md)`; `## Estado del material` (tabla
-  Evaluación | Apuntes | INDICE | Estrategia | Poda | Plan | Registro | Flashcards,
-  todo en `—`/pendiente al arrancar).
+  Evaluación | Apuntes | INDICE | Estrategia | Poda | Plan | Registro | Flashcards |
+  Machete | Simulacros, todo en `—`/pendiente al arrancar).
 - **Leyenda de tags: arranca VACÍA**, con esta nota (o equivalente): _"Se define al
   indexar los primeros exámenes: `/indexar-examenes` la va construyendo con tags
   `#CamelCase` a medida que aparecen los temas reales."_ No inventes tags a priori: la
@@ -95,8 +97,9 @@ materias/<slug>/<eval>/
   (<materia>)`, un tablero de errores por tema (tabla vacía) y una sección
   `## Sesiones` vacía. `/registrar` lo va llenando.
 - Los demás archivos generables (`estrategia.md`, `que-saltear.md`, `plan.md`,
-  `flashcards.md`, `INDICE.md`) **NO se crean acá**: los generan sus skills cuando haya
-  material. No dejes esqueletos vacíos que después confundan.
+  `repaso/flashcards.md`, `repaso/machete.md`, `INDICE.md`) **NO se crean acá**: los
+  generan sus skills cuando haya material. No dejes esqueletos vacíos que después
+  confundan.
 
 ### 5. Cierre
 - Mostrá el árbol creado (`find materias/<slug> -type f -o -type d | sort` o similar,

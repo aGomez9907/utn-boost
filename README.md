@@ -125,15 +125,19 @@ Después de cada sesión de práctica, contale cómo te fue:
 qué practicaste, cómo te fue y la tendencia por tema. Lo que fallás sube de prioridad;
 lo que te sale, baja. El próximo `/plan` y la próxima `/estrategia` lo tienen en cuenta.
 
-### 6. Repaso y simulacros — `/flashcards` y `/simulacro`
+### 6. Repaso final — `/flashcards`, `/machete` y `/simulacro`
 
 ```
 /flashcards      # mazo de repaso teórico desde el checklist
+/machete         # hoja final de fórmulas y recetas (solo .md, barato de iterar)
+/machete --pdf   # cuando el machete está listo: exportarlo a PDF para imprimir/iPad
 /simulacro       # un examen nuevo, fiel al patrón real, con corrección
 ```
 
-`/flashcards` genera `flashcards.md` (desplegables pregunta/respuesta) y un
-`flashcards-anki.tsv` importable a Anki. `/simulacro` arma un examen simulado que respeta
+`/flashcards` genera `repaso/flashcards.md` (desplegables pregunta/respuesta) y un
+`flashcards-anki.tsv` importable a Anki. `/machete` destila todo en una hoja ultra-densa
+de fórmulas y decisiones (`repaso/machete.md`): la iterás como texto las veces que haga
+falta y recién al final la pasás a PDF. `/simulacro` arma un examen simulado que respeta
 la estructura y las frecuencias reales, con su corrección desplegable — así practicás "a
 reloj" sin quemar los parciales de verdad que te reservaste para el final.
 
@@ -167,7 +171,8 @@ próxima por fecha) y te preguntan si hay ambigüedad.
 |---|---|
 | `/plan` | (Re)calcula `plan.md`: qué estudiar cada día hasta el examen, según días restantes + tus errores. |
 | `/simulacro` | Examen simulado nuevo, fiel al patrón real, con corrección desplegable. |
-| `/flashcards` | Mazo de repaso teórico: `flashcards.md` + `flashcards-anki.tsv` (importable a Anki). |
+| `/flashcards` | Mazo de repaso teórico: `repaso/flashcards.md` + `flashcards-anki.tsv` (importable a Anki). |
+| `/machete` | Hoja final de fórmulas (`repaso/machete.md`); con `--pdf` exporta la versión cerrada a `exports/`. |
 | `/registrar <lo que hiciste>` | Anota una sesión de práctica y tus errores; alimenta a `/plan` y `/estrategia`. |
 
 ### Organización
@@ -184,8 +189,10 @@ próxima por fecha) y te preguntan si hay ambigüedad.
   `INDICE.md`. Ahorra tiempo y plata (leer imágenes es caro y lento).
 - **No se inventa nada:** los apuntes salen únicamente de la fuente. Lo que no se
   entiende se marca `[poco claro…]` / `[ilegible]`, no se completa a ojo.
-- Los archivos **generados** (`estrategia.md`, `plan.md`, simulacros, flashcards) **se
-  regeneran** con su skill; no los editás a mano salvo un retoque puntual.
+- Los archivos **generados** (`estrategia.md`, `plan.md`, simulacros, flashcards,
+  machete) **se regeneran** con su skill; no los editás a mano salvo un retoque puntual.
+  Los `.md` son la versión canónica: sus renders HTML/PDF viven en `exports/` y se
+  regeneran cuando haga falta.
 - **Fechas siempre absolutas** (AAAA-MM-DD) y todo **versionado en git**: el historial es
   el respaldo si algo se pisa.
 
@@ -204,12 +211,17 @@ materias/<materia>/
       transcripts/            ← JSON de transcripciones cacheadas
     examenes/                 ← parciales reales + INDICE.md (transcripción + tags)
     simulacros/               ← exámenes simulados generados
+    repaso/                   ← flashcards.md (+ .tsv) y machete.md
+    exports/                  ← renders regenerables (html/pdf) de los docs de la evaluación
     estrategia.md             ← frecuencias + brechas + banco + checklist
     que-saltear.md            ← poda por apunte
     plan.md                   ← cronograma de días
     registro.md               ← tu práctica y errores
-    flashcards.md (+ .tsv)    ← mazo de repaso
 ```
+
+La lógica del orden: en la raíz de cada evaluación quedan **solo los 4 documentos de
+trabajo** (estrategia, poda, plan, registro); el material de repaso vive en `repaso/`,
+y todo lo que sea un render de otro archivo (HTML/PDF) va a `exports/`.
 
 En la raíz del repo: `CLAUDE.md` (las instrucciones internas que sigue Claude),
 `tools/` (scripts de Python), `plantillas/` (plantillas para materias nuevas) y `venv/`

@@ -7,10 +7,14 @@ description: Genera el mazo de repaso teórico de una evaluación, flashcards.md
 
 Genera el **mazo de repaso teórico** de una evaluación en dos formatos:
 
-- `materias/<materia>/<evaluacion>/flashcards.md` — para estudiar en el repo: cartas
-  con la respuesta oculta en `<details>` desplegables.
-- `materias/<materia>/<evaluacion>/flashcards-anki.tsv` — para importar en Anki y
-  repasar con repetición espaciada.
+- `materias/<materia>/<evaluacion>/repaso/flashcards.md` — para estudiar en el repo:
+  cartas con la respuesta oculta en `<details>` desplegables.
+- `materias/<materia>/<evaluacion>/repaso/flashcards-anki.tsv` — para importar en Anki
+  y repasar con repetición espaciada.
+
+(Ambos viven en `repaso/`, junto al machete. Si hace falta un HTML para estudiar con
+los desplegables, va a `exports/`: `venv/bin/python tools/md_to_html.py
+<eval>/repaso/flashcards.md --out-dir <eval>/exports`.)
 
 La fuente de verdad de QUÉ preguntar es la evidencia de los exámenes (checklist de
 `estrategia.md`); la fuente de verdad de QUÉ responder son los apuntes. **El contenido
