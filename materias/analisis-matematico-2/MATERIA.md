@@ -26,7 +26,15 @@
   baricentro/área), P2 circulación/trabajo o conservativo+potencial, P3 flujo
   (directo o Gauss), P4 EDO 2° orden o segundo flujo/volumen, T1/T2 demostraciones
   (conservativo, cambio de variables, Green, divergencia, superposición de EDO).
-- **Primer parcial:** _(documentar cuando se indexen los exámenes de `primer-parcial/examenes/`)_
+- **Primer parcial:** 4 problemas prácticos (P1–P4) + 2 teóricos (T1, T2), estructura
+  estable 2017–2026. El orden por posición NO es tan rígido como en el 2P, pero el
+  patrón temático sí: casi siempre **trayectorias ortogonales (EDO 1er orden)** en P1 o
+  P4, **derivada direccional** combinada con regla de la cadena + función implícita en
+  1–2 problemas, **curva intersección de superficies** (recta tangente / plano normal) y
+  **extremos por Hessiano**; rotan aproximación lineal, plano tangente a superficie y
+  Taylor de grado 2. Teóricos: definir + demostrar/calcular (los más reciclados:
+  derivadas direccionales de una función partida por definición, continuidad de función
+  partida, regla de la cadena, y "derivada direccional máxima = ‖∇f‖").
 - **Recuperatorios (2026-07-17):** se rinden los dos el mismo día. _(Estructura a
   confirmar; se asume la del parcial correspondiente hasta tener el enunciado.)_
 - **Final:** _(a documentar)_
@@ -38,27 +46,43 @@
   circulación), Green, campos conservativos y función potencial, superficies (área,
   masa de chapa, flujo), divergencia/Gauss, rotor/Stokes, EDO de 1er y 2° orden,
   superposición.
-- **Primer parcial:** funciones de varias variables, límites, derivadas parciales,
-  extremos (Hessiano, ligados). _(refinar cuando se procese el material)_
+- **Primer parcial:** ecuaciones diferenciales ordinarias de 1er orden (lineal, variables
+  separables, PVI) y trayectorias ortogonales; funciones de varias variables: dominio,
+  límites y continuidad, derivadas parciales, diferenciabilidad y aproximación lineal,
+  derivada direccional y gradiente, regla de la cadena (composición) y derivación
+  implícita, plano tangente y recta normal a superficies (incluida paramétrica), recta
+  tangente / plano normal a curvas en el espacio, polinomio de Taylor de grado 2,
+  extremos locales libres (Hessiano) y extremos sobre una región. **Ojo: el 1P de esta
+  cátedra SÍ incluye EDO**, no es solo varias variables.
 
 ## Fuentes
 
 - **Videos:** clases grabadas en YouTube _(canal del profesor; completar nombre/playlist)_.
   Transcripciones cacheadas en `<eval>/apuntes/transcripts/`.
 - **Exámenes reales:** 24 archivos del segundo parcial (2014–2026, incluido el
-  tomado el 2026-07-08) en `segundo-parcial/examenes/` + 8 archivos del primero
-  (compilación y fotos, sin indexar) en `primer-parcial/examenes/`.
+  tomado el 2026-07-08) en `segundo-parcial/examenes/`. Primer parcial: **17 exámenes de
+  contenido distinto** (15 reales + 2 simulacros de cátedra, 2017–2026) indexados en
+  `primer-parcial/examenes/INDICE.md`, con `resueltos/` (11 resoluciones de cátedra +
+  compilación) y `duplicados/` aparte.
 
 ## Leyenda de tags (para `examenes/INDICE.md`)
 
-`#Volumen` `#MasaCuerpo` `#Baricentro` `#AreaRegion` `#AreaSuperficie`
-`#LongitudCurva` `#Circulacion` `#Trabajo` `#Green` `#Conservativo`
-`#FuncionPotencial` `#Flujo` `#Divergencia` `#Rotor` `#Stokes` `#EDO`
-`#Superposicion` `#CambioVariables` `#MomentoInercia` `#Demostracion`
+Compartidos entre parciales: `#EDO` `#Demostracion`
+
+**Segundo parcial** (cálculo vectorial e integrales): `#Volumen` `#MasaCuerpo`
+`#Baricentro` `#AreaRegion` `#AreaSuperficie` `#LongitudCurva` `#Circulacion`
+`#Trabajo` `#Green` `#Conservativo` `#FuncionPotencial` `#Flujo` `#Divergencia`
+`#Rotor` `#Stokes` `#Superposicion` `#CambioVariables` `#MomentoInercia`
+
+**Primer parcial** (funciones de varias variables + EDO): `#TrayectoriasOrtogonales`
+`#Limite` `#Continuidad` `#DerivadasParciales` `#Diferenciabilidad`
+`#AproximacionLineal` `#DerivadaDireccional` `#Gradiente` `#ReglaCadena`
+`#DerivacionImplicita` `#PlanoTangente` `#SuperficieParametrizada` `#CurvaEspacio`
+`#Taylor` `#Extremos`
 
 ## Estado del material
 
 | Evaluación | Apuntes | INDICE | Estrategia | Poda | Plan | Registro | Flashcards | Machete | Simulacros |
 |---|---|---|---|---|---|---|---|---|---|
 | Segundo parcial (+recu) | ✅ 19 | ✅ 17 exámenes distintos | ✅ | ✅ | pendiente (usar `/plan` para el recu) | ✅ (vacío, listo para usar) | ✅ 61 cartas | ✅ | ✅ 1 |
-| Primer parcial (+recu) | — | pendiente (8 archivos sin indexar) | — | — | — | — | — | — | — |
+| Primer parcial (+recu) | — | ✅ 17 archivos (15 reales + 2 sim.) | — | — | — | — | — | — | — |
