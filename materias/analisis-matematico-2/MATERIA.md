@@ -10,8 +10,14 @@
 | Evaluación | Carpeta | Fecha | Estado |
 |---|---|---|---|
 | Primer parcial | `primer-parcial/` | _(ya rendido)_ | rendido |
-| Segundo parcial | `segundo-parcial/` | **2026-07-08** | **próximo** |
+| Segundo parcial | `segundo-parcial/` | 2026-07-08 | rendido |
+| Recuperatorio 1er parcial | `primer-parcial/` | **2026-07-17** | **próximo** |
+| Recuperatorio 2do parcial | `segundo-parcial/` | **2026-07-17** | **próximo** |
 | Final | `final/` _(carpeta a crear con /nueva-materia cuando se defina)_ | _(a definir)_ | pendiente |
+
+> Los recuperatorios se preparan en la **carpeta de su parcial** (mismo temario, mismos
+> apuntes y mismo dataset de exámenes). Como hay DOS evaluaciones próximas con la misma
+> fecha, las skills van a preguntar cuál de las dos (o pasales la ruta explícita).
 
 ## Estructura del examen
 
@@ -21,6 +27,8 @@
   (directo o Gauss), P4 EDO 2° orden o segundo flujo/volumen, T1/T2 demostraciones
   (conservativo, cambio de variables, Green, divergencia, superposición de EDO).
 - **Primer parcial:** _(documentar cuando se indexen los exámenes de `primer-parcial/examenes/`)_
+- **Recuperatorios (2026-07-17):** se rinden los dos el mismo día. _(Estructura a
+  confirmar; se asume la del parcial correspondiente hasta tener el enunciado.)_
 - **Final:** _(a documentar)_
 
 ## Temario por evaluación
@@ -37,9 +45,9 @@
 
 - **Videos:** clases grabadas en YouTube _(canal del profesor; completar nombre/playlist)_.
   Transcripciones cacheadas en `<eval>/apuntes/transcripts/`.
-- **Exámenes reales:** 23 archivos del segundo parcial (2014–2025) en
-  `segundo-parcial/examenes/` + compilación y fotos del primero en
-  `primer-parcial/examenes/`.
+- **Exámenes reales:** 24 archivos del segundo parcial (2014–2026, incluido el
+  tomado el 2026-07-08) en `segundo-parcial/examenes/` + 8 archivos del primero
+  (compilación y fotos, sin indexar) en `primer-parcial/examenes/`.
 
 ## Leyenda de tags (para `examenes/INDICE.md`)
 
@@ -50,7 +58,7 @@
 
 ## Estado del material
 
-| Evaluación | Apuntes | INDICE | Estrategia | Poda | Plan | Registro | Flashcards | Simulacros |
-|---|---|---|---|---|---|---|---|---|
-| Segundo parcial | ✅ 19 | ✅ 16 exámenes distintos | ✅ | ✅ | pendiente (usar `/plan`; hay plan inicial en estrategia §4) | ✅ (vacío, listo para usar) | ✅ 61 cartas | ✅ 1 |
-| Primer parcial | — | pendiente | — | — | — | — | — | — |
+| Evaluación | Apuntes | INDICE | Estrategia | Poda | Plan | Registro | Flashcards | Machete | Simulacros |
+|---|---|---|---|---|---|---|---|---|---|
+| Segundo parcial (+recu) | ✅ 19 | ✅ 17 exámenes distintos | ✅ | ✅ | pendiente (usar `/plan` para el recu) | ✅ (vacío, listo para usar) | ✅ 61 cartas | ✅ | ✅ 1 |
+| Primer parcial (+recu) | — | pendiente (8 archivos sin indexar) | — | — | — | — | — | — | — |
