@@ -85,4 +85,4 @@ Compartidos entre parciales: `#EDO` `#Demostracion`
 | Evaluación | Apuntes | INDICE | Estrategia | Poda | Plan | Registro | Flashcards | Machete | Simulacros |
 |---|---|---|---|---|---|---|---|---|---|
 | Segundo parcial (+recu) | ✅ 19 | ✅ 17 exámenes distintos | ✅ | ✅ | ✅ (combinado 1P+2P) | ✅ (vacío, listo para usar) | ✅ 61 cartas | ✅ | ✅ 1 |
-| Primer parcial (+recu) | — | ✅ 16 reales + 2 sim. | ✅ | — | ✅ (combinado 1P+2P) | — | — | — | — |
+| Primer parcial (+recu) | — | ✅ 16 reales + 2 sim. | ✅ | — | ✅ (combinado 1P+2P) | — | — | ✅ | — |
