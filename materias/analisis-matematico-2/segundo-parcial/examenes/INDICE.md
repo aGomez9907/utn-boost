@@ -154,6 +154,15 @@
 - **T1)** Enunciar el Teorema de Green. `f = (y+g(x), 2x+g(y))`; suponiendo que se puede aplicar, calcular la circulación a lo largo de la frontera de `D = {x²+y² ≤ 2y}` (indicar orientación). → #Green #Circulacion
 - **T2)** Definir solución general y solución particular de una EDO de orden `n`. Hallar la solución particular de `y'' − y = 4`, con `y(0) = −3`, `y'(0) = −1`. → #EDO
 
+## 2026-07-08  ·  `2026-07-08_Parcial.jpeg` (foto)  ·  **[examen tomado — el real]**
+
+- **P1)** Volumen del cuerpo `(x−1)² + y² ≤ z ≤ 5 − 2x`. → #Volumen
+- **P2)** Área de la superficie `z + y = x²` con `|y| ≤ x`, `x ≤ 1`. → #AreaSuperficie
+- **P3)** Flujo de `f = (−y, x, xz)` a través de la superficie **abierta** `x²+y² = 2x` con `z ≤ 4−x²−y²`, en el 1er octante. → #Flujo
+- **P4)** EDO `y'' − y = x+1`; hallar la solución particular cuya recta tangente en `(0, y₀)` tiene ecuación `x + y = 2`. → #EDO **[RECICLADO]**
+- **T1)** Definir función potencial de un campo vectorial. Analizar si `f = (2x/(x²+y²), 2y/(x²+y²))` admite función potencial y, en caso afirmativo, calcularla. → #FuncionPotencial #Conservativo
+- **T2)** Enunciar el teorema de cambio de variables en integrales dobles. Mediante `g(u,v) = (u+2v, 2u+v)`, `D` (plano XY) se transforma en `D*` (plano UV); calcular área(D\*) sabiendo que área(D) = 12. → #CambioVariables **[RECICLADO]**
+
 ## sin fecha  ·  `sin-fecha_Parcial.jpeg` (foto)  ·  ⚠ la hoja NO trae fecha; comparte la T2 (integral polar) con 2024-07-12 → probablemente período 2024–2025
 
 - **P1)** Área de la región `D` encerrada por la curva `C`: `λ(t) = (t−t³, t−t⁴)`, `0 ≤ t ≤ 1`. → #AreaRegion
@@ -169,20 +178,20 @@
 
 | Tag | Aparece en |
 |---|---|
-| `#Volumen` | 2014-11-28, 2016-07-06, 2016-11-25, 2017-07-05, 2019-11-21, 2022-07-15, 2022-11-24, 2023-07-28, **2024-07-12**, **2025-07-18** |
+| `#Volumen` | 2014-11-28, 2016-07-06, 2016-11-25, 2017-07-05, 2019-11-21, 2022-07-15, 2022-11-24, 2023-07-28, **2024-07-12**, **2025-07-18**, **2026-07-08** |
 | `#MasaCuerpo` | 2017-11-16, 2022-12-02, 2022-12-16, 2023-07-14 |
 | `#Baricentro` / `#AreaRegion` | 2017-07-05, 2023-07-14, **sin-fecha** |
-| `#AreaSuperficie` | 2014-11-28, 2015-11-25, 2019-11-21, **2024-07-12** |
+| `#AreaSuperficie` | 2014-11-28, 2015-11-25, 2019-11-21, **2024-07-12**, **2026-07-08** |
 | `#LongitudCurva` | 2017-07-05 |
 | `#Circulacion` / `#Trabajo` | 2014-11-28, 2016-07-06, 2016-11-25, 2017-11-16, 2019-11-21, 2022-12-02, 2022-12-16, 2023-07-28, **2025-07-18**, **sin-fecha** |
 | `#Green` | 2014-11-28, 2017-11-16, 2019-11-21, 2022-07-15, **2024-07-12**, **2025-07-18**, **sin-fecha** |
-| `#Conservativo` / `#FuncionPotencial` | 2015-11-25, 2016-11-25, 2017-11-16, 2019-11-21, 2022-07-15, 2022-11-24, 2022-12-02, 2022-12-16, 2023-07-14, + teoría en casi todos |
-| `#Flujo` | 2014-11-28, 2015-11-25, 2016-07-06, 2016-11-25, 2017-07-05, 2017-11-16, 2022-07-15, 2022-11-24, 2022-12-02, 2022-12-16, 2023-07-14, 2023-07-28, **2024-07-12**, **2025-07-18**, **sin-fecha** |
+| `#Conservativo` / `#FuncionPotencial` | 2015-11-25, 2016-11-25, 2017-11-16, 2019-11-21, 2022-07-15, 2022-11-24, 2022-12-02, 2022-12-16, 2023-07-14, **2026-07-08**, + teoría en casi todos |
+| `#Flujo` | 2014-11-28, 2015-11-25, 2016-07-06, 2016-11-25, 2017-07-05, 2017-11-16, 2022-07-15, 2022-11-24, 2022-12-02, 2022-12-16, 2023-07-14, 2023-07-28, **2024-07-12**, **2025-07-18**, **2026-07-08**, **sin-fecha** |
 | `#Divergencia` | 2015-11-25, 2016-11-25, 2022-07-15, 2022-12-02, 2023-07-14, 2023-07-28, **2024-07-12**, **2025-07-18** |
 | `#Rotor` / `#Stokes` | 2022-12-16, **sin-fecha** |
-| `#EDO` | 2015-11-25, 2016-07-06, 2016-11-25, 2019-11-21, 2022-07-15, 2022-11-24, 2023-07-28, **2024-07-12**, **2025-07-18**, **sin-fecha** |
+| `#EDO` | 2015-11-25, 2016-07-06, 2016-11-25, 2019-11-21, 2022-07-15, 2022-11-24, 2023-07-28, **2024-07-12**, **2025-07-18**, **2026-07-08**, **sin-fecha** |
 | `#Superposicion` | 2015-11-25, 2017-07-05, 2017-11-16, 2022-07-15, 2022-11-24 |
-| `#CambioVariables` | 2016-07-06, 2022-12-02, 2022-12-16, 2023-07-14, 2023-07-28, **2024-07-12**, **sin-fecha** |
+| `#CambioVariables` | 2016-07-06, 2022-12-02, 2022-12-16, 2023-07-14, 2023-07-28, **2024-07-12**, **2026-07-08**, **sin-fecha** |
 | `#MomentoInercia` | (no aparece en ningún parcial — cubierto en apunte 03 pero no se toma) |
 
 ## Problemas reciclados (idénticos o casi entre fechas)
@@ -191,7 +200,8 @@
 - **Circulación `f = (yz, 2xz, xy)`** sobre intersección de paraboloides → 2016-07-06, 2023-07-28.
 - **Flujo `f = (x−yz, y+xz, z+2xy)`** sobre superficie esférica → 2022-12-02, 2023-07-14.
 - **Volumen `2x²+2y²+z² ≤ 3`, `z ≥ √(x²+y²)`** → 2016-07-06, 2023-07-28.
-- **Cambio de variables `(x,y)=(u+2v,2u+v)` / `(v−2u,u+v)` → área(D\*)** → 2016-07-06, 2022-12-02, 2022-12-16, 2023-07-14, 2023-07-28.
+- **Cambio de variables `(x,y)=(u+2v,2u+v)` / `(v−2u,u+v)` → área(D\*)** → 2016-07-06, 2022-12-02, 2022-12-16, 2023-07-14, 2023-07-28, **2026-07-08**. El **2026-07-08 T2** usa la transformación EXACTA del **2016-07-06 T1** (`(u+2v,2u+v)`): sólo cambia el dato área(D)=12 (era 6). Prácticamente el mismo teórico.
+- **EDO "hallar la solución particular cuya recta tangente en `(0, y₀)` es …"** → **sin-fecha** (`y''−6y'+9y=9x`, tangente `y=x+2`), **2026-07-08** (`y''−y=x+1`, tangente `x+y=2`). Mismo formato de dato (recta tangente ⟹ `y(0)` e `y'(0)`). Además el operador `y''−y` del **2026-07-08 P4** es el del **2025-07-18 T2** (`y''−y=4`).
 - **Green con `f = (xy²/2, 3x²y/2)` sobre `x² ≤ y ≤ x`** → 2019-11-21, 2022-07-15, **2024-07-12**, **sin-fecha** (y variante `(xy², 3x²y)`). **(el T1 más reciclado — casi fijo)**
 - **Potencial de `f = (2xy + 2x·g'(x²), x²)`** (teórico) → 2022-12-02, 2022-12-16, 2023-07-14.
 - **T2 «integral polar `∫₀^{π/2}∫₀^{2cos φ} ρ³ dρ dφ` → graficar región + pasar a cartesianas»** → 2024-07-12, **sin-fecha**. (Formato nuevo de T2 de cambio de variables, 2024–2025.)
@@ -211,4 +221,4 @@
 
 ---
 
-*Índice generado el 2026-07-01 y ampliado el 2026-07-04 con 3 parciales nuevos (2024-07-12, 2025-07-18 y uno sin fecha), a partir de la lectura (con visión) de los 23 archivos. Los enunciados de exámenes escaneados/foto pueden tener detalles menores aproximados.*
+*Índice generado el 2026-07-01, ampliado el 2026-07-04 con 3 parciales nuevos (2024-07-12, 2025-07-18 y uno sin fecha) y el 2026-07-09 con el examen realmente tomado (2026-07-08), a partir de la lectura (con visión) de los 24 archivos. Los enunciados de exámenes escaneados/foto pueden tener detalles menores aproximados.*

@@ -50,6 +50,9 @@ body {{
   summary {{ background: #232730; }}
   blockquote {{ color: #aab; border-color: #30343c; }}
   code {{ background: #232730; }}
+  th {{ background: #232730; }}
+  th, td {{ border-color: #30343c; }}
+  tbody tr:nth-child(even) {{ background: #1c1f24; }}
 }}
 h1, h2, h3 {{ line-height: 1.25; margin-top: 1.8rem; }}
 h1 {{ border-bottom: 2px solid currentColor; padding-bottom: .3rem; }}
@@ -70,11 +73,21 @@ summary {{
 details details {{ margin-left: .2rem; }}
 .katex-display {{ overflow-x: auto; overflow-y: hidden; padding: .3rem 0; }}
 .katex-error {{ color: #d1242f; }}
+table {{ border-collapse: collapse; margin: 1rem 0; }}
+th, td {{ border: 1px solid #c9ccd1; padding: .35rem .65rem; text-align: left; vertical-align: top; }}
+th {{ background: #f1f3f5; }}
+tbody tr:nth-child(even) {{ background: #f8f9fa; }}
 @media print {{
   body {{ margin: 1.2cm; max-width: none; color: #000; background: #fff; }}
   summary {{ background: none; margin: 0; padding: .2rem 0; }}
   details {{ border-color: #ccc; background: #fff; padding: 0; }}
   a {{ color: #000; }}
+  tr, blockquote, .katex-display {{ page-break-inside: avoid; }}
+  thead {{ display: table-header-group; }}
+  h1, h2, h3 {{ page-break-after: avoid; }}
+  th, td {{ border-color: #999; }}
+  th {{ background: #ececec; -webkit-print-color-adjust: exact; print-color-adjust: exact; }}
+  tbody tr:nth-child(even) {{ background: #f5f5f5; -webkit-print-color-adjust: exact; print-color-adjust: exact; }}
 }}
 </style>
 </head>
