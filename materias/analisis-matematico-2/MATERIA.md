@@ -35,8 +35,10 @@
   Taylor de grado 2. Teóricos: definir + demostrar/calcular (los más reciclados:
   derivadas direccionales de una función partida por definición, continuidad de función
   partida, regla de la cadena, y "derivada direccional máxima = ‖∇f‖").
-- **Recuperatorios (2026-07-17):** se rinden los dos el mismo día. _(Estructura a
-  confirmar; se asume la del parcial correspondiente hasta tener el enunciado.)_
+- **Recuperatorios (2026-07-17):** se rinden los dos el mismo día. Lucho lo menciona
+  como **"parcial integrador"** (2026-07-14): podría ser un único examen que mezcle
+  ambos temarios. _(Estructura a confirmar; hasta tener el enunciado se asume la del
+  parcial correspondiente — para la preparación da igual: unión de los dos temarios.)_
 - **Final:** _(a documentar)_
 
 ## Temario por evaluación
