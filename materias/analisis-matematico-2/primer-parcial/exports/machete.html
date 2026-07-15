@@ -76,14 +76,14 @@ tbody tr:nth-child(even) { background: #f8f9fa; }
 | El enunciado dice… | Herramienta |
 |---|---|
 | familia de curvas **ortogonales** a … | §4: pasar a $y'=f(x,y)$, ortogonal $y'=-1/f$, resolver |
-| resolver / verificar una **EDO** | §4: 1er orden lineal (factor integrante) o característica |
+| resolver / verificar una **EDO** | §4: 1er orden (factor integrante / separables); $y''+py'+qy=0$ → característica (§11) |
 | derivada direccional **máxima / mínima / nula** | §1: máx $=\lVert\nabla f\rVert$ dir $\nabla f$; nula $\perp\nabla f$ |
 | me dan $f'(A,\hat u_1), f'(A,\hat u_2)$, piden otra | §1: sistema $2\times2$ para $\nabla f$, después proyectar |
-| $h=g\circ f$ (o $f(g)$), $g$ **implícita** | §2+§3: $\nabla g$ por implícita → $\nabla h=\nabla g\cdot Df$ |
-| $h=f(g)$ con $\nabla f$ y jacobiana $Dg$ dados | §2: $\nabla h(a,b)=\nabla f(g)\cdot Dg$ |
+| $h=g\circ f$ con $g$ (la de afuera) **implícita** | §2+§3: $\nabla g$ por implícita → $\nabla h=\nabla g\cdot Df$ |
+| $h=f(g)$ con $\nabla f$ y jacobiana $Dg$ dados | §2: $\nabla h(a,b)=\nabla f(g(a,b))\cdot Dg(a,b)$ |
 | valor **aproximado** de $z$ (aprox. lineal) | §7: $z\approx z_0+z_x\Delta x+z_y\Delta y$, $z_x,z_y$ por implícita |
 | **extremos locales** de $f(x,y)$ | §5: $\nabla f=0$ → Hessiano |
-| recta tangente / **plano normal a una curva** (intersección o $\lambda(t)$) | §6: $T=\nabla S_1\times\nabla S_2$ (o $\lambda'$) |
+| recta tangente / **plano normal a una curva** (intersección o $\lambda(t)$) | §6: $\bar T=\nabla F_1\times\nabla F_2$ (o $\lambda'$) |
 | plano tangente / **recta normal a una superficie** | §8: normal $=\nabla F$ (o $\sigma_u\times\sigma_v$) |
 | me dan el **polinomio de Taylor** grado 2 | §9: leer $f,\nabla f,H$ de los coeficientes |
 | definir/calcular por **definición** (función partida) | §10: cociente incremental / límite por trayectorias |
@@ -103,7 +103,7 @@ $$
 | dirección de derivada **nula** | las $\perp\nabla f$: en 2D $\hat u=\pm\dfrac{(-f_y,\,f_x)}{\lVert\nabla f\rVert}$ |
 
 - **OJO dirección vs. versor:** si dan un vector $\bar v$ NO unitario, la "derivada direccional según $\bar v$" de esta cátedra es $\nabla f\cdot\bar v$ (sin normalizar) salvo que aclaren "unitario".
-- **Problema "con datos"** (2022-05-20, 2022-06-01 P1): $\nabla f=(p,q)$ incógnita; cada dato $f'(A,\hat u_i)=c_i$ da $p\,u_{i1}+q\,u_{i2}=c_i$ → sistema $2\times2$ → despejás $(p,q)$ → después $f'(A,\hat u_3)=\nabla f\cdot\hat u_3$. Direcciones nulas: $\perp(p,q)$.
+- **Problema "con datos"** (P1 de 2022-05-20 y de 2022-06-01): $\nabla f=(p,q)$ incógnita; cada dato $f'(A,\hat u_i)=c_i$ da $p\,u_{i1}+q\,u_{i2}=c_i$ → sistema $2\times2$ → despejás $(p,q)$ → después $f'(A,\hat u_3)=\nabla f\cdot\hat u_3$. Direcciones nulas: $\perp(p,q)$.
 
 ---
 
@@ -114,9 +114,9 @@ h(x,y)=f\big(g(x,y)\big)\ \Rightarrow\ Dh=Df(g)\cdot Dg,\qquad \nabla h=\nabla f
 $$
 
 - $Dg$ = matriz jacobiana de $g$ (filas = componentes de $g$, columnas = $\partial/\partial x,\partial/\partial y$).
-- **Caso `h=f(g)` con datos** (2022-12-01, 2022-12-16, 2023-05-31, 2026-05-22): te dan $\nabla f$ en el punto imagen $g(a,b)$ y la jacobiana $Dg(a,b)$ → multiplicás → $\nabla h(a,b)$ → aplicás §1 (máxima $=\lVert\nabla h\rVert$).
-- **Caso `h=g∘f` con `g` implícita** (2018-07-12, 2019-08-15, 2023-07-28): primero $\nabla g$ por §3, después $\nabla h=\nabla g\cdot Df$.
-- **Teórico "enunciar + calcular $\nabla h$"** (2022-08-11, 2022-10-12): $\nabla h(1,2)=\nabla f(g(1,2))\cdot Dg(1,2)$ con $Df=(uv^2,u^2v)$, $g=(2x+y^2,yx^2)$.
+- **Caso `h=f(g)` con datos** (2022-05-20, 2022-06-01, 2022-12-01, 2022-12-16, 2023-05-31, 2026-05-22): te dan $\nabla f$ en el punto imagen $g(a,b)$ y la jacobiana $Dg(a,b)$ (numérica, o la calculás de la fórmula de $g$) → multiplicás → $\nabla h(a,b)$ → aplicás §1 (máxima $=\lVert\nabla h\rVert$).
+- **Caso `h=g∘f` con `g` implícita** (2018-07-12, 2018-10-05, 2019-05-22, 2019-08-15, 2023-07-28): primero $\nabla g$ por §3, después $\nabla h=\nabla g\cdot Df$ — resultado verificado en §11. (Mismo esquema con los nombres al revés en 2019-10-11: $h=f\circ\bar g$ con $f$ implícita.)
+- **Teórico "enunciar + calcular $\nabla h$"** (2022-08-11, 2022-10-12): $\nabla h(1,2)=\nabla f(g(1,2))\cdot Dg(1,2)$ con $Df=(uv^2,u^2v)$, $g=(2x+y^2,yx^2)$ → $g(1,2)=(6,2)$, $\nabla f(6,2)=(24,72)$, $\nabla h(1,2)=(336,168)$.
 
 ---
 
@@ -128,19 +128,19 @@ $$
 f_x=-\frac{F_x}{F_z},\qquad f_y=-\frac{F_y}{F_z}\qquad(F_z\ne0)
 $$
 
-- Superficie $g(u,v)$ dada por $G(u,v,z)=0$: igual, $g_u=-G_u/G_z$, $g_v=-G_v/G_z$ → $\nabla g=(g_u,g_v)$.
-- Primero hallá el punto base: reemplazá $(x,y)$ dados y despejá $z_0$ (probar valores enteros que anulen el $\ln$/exponente).
-- Teorema de la función implícita (para justificar): $F\in C^1$ y $F_z(P)\ne0$ ⇒ $z=f(x,y)$ existe y es $C^1$ en un entorno.
+- Función $z=g(u,v)$ dada por $G(u,v,z)=0$ (el caso del combo de §2): igual, $g_u=-G_u/G_z$, $g_v=-G_v/G_z$ → $\nabla g=(g_u,g_v)$.
+- Primero hallá el punto base: reemplazá $(x,y)$ dados y despejá $z_0$ (probá enteros que hagan $\ln(\cdot)=\ln 1=0$ o el exponente $=0$).
+- Teorema de la función implícita (para justificar): $F(P)=0$, $F\in C^1$ y $F_z(P)\ne0$ ⇒ $z=f(x,y)$ existe y es $C^1$ en un entorno.
 
 ---
 
-## 4 · EDO de 1er orden + trayectorias ortogonales (94% / 63%)
+## 4 · EDO de 1er orden + trayectorias ortogonales (EDO 94% · trayectorias 63%)
 
 **Trayectorias ortogonales** — receta:
 
 1. De la familia $F(x,y,C)=0$, derivar y **eliminar $C$** → queda $y'=f(x,y)$.
 2. Familia ortogonal: reemplazar $y'\to-\dfrac{1}{f(x,y)}$.
-3. Resolver esa EDO (separable). Ajustar la constante con el punto dado.
+3. Resolver esa EDO (en todos los reciclados salió separable). Ajustar la constante con el punto dado.
 
 **EDO lineal de 1er orden** $y'+P(x)\,y=Q(x)$ — factor integrante:
 
@@ -149,7 +149,7 @@ $$
 $$
 
 - Variables separables: $\dfrac{dy}{dx}=A(x)B(y)\Rightarrow\displaystyle\int\frac{dy}{B(y)}=\int A(x)\,dx$.
-- **Definir solución general/particular** (teórico): general = con constantes libres; particular = con las constantes fijadas por condiciones.
+- **Definir solución general/particular** (teórico): general (orden $n$) = familia con $n$ constantes arbitrarias esenciales; particular = la que sale de fijar esas constantes con las condiciones dadas (PVI / punto).
 
 ---
 
@@ -184,7 +184,7 @@ $$
 - **Recta tangente:** $X=P+t\,\bar T$.  **Plano normal:** $\bar T\cdot(X-P)=0$.
 - Curva paramétrica $\lambda(t)$: $\bar T=\lambda'(t_0)$.
 - **Intersección curva–superficie** (2022-08-11, 2022-10-12): meter $\lambda(t)$ en la ecuación de la superficie → resolver en $t$ → evaluar.
-- "Plano que **contiene** la curva de nivel $z=$cte de la intersección": el de la superficie constante (p. ej. $y=3$, o $z=x+y$).
+- **"Determinar el plano que contiene la curva"** (2019-05-22, 2019-08-15, 2023-07-28): combiná las dos ecuaciones para eliminar el término cuadrático repetido — p. ej. de $x^2+y^2=25$ y $y^2+z^2=25$ sale $x^2=z^2$ → plano $x=z$ (el signo lo elige el punto). Si una de las superficies ya ES un plano ($y=3$ en 2026-05-22, $z=x+y$ en 2018-07-12), es ese.
 
 ---
 
@@ -242,35 +242,39 @@ Reemplazar y ver si el límite depende de $(a,b)$ o no existe (para $f_x$: $(a,b
 - **V/F "discontinua / no admite derivada en ninguna dirección":** calcular el límite (para continuidad) y la derivada direccional por definición (para la 2ª); justificar cada una.
 - **Derivada direccional máxima $=\lVert\nabla f\rVert$:** $f'(A,\hat u)=\nabla f\cdot\hat u=\lVert\nabla f\rVert\cos\theta$, máximo en $\theta=0$ ($\hat u\parallel\nabla f$). Nula: $\theta=\pi/2$.
 - **Diferenciable ⇒ continua:** de la definición de diferenciabilidad, $\lim_{h\to0}[f(A+h)-f(A)]=0$.
-- **Regla de la cadena (enunciar):** $f,g$ derivables ⇒ $h=f\circ g$ derivable y $Dh=Df\cdot Dg$.
+- **Regla de la cadena (enunciar):** $g$ diferenciable en $A$ y $f$ diferenciable en $g(A)$ ⇒ $h=f\circ g$ diferenciable en $A$, con $Dh(A)=Df(g(A))\cdot Dg(A)$.
 
 ---
 
 ## 11 · Reciclados con resultado verificado (autocorrección)
 
-> Practicá desde el enunciado real (`examenes/`) y chequeá acá. Los checksums de trayectorias ortogonales, Taylor, `f'_y` y la característica están computados; en los combos direccionales largos figura el método y "ver resuelto" para el número final.
+> Practicá desde el enunciado real (`examenes/`) y chequeá acá. Todos los resultados están computados y verificados cruzando las familias recicladas del `INDICE.md`; donde además existe resuelto de cátedra (`examenes/resueltos/`), contrastá ahí el desarrollo completo.
 
 **Trayectorias ortogonales** (familia ortogonal + curva por el punto):
 
 | Examen | Familia dada | Familia ortogonal | Curva por el punto |
 |---|---|---|---|
 | 2018-07-12 | $y=Ce^{2x}$ | $x+y^2=K$ | por $(1,1)$: $x+y^2=2$ |
-| 2019-05-22 | $y=C/x$ | $y^2-x^2=K$ | por $(1,1)$: $y^2=x^2$ |
+| 2018-10-05 | $y=Ce^{-x}$ | $y^2-2x=K$ | por $(1,1)$: $y^2=2x-1$ |
+| 2019-05-22 | $y=C/x$ | $y^2-x^2=K$ | por $(1,1)$: $y^2=x^2$ (rama $y=x$) |
 | 2019-08-15 | $xy^2=C$ | $y^2-2x^2=K$ | por $(1,2)$: $y^2-2x^2=2$ |
-| 2023-07-28 | $xy^2=k$ | $y^2-2x^2=K$ | por $(1,3)$: $y^2-2x^2=7$ |
+| 2022-08-11 | $y=kx$ | $x^2+y^2=K$ | por $(3,4)$: $x^2+y^2=25$ |
+| 2022-10-12 | $y=kx$ | $x^2+y^2=K$ | por $(3,-4)$: $x^2+y^2=25$ |
+| 2022-12-01 | $y=k/x$ | $y^2-x^2=K$ | por $(3,4)$: $y^2-x^2=7$ |
 | 2022-12-16 | $y=Cx$ | $x^2+y^2=K$ | por $(4,-3)$: $x^2+y^2=25$ |
-| 2023-05-31 | $y=kx^3$ | $x^2+3y^2=K$ | por $(3,4)$: $x^2+3y^2=57$ |
+| 2023-05-31 | $y=kx^3$ | $x^2+3y^2=K$ | por $(3,4)$: $x^2+3y^2=57$ · pide además ambas por $(1,1)$: $y=x^3$ y $x^2+3y^2=4$ |
+| 2023-07-28 | $xy^2=k$ | $y^2-2x^2=K$ | por $(1,3)$: $y^2-2x^2=7$ |
 
-**Aproximación lineal** $xz+e^{yz-2}-2=0$: punto base $(1,2,z_0{=}1)$, $z_x=z_y=-\tfrac13$.
-- 2022-05-20 $(1.03,1.98)$: $z\approx 0.997$. · 2026-05-22 $(1.01,1.98)$: $z\approx 1.003$. *(verificá con el resuelto)*
+**Aproximación lineal** $xz+e^{yz-2}-2=0$: punto base $(1,2,z_0{=}1)$, $z_x=z_y=-\tfrac13$ ⇒ $z\approx1-\tfrac{\Delta x+\Delta y}{3}$.
+- 2022-05-20 $(1.03,1.98)$: $z\approx 0.997$ · 2026-05-22 $(1.01,1.98)$: $z\approx 1.003$. *(estas dos fechas NO tienen resuelto de cátedra: el checksum de acá es el control)*
 
 **Taylor** $p=5+x^2+x(y-1)+4(y-1)^2$ en $(0,1)$ (2019-10-11 P4): $\nabla f(0,1)=(0,0)$ ⇒ **es crítico**; $f_{xx}=2,\ f_{xy}=1,\ f_{yy}=8$, $D=15>0$ ⇒ **mínimo local**; plano tangente $z=5$.
 
-**Teórico $f'_y$ con datos** (2023-05-31 T2): $f'((1,1),(1,3))=f_x+3f_y=17$ y $\lim=f_x=5$ ⇒ $\boxed{f_y(1,1)=4}$.
+**Teórico $f'_y$ con datos** (2023-05-31 T2, repetido en el sim 2024-05-17): $f'((1,1),(1,3))=f_x+3f_y=17$ y $\lim=f_x=5$ ⇒ $\boxed{f_y(1,1)=4}$.
 
-**EDO característica** (2022-05-20, 2022-12-16 T): $y=e^{mx}$ en $y''-y'-2y=0$ ⇒ $m^2-m-2=0$ ⇒ $m=2,-1$ ⇒ $y=C_1e^{2x}+C_2e^{-x}$.
+**EDO característica** (2022-05-20, 2022-12-16 T): $y=e^{mx}$ en $y''+py'+qy=0$ ⇒ $m^2+pm+q=0$ ⇒ $m=\frac{-p\pm\sqrt{p^2-4q}}{2}$ (el enunciado pide expresarlo así). Aplicado a $y''-y'-2y=0$: $m=2,-1$ ⇒ $y=C_1e^{2x}+C_2e^{-x}$.
 
-**Combo direccional `h=g∘f`** ($f=(xy^2,y-x^2)$, $g$: $z-u^2+v^2+\ln(v+z)=0$, en $(1,1)$): método → $\nabla g$ por implícita + $Df$ + $\nabla h=\nabla g\cdot Df$ → máx/mín/nula por §1. *(números en `resueltos/AMII 1P 2018-07-12/2019-08-15… resuelto.pdf`)*
+**Combo direccional `h=g∘f`** — las 5 fechas usan el mismo par: $\bar f=(xy^2,\,y-x^2)$ con $g$: $z-u^2+v^2+\ln(v+z)=0$ (2018-07-12, 2018-10-05, 2019-08-15) o el espejo $\bar f=(y-x^2,\,xy^2)$ con $g$: $z+u^2-v^2+\ln(u+z)=0$ (2019-05-22, 2023-07-28), siempre en $(1,1)$. Método: $\bar f(1,1)$ → $z_0$ → $\nabla g$ por §3 → $\nabla h=\nabla g\cdot Df$. **Resultado idéntico en las 5:** $z_0=1$, $\nabla h(1,1)=(2,\tfrac32)$ ⇒ máx $\tfrac52$ en $(\tfrac45,\tfrac35)$ · mín $-\tfrac52$ en $(-\tfrac45,-\tfrac35)$ · nulas $\pm(-\tfrac35,\tfrac45)$. Checkpoint intermedio (sabor 2018): $\bar f(1,1)=(1,0)$, $\nabla g(1,0)=(1,-\tfrac12)$. *(las 5 fechas tienen resuelto de cátedra en `resueltos/`)*
 
 ---
 
@@ -287,7 +291,7 @@ Reemplazar y ver si el límite depende de $(a,b)$ o no existe (para $f_x$: $(a,b
 
 ---
 
-*Generado el 2026-07-10 desde `estrategia.md`, `examenes/INDICE.md` y `examenes/resueltos/` (no hay apuntes propios del 1P). Teóricos/demostraciones completas: checklist de `estrategia.md`. Iterá sobre este `.md`; exportá con `/machete --pdf`.*
+*Generado el 2026-07-10 y revisado el 2026-07-15 (corregida la receta del "plano que contiene la curva" en §6, completados los checksums de §11 —trayectorias ×10, combo direccional con números, característica general— y precisiones en §0/§2/§3/§10) desde `estrategia.md`, `examenes/INDICE.md` y `examenes/resueltos/` (no hay apuntes propios del 1P). Teóricos/demostraciones completas: checklist de `estrategia.md`. Iterá sobre este `.md`; exportá con `/machete --pdf`.*
 
 </script>
 
