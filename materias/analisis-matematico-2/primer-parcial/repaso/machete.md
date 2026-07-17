@@ -1,10 +1,3 @@
-# MACHETE — AM2 · Primer parcial
-
-> Solo fórmulas y recetas, sin explicaciones. Orden: identificar → plantear → calcular.
-> Basado en el patrón real de 16 parciales (`examenes/INDICE.md`). Sin apuntes propios: las recetas salen de la estrategia + los resueltos de cátedra.
-
----
-
 ## 0 · Tabla de decisión: ¿qué me están pidiendo?
 
 | El enunciado dice… | Herramienta |
@@ -37,7 +30,7 @@ $$
 | dirección de derivada **nula** | las $\perp\nabla f$: en 2D $\hat u=\pm\dfrac{(-f_y,\,f_x)}{\lVert\nabla f\rVert}$ |
 
 - **OJO dirección vs. versor:** si dan un vector $\bar v$ NO unitario, la "derivada direccional según $\bar v$" de esta cátedra es $\nabla f\cdot\bar v$ (sin normalizar) salvo que aclaren "unitario".
-- **Problema "con datos"** (P1 de 2022-05-20 y de 2022-06-01): $\nabla f=(p,q)$ incógnita; cada dato $f'(A,\hat u_i)=c_i$ da $p\,u_{i1}+q\,u_{i2}=c_i$ → sistema $2\times2$ → despejás $(p,q)$ → después $f'(A,\hat u_3)=\nabla f\cdot\hat u_3$. Direcciones nulas: $\perp(p,q)$.
+- **Problema "con datos"** (reciclado): $\nabla f=(p,q)$ incógnita; cada dato $f'(A,\hat u_i)=c_i$ da $p\,u_{i1}+q\,u_{i2}=c_i$ → sistema $2\times2$ → despejás $(p,q)$ → después $f'(A,\hat u_3)=\nabla f\cdot\hat u_3$. Direcciones nulas: $\perp(p,q)$.
 
 ---
 
@@ -48,9 +41,9 @@ h(x,y)=f\big(g(x,y)\big)\ \Rightarrow\ Dh=Df(g)\cdot Dg,\qquad \nabla h=\nabla f
 $$
 
 - $Dg$ = matriz jacobiana de $g$ (filas = componentes de $g$, columnas = $\partial/\partial x,\partial/\partial y$).
-- **Caso `h=f(g)` con datos** (2022-05-20, 2022-06-01, 2022-12-01, 2022-12-16, 2023-05-31, 2026-05-22): te dan $\nabla f$ en el punto imagen $g(a,b)$ y la jacobiana $Dg(a,b)$ (numérica, o la calculás de la fórmula de $g$) → multiplicás → $\nabla h(a,b)$ → aplicás §1 (máxima $=\lVert\nabla h\rVert$).
-- **Caso `h=g∘f` con `g` implícita** (2018-07-12, 2018-10-05, 2019-05-22, 2019-08-15, 2023-07-28): primero $\nabla g$ por §3, después $\nabla h=\nabla g\cdot Df$ — resultado verificado en §11. (Mismo esquema con los nombres al revés en 2019-10-11: $h=f\circ\bar g$ con $f$ implícita.)
-- **Teórico "enunciar + calcular $\nabla h$"** (2022-08-11, 2022-10-12): $\nabla h(1,2)=\nabla f(g(1,2))\cdot Dg(1,2)$ con $Df=(uv^2,u^2v)$, $g=(2x+y^2,yx^2)$ → $g(1,2)=(6,2)$, $\nabla f(6,2)=(24,72)$, $\nabla h(1,2)=(336,168)$.
+- **Caso `h=f(g)` con datos** (reciclado ×6): te dan $\nabla f$ en el punto imagen $g(a,b)$ y la jacobiana $Dg(a,b)$ (numérica, o la calculás de la fórmula de $g$) → multiplicás → $\nabla h(a,b)$ → aplicás §1 (máxima $=\lVert\nabla h\rVert$).
+- **Caso `h=g∘f` con `g` implícita** (reciclado ×5): primero $\nabla g$ por §3, después $\nabla h=\nabla g\cdot Df$ — resultado verificado en §11. (A veces viene con los nombres al revés: $h=f\circ\bar g$ con $f$ implícita — mismo esquema.)
+- **Teórico "enunciar + calcular $\nabla h$"** (reciclado): $\nabla h(1,2)=\nabla f(g(1,2))\cdot Dg(1,2)$ con $Df=(uv^2,u^2v)$, $g=(2x+y^2,yx^2)$ → $g(1,2)=(6,2)$, $\nabla f(6,2)=(24,72)$, $\nabla h(1,2)=(336,168)$.
 
 ---
 
@@ -103,7 +96,7 @@ $$
 | $D<0$ | punto silla (no extremo) |
 | $D=0$ | no decide → analizar a mano (signo de $f-f(P)$) |
 
-- **Extremos sobre una región** (2018-10-05: $x^2+y^2\le4$): críticos interiores **+** frontera (parametrizar la frontera o Lagrange $\nabla f=\lambda\nabla g$) → comparar valores.
+- **Extremos sobre una región** (p. ej. $x^2+y^2\le4$): críticos interiores **+** frontera (parametrizar la frontera o Lagrange $\nabla f=\lambda\nabla g$) → comparar valores.
 
 ---
 
@@ -117,8 +110,8 @@ $$
 
 - **Recta tangente:** $X=P+t\,\bar T$.  **Plano normal:** $\bar T\cdot(X-P)=0$.
 - Curva paramétrica $\lambda(t)$: $\bar T=\lambda'(t_0)$.
-- **Intersección curva–superficie** (2022-08-11, 2022-10-12): meter $\lambda(t)$ en la ecuación de la superficie → resolver en $t$ → evaluar.
-- **"Determinar el plano que contiene la curva"** (2019-05-22, 2019-08-15, 2023-07-28): combiná las dos ecuaciones para eliminar el término cuadrático repetido — p. ej. de $x^2+y^2=25$ y $y^2+z^2=25$ sale $x^2=z^2$ → plano $x=z$ (el signo lo elige el punto). Si una de las superficies ya ES un plano ($y=3$ en 2026-05-22, $z=x+y$ en 2018-07-12), es ese.
+- **Intersección curva–superficie** (reciclado): meter $\lambda(t)$ en la ecuación de la superficie → resolver en $t$ → evaluar.
+- **"Determinar el plano que contiene la curva":** combiná las dos ecuaciones para eliminar el término cuadrático repetido — p. ej. de $x^2+y^2=25$ y $y^2+z^2=25$ sale $x^2=z^2$ → plano $x=z$ (el signo lo elige el punto). Si una de las superficies ya ES un plano ($y=3$, $z=x+y$…), es ese.
 
 ---
 
@@ -142,7 +135,7 @@ $$
 | paramétrica $\sigma(u,v)$ | $\sigma_u\times\sigma_v$ | $(\sigma_u\times\sigma_v)\cdot(X-P)=0$ |
 
 - **Recta normal:** $X=P+t\,\bar N$. Intersección con un plano/eje → resolver $t$.
-- **Superficie parametrizada — punto regular** (2026-05-22 T2): $P$ regular ⇔ $\sigma_u\times\sigma_v\ne\bar0$ ahí (los tangentes son L.I.). Hallar el $(u,v)$ que da $P$ y evaluar.
+- **Superficie parametrizada — punto regular:** $P$ regular ⇔ $\sigma_u\times\sigma_v\ne\bar0$ ahí (los tangentes son L.I.). Hallar el $(u,v)$ que da $P$ y evaluar.
 
 ---
 
@@ -182,33 +175,30 @@ Reemplazar y ver si el límite depende de $(a,b)$ o no existe (para $f_x$: $(a,b
 
 ## 11 · Reciclados con resultado verificado (autocorrección)
 
-> Practicá desde el enunciado real (`examenes/`) y chequeá acá. Todos los resultados están computados y verificados cruzando las familias recicladas del `INDICE.md`; donde además existe resuelto de cátedra (`examenes/resueltos/`), contrastá ahí el desarrollo completo.
+> Problemas que la cátedra recicla casi textuales, con su resultado verificado: si cae uno de estos, ya sabés a qué valor tenés que llegar.
 
 **Trayectorias ortogonales** (familia ortogonal + curva por el punto):
 
-| Examen | Familia dada | Familia ortogonal | Curva por el punto |
-|---|---|---|---|
-| 2018-07-12 | $y=Ce^{2x}$ | $x+y^2=K$ | por $(1,1)$: $x+y^2=2$ |
-| 2018-10-05 | $y=Ce^{-x}$ | $y^2-2x=K$ | por $(1,1)$: $y^2=2x-1$ |
-| 2019-05-22 | $y=C/x$ | $y^2-x^2=K$ | por $(1,1)$: $y^2=x^2$ (rama $y=x$) |
-| 2019-08-15 | $xy^2=C$ | $y^2-2x^2=K$ | por $(1,2)$: $y^2-2x^2=2$ |
-| 2022-08-11 | $y=kx$ | $x^2+y^2=K$ | por $(3,4)$: $x^2+y^2=25$ |
-| 2022-10-12 | $y=kx$ | $x^2+y^2=K$ | por $(3,-4)$: $x^2+y^2=25$ |
-| 2022-12-01 | $y=k/x$ | $y^2-x^2=K$ | por $(3,4)$: $y^2-x^2=7$ |
-| 2022-12-16 | $y=Cx$ | $x^2+y^2=K$ | por $(4,-3)$: $x^2+y^2=25$ |
-| 2023-05-31 | $y=kx^3$ | $x^2+3y^2=K$ | por $(3,4)$: $x^2+3y^2=57$ · pide además ambas por $(1,1)$: $y=x^3$ y $x^2+3y^2=4$ |
-| 2023-07-28 | $xy^2=k$ | $y^2-2x^2=K$ | por $(1,3)$: $y^2-2x^2=7$ |
+| Familia dada | Familia ortogonal | Curva por el punto |
+|---|---|---|
+| $y=Ce^{2x}$ | $x+y^2=K$ | por $(1,1)$: $x+y^2=2$ |
+| $y=Ce^{-x}$ | $y^2-2x=K$ | por $(1,1)$: $y^2=2x-1$ |
+| $y=kx$ | $x^2+y^2=K$ | por $(3,4)$, $(3,-4)$ o $(4,-3)$: $x^2+y^2=25$ |
+| $y=k/x$ | $y^2-x^2=K$ | por $(1,1)$: $y=x$ · por $(3,4)$: $y^2-x^2=7$ |
+| $xy^2=C$ | $y^2-2x^2=K$ | por $(1,2)$: $y^2-2x^2=2$ · por $(1,3)$: $y^2-2x^2=7$ |
+| $y=kx^3$ | $x^2+3y^2=K$ | por $(3,4)$: $x^2+3y^2=57$ · por $(1,1)$: $x^2+3y^2=4$ (y de la familia: $y=x^3$) |
 
 **Aproximación lineal** $xz+e^{yz-2}-2=0$: punto base $(1,2,z_0{=}1)$, $z_x=z_y=-\tfrac13$ ⇒ $z\approx1-\tfrac{\Delta x+\Delta y}{3}$.
-- 2022-05-20 $(1.03,1.98)$: $z\approx 0.997$ · 2026-05-22 $(1.01,1.98)$: $z\approx 1.003$. *(estas dos fechas NO tienen resuelto de cátedra: el checksum de acá es el control)*
 
-**Taylor** $p=5+x^2+x(y-1)+4(y-1)^2$ en $(0,1)$ (2019-10-11 P4): $\nabla f(0,1)=(0,0)$ ⇒ **es crítico**; $f_{xx}=2,\ f_{xy}=1,\ f_{yy}=8$, $D=15>0$ ⇒ **mínimo local**; plano tangente $z=5$.
+- $(1.03,1.98)$: $z\approx 0.997$ · $(1.01,1.98)$: $z\approx 1.003$.
 
-**Teórico $f'_y$ con datos** (2023-05-31 T2, repetido en el sim 2024-05-17): $f'((1,1),(1,3))=f_x+3f_y=17$ y $\lim=f_x=5$ ⇒ $\boxed{f_y(1,1)=4}$.
+**Taylor** $p=5+x^2+x(y-1)+4(y-1)^2$ en $(0,1)$: $\nabla f(0,1)=(0,0)$ ⇒ **es crítico**; $f_{xx}=2,\ f_{xy}=1,\ f_{yy}=8$, $D=15>0$ ⇒ **mínimo local**; plano tangente $z=5$.
 
-**EDO característica** (2022-05-20, 2022-12-16 T): $y=e^{mx}$ en $y''+py'+qy=0$ ⇒ $m^2+pm+q=0$ ⇒ $m=\frac{-p\pm\sqrt{p^2-4q}}{2}$ (el enunciado pide expresarlo así). Aplicado a $y''-y'-2y=0$: $m=2,-1$ ⇒ $y=C_1e^{2x}+C_2e^{-x}$.
+**Teórico $f'_y$ con datos** (reciclado): $f'((1,1),(1,3))=f_x+3f_y=17$ y $\lim=f_x=5$ ⇒ $\boxed{f_y(1,1)=4}$.
 
-**Combo direccional `h=g∘f`** — las 5 fechas usan el mismo par: $\bar f=(xy^2,\,y-x^2)$ con $g$: $z-u^2+v^2+\ln(v+z)=0$ (2018-07-12, 2018-10-05, 2019-08-15) o el espejo $\bar f=(y-x^2,\,xy^2)$ con $g$: $z+u^2-v^2+\ln(u+z)=0$ (2019-05-22, 2023-07-28), siempre en $(1,1)$. Método: $\bar f(1,1)$ → $z_0$ → $\nabla g$ por §3 → $\nabla h=\nabla g\cdot Df$. **Resultado idéntico en las 5:** $z_0=1$, $\nabla h(1,1)=(2,\tfrac32)$ ⇒ máx $\tfrac52$ en $(\tfrac45,\tfrac35)$ · mín $-\tfrac52$ en $(-\tfrac45,-\tfrac35)$ · nulas $\pm(-\tfrac35,\tfrac45)$. Checkpoint intermedio (sabor 2018): $\bar f(1,1)=(1,0)$, $\nabla g(1,0)=(1,-\tfrac12)$. *(las 5 fechas tienen resuelto de cátedra en `resueltos/`)*
+**EDO característica** (teórico): $y=e^{mx}$ en $y''+py'+qy=0$ ⇒ $m^2+pm+q=0$ ⇒ $m=\frac{-p\pm\sqrt{p^2-4q}}{2}$ (el enunciado pide expresarlo así). Aplicado a $y''-y'-2y=0$: $m=2,-1$ ⇒ $y=C_1e^{2x}+C_2e^{-x}$.
+
+**Combo direccional `h=g∘f`** — reciclado ×5, siempre el mismo par en $(1,1)$: $\bar f=(xy^2,\,y-x^2)$ con $g$: $z-u^2+v^2+\ln(v+z)=0$, o el espejo $\bar f=(y-x^2,\,xy^2)$ con $g$: $z+u^2-v^2+\ln(u+z)=0$. Método: $\bar f(1,1)$ → $z_0$ → $\nabla g$ por §3 → $\nabla h=\nabla g\cdot Df$. **Resultado idéntico en los 5:** $z_0=1$, $\nabla h(1,1)=(2,\tfrac32)$ ⇒ máx $\tfrac52$ en $(\tfrac45,\tfrac35)$ · mín $-\tfrac52$ en $(-\tfrac45,-\tfrac35)$ · nulas $\pm(-\tfrac35,\tfrac45)$. Checkpoint intermedio (primer sabor): $\bar f(1,1)=(1,0)$, $\nabla g(1,0)=(1,-\tfrac12)$.
 
 ---
 
@@ -225,4 +215,4 @@ Reemplazar y ver si el límite depende de $(a,b)$ o no existe (para $f_x$: $(a,b
 
 ---
 
-*Generado el 2026-07-10 y revisado el 2026-07-15 (corregida la receta del "plano que contiene la curva" en §6, completados los checksums de §11 —trayectorias ×10, combo direccional con números, característica general— y precisiones en §0/§2/§3/§10) desde `estrategia.md`, `examenes/INDICE.md` y `examenes/resueltos/` (no hay apuntes propios del 1P). Teóricos/demostraciones completas: checklist de `estrategia.md`. Iterá sobre este `.md`; exportá con `/machete --pdf`.*
+*Generado el 2026-07-10, revisado el 2026-07-15 y el 2026-07-17. Fuentes: `estrategia.md`, `examenes/INDICE.md`, `examenes/resueltos/` (no hay apuntes propios del 1P). Teóricos/demostraciones completas: checklist de `estrategia.md`.*
