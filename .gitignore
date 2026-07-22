@@ -13,3 +13,7 @@ venv/
 .DS_Store
 .idea/
 .vscode/
+
+# Temporales de Office y macOS
+~$*
+.DS_Store

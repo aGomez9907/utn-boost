@@ -13,11 +13,24 @@
 
 ## Estructura del examen
 
-- **Final:** _(completar cuando se indexen los exámenes de `final/examenes/`)_
+- **Final:** examen de **problemas de desarrollo** (no hay parte teórica separada; la
+  teoría entra como incisos "justifique" o, en años viejos, como multiple-choice). La
+  cantidad de ejercicios varió por época: **5–6** en 2016–2019, **8** en 2022, **7** en
+  2023, **6–7** en 2024–2026. Regla de aprobación impresa reciente: **"5 ítems resueltos
+  correctamente"** (antes: "número de respuestas correctas + 1").
+- **Orden temático por posición** (estable): 1–2 termodinámica/calor → 1–2 electrostática
+  (Gauss/dieléctricos/capacitores) → 1 circuito CC en estacionario (a menudo con
+  capacitor/inductor) → 1–2 magnetostática (Ampère/Biot-Savart/fuerza) → 1–2 inducción →
+  **el último ítem casi siempre es un circuito de CA (RLC/RL serie)**.
+- Detalle por fecha y frecuencias: `final/examenes/INDICE.md` (67 finales, 414 ítems).
 
 ## Temario por evaluación
 
-- **Final:** _(completar; se refina al indexar los exámenes — no hay programa oficial cargado)_
+- **Final:** Termodinámica (1er principio, gas ideal, ciclos, máquinas térmicas, entropía,
+  calorimetría, conducción/convección/radiación) · Electrostática (campo, Gauss, potencial,
+  capacitores, dieléctricos) · Corriente continua (circuitos, RC) · Magnetostática (campo,
+  Ampère, Biot-Savart, fuerza magnética, materiales magnéticos) · Inducción (Faraday-Lenz,
+  inductancia, RL) · Corriente alterna (RLC serie, fasores, resonancia).
 
 ## Fuentes
 
@@ -31,10 +44,18 @@
 
 ## Leyenda de tags (para `examenes/INDICE.md`)
 
-_(la completa `/indexar-examenes` al indexar los primeros exámenes)_
+<!-- Vocabulario ÚNICO para taggear problemas. No inventar tags fuera de acá. -->
+
+- **Termodinámica y calor:** `#PrimerPrincipio` `#GasIdeal` `#CicloTermico` `#MaquinaTermica` `#Entropia` `#Calorimetria` `#ConduccionCalor` `#Conveccion` `#RadiacionTermica`
+- **Electrostática:** `#CampoElectrico` `#Gauss` `#Potencial` `#Capacitores` `#Dielectricos`
+- **Corriente continua:** `#CircuitosCC` `#CircuitoRC` `#Resistividad`
+- **Magnetostática:** `#CampoMagnetico` `#Ampere` `#BiotSavart` `#FuerzaMagnetica` `#MaterialesMagneticos`
+- **Inducción:** `#Induccion` `#Inductancia` `#CircuitoRL`
+- **Corriente alterna:** `#CorrienteAlterna` `#Resonancia`
+- **Teoría (multiple choice / V-F):** `#Teoria`
 
 ## Estado del material
 
 | Evaluación | Apuntes | INDICE | Estrategia | Poda | Plan | Registro | Flashcards | Machete | Simulacros |
 |---|---|---|---|---|---|---|---|---|---|
-| Final | — (sin material de cursada) | pendiente | — | — | — | — | — | — | — |
+| Final | — (sin material de cursada) | ✅ 67 finales · 414 ítems | pendiente | — | pendiente | pendiente | pendiente | pendiente | pendiente |
