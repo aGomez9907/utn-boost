@@ -11,13 +11,15 @@
 |---|---|---|---|
 | Primer parcial | `primer-parcial/` | _(ya rendido)_ | rendido |
 | Segundo parcial | `segundo-parcial/` | 2026-07-08 | rendido |
-| Recuperatorio 1er parcial | `primer-parcial/` | **2026-07-17** | **próximo** |
-| Recuperatorio 2do parcial | `segundo-parcial/` | **2026-07-17** | **próximo** |
+| Recuperatorio 1er parcial | `primer-parcial/` | 2026-07-17 | rendido |
+| Recuperatorio 2do parcial | `segundo-parcial/` | 2026-07-17 | rendido |
+| Recuperatorio 2do parcial (2ª instancia) | `segundo-parcial/` | **2026-07-31** | **próximo** |
 | Final | `final/` _(carpeta a crear con /nueva-materia cuando se defina)_ | _(a definir)_ | pendiente |
 
 > Los recuperatorios se preparan en la **carpeta de su parcial** (mismo temario, mismos
-> apuntes y mismo dataset de exámenes). Como hay DOS evaluaciones próximas con la misma
-> fecha, las skills van a preguntar cuál de las dos (o pasales la ruta explícita).
+> apuntes y mismo dataset de exámenes). El próximo (2026-07-31) es **solo del segundo
+> parcial**. Ojo con la agenda: el **final de Física II es el 2026-07-29**, dos días
+> antes (ver `materias/fisica-2/MATERIA.md`).
 
 ## Estructura del examen
 
@@ -35,10 +37,11 @@
   Taylor de grado 2. Teóricos: definir + demostrar/calcular (los más reciclados:
   derivadas direccionales de una función partida por definición, continuidad de función
   partida, regla de la cadena, y "derivada direccional máxima = ‖∇f‖").
-- **Recuperatorios (2026-07-17):** se rinden los dos el mismo día. Lucho lo menciona
-  como **"parcial integrador"** (2026-07-14): podría ser un único examen que mezcle
-  ambos temarios. _(Estructura a confirmar; hasta tener el enunciado se asume la del
-  parcial correspondiente — para la preparación da igual: unión de los dos temarios.)_
+- **Recuperatorios 2026-07-17 (rendidos):** se rindieron los dos el mismo día
+  ("parcial integrador"). _El enunciado no está en el dataset: si aparece,
+  indexarlo con `/indexar-examenes` — es la mejor pista para la 2ª instancia._
+- **Recuperatorio 2ª instancia (2026-07-31):** solo temario del **2º parcial**; se
+  asume la estructura estándar del 2P (4 prácticos + 2 teóricos, 2 h).
 - **Final:** _(a documentar)_
 
 ## Temario por evaluación
@@ -86,5 +89,5 @@ Compartidos entre parciales: `#EDO` `#Demostracion`
 
 | Evaluación | Apuntes | INDICE | Estrategia | Poda | Plan | Registro | Flashcards | Machete | Simulacros |
 |---|---|---|---|---|---|---|---|---|---|
-| Segundo parcial (+recu) | ✅ 19 | ✅ 17 exámenes distintos | ✅ | ✅ | ✅ (combinado 1P+2P) | ✅ (vacío, listo para usar) | ✅ 61 cartas | ✅ | ✅ 1 |
-| Primer parcial (+recu) | — | ✅ 16 reales + 2 sim. | ✅ | — | ✅ (combinado 1P+2P) | — | — | ✅ | — |
+| Segundo parcial (+recu) | ✅ 19 | ✅ 17 exámenes distintos | ✅ | ✅ | ✅ (recu 2ª inst. 2026-07-31) | ✅ (vacío, listo para usar) | ✅ 61 cartas | ✅ | ✅ 1 |
+| Primer parcial (+recu) | — | ✅ 16 reales + 2 sim. | ✅ | — | _(viejo, del 17/7)_ | — | — | ✅ | — |
