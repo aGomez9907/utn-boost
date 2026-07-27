@@ -18,8 +18,7 @@
 
 > Los recuperatorios se preparan en la **carpeta de su parcial** (mismo temario, mismos
 > apuntes y mismo dataset de exámenes). El próximo (2026-07-31) es **solo del segundo
-> parcial**. Ojo con la agenda: el **final de Física II es el 2026-07-29**, dos días
-> antes (ver `materias/fisica-2/MATERIA.md`).
+> parcial**, con dedicación exclusiva: el final de Física II del 29/7 no se rinde.
 
 ## Estructura del examen
 

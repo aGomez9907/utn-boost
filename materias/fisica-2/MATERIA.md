@@ -9,7 +9,7 @@
 
 | Evaluación | Carpeta | Fecha | Estado |
 |---|---|---|---|
-| Final | `final/` | **2026-07-29** | **próximo** |
+| Final | `final/` | _(a definir — el llamado del 2026-07-29 no se rinde, decisión del 2026-07-27)_ | pendiente |
 
 ## Estructura del examen
 
