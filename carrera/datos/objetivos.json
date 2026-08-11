@@ -1,0 +1,32 @@
+[
+  {
+    "id": "am2-septiembre",
+    "tipo": "aprobar",
+    "materia": "AM2",
+    "ventana": "sep",
+    "nota": "Objetivo declarado: sacarse AM2 de encima en el llamado de septiembre."
+  },
+  {
+    "id": "f2-octubre",
+    "tipo": "aprobar",
+    "materia": "F2",
+    "ventana": "oct"
+  },
+  {
+    "id": "adc-diciembre",
+    "tipo": "aprobar",
+    "materia": "AdC",
+    "ventana": "dic"
+  },
+  {
+    "id": "recibirme-2028",
+    "tipo": "recibirme",
+    "antesDe": "2028-12-31"
+  },
+  {
+    "id": "cursar-ia-1c2028",
+    "tipo": "cursar",
+    "materia": "IA",
+    "cuatrimestre": "1C-2028"
+  }
+]

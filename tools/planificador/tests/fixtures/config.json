@@ -1,0 +1,103 @@
+{
+  "_doc": "Parámetros del planificador. Este archivo trae los DEFAULTS completos y explícitos: editá lo que quieras y el resto sigue igual. Las claves que empiezan con _ son comentarios y el motor las ignora. Documentación completa en carrera/CARRERA.md.",
+
+  "vigencia_regularidad": {
+    "_doc": "REGLA CONFIRMADA: la regularidad NO vence (modo no_vence). Si el reglamento cambiara, poné modo 'anios' y ajustá los parámetros de abajo; con 'anios' también podés declarar regularidadHasta por materia en estado.json.",
+    "modo": "no_vence",
+    "anios": 5,
+    "referencia_mes_dia": "12-31",
+    "aviso_por_vencer_dias": 365,
+    "bloquear_por_vencimiento": false
+  },
+
+  "intentos_final": {
+    "_doc": "REGLA CONFIRMADA: al 4º final desaprobado de una materia hay que recursarla. Los intentos usados se cargan por materia (intentosFinal en estado.json o desde el tablero). aviso_desde: desde cuántos usados empezar a avisar.",
+    "maximo": 4,
+    "aviso_desde": 2
+  },
+
+  "esfuerzo": {
+    "_doc": "Horas de preparación estimadas por final. Default por nivel (las básicas de nivel 1-2 pesan más que las de gestión de nivel 5). `horas_por_materia` pisa el default para un código puntual.",
+    "horas_por_nivel": { "1": 45, "2": 40, "3": 35, "4": 30, "5": 25 },
+    "horas_por_materia": {},
+    "horas_por_dia": 3,
+    "dias_utiles_por_semana": 6,
+    "dias_minimos_preparacion": 5
+  },
+
+  "finales": {
+    "_doc": "Reglas de armado del calendario de finales. usar_mesas_especiales=false: a las mesas de abril/octubre aplican pocas materias, así que el motor no las llena solo — solo entran materias que declares (candidateSubjects) o fijes en el tablero.",
+    "dia_en_ventana": "inicio",
+    "max_por_ventana": null,
+    "dias_minimos_entre_finales": 7,
+    "bloqueo_parcial_dias_antes": 5,
+    "bloqueo_parcial_dias_despues": 1,
+    "asumir_regulariza_cursando": true,
+    "asumir_aprueba_final": true,
+    "usar_mesas_especiales": false
+  },
+
+  "cursada": {
+    "_doc": "Reglas de la proyección de cursada. asumir_promocion=false: por defecto ninguna materia promociona; marcá las que sí con asumirPromocion en estado.json o con ✨ en el tablero (la promoción real pide ~8 en ambos parciales, con 1 recuperatorio a lo sumo).",
+    "max_materias_por_cuatrimestre": 5,
+    "anual_empieza_en_cuatrimestre": 1,
+    "asumir_aprueba_cursada": true,
+    "asumir_promocion": false
+  },
+
+  "cuatrimestres": {
+    "_doc": "Ventanas de dictado (MM-DD). 1C ≈ marzo–julio, 2C ≈ agosto–noviembre.",
+    "1": { "inicio": "03-01", "fin": "07-15" },
+    "2": { "inicio": "08-01", "fin": "11-30" }
+  },
+
+  "ventanas_tipicas": {
+    "_doc": "Calendario académico real UTN (se repite igual todos los años; MM-DD). Genera las mesas 'estimadas' de los años que todavía no cargaste en calendario.json; arrancan después de la última ventana declarada y se marcan est. hasta que las confirmes. abril/octubre son mesas especiales (especial: true).",
+    "plantilla": [
+      { "id": "feb-mar", "desde": "02-10", "hasta": "03-06", "llamados": 3 },
+      { "id": "abril", "desde": "04-20", "hasta": "04-24", "llamados": 1, "especial": true },
+      { "id": "mayo", "desde": "05-19", "hasta": "05-20", "llamados": 1 },
+      { "id": "jul-1", "desde": "07-13", "hasta": "07-18", "llamados": 1 },
+      { "id": "jul-2", "desde": "07-27", "hasta": "08-01", "llamados": 1 },
+      { "id": "sep", "desde": "09-22", "hasta": "09-23", "llamados": 1 },
+      { "id": "oct", "desde": "10-26", "hasta": "10-30", "llamados": 1, "especial": true },
+      { "id": "dic", "desde": "12-01", "hasta": "12-22", "llamados": 3 }
+    ]
+  },
+
+  "electivas": {
+    "_doc": "Horas de electivas acumuladas requeridas al llegar a cada nivel. Los valores vienen del tracker original (N3 6, N4 12, N5 24).",
+    "horas_requeridas_por_nivel": { "3": 6, "4": 12, "5": 24 }
+  },
+
+  "duracion_por_materia": {
+    "_doc": "Todo es cuatrimestral salvo lo que se liste acá. También se puede poner `duration` en estado.json por materia.",
+    "PFinal": "anual"
+  },
+
+  "scoring": {
+    "_doc": "Pesos del score de prioridad (0-100); deben sumar 1 (si no, se normalizan). urgencia = max(intentos usados, antigüedad de la cursada, vencimiento si modo anios). horizonte_antiguedad_anios: a cuántos años de la cursada la urgencia por olvido llega al máximo.",
+    "pesos": {
+      "urgencia": 0.25,
+      "impacto": 0.35,
+      "proximidad": 0.25,
+      "esfuerzo": 0.15
+    },
+    "horizonte_urgencia_dias": 1095,
+    "horizonte_antiguedad_anios": 6,
+    "horizonte_proximidad_dias": 365,
+    "esfuerzo_maximo_horas": 60
+  },
+
+  "horizonte": {
+    "_doc": "Techos de la simulación, para que nunca cicle infinito.",
+    "max_cuatrimestres": 24,
+    "escenarios_materias_por_cuatrimestre": [3, 4, 5]
+  },
+
+  "objetivos": {
+    "_doc": "Techos de realidad para validar targets: más de esto se considera inalcanzable, no 'ajustado'.",
+    "horas_por_dia_tope": 8,
+    "max_materias_por_cuatrimestre_tope": 8
+  }
+}

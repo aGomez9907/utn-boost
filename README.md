@@ -175,11 +175,63 @@ próxima por fecha) y te preguntan si hay ambigüedad.
 | `/machete` | Hoja final de fórmulas (`repaso/machete.md`); con `--pdf` exporta la versión cerrada a `exports/`. |
 | `/registrar <lo que hiciste>` | Anota una sesión de práctica y tus errores; alimenta a `/plan` y `/estrategia`. |
 
-### Organización
+### Organización y carrera
 
 | Comando | Qué hace |
 |---|---|
 | `/nueva-materia` | Da de alta una materia nueva: crea carpetas + `MATERIA.md` desde plantilla. |
+| `/carrera` | Plan de carrera completo: qué finales rendir y cuándo, prioridades explicadas, cursada futura cuatrimestre a cuatrimestre y fecha estimada de graduación. |
+
+---
+
+## El plan de carrera — `/carrera`
+
+Todo lo anterior resuelve **cómo** preparar un examen. La capa de carrera
+(`carrera/`) resuelve la pregunta de un nivel más arriba: **qué final conviene
+rendir, cuándo, y qué cursar después**. No es un tracker del presente (eso ya lo
+tenés en la web de la facu): es un **simulador hacia adelante**.
+
+Vos mantenés unos JSON en `carrera/datos/` (tu estado académico, las
+correlativas del plan, el calendario del cuatrimestre y tus objetivos) y corrés:
+
+```
+/carrera
+```
+
+Y obtenés `carrera/plan-carrera.md` + exports con:
+
+- **El tablero arrastrable** (`exports/tablero.html`) — la estrella: un board
+  con todos los cuatrimestres y todas las mesas de finales de acá a tu
+  graduación (las 8 mesas reales del año: feb/mar, abril esp., mayo, julio 1º y
+  2º, septiembre, octubre esp., diciembre). La sugerencia del motor ya viene
+  puesta; vos arrastrás cursadas entre cuatrimestres y finales entre mesas, y
+  el tablero valida en vivo: correlativas (con el motivo exacto), cupos,
+  promociones ✨, intentos de final. Lo que acomodás se exporta como
+  `plan-manual.json` → lo guardás en `carrera/datos/` → `/carrera`, y el motor
+  respeta tus decisiones y completa el resto.
+- **Plan de finales por mesa:** qué rendir en cada llamado y desde qué fecha
+  arrancar a preparar cada uno (calculado hacia atrás desde el examen), con
+  conflictos detectados: finales muy pegados, preparación que pisa un parcial,
+  último intento disponible.
+- **Reglas reales del reglamento:** la regularidad no vence, pero al 4º final
+  desaprobado la materia se recursa (el plan lleva la cuenta de intentos); y
+  las materias que promocionás por parciales (~8 y 8) aprueban sin final — las
+  marcás vos, el motor no adivina.
+- **Prioridades explicadas:** un score 0-100 por materia que combina urgencia
+  (intentos usados + antigüedad de la cursada), impacto (cuántas materias
+  desbloquea), cercanía de la mesa y esfuerzo — con el desglose completo.
+- **Proyección multi-año:** cuatrimestre por cuatrimestre hasta el final de la
+  carrera, respetando correlativas y cupo de materias, con fecha estimada de
+  graduación y escenarios ("¿y si curso 3 en vez de 5?").
+- **Objetivos validados:** declarás "AM2 en septiembre" o "recibirme en 2028" y
+  te dice ✅ alcanzable / 🟡 ajustado / ❌ inalcanzable, y qué haría falta.
+- **Vista visual** (`exports/plan-carrera.html`): timeline de preparación y
+  exámenes + mapa de correlatividades coloreado por estado; y `.json`/`.ics`
+  para integrar con otras apps o tu calendario.
+
+Cuando el plan de carrera pone un final en el horizonte, bajás un nivel y lo
+preparás con el circuito de siempre: `/estrategia` → `/plan` en la carpeta de esa
+materia. El esquema completo de los datos está en `carrera/CARRERA.md`.
 
 ---
 
@@ -201,6 +253,11 @@ próxima por fecha) y te preguntan si hay ambigüedad.
 ## Cómo se organiza en el disco
 
 ```
+carrera/
+  CARRERA.md                  ← esquema y reglas del planificador de carrera
+  datos/                      ← lo que editás: estado, correlativas, calendario, objetivos
+  plan-carrera.md             ← el plan generado (regenerable con /carrera)
+  exports/                    ← plan-carrera.{json,html,ics} regenerables
 materias/<materia>/
   MATERIA.md                  ← config: evaluaciones, fechas, estructura del examen, tags
   fuentes/                    ← material crudo: PDFs de cátedra, libros, fotos

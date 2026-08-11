@@ -27,6 +27,12 @@ El sistema tiene 3 capas, en este orden:
 los exámenes), no con intuición. Y los apuntes se construyen SOLO con lo que dice la
 fuente (transcripción/PDF), sin inventar contenido.
 
+Además de las 3 capas por materia, hay una capa transversal de **carrera**
+(`carrera/` + `tools/planificador/`): proyecta hacia adelante qué finales rendir
+y cuándo, la cursada futura cuatrimestre a cuatrimestre y la fecha estimada de
+graduación. Las capas 1-3 resuelven CÓMO preparar un examen; la capa carrera
+decide QUÉ examen conviene preparar y CUÁNDO. Ver `carrera/CARRERA.md`.
+
 ## Estructura de directorios
 
 ```
@@ -35,6 +41,13 @@ README.md                  ← walkthrough para el usuario (humanos)
 tools/                     ← scripts Python compartidos (ver "Herramientas")
 plantillas/                ← plantillas para materias/evaluaciones nuevas
 venv/                      ← entorno Python (usar venv/bin/python)
+carrera/                   ← capa de carrera: proyección de finales y cursada
+  CARRERA.md               ← esquema de datos + reglas del planificador. LEERLO PRIMERO.
+  datos/                   ← inputs editables: estado, correlativas, calendario,
+  │                          objetivos, config, plan-manual (pins del tablero)
+  plan-carrera.md          ← plan generado (regenerable con /carrera)
+  exports/                 ← regenerables: tablero.html (editor arrastrable) +
+                             plan-carrera.{json,html,ics}
 materias/
   <slug-materia>/          ← p. ej. analisis-matematico-2/
     MATERIA.md             ← config de la materia: evaluaciones, fechas, estructura
@@ -73,11 +86,20 @@ materias/
 | `/flashcards` | Genera `repaso/flashcards.md` + `flashcards-anki.tsv` desde el checklist teórico. |
 | `/machete` | Genera/itera `repaso/machete.md` (hoja final de fórmulas); `--pdf` exporta la versión cerrada a `exports/`. |
 | `/registrar` | Anota una sesión de práctica/errores en `registro.md` y actualiza su tablero. |
+| `/carrera` | Planificador de carrera: finales por mesa, prioridades, cursada futura, graduación, objetivos, promociones e intentos. Regenera `carrera/plan-carrera.md` + exports (incluido el tablero arrastrable). |
 
 **Flujo típico de una evaluación nueva:** `/apuntes-batch` (o `/apunte-doc`) →
 `/indexar-examenes` → `/estrategia` → `/que-saltear` → `/plan` → estudiar +
 `/registrar` → `/flashcards` para la teoría → `/machete` + `/simulacro` en los últimos
 días → `/plan` de nuevo cuando cambia el panorama.
+
+**Flujo de carrera:** editar `carrera/datos/` cuando cambia algo (aprobaste o
+desaprobaste un final, arrancó un cuatrimestre, apareció una fecha) → `/carrera`
+para regenerar el plan → para decidir a mano qué rendir/cursar y cuándo, abrir
+`carrera/exports/tablero.html` (arrastrable), exportar `plan-manual.json` a
+`carrera/datos/` y volver a correr `/carrera` (el motor respeta lo fijado) →
+para cada final del horizonte, bajar al circuito por materia (`/estrategia` →
+`/plan` en `materias/<slug>/`).
 
 ## Resolución de contexto (materia/evaluación)
 
@@ -126,6 +148,12 @@ el usuario no la da:
   cuando YouTube bloquea (editar su lista `REMAINING`).
 - `extract_notes.py` — LEGACY: el pipeline original con Gemini. Ya no se usa (Claude
   genera los apuntes), pero conserva los prompts originales de referencia.
+- `planificador/` — motor del plan de carrera (Python puro, sin dependencias):
+  grafo de correlativas, plan de finales, scoring, proyección multi-año, objetivos,
+  promociones/intentos, pins del tablero y salidas (tablero arrastrable + md/json/
+  html/ics). CLI: `venv/bin/python -m tools.planificador.cli`.
+  Tests: `venv/bin/python -m unittest discover -s tools/planificador/tests -t .`
+  (fixtures congeladas en `tests/fixtures/`, no dependen de `carrera/datos/`).
 - **Rate-limit de YouTube:** bajar transcripciones de a una, con pausa. Si aparece
   `IpBlocked`/`RequestBlocked` en IP de nube, usar `fetch_transcripts.py` en la Mac.
 

@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tablero de carrera — K08 (Sistemas)</title>
+<style>
+:root {
+  color-scheme: light dark;
+  --fondo: #ffffff; --tinta: #1a1a1a; --suave: #667085; --linea: #e4e7ec;
+  --tarjeta: #f8fafc; --zona: #f1f5f9;
+  --ok: #12b76a; --reg: #2e90fa; --cur: #f79009; --blo: #98a2b3;
+  --rojo: #f04438; --violeta: #7a5af8; --amarillo: #eaaa08;
+  --pin: #7a5af8;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --fondo: #16181c; --tinta: #e6e6e6; --suave: #98a2b3; --linea: #30343c;
+    --tarjeta: #1f2228; --zona: #1a1d22;
+    --ok: #32d583; --reg: #53b1fd; --cur: #fdb022; --blo: #667085;
+    --rojo: #f97066; --violeta: #9b8afb; --amarillo: #fac515;
+    --pin: #9b8afb;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  margin: 0; background: var(--fondo); color: var(--tinta); line-height: 1.45;
+}
+main { max-width: 1180px; margin: 0 auto; padding: 1.2rem 1rem 6rem; }
+h1 { font-size: 1.35rem; margin: .2rem 0 .1rem; }
+.sub { color: var(--suave); font-size: .85rem; margin-bottom: .9rem; }
+
+/* ---------- barra superior ---------- */
+.barra {
+  position: sticky; top: 0; z-index: 30; background: var(--fondo);
+  border-bottom: 1px solid var(--linea); padding: .55rem 0 .55rem;
+  display: flex; flex-wrap: wrap; gap: .45rem; align-items: center;
+}
+.stat {
+  border: 1px solid var(--linea); background: var(--tarjeta); border-radius: 8px;
+  padding: .28rem .6rem; font-size: .8rem; white-space: nowrap;
+}
+.stat b { font-size: .92rem; }
+.stat.bad { border-color: var(--rojo); }
+.stat.good { border-color: var(--ok); }
+.espacio { flex: 1; }
+button, select {
+  font: inherit; font-size: .8rem; color: var(--tinta);
+  background: var(--tarjeta); border: 1px solid var(--linea); border-radius: 8px;
+  padding: .32rem .65rem; cursor: pointer;
+}
+button:hover { border-color: var(--suave); }
+button.primario { background: var(--reg); border-color: var(--reg); color: #fff; font-weight: 600; }
+button.primario:hover { filter: brightness(1.08); }
+
+/* ---------- avisos ---------- */
+.panelAvisos { margin: .8rem 0 0; display: none; }
+.panelAvisos.visible { display: block; }
+.aviso {
+  border-left: 3px solid var(--rojo); background: var(--tarjeta);
+  padding: .35rem .6rem; margin: .25rem 0; font-size: .8rem; border-radius: 0 6px 6px 0;
+}
+.aviso.warn { border-left-color: var(--amarillo); }
+.banner {
+  border: 1px solid var(--reg); background: var(--tarjeta); border-radius: 10px;
+  padding: .5rem .8rem; margin: .8rem 0 0; font-size: .84rem;
+  display: flex; gap: .6rem; align-items: center; flex-wrap: wrap;
+}
+
+/* ---------- pool ---------- */
+.pool { display: grid; grid-template-columns: 1fr 1fr; gap: .8rem; margin: 1rem 0; }
+@media (max-width: 760px) { .pool { grid-template-columns: 1fr; } }
+.pool h2 { font-size: .85rem; margin: 0 0 .4rem; color: var(--suave); font-weight: 600; }
+.zona {
+  min-height: 52px; border: 1.5px dashed var(--linea); border-radius: 10px;
+  background: var(--zona); padding: .45rem; display: flex; flex-wrap: wrap; gap: .4rem;
+  align-content: flex-start; transition: border-color .15s, background .15s;
+}
+.zona.sobre { border-color: var(--reg); background: color-mix(in srgb, var(--reg) 8%, var(--zona)); }
+.zona .vacia { color: var(--suave); font-size: .75rem; padding: .3rem .2rem; }
+
+/* ---------- timeline ---------- */
+.tramo { margin: 1.1rem 0 0; }
+.anio-sep {
+  font-weight: 700; font-size: .95rem; color: var(--suave);
+  border-bottom: 2px solid var(--linea); margin: 1.6rem 0 .4rem; padding-bottom: .2rem;
+}
+.bloque { border: 1px solid var(--linea); border-radius: 12px; background: var(--tarjeta); padding: .6rem .7rem; margin: .55rem 0; }
+.bloque.mesa { border-style: solid; }
+.bloque.mesa.especial { border-style: dashed; }
+.bloque .cab { display: flex; align-items: baseline; gap: .55rem; flex-wrap: wrap; margin-bottom: .45rem; }
+.bloque .cab .titulo { font-weight: 700; font-size: .95rem; }
+.bloque .cab .fechas { color: var(--suave); font-size: .78rem; }
+.tag {
+  font-size: .68rem; padding: .1rem .45rem; border-radius: 999px;
+  border: 1px solid var(--linea); color: var(--suave);
+}
+.tag.esp { border-color: var(--amarillo); color: var(--amarillo); }
+.tag.est { border-color: var(--suave); }
+.tag.cupo-mal { border-color: var(--rojo); color: var(--rojo); font-weight: 700; }
+.parciales { margin-top: .4rem; display: flex; flex-wrap: wrap; gap: .35rem; }
+.parcial {
+  font-size: .7rem; border: 1px solid var(--cur); color: var(--cur);
+  padding: .08rem .45rem; border-radius: 999px;
+}
+
+/* ---------- tarjetas ---------- */
+.tarjeta {
+  border: 1.5px solid var(--linea); border-radius: 9px; background: var(--fondo);
+  padding: .3rem .5rem .34rem; font-size: .8rem; cursor: grab; user-select: none;
+  display: inline-flex; flex-direction: column; gap: .1rem; max-width: 240px;
+  border-left-width: 4px; position: relative;
+}
+.tarjeta:active { cursor: grabbing; }
+.tarjeta.arrastrando { opacity: .4; }
+.tarjeta .fila1 { display: flex; align-items: center; gap: .4rem; }
+.tarjeta .cod { font-weight: 700; }
+.tarjeta .nom { color: var(--suave); font-size: .7rem; max-width: 220px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.tarjeta .extra { color: var(--suave); font-size: .68rem; }
+.tarjeta .extra b { color: var(--tinta); }
+.tarjeta.err { border-color: var(--rojo); box-shadow: 0 0 0 1px var(--rojo) inset; }
+.tarjeta.warn { border-color: var(--amarillo); }
+.tarjeta.bloqueada-drag { cursor: default; opacity: .85; }
+.tarjeta .pinbtn, .tarjeta .promobtn {
+  border: none; background: none; padding: 0 .1rem; font-size: .78rem; cursor: pointer;
+  opacity: .35; line-height: 1;
+}
+.tarjeta .pinbtn.on, .tarjeta .promobtn.on { opacity: 1; }
+.tarjeta .intentos { display: inline-flex; align-items: center; gap: .18rem; font-size: .68rem; color: var(--suave); }
+.tarjeta .intentos button { padding: 0 .3rem; font-size: .7rem; border-radius: 5px; line-height: 1.2; }
+.t-final { border-left-color: var(--reg); }
+.t-cursada { border-left-color: var(--cur); }
+.t-cursada.recursada { border-left-color: var(--rojo); }
+.t-cursada.fija-actual { border-left-color: var(--ok); }
+.t-final.promo-oculta { display: none; }
+
+.leyenda { display: flex; flex-wrap: wrap; gap: .9rem; font-size: .74rem; color: var(--suave); margin-top: 1.4rem; }
+.leyenda .cuad { width: 10px; height: 10px; border-radius: 3px; display: inline-block; margin-right: .3rem; vertical-align: -1px; }
+footer { margin-top: 2.5rem; color: var(--suave); font-size: .75rem; border-top: 1px solid var(--linea); padding-top: .8rem; }
+dialog {
+  border: 1px solid var(--linea); border-radius: 12px; background: var(--fondo); color: var(--tinta);
+  max-width: 560px; padding: 1rem 1.2rem; font-size: .86rem;
+}
+dialog::backdrop { background: rgba(0,0,0,.45); }
+dialog pre {
+  background: var(--tarjeta); border: 1px solid var(--linea); border-radius: 8px;
+  padding: .6rem; overflow: auto; max-height: 260px; font-size: .72rem;
+}
+.okmini { color: var(--ok); font-size: .78rem; display: none; }
+</style>
+</head>
+<body>
+<main>
+<h1>Tablero de carrera</h1>
+<div class="sub">Ingeniería en Sistemas de Información · K08 (Sistemas) · generado el <b>2026-08-11</b> — arrastrá cursadas a cuatrimestres y finales a mesas; el tablero valida correlativas, cupos e intentos en vivo.</div>
+
+<div class="barra">
+  <span class="stat" id="statGrad">🎓 …</span>
+  <span class="stat" id="statPend">…</span>
+  <span class="stat" id="statAvisos">…</span>
+  <label class="stat">materias/cuatri
+    <select id="selMax"></select>
+  </label>
+  <span class="espacio"></span>
+  <button id="btnRestaurar" title="Vuelve al plan que sugiere el motor y borra tus cambios locales">↺ Sugerencia</button>
+  <button id="btnCopiar" title="Copia plan-manual.json al portapapeles">⧉ Copiar</button>
+  <button class="primario" id="btnExportar" title="Descarga plan-manual.json para guardarlo en carrera/datos/">⤓ Exportar plan</button>
+  <span class="okmini" id="okCopiado">copiado ✓</span>
+</div>
+
+<div id="bannerBorrador" class="banner" style="display:none">
+  📝 Tenés un borrador local guardado (<span id="fechaBorrador"></span>).
+  <button id="btnUsarBorrador">Seguir con el borrador</button>
+  <button id="btnDescartarBorrador">Descartarlo</button>
+</div>
+
+<div class="panelAvisos" id="panelAvisos"></div>
+
+<div class="pool">
+  <div>
+    <h2>📚 Cursadas sin ubicar <span id="cntCursadas"></span></h2>
+    <div class="zona" data-tipo="cursada" data-zona="pool"></div>
+  </div>
+  <div>
+    <h2>🎓 Finales sin ubicar <span id="cntFinales"></span></h2>
+    <div class="zona" data-tipo="final" data-zona="pool"></div>
+  </div>
+</div>
+
+<div class="tramo" id="timeline"></div>
+
+<div class="leyenda">
+  <span><span class="cuad" style="background:var(--cur)"></span>cursada</span>
+  <span><span class="cuad" style="background:var(--reg)"></span>final</span>
+  <span><span class="cuad" style="background:var(--ok)"></span>cursando ahora (fija)</span>
+  <span><span class="cuad" style="background:var(--rojo)"></span>recursada / con problemas</span>
+  <span>📌 fijada (va al export) — lo no fijado sigue la sugerencia del motor</span>
+  <span>✨ promoción por parciales (sin final)</span>
+  <span>▢ borde punteado = mesa especial (pocas materias aplican)</span>
+</div>
+
+<footer>
+  <b>Circuito:</b> acomodá el plan acá → <b>Exportar</b> → guardá el archivo como
+  <code>carrera/datos/plan-manual.json</code> → corré <code>/carrera</code>. El motor respeta lo
+  fijado, completa el resto y recalcula conflictos, prioridades y graduación.
+  Archivo regenerable con <code>/carrera</code> o <code>… cli tablero</code>; tus cambios viven en el
+  export (y en un borrador local del navegador), no en este HTML.
+</footer>
+</main>
+
+<dialog id="dlgExport">
+  <h3 style="margin-top:0">plan-manual.json</h3>
+  <p>Guardalo en <code>carrera/datos/plan-manual.json</code> y corré <code>/carrera</code>.
+  Se descargó automáticamente; también lo podés copiar de acá:</p>
+  <pre id="preExport"></pre>
+  <form method="dialog" style="text-align:right"><button>Listo</button></form>
+</dialog>
+
+<script>
+"use strict";
+const DATOS = {"meta": {"plan": "K08 (Sistemas)", "carrera": "Ingeniería en Sistemas de Información", "hoy": "2026-08-11"}, "config": {"maxMaterias": 5, "anualArranca": 1, "intentosMaximo": 4, "intentosAvisoDesde": 2, "diasMinEntreFinales": 7, "parcialAntes": 5, "parcialDespues": 1}, "materias": [{"codigo": "SyPN", "nombre": "Sistemas y Procesos de Negocio", "nivel": 1, "estado": "aprobada", "nota": 7, "anio": 2020, "anual": false, "electiva": false, "slug": null, "intentos": 0, "promocionable": null, "asumirPromocion": false, "horas": 45.0, "prepDias": 18, "cierreActual": null}, {"codigo": "AM1", "nombre": "Análisis Matemático I", "nivel": 1, "estado": "aprobada", "nota": 8, "anio": 2021, "anual": false, "electiva": false, "slug": null, "intentos": 0, "promocionable": null, "asumirPromocion": false, "horas": 45.0, "prepDias": 18, "cierreActual": null}, {"codigo": "LyED", "nombre": "Lógica y Estructuras Discretas", "nivel": 1, "estado": "aprobada", "nota": 6, "anio": 2023, "anual": false, "electiva": false, "slug": null, "intentos": 0, "promocionable": null, "asumirPromocion": false, "horas": 45.0, "prepDias": 18, "cierreActual": null}, {"codigo": "AyED", "nombre": "Algoritmos y Estructuras de Datos", "nivel": 1, "estado": "aprobada", "nota": 10, "anio": 2020, "anual": false, "electiva": false, "slug": null, "intentos": 0, "promocionable": null, "asumirPromocion": false, "horas": 45.0, "prepDias": 18, "cierreActual": null}, {"codigo": "AdC", "nombre": "Arquitectura de Computadoras", "nivel": 1, "estado": "regularizada", "nota": null, "anio": 2020, "anual": false, "electiva": false, "slug": null, "intentos": 0, "promocionable": null, "asumirPromocion": false, "horas": 45.0, "prepDias": 18, "cierreActual": null}, {"codigo": "AGA", "nombre": "Álgebra y Geometría Analítica", "nivel": 1, "estado": "aprobada", "nota": 8, "anio": 2019, "anual": false, "electiva": false, "slug": null, "intentos": 0, "promocionable": null, "asumirPromocion": false, "horas": 45.0, "prepDias": 18, "cierreActual": null}, {"codigo": "F1", "nombre": "Física I", "nivel": 1, "estado": "aprobada", "nota": 9, "anio": 2020, "anual": false, "electiva": false, "slug": null, "intentos": 0, "promocionable": null, "asumirPromocion": false, "horas": 45.0, "prepDias": 18, "cierreActual": null}, {"codigo": "Inglés1", "nombre": "Inglés I", "nivel": 1, "estado": "aprobada", "nota": 9, "anio": 2024, "anual": false, "electiva": false, "slug": null, "intentos": 0, "promocionable": null, "asumirPromocion": false, "horas": 45.0, "prepDias": 18, "cierreActual": null}, {"codigo": "IngSoc", "nombre": "Ingeniería y Sociedad", "nivel": 2, "estado": "aprobada", "nota": 9, "anio": 2019, "anual": false, "electiva": false, "slug": null, "intentos": 0, "promocionable": null, "asumirPromocion": false, "horas": 40.0, "prepDias": 17, "cierreActual": null}, {"codigo": "ASI", "nombre": "Análisis de Sistemas de Información", "nivel": 2, "estado": "aprobada", "nota": 8, "anio": 2021, "anual": false, "electiva": false, "slug": null, "intentos": 0, "promocionable": null, "asumirPromocion": false, "horas": 40.0, "prepDias": 17, "cierreActual": null}, {"codigo": "AM2", "nombre": "Análisis Matemático II", "nivel": 2, "estado": "regularizada", "nota": null, "anio": 2026, "anual": false, "electiva": false, "slug": "analisis-matematico-2", "intentos": 0, "promocionable": null, "asumirPromocion": false, "horas": 40.0, "prepDias": 17, "cierreActual": null}, {"codigo": "SySL", "nombre": "Sintaxis y Semántica de Lenguajes", "nivel": 2, "estado": "regularizada", "nota": null, "anio": 2021, "anual": false, "electiva": false, "slug": null, "intentos": 0, "promocionable": null, "asumirPromocion": false, "horas": 40.0, "prepDias": 17, "cierreActual": null}, {"codigo": "PdP", "nombre": "Paradigmas de Programación", "nivel": 2, "estado": "aprobada", "nota": 8, "anio": 2021, "anual": false, "electiva": false, "slug": null, "intentos": 0, "promocionable": null, "asumirPromocion": false, "horas": 40.0, "prepDias": 17, "cierreActual": null}, {"codigo": "F2", "nombre": "Física II", "nivel": 2, "estado": "regularizada", "nota": null, "anio": 2025, "anual": false, "electiva": false, "slug": "fisica-2", "intentos": 0, "promocionable": null, "asumirPromocion": false, "horas": 40.0, "prepDias": 17, "cierreActual": null}, {"codigo": "SSOO", "nombre": "Sistemas Operativos", "nivel": 2, "estado": "regularizada", "nota": null, "anio": 2022, "anual": false, "electiva": false, "slug": null, "intentos": 0, "promocionable": null, "asumirPromocion": false, "horas": 40.0, "prepDias": 17, "cierreActual": null}, {"codigo": "Inglés2", "nombre": "Inglés II", "nivel": 2, "estado": "aprobada", "nota": 10, "anio": 2025, "anual": false, "electiva": false, "slug": null, "intentos": 0, "promocionable": null, "asumirPromocion": false, "horas": 40.0, "prepDias": 17, "cierreActual": null}, {"codigo": "DSI", "nombre": "Diseño de Sistemas de Información", "nivel": 3, "estado": "aprobada", "nota": 6, "anio": 2023, "anual": false, "electiva": false, "slug": null, "intentos": 0, "promocionable": null, "asumirPromocion": false, "horas": 35.0, "prepDias": 14, "cierreActual": null}, {"codigo": "ECO", "nombre": "Economía", "nivel": 3, "estado": "aprobada", "nota": 9, "anio": 2023, "anual": false, "electiva": false, "slug": null, "intentos": 0, "promocionable": null, "asumirPromocion": false, "horas": 35.0, "prepDias": 14, "cierreActual": null}, {"codigo": "DdS", "nombre": "Desarrollo de Software", "nivel": 3, "estado": "aprobada", "nota": 6, "anio": 2023, "anual": false, "electiva": false, "slug": null, "intentos": 0, "promocionable": null, "asumirPromocion": false, "horas": 35.0, "prepDias": 14, "cierreActual": null}, {"codigo": "BD", "nombre": "Bases de Datos", "nivel": 3, "estado": "regularizada", "nota": null, "anio": 2023, "anual": false, "electiva": false, "slug": null, "intentos": 0, "promocionable": null, "asumirPromocion": false, "horas": 35.0, "prepDias": 14, "cierreActual": null}, {"codigo": "SI", "nombre": "Seminario Integrador", "nivel": 3, "estado": "bloqueada", "nota": null, "anio": null, "anual": false, "electiva": false, "slug": null, "intentos": 0, "promocionable": null, "asumirPromocion": false, "horas": 35.0, "prepDias": 14, "cierreActual": null}, {"codigo": "CD", "nombre": "Comunicación de Datos", "nivel": 3, "estado": "bloqueada", "nota": null, "anio": null, "anual": false, "electiva": false, "slug": null, "intentos": 0, "promocionable": null, "asumirPromocion": false, "horas": 35.0, "prepDias": 14, "cierreActual": null}, {"codigo": "AN", "nombre": "Análisis Numérico", "nivel": 3, "estado": "cursando", "nota": null, "anio": null, "anual": false, "electiva": false, "slug": null, "intentos": 0, "promocionable": null, "asumirPromocion": false, "horas": 35.0, "prepDias": 14, "cierreActual": "2026-11-30"}, {"codigo": "PyE", "nombre": "Probabilidad y Estadística", "nivel": 3, "estado": "aprobada", "nota": 8, "anio": 2024, "anual": false, "electiva": false, "slug": null, "intentos": 0, "promocionable": null, "asumirPromocion": false, "horas": 35.0, "prepDias": 14, "cierreActual": null}, {"codigo": "ELEC_QA", "nombre": "Química Ambiental", "nivel": 3, "estado": "aprobada", "nota": 9, "anio": 2019, "anual": false, "electiva": true, "slug": null, "intentos": 0, "promocionable": null, "asumirPromocion": false, "horas": 35.0, "prepDias": 14, "cierreActual": null}, {"codigo": "RD", "nombre": "Redes de Datos", "nivel": 4, "estado": "bloqueada", "nota": null, "anio": null, "anual": false, "electiva": false, "slug": null, "intentos": 0, "promocionable": null, "asumirPromocion": false, "horas": 30.0, "prepDias": 12, "cierreActual": null}, {"codigo": "AdmSI", "nombre": "Administración de Sistemas de Información", "nivel": 4, "estado": "aprobada", "nota": 6, "anio": 2024, "anual": false, "electiva": false, "slug": null, "intentos": 0, "promocionable": null, "asumirPromocion": false, "horas": 30.0, "prepDias": 12, "cierreActual": null}, {"codigo": "IyCS", "nombre": "Ingeniería y Calidad de Software", "nivel": 4, "estado": "bloqueada", "nota": null, "anio": null, "anual": false, "electiva": false, "slug": null, "intentos": 0, "promocionable": null, "asumirPromocion": false, "horas": 30.0, "prepDias": 12, "cierreActual": null}, {"codigo": "Sim", "nombre": "Simulación", "nivel": 4, "estado": "bloqueada", "nota": null, "anio": null, "anual": false, "electiva": false, "slug": null, "intentos": 0, "promocionable": null, "asumirPromocion": false, "horas": 30.0, "prepDias": 12, "cierreActual": null}, {"codigo": "Leg", "nombre": "Legislación", "nivel": 4, "estado": "aprobada", "nota": 9, "anio": 2025, "anual": false, "electiva": false, "slug": null, "intentos": 0, "promocionable": null, "asumirPromocion": false, "horas": 30.0, "prepDias": 12, "cierreActual": null}, {"codigo": "IO", "nombre": "Investigación Operativa", "nivel": 4, "estado": "bloqueada", "nota": null, "anio": null, "anual": false, "electiva": false, "slug": null, "intentos": 0, "promocionable": null, "asumirPromocion": false, "horas": 30.0, "prepDias": 12, "cierreActual": null}, {"codigo": "TpA", "nombre": "Tecnología para la Automatización", "nivel": 4, "estado": "bloqueada", "nota": null, "anio": null, "anual": false, "electiva": false, "slug": null, "intentos": 0, "promocionable": null, "asumirPromocion": false, "horas": 30.0, "prepDias": 12, "cierreActual": null}, {"codigo": "ELEC_UX", "nombre": "UX/UI", "nivel": 4, "estado": "aprobada", "nota": 8, "anio": 2026, "anual": false, "electiva": true, "slug": null, "intentos": 0, "promocionable": null, "asumirPromocion": false, "horas": 30.0, "prepDias": 12, "cierreActual": null}, {"codigo": "ELEC_TH", "nombre": "Gestión Talento Humano", "nivel": 4, "estado": "aprobada", "nota": 9, "anio": 2022, "anual": false, "electiva": true, "slug": null, "intentos": 0, "promocionable": null, "asumirPromocion": false, "horas": 30.0, "prepDias": 12, "cierreActual": null}, {"codigo": "CdD", "nombre": "Ciencia de Datos", "nivel": 5, "estado": "aprobada", "nota": 6, "anio": 2024, "anual": false, "electiva": false, "slug": null, "intentos": 0, "promocionable": null, "asumirPromocion": false, "horas": 25.0, "prepDias": 11, "cierreActual": null}, {"codigo": "PFinal", "nombre": "Proyecto Final", "nivel": 5, "estado": "bloqueada", "nota": null, "anio": null, "anual": true, "electiva": false, "slug": null, "intentos": 0, "promocionable": null, "asumirPromocion": false, "horas": 25.0, "prepDias": 11, "cierreActual": null}, {"codigo": "IA", "nombre": "Inteligencia Artificial", "nivel": 5, "estado": "bloqueada", "nota": null, "anio": null, "anual": false, "electiva": false, "slug": null, "intentos": 0, "promocionable": null, "asumirPromocion": false, "horas": 25.0, "prepDias": 11, "cierreActual": null}, {"codigo": "GG", "nombre": "Gestión Gerencial", "nivel": 5, "estado": "cursando", "nota": null, "anio": null, "anual": false, "electiva": false, "slug": null, "intentos": 0, "promocionable": null, "asumirPromocion": false, "horas": 25.0, "prepDias": 11, "cierreActual": "2026-11-30"}, {"codigo": "SG", "nombre": "Sistemas de Gestión", "nivel": 5, "estado": "bloqueada", "nota": null, "anio": null, "anual": false, "electiva": false, "slug": null, "intentos": 0, "promocionable": null, "asumirPromocion": false, "horas": 25.0, "prepDias": 11, "cierreActual": null}, {"codigo": "SSI", "nombre": "Seguridad en los Sistemas de Información", "nivel": 5, "estado": "bloqueada", "nota": null, "anio": null, "anual": false, "electiva": false, "slug": null, "intentos": 0, "promocionable": null, "asumirPromocion": false, "horas": 25.0, "prepDias": 11, "cierreActual": null}, {"codigo": "PPS", "nombre": "Práctica Profesional Supervisada", "nivel": 5, "estado": "bloqueada", "nota": null, "anio": null, "anual": false, "electiva": false, "slug": null, "intentos": 0, "promocionable": null, "asumirPromocion": false, "horas": 25.0, "prepDias": 11, "cierreActual": null}], "correlativas": [{"codigo": "ASI", "reg": ["SyPN", "AyED"], "apr": []}, {"codigo": "AM2", "reg": ["AM1", "AGA"], "apr": []}, {"codigo": "SySL", "reg": ["LyED", "AyED"], "apr": []}, {"codigo": "PdP", "reg": ["LyED", "AyED"], "apr": []}, {"codigo": "F2", "reg": ["AM1", "F1"], "apr": []}, {"codigo": "SSOO", "reg": ["AdC"], "apr": []}, {"codigo": "Inglés2", "reg": ["Inglés1"], "apr": []}, {"codigo": "DSI", "reg": ["ASI", "PdP"], "apr": ["Inglés1", "AyED", "SyPN"]}, {"codigo": "ECO", "reg": [], "apr": ["AM1", "AGA"]}, {"codigo": "DdS", "reg": ["PdP", "ASI"], "apr": ["LyED", "AyED"]}, {"codigo": "BD", "reg": ["SySL", "ASI"], "apr": ["LyED", "AyED"]}, {"codigo": "SI", "reg": ["ASI"], "apr": ["SyPN", "AyED", "SySL", "PdP"]}, {"codigo": "CD", "reg": [], "apr": ["AdC", "F1"]}, {"codigo": "AN", "reg": ["AM2"], "apr": ["AM1", "AGA"]}, {"codigo": "PyE", "reg": ["AM1", "AGA"], "apr": []}, {"codigo": "RD", "reg": ["SSOO", "CD"], "apr": []}, {"codigo": "AdmSI", "reg": ["ECO", "DSI"], "apr": ["ASI"]}, {"codigo": "IyCS", "reg": ["BD", "DdS", "DSI"], "apr": ["SySL", "PdP"]}, {"codigo": "Sim", "reg": ["PyE"], "apr": ["AM2"]}, {"codigo": "Leg", "reg": ["IngSoc"], "apr": []}, {"codigo": "IO", "reg": ["PyE", "AN"], "apr": []}, {"codigo": "TpA", "reg": ["F2", "AN"], "apr": ["AM2"]}, {"codigo": "CdD", "reg": ["Sim"], "apr": ["PyE", "BD"]}, {"codigo": "PFinal", "reg": ["IyCS", "AdmSI", "RD"], "apr": ["Inglés2", "DdS", "DSI"]}, {"codigo": "IA", "reg": ["Sim"], "apr": ["PyE", "AN"]}, {"codigo": "GG", "reg": ["Leg", "AdmSI"], "apr": ["ECO"]}, {"codigo": "SG", "reg": ["ECO", "IO"], "apr": ["DSI"]}, {"codigo": "SSI", "reg": ["RD", "AdmSI"], "apr": ["DdS", "CD"]}, {"codigo": "PPS", "reg": ["IyCS", "AdmSI", "RD"], "apr": ["Inglés2", "DdS", "DSI"]}], "cuatrimestres": [{"clave": "2C-2026", "etiqueta": "2C 2026", "numero": 2, "inicio": "2026-08-01", "fin": "2026-11-30", "abierta": false, "enCurso": true}, {"clave": "1C-2027", "etiqueta": "1C 2027", "numero": 1, "inicio": "2027-03-01", "fin": "2027-07-15", "abierta": true, "enCurso": false}, {"clave": "2C-2027", "etiqueta": "2C 2027", "numero": 2, "inicio": "2027-08-01", "fin": "2027-11-30", "abierta": true, "enCurso": false}, {"clave": "1C-2028", "etiqueta": "1C 2028", "numero": 1, "inicio": "2028-03-01", "fin": "2028-07-15", "abierta": true, "enCurso": false}, {"clave": "2C-2028", "etiqueta": "2C 2028", "numero": 2, "inicio": "2028-08-01", "fin": "2028-11-30", "abierta": true, "enCurso": false}, {"clave": "1C-2029", "etiqueta": "1C 2029", "numero": 1, "inicio": "2029-03-01", "fin": "2029-07-15", "abierta": true, "enCurso": false}, {"clave": "2C-2029", "etiqueta": "2C 2029", "numero": 2, "inicio": "2029-08-01", "fin": "2029-11-30", "abierta": true, "enCurso": false}, {"clave": "1C-2030", "etiqueta": "1C 2030", "numero": 1, "inicio": "2030-03-01", "fin": "2030-07-15", "abierta": true, "enCurso": false}, {"clave": "2C-2030", "etiqueta": "2C 2030", "numero": 2, "inicio": "2030-08-01", "fin": "2030-11-30", "abierta": true, "enCurso": false}], "mesas": [{"clave": "sep-2026", "id": "sep", "desde": "2026-09-22", "hasta": "2026-09-23", "llamados": 1, "especial": false, "estimada": false, "candidatas": ["AM2"], "fechas": ["2026-09-22"]}, {"clave": "oct-2026", "id": "oct", "desde": "2026-10-26", "hasta": "2026-10-30", "llamados": 1, "especial": true, "estimada": false, "candidatas": ["F2"], "fechas": ["2026-10-26"]}, {"clave": "dic-2026", "id": "dic", "desde": "2026-12-01", "hasta": "2026-12-22", "llamados": 3, "especial": false, "estimada": false, "candidatas": ["AdC"], "fechas": ["2026-12-01", "2026-12-11", "2026-12-22"]}, {"clave": "feb-mar-2027", "id": "feb-mar", "desde": "2027-02-10", "hasta": "2027-03-06", "llamados": 3, "especial": false, "estimada": true, "candidatas": [], "fechas": ["2027-02-10", "2027-02-22", "2027-03-06"]}, {"clave": "abril-2027", "id": "abril", "desde": "2027-04-20", "hasta": "2027-04-24", "llamados": 1, "especial": true, "estimada": true, "candidatas": [], "fechas": ["2027-04-20"]}, {"clave": "mayo-2027", "id": "mayo", "desde": "2027-05-19", "hasta": "2027-05-20", "llamados": 1, "especial": false, "estimada": true, "candidatas": [], "fechas": ["2027-05-19"]}, {"clave": "jul-1-2027", "id": "jul-1", "desde": "2027-07-13", "hasta": "2027-07-18", "llamados": 1, "especial": false, "estimada": true, "candidatas": [], "fechas": ["2027-07-13"]}, {"clave": "jul-2-2027", "id": "jul-2", "desde": "2027-07-27", "hasta": "2027-08-01", "llamados": 1, "especial": false, "estimada": true, "candidatas": [], "fechas": ["2027-07-27"]}, {"clave": "sep-2027", "id": "sep", "desde": "2027-09-22", "hasta": "2027-09-23", "llamados": 1, "especial": false, "estimada": true, "candidatas": [], "fechas": ["2027-09-22"]}, {"clave": "oct-2027", "id": "oct", "desde": "2027-10-26", "hasta": "2027-10-30", "llamados": 1, "especial": true, "estimada": true, "candidatas": [], "fechas": ["2027-10-26"]}, {"clave": "dic-2027", "id": "dic", "desde": "2027-12-01", "hasta": "2027-12-22", "llamados": 3, "especial": false, "estimada": true, "candidatas": [], "fechas": ["2027-12-01", "2027-12-11", "2027-12-22"]}, {"clave": "feb-mar-2028", "id": "feb-mar", "desde": "2028-02-10", "hasta": "2028-03-06", "llamados": 3, "especial": false, "estimada": true, "candidatas": [], "fechas": ["2028-02-10", "2028-02-22", "2028-03-06"]}, {"clave": "abril-2028", "id": "abril", "desde": "2028-04-20", "hasta": "2028-04-24", "llamados": 1, "especial": true, "estimada": true, "candidatas": [], "fechas": ["2028-04-20"]}, {"clave": "mayo-2028", "id": "mayo", "desde": "2028-05-19", "hasta": "2028-05-20", "llamados": 1, "especial": false, "estimada": true, "candidatas": [], "fechas": ["2028-05-19"]}, {"clave": "jul-1-2028", "id": "jul-1", "desde": "2028-07-13", "hasta": "2028-07-18", "llamados": 1, "especial": false, "estimada": true, "candidatas": [], "fechas": ["2028-07-13"]}, {"clave": "jul-2-2028", "id": "jul-2", "desde": "2028-07-27", "hasta": "2028-08-01", "llamados": 1, "especial": false, "estimada": true, "candidatas": [], "fechas": ["2028-07-27"]}, {"clave": "sep-2028", "id": "sep", "desde": "2028-09-22", "hasta": "2028-09-23", "llamados": 1, "especial": false, "estimada": true, "candidatas": [], "fechas": ["2028-09-22"]}, {"clave": "oct-2028", "id": "oct", "desde": "2028-10-26", "hasta": "2028-10-30", "llamados": 1, "especial": true, "estimada": true, "candidatas": [], "fechas": ["2028-10-26"]}, {"clave": "dic-2028", "id": "dic", "desde": "2028-12-01", "hasta": "2028-12-22", "llamados": 3, "especial": false, "estimada": true, "candidatas": [], "fechas": ["2028-12-01", "2028-12-11", "2028-12-22"]}, {"clave": "feb-mar-2029", "id": "feb-mar", "desde": "2029-02-10", "hasta": "2029-03-06", "llamados": 3, "especial": false, "estimada": true, "candidatas": [], "fechas": ["2029-02-10", "2029-02-22", "2029-03-06"]}, {"clave": "abril-2029", "id": "abril", "desde": "2029-04-20", "hasta": "2029-04-24", "llamados": 1, "especial": true, "estimada": true, "candidatas": [], "fechas": ["2029-04-20"]}, {"clave": "mayo-2029", "id": "mayo", "desde": "2029-05-19", "hasta": "2029-05-20", "llamados": 1, "especial": false, "estimada": true, "candidatas": [], "fechas": ["2029-05-19"]}, {"clave": "jul-1-2029", "id": "jul-1", "desde": "2029-07-13", "hasta": "2029-07-18", "llamados": 1, "especial": false, "estimada": true, "candidatas": [], "fechas": ["2029-07-13"]}, {"clave": "jul-2-2029", "id": "jul-2", "desde": "2029-07-27", "hasta": "2029-08-01", "llamados": 1, "especial": false, "estimada": true, "candidatas": [], "fechas": ["2029-07-27"]}, {"clave": "sep-2029", "id": "sep", "desde": "2029-09-22", "hasta": "2029-09-23", "llamados": 1, "especial": false, "estimada": true, "candidatas": [], "fechas": ["2029-09-22"]}, {"clave": "oct-2029", "id": "oct", "desde": "2029-10-26", "hasta": "2029-10-30", "llamados": 1, "especial": true, "estimada": true, "candidatas": [], "fechas": ["2029-10-26"]}, {"clave": "dic-2029", "id": "dic", "desde": "2029-12-01", "hasta": "2029-12-22", "llamados": 3, "especial": false, "estimada": true, "candidatas": [], "fechas": ["2029-12-01", "2029-12-11", "2029-12-22"]}, {"clave": "feb-mar-2030", "id": "feb-mar", "desde": "2030-02-10", "hasta": "2030-03-06", "llamados": 3, "especial": false, "estimada": true, "candidatas": [], "fechas": ["2030-02-10", "2030-02-22", "2030-03-06"]}, {"clave": "abril-2030", "id": "abril", "desde": "2030-04-20", "hasta": "2030-04-24", "llamados": 1, "especial": true, "estimada": true, "candidatas": [], "fechas": ["2030-04-20"]}, {"clave": "mayo-2030", "id": "mayo", "desde": "2030-05-19", "hasta": "2030-05-20", "llamados": 1, "especial": false, "estimada": true, "candidatas": [], "fechas": ["2030-05-19"]}, {"clave": "jul-1-2030", "id": "jul-1", "desde": "2030-07-13", "hasta": "2030-07-18", "llamados": 1, "especial": false, "estimada": true, "candidatas": [], "fechas": ["2030-07-13"]}, {"clave": "jul-2-2030", "id": "jul-2", "desde": "2030-07-27", "hasta": "2030-08-01", "llamados": 1, "especial": false, "estimada": true, "candidatas": [], "fechas": ["2030-07-27"]}, {"clave": "sep-2030", "id": "sep", "desde": "2030-09-22", "hasta": "2030-09-23", "llamados": 1, "especial": false, "estimada": true, "candidatas": [], "fechas": ["2030-09-22"]}, {"clave": "oct-2030", "id": "oct", "desde": "2030-10-26", "hasta": "2030-10-30", "llamados": 1, "especial": true, "estimada": true, "candidatas": [], "fechas": ["2030-10-26"]}, {"clave": "dic-2030", "id": "dic", "desde": "2030-12-01", "hasta": "2030-12-22", "llamados": 3, "especial": false, "estimada": true, "candidatas": [], "fechas": ["2030-12-01", "2030-12-11", "2030-12-22"]}], "parciales": [{"codigo": "GG", "nombre": "Gestión Gerencial", "numero": 1, "fecha": "2026-09-28"}, {"codigo": "AN", "nombre": "Análisis Numérico", "numero": 1, "fecha": "2026-10-06"}, {"codigo": "GG", "nombre": "Gestión Gerencial", "numero": 2, "fecha": "2026-11-16"}, {"codigo": "AN", "nombre": "Análisis Numérico", "numero": 2, "fecha": "2026-11-24"}], "sugerencia": {"cursadas": {"CD": "1C-2027", "Sim": "1C-2027", "IO": "1C-2027", "IyCS": "1C-2027", "SI": "1C-2027", "RD": "2C-2027", "TpA": "2C-2027", "IA": "2C-2027", "SG": "2C-2027", "PFinal": "1C-2028", "PPS": "1C-2028", "SSI": "1C-2028"}, "finales": {"AM2": "sep-2026", "F2": "oct-2026", "AdC": "dic-2026", "SySL": "dic-2026", "SSOO": "dic-2026", "AN": "feb-mar-2027", "BD": "feb-mar-2027", "GG": "feb-mar-2027", "CD": "jul-2-2027", "IyCS": "sep-2027", "RD": "dic-2027", "IO": "dic-2027", "Sim": "dic-2027", "IA": "feb-mar-2028", "SG": "feb-mar-2028", "TpA": "feb-mar-2028", "SI": "mayo-2028", "PPS": "jul-2-2028", "SSI": "sep-2028", "PFinal": "dic-2028"}}, "pins": null};
+
+/* ---------------- estado ---------------- */
+const CLAVE_LS = "utnboost-tablero-v2";
+const porCodigo = {};
+DATOS.materias.forEach(m => porCodigo[m.codigo] = m);
+const mesas = {};
+DATOS.mesas.forEach(m => mesas[m.clave] = m);
+const cuatris = DATOS.cuatrimestres;
+const idxCuatri = {};
+cuatris.forEach((c, i) => idxCuatri[c.clave] = i);
+const correl = {};
+DATOS.correlativas.forEach(c => correl[c.codigo] = c);
+
+// S = estado editable del tablero.
+let S = null;
+
+function estadoInicial() {
+  const s = {
+    cursadas: {}, finales: {}, promociones: [], intentos: {},
+    fijadas: [], maxMaterias: DATOS.config.maxMaterias,
+  };
+  Object.assign(s.cursadas, DATOS.sugerencia.cursadas);
+  Object.assign(s.finales, DATOS.sugerencia.finales);
+  DATOS.materias.forEach(m => {
+    if (m.intentos) s.intentos[m.codigo] = m.intentos;
+    if (m.asumirPromocion) s.promociones.push(m.codigo);
+  });
+  const p = DATOS.pins;
+  if (p) {
+    for (const [c, q] of Object.entries(p.cursadas || {})) { s.cursadas[c] = q; s.fijadas.push("c:" + c); }
+    for (const [c, v] of Object.entries(p.finales || {})) { s.finales[c] = v; s.fijadas.push("f:" + c); }
+    (p.promociones || []).forEach(c => { if (!s.promociones.includes(c)) s.promociones.push(c); });
+    Object.assign(s.intentos, p.intentosFinal || {});
+    if (p.maxMateriasPorCuatrimestre) s.maxMaterias = p.maxMateriasPorCuatrimestre;
+  }
+  return s;
+}
+
+/* ---------------- helpers de fechas (ISO YYYY-MM-DD) ---------------- */
+function masDias(iso, n) {
+  const d = new Date(iso + "T00:00:00Z");
+  d.setUTCDate(d.getUTCDate() + n);
+  return d.toISOString().slice(0, 10);
+}
+function difDias(a, b) { return Math.round((new Date(a) - new Date(b)) / 864e5); }
+function fmt(iso) { if (!iso) return "—"; const [y, m, d] = iso.split("-"); return `${d}/${m}/${y}`; }
+function fmtCorto(iso) { const [, m, d] = iso.split("-"); return `${d}/${m}`; }
+
+/* ---------------- semántica ---------------- */
+const esPromo = c => S.promociones.includes(c);
+const intentosDe = c => S.intentos[c] ?? (porCodigo[c].intentos || 0);
+const agotada = c => intentosDe(c) >= DATOS.config.intentosMaximo;
+const mat = c => porCodigo[c];
+
+// ¿Necesita tarjeta de cursada? bloqueada sin cursar, o regularizada con intentos agotados (recursar).
+function necesitaCursada(c) {
+  const m = mat(c);
+  if (m.estado === "bloqueada") return true;
+  return m.estado === "regularizada" && agotada(c);
+}
+// ¿Necesita tarjeta de final? todo lo no aprobado sin promoción asumida.
+function necesitaFinal(c) {
+  const m = mat(c);
+  if (m.estado === "aprobada") return false;
+  return !esPromo(c);
+}
+
+function cierreDeCursada(c, claveCuatri) {
+  const m = mat(c);
+  const i = idxCuatri[claveCuatri];
+  if (i == null) return null;
+  if (m.anual) return cuatris[Math.min(i + 1, cuatris.length - 1)].fin;
+  return cuatris[i].fin;
+}
+
+// Fecha (ISO) desde la que la materia cuenta como regularizada, según el tablero. null = nunca.
+function regularizadaEn(c) {
+  const m = mat(c);
+  if (m.estado === "aprobada" || m.estado === "regularizada") return "0000-01-01";
+  if (m.estado === "cursando") return m.cierreActual;
+  if (S.cursadas[c]) return cierreDeCursada(c, S.cursadas[c]);
+  return null;
+}
+// Fecha desde la que cuenta como aprobada. null = nunca (con el tablero actual).
+function aprobadaEn(c) {
+  const m = mat(c);
+  if (m.estado === "aprobada") return "0000-01-01";
+  if (esPromo(c)) {
+    if (m.estado === "cursando") return m.cierreActual;
+    if (S.cursadas[c]) return cierreDeCursada(c, S.cursadas[c]);
+    return null;
+  }
+  const clave = S.finales[c];
+  if (clave && mesas[clave]) return fechaDeLlamado(c, clave);
+  return null;
+}
+// Cierre de la recursada (si la hay) para materias agotadas.
+function recursadaCierra(c) {
+  const m = mat(c);
+  if (m.estado === "regularizada" && S.cursadas[c]) return cierreDeCursada(c, S.cursadas[c]);
+  return null;
+}
+
+// Reparte los llamados de una mesa entre las tarjetas que cayeron en ella.
+function fechaDeLlamado(c, claveMesa) {
+  const mesa = mesas[claveMesa];
+  const aca = Object.keys(S.finales).filter(x => S.finales[x] === claveMesa).sort();
+  const i = Math.min(aca.indexOf(c), mesa.fechas.length - 1);
+  return mesa.fechas[Math.max(0, i)];
+}
+
+/* ---------------- validación ---------------- */
+function validar() {
+  const errs = {};   // codigo → [ {nivel, msg} ]
+  const globales = [];
+  const marca = (c, nivel, msg) => { (errs[c] = errs[c] || []).push({ nivel, msg }); };
+
+  // Cursadas ubicadas.
+  for (const [c, q] of Object.entries(S.cursadas)) {
+    if (!necesitaCursada(c)) continue;
+    const i = idxCuatri[q];
+    if (i == null) { marca(c, "err", `el cuatrimestre ${q} no está en el horizonte`); continue; }
+    const bloque = cuatris[i];
+    if (!bloque.abierta) marca(c, "err", `${bloque.etiqueta} ya arrancó: no hay inscripción`);
+    const m = mat(c);
+    if (m.anual && bloque.numero !== DATOS.config.anualArranca)
+      marca(c, "err", `es anual: arranca en ${DATOS.config.anualArranca}C`);
+    const cc = correl[c] || { reg: [], apr: [] };
+    if (m.estado === "bloqueada") {
+      for (const req of cc.reg) {
+        const rEn = regularizadaEn(req);
+        if (!rEn || rEn > bloque.inicio)
+          marca(c, "err", `necesita ${req} regularizada antes de ${bloque.etiqueta}` + (rEn ? ` (recién el ${fmt(rEn)})` : " (no está en el plan)"));
+      }
+      for (const req of cc.apr) {
+        const aEn = aprobadaEn(req);
+        if (!aEn || aEn > bloque.inicio)
+          marca(c, "err", `necesita ${req} APROBADA antes de ${bloque.etiqueta}` + (aEn ? ` (recién el ${fmt(aEn)})` : " (no está en el plan)"));
+      }
+    }
+  }
+
+  // Cupos por cuatrimestre (cursando actuales + colocadas + anuales que continúan).
+  for (const bloque of cuatris) {
+    let carga = DATOS.materias.filter(m => m.estado === "cursando" && bloque.enCurso).length;
+    for (const [c, q] of Object.entries(S.cursadas)) {
+      if (!necesitaCursada(c)) continue;
+      if (q === bloque.clave) carga++;
+      else {
+        const i = idxCuatri[q];
+        if (i != null && mat(c).anual && i + 1 < cuatris.length && cuatris[i + 1].clave === bloque.clave) carga++;
+      }
+    }
+    bloque._carga = carga;
+    if (carga > S.maxMaterias)
+      globales.push({ nivel: "warn", msg: `${bloque.etiqueta}: ${carga} materias (tope ${S.maxMaterias})` });
+  }
+
+  // Finales ubicados.
+  const colocados = [];
+  for (const [c, clave] of Object.entries(S.finales)) {
+    if (!necesitaFinal(c)) continue;
+    const mesa = mesas[clave];
+    if (!mesa) { marca(c, "err", `la mesa ${clave} no existe en el horizonte`); continue; }
+    const fecha = fechaDeLlamado(c, clave);
+    colocados.push({ c, fecha, mesa });
+    const rec = recursadaCierra(c);
+    if (agotada(c) && !rec) {
+      marca(c, "err", `agotó los ${DATOS.config.intentosMaximo} intentos: hay que RECURSARLA (arrastrá su cursada a un cuatrimestre)`);
+      continue;
+    }
+    const regDesde = rec || regularizadaEn(c);
+    if (!regDesde) marca(c, "err", "no llega regularizada: ubicá antes su cursada");
+    else if (regDesde > fecha) marca(c, "err", `la cursada cierra el ${fmt(regDesde)}, después de esta mesa`);
+    if (rec && fecha < rec) marca(c, "err", `recursada: recién puede rendir después del ${fmt(rec)}`);
+    if (mesa.especial) marca(c, "warn", "mesa especial: aplican pocas materias, confirmá que la tuya entra");
+    if (!agotada(c) && intentosDe(c) === DATOS.config.intentosMaximo - 1)
+      marca(c, "warn", "último intento disponible: si lo desaprobás, se recursa");
+    // Choque con parciales (preparación).
+    const prepIni = masDias(fecha, -mat(c).prepDias);
+    for (const p of DATOS.parciales) {
+      if (masDias(p.fecha, -DATOS.config.parcialAntes) <= fecha && prepIni <= masDias(p.fecha, DATOS.config.parcialDespues))
+        marca(c, "warn", `su preparación pisa el parcial ${p.codigo} P${p.numero} (${fmt(p.fecha)})`);
+    }
+  }
+  // Finales demasiado pegados.
+  colocados.sort((a, b) => a.fecha < b.fecha ? -1 : 1);
+  for (let i = 1; i < colocados.length; i++) {
+    const gap = difDias(colocados[i].fecha, colocados[i - 1].fecha);
+    if (gap < DATOS.config.diasMinEntreFinales) {
+      marca(colocados[i].c, "warn", `queda a ${gap} días del final de ${colocados[i - 1].c}`);
+      marca(colocados[i - 1].c, "warn", `queda a ${gap} días del final de ${colocados[i].c}`);
+    }
+  }
+
+  // Graduación estimada + pendientes.
+  let grad = "0000-01-01"; let pendientes = [];
+  for (const m of DATOS.materias) {
+    if (m.estado === "aprobada") continue;
+    const aEn = aprobadaEn(m.codigo);
+    const tieneErr = (errs[m.codigo] || []).some(e => e.nivel === "err");
+    if (!aEn || tieneErr) pendientes.push(m.codigo);
+    else if (aEn > grad) grad = aEn;
+  }
+  return { errs, globales, grad: pendientes.length ? null : grad, pendientes };
+}
+
+/* ---------------- render ---------------- */
+const $ = sel => document.querySelector(sel);
+let V = null; // última validación
+
+function render() {
+  V = validar();
+  renderBarra();
+  renderAvisos();
+  renderPool();
+  renderTimeline();
+  guardarBorrador();
+}
+
+function renderBarra() {
+  const grad = $("#statGrad");
+  if (V.grad) { grad.innerHTML = `🎓 te recibirías el <b>${fmt(V.grad)}</b>`; grad.className = "stat good"; }
+  else { grad.innerHTML = `🎓 plan incompleto`; grad.className = "stat"; }
+  $("#statPend").innerHTML = V.pendientes.length
+    ? `⏳ sin resolver: <b>${V.pendientes.length}</b> (${V.pendientes.slice(0, 4).join(", ")}${V.pendientes.length > 4 ? "…" : ""})`
+    : "✅ todo el plan ubicado";
+  const nErr = Object.values(V.errs).flat().filter(e => e.nivel === "err").length;
+  const nWarn = Object.values(V.errs).flat().filter(e => e.nivel === "warn").length + V.globales.length;
+  $("#statAvisos").innerHTML = `🔴 <b>${nErr}</b> · 🟡 <b>${nWarn}</b>`;
+  $("#statAvisos").className = "stat" + (nErr ? " bad" : "");
+}
+
+function renderAvisos() {
+  const panel = $("#panelAvisos");
+  const items = [];
+  for (const [c, lista] of Object.entries(V.errs))
+    for (const e of lista) items.push({ nivel: e.nivel, msg: `${c}: ${e.msg}` });
+  for (const g of V.globales) items.push(g);
+  items.sort((a, b) => a.nivel === b.nivel ? 0 : a.nivel === "err" ? -1 : 1);
+  panel.innerHTML = items.map(i =>
+    `<div class="aviso ${i.nivel === "err" ? "" : "warn"}">${i.nivel === "err" ? "🔴" : "🟡"} ${i.msg}</div>`).join("");
+  panel.className = "panelAvisos" + (items.length ? " visible" : "");
+}
+
+function tarjetaCursada(c) {
+  const m = mat(c);
+  const rec = m.estado === "regularizada";
+  const fija = S.fijadas.includes("c:" + c);
+  const errores = (V.errs[c] || []).filter(e => !S.finales[c] || true);
+  const nivel = errores.some(e => e.nivel === "err") ? "err" : errores.some(e => e.nivel === "warn") ? "warn" : "";
+  const div = document.createElement("div");
+  div.className = `tarjeta t-cursada ${rec ? "recursada" : ""} ${nivel}`;
+  div.draggable = true;
+  div.dataset.codigo = c; div.dataset.tipo = "cursada";
+  div.title = (errores.map(e => e.msg).join("\n")) || `${m.nombre} — nivel ${m.nivel}` + (m.anual ? " · ANUAL (2 cuatrimestres)" : "");
+  div.innerHTML = `
+    <div class="fila1">
+      <span class="cod">${c}</span>
+      ${m.anual ? '<span class="tag">anual</span>' : ""}
+      ${rec ? '<span class="tag" style="border-color:var(--rojo);color:var(--rojo)">recursar</span>' : ""}
+      <button class="promobtn ${esPromo(c) ? "on" : ""}" title="Asumir promoción por parciales (sin final)">✨</button>
+      <button class="pinbtn ${fija ? "on" : ""}" title="Fijada: va al export y el motor la respeta">📌</button>
+    </div>
+    <span class="nom">${m.nombre}</span>`;
+  div.querySelector(".promobtn").onclick = ev => { ev.stopPropagation(); togglePromo(c); };
+  div.querySelector(".pinbtn").onclick = ev => { ev.stopPropagation(); toggleFija("c:" + c); };
+  return div;
+}
+
+function tarjetaFinal(c) {
+  const m = mat(c);
+  const fija = S.fijadas.includes("f:" + c);
+  const errores = V.errs[c] || [];
+  const nivel = errores.some(e => e.nivel === "err") ? "err" : errores.some(e => e.nivel === "warn") ? "warn" : "";
+  const clave = S.finales[c];
+  const fecha = clave && mesas[clave] ? fechaDeLlamado(c, clave) : null;
+  const prep = fecha ? masDias(fecha, -m.prepDias) : null;
+  const usados = intentosDe(c);
+  const div = document.createElement("div");
+  div.className = `tarjeta t-final ${nivel}`;
+  div.draggable = true;
+  div.dataset.codigo = c; div.dataset.tipo = "final";
+  div.title = (errores.map(e => e.msg).join("\n")) || `Final de ${m.nombre} (~${m.horas} h de preparación)`;
+  div.innerHTML = `
+    <div class="fila1">
+      <span class="cod">${c}</span>
+      ${fecha ? `<span class="extra">rinde <b>${fmtCorto(fecha)}</b></span>` : ""}
+      <button class="pinbtn ${fija ? "on" : ""}" title="Fijado: va al export y el motor lo respeta">📌</button>
+    </div>
+    ${prep ? `<span class="extra">preparar desde <b>${fmtCorto(prep)}</b> (~${m.horas} h)</span>` : `<span class="nom">${m.nombre}</span>`}
+    <span class="intentos">intentos <button data-d="-1">−</button><b>${usados}</b><button data-d="1">+</button> de ${DATOS.config.intentosMaximo}</span>`;
+  div.querySelector(".pinbtn").onclick = ev => { ev.stopPropagation(); toggleFija("f:" + c); };
+  div.querySelectorAll(".intentos button").forEach(b => b.onclick = ev => {
+    ev.stopPropagation();
+    setIntentos(c, usados + parseInt(b.dataset.d));
+  });
+  return div;
+}
+
+function tarjetaCursandoActual(c) {
+  const m = mat(c);
+  const div = document.createElement("div");
+  div.className = "tarjeta t-cursada fija-actual bloqueada-drag";
+  div.title = `${m.nombre}: la estás cursando ahora (dato de estado.json, no se mueve desde acá)`;
+  div.innerHTML = `
+    <div class="fila1"><span class="cod">${c}</span><span class="tag">cursando 🔒</span>
+      <button class="promobtn ${esPromo(c) ? "on" : ""}" title="Asumir promoción por parciales (sin final)">✨</button>
+    </div>
+    <span class="nom">${m.nombre}</span>`;
+  div.querySelector(".promobtn").onclick = () => togglePromo(c);
+  return div;
+}
+
+function renderPool() {
+  const zc = document.querySelector('.pool .zona[data-tipo="cursada"]');
+  const zf = document.querySelector('.pool .zona[data-tipo="final"]');
+  zc.innerHTML = ""; zf.innerHTML = "";
+  let nc = 0, nf = 0;
+  for (const m of DATOS.materias) {
+    const c = m.codigo;
+    if (necesitaCursada(c) && !S.cursadas[c]) { zc.appendChild(tarjetaCursada(c)); nc++; }
+    if (necesitaFinal(c) && !S.finales[c]) { zf.appendChild(tarjetaFinal(c)); nf++; }
+  }
+  if (!nc) zc.innerHTML = '<span class="vacia">todo ubicado — arrastrá acá para sacar algo del plan</span>';
+  if (!nf) zf.innerHTML = '<span class="vacia">todo ubicado — arrastrá acá para sacar algo del plan</span>';
+  $("#cntCursadas").textContent = nc ? `(${nc})` : "";
+  $("#cntFinales").textContent = nf ? `(${nf})` : "";
+}
+
+function renderTimeline() {
+  const cont = $("#timeline");
+  cont.innerHTML = "";
+  const bloques = [];
+  cuatris.forEach(q => bloques.push({ tipo: "cuatri", fecha: q.inicio, q }));
+  DATOS.mesas.forEach(m => bloques.push({ tipo: "mesa", fecha: m.desde, m }));
+  bloques.sort((a, b) => a.fecha < b.fecha ? -1 : 1);
+
+  let anio = null;
+  for (const b of bloques) {
+    const y = b.fecha.slice(0, 4);
+    if (y !== anio) {
+      anio = y;
+      const sep = document.createElement("div");
+      sep.className = "anio-sep"; sep.textContent = y;
+      cont.appendChild(sep);
+    }
+    cont.appendChild(b.tipo === "cuatri" ? bloqueCuatri(b.q) : bloqueMesa(b.m));
+  }
+}
+
+function bloqueCuatri(q) {
+  const div = document.createElement("div");
+  div.className = "bloque";
+  const carga = q._carga ?? 0;
+  const cupoMal = carga > S.maxMaterias;
+  div.innerHTML = `
+    <div class="cab">
+      <span class="titulo">🗓️ ${q.etiqueta}</span>
+      <span class="fechas">${fmtCorto(q.inicio)} → ${fmtCorto(q.fin)}</span>
+      ${q.enCurso ? '<span class="tag">en curso</span>' : ""}
+      <span class="tag ${cupoMal ? "cupo-mal" : ""}">${carga}/${S.maxMaterias}</span>
+    </div>`;
+  const zona = document.createElement("div");
+  zona.className = "zona"; zona.dataset.tipo = "cursada"; zona.dataset.zona = q.clave;
+  if (q.enCurso)
+    DATOS.materias.filter(m => m.estado === "cursando").forEach(m => zona.appendChild(tarjetaCursandoActual(m.codigo)));
+  for (const [c, clave] of Object.entries(S.cursadas)) {
+    if (clave === q.clave && necesitaCursada(c)) zona.appendChild(tarjetaCursada(c));
+    else {
+      const i = idxCuatri[clave];
+      if (i != null && mat(c).anual && cuatris[i + 1] && cuatris[i + 1].clave === q.clave && necesitaCursada(c)) {
+        const ghost = tarjetaCursada(c);
+        ghost.style.opacity = ".55"; ghost.draggable = false;
+        ghost.title = `${c} es anual: sigue de ${cuatris[i].etiqueta}`;
+        ghost.querySelector(".fila1").insertAdjacentHTML("beforeend", '<span class="tag">continúa</span>');
+        zona.appendChild(ghost);
+      }
+    }
+  }
+  if (!zona.children.length) zona.innerHTML = '<span class="vacia">soltá cursadas acá</span>';
+  div.appendChild(zona);
+  const parcialesAca = DATOS.parciales.filter(p => q.inicio <= p.fecha && p.fecha <= q.fin);
+  if (parcialesAca.length)
+    div.insertAdjacentHTML("beforeend",
+      `<div class="parciales">${parcialesAca.map(p => `<span class="parcial">📝 ${p.codigo} P${p.numero} · ${fmtCorto(p.fecha)}</span>`).join("")}</div>`);
+  return div;
+}
+
+function bloqueMesa(m) {
+  const div = document.createElement("div");
+  div.className = "bloque mesa" + (m.especial ? " especial" : "");
+  div.innerHTML = `
+    <div class="cab">
+      <span class="titulo">🎓 Mesa ${m.id} ${m.clave.slice(-4)}</span>
+      <span class="fechas">${fmtCorto(m.desde)} → ${fmtCorto(m.hasta)} · ${m.llamados} llamado${m.llamados > 1 ? "s" : ""}</span>
+      ${m.especial ? '<span class="tag esp">especial</span>' : ""}
+      ${m.estimada ? '<span class="tag est" title="Fecha estimada por plantilla: confirmala cuando salga el calendario">est.</span>' : ""}
+    </div>`;
+  const zona = document.createElement("div");
+  zona.className = "zona"; zona.dataset.tipo = "final"; zona.dataset.zona = m.clave;
+  for (const [c, clave] of Object.entries(S.finales))
+    if (clave === m.clave && necesitaFinal(c)) zona.appendChild(tarjetaFinal(c));
+  if (!zona.children.length) zona.innerHTML = '<span class="vacia">soltá finales acá</span>';
+  div.appendChild(zona);
+  return div;
+}
+
+/* ---------------- interacciones ---------------- */
+let arrastrando = null;
+
+document.addEventListener("dragstart", ev => {
+  const t = ev.target.closest?.(".tarjeta");
+  if (!t || !t.draggable) return;
+  arrastrando = { codigo: t.dataset.codigo, tipo: t.dataset.tipo };
+  t.classList.add("arrastrando");
+  ev.dataTransfer.setData("text/plain", t.dataset.codigo);
+  ev.dataTransfer.effectAllowed = "move";
+});
+document.addEventListener("dragend", () => {
+  document.querySelectorAll(".arrastrando").forEach(e => e.classList.remove("arrastrando"));
+  document.querySelectorAll(".zona.sobre").forEach(e => e.classList.remove("sobre"));
+  arrastrando = null;
+});
+document.addEventListener("dragover", ev => {
+  const z = ev.target.closest?.(".zona");
+  if (!z || !arrastrando || z.dataset.tipo !== arrastrando.tipo) return;
+  ev.preventDefault();
+  ev.dataTransfer.dropEffect = "move";
+  z.classList.add("sobre");
+});
+document.addEventListener("dragleave", ev => {
+  const z = ev.target.closest?.(".zona");
+  if (z) z.classList.remove("sobre");
+});
+document.addEventListener("drop", ev => {
+  const z = ev.target.closest?.(".zona");
+  if (!z || !arrastrando || z.dataset.tipo !== arrastrando.tipo) return;
+  ev.preventDefault();
+  const { codigo, tipo } = arrastrando;
+  const destino = z.dataset.zona;
+  const mapa = tipo === "cursada" ? S.cursadas : S.finales;
+  const marca = (tipo === "cursada" ? "c:" : "f:") + codigo;
+  if (destino === "pool") {
+    delete mapa[codigo];
+    S.fijadas = S.fijadas.filter(f => f !== marca);
+  } else {
+    mapa[codigo] = destino;
+    if (!S.fijadas.includes(marca)) S.fijadas.push(marca);
+  }
+  render();
+});
+
+function togglePromo(c) {
+  if (esPromo(c)) S.promociones = S.promociones.filter(x => x !== c);
+  else {
+    S.promociones.push(c);
+    delete S.finales[c];               // promocionar = no hay final que ubicar
+    S.fijadas = S.fijadas.filter(f => f !== "f:" + c);
+  }
+  render();
+}
+function toggleFija(marca) {
+  if (S.fijadas.includes(marca)) S.fijadas = S.fijadas.filter(f => f !== marca);
+  else S.fijadas.push(marca);
+  render();
+}
+function setIntentos(c, n) {
+  n = Math.max(0, Math.min(DATOS.config.intentosMaximo, n));
+  if (n === 0) delete S.intentos[c]; else S.intentos[c] = n;
+  render();
+}
+
+/* ---------------- persistencia + export ---------------- */
+function guardarBorrador() {
+  localStorage.setItem(CLAVE_LS, JSON.stringify({ ...S, ts: new Date().toISOString() }));
+}
+function planManual() {
+  const fijas = k => Object.fromEntries(Object.entries(k.mapa).filter(([c]) => S.fijadas.includes(k.pref + c)));
+  const doc = {
+    generado: new Date().toISOString().slice(0, 10),
+    cursadas: fijas({ mapa: S.cursadas, pref: "c:" }),
+    finales: fijas({ mapa: S.finales, pref: "f:" }),
+    promociones: [...S.promociones].sort(),
+    intentosFinal: S.intentos,
+  };
+  if (S.maxMaterias !== DATOS.config.maxMaterias) doc.maxMateriasPorCuatrimestre = S.maxMaterias;
+  return doc;
+}
+$("#btnExportar").onclick = () => {
+  const doc = planManual();
+  const texto = JSON.stringify(doc, null, 2) + "\n";
+  const url = URL.createObjectURL(new Blob([texto], { type: "application/json" }));
+  const a = document.createElement("a");
+  a.href = url; a.download = "plan-manual.json"; a.click();
+  URL.revokeObjectURL(url);
+  $("#preExport").textContent = texto;
+  $("#dlgExport").showModal();
+};
+$("#btnCopiar").onclick = async () => {
+  await navigator.clipboard.writeText(JSON.stringify(planManual(), null, 2) + "\n");
+  const ok = $("#okCopiado");
+  ok.style.display = "inline";
+  setTimeout(() => ok.style.display = "none", 1500);
+};
+$("#btnRestaurar").onclick = () => {
+  if (!confirm("¿Volver al plan sugerido por el motor? Se pierden los cambios de este tablero.")) return;
+  localStorage.removeItem(CLAVE_LS);
+  S = estadoInicial();
+  $("#selMax").value = S.maxMaterias;
+  render();
+};
+
+/* ---------------- arranque ---------------- */
+(function init() {
+  S = estadoInicial();
+  const sel = $("#selMax");
+  for (let n = 2; n <= 7; n++) {
+    const o = document.createElement("option");
+    o.value = n; o.textContent = n;
+    sel.appendChild(o);
+  }
+  sel.value = S.maxMaterias;
+  sel.onchange = () => { S.maxMaterias = parseInt(sel.value); render(); };
+
+  const crudo = localStorage.getItem(CLAVE_LS);
+  if (crudo) {
+    try {
+      const borrador = JSON.parse(crudo);
+      $("#fechaBorrador").textContent = new Date(borrador.ts).toLocaleString("es-AR");
+      $("#bannerBorrador").style.display = "flex";
+      $("#btnUsarBorrador").onclick = () => {
+        S = {
+          cursadas: borrador.cursadas || {}, finales: borrador.finales || {},
+          promociones: borrador.promociones || [], intentos: borrador.intentos || {},
+          fijadas: borrador.fijadas || [], maxMaterias: borrador.maxMaterias || DATOS.config.maxMaterias,
+        };
+        sel.value = S.maxMaterias;
+        $("#bannerBorrador").style.display = "none";
+        render();
+      };
+      $("#btnDescartarBorrador").onclick = () => {
+        localStorage.removeItem(CLAVE_LS);
+        $("#bannerBorrador").style.display = "none";
+      };
+    } catch { localStorage.removeItem(CLAVE_LS); }
+  }
+  render();
+})();
+</script>
+</body>
+</html>
