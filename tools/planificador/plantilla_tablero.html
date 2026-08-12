@@ -351,13 +351,18 @@ function validar() {
     if (m.estado === "bloqueada") {
       for (const req of cc.reg) {
         const rEn = regularizadaEn(req);
-        if (!rEn || rEn > bloque.inicio)
+        if (!rEn || rEn > bloque.inicio) {
           marca(c, "err", `necesita ${req} regularizada antes de ${bloque.etiqueta}` + (rEn ? ` (recién el ${fmt(rEn)})` : " (no está en el plan)"));
+          // Aviso espejo sobre la causa: que se vea desde la tarjeta que ubicaste tarde.
+          if (rEn) marca(req, "warn", `así ubicada bloquea a ${c} en ${bloque.etiqueta} (te necesita regularizada antes)`);
+        }
       }
       for (const req of cc.apr) {
         const aEn = aprobadaEn(req);
-        if (!aEn || aEn > bloque.inicio)
+        if (!aEn || aEn > bloque.inicio) {
           marca(c, "err", `necesita ${req} APROBADA antes de ${bloque.etiqueta}` + (aEn ? ` (recién el ${fmt(aEn)})` : " (no está en el plan)"));
+          if (aEn) marca(req, "warn", `así ubicado bloquea la cursada de ${c} en ${bloque.etiqueta} (te necesita aprobada antes)`);
+        }
       }
     }
   }
@@ -469,7 +474,7 @@ function tarjetaCursada(c) {
   const m = mat(c);
   const rec = m.estado === "regularizada";
   const fija = S.fijadas.includes("c:" + c);
-  const errores = (V.errs[c] || []).filter(e => !S.finales[c] || true);
+  const errores = V.errs[c] || [];
   const nivel = errores.some(e => e.nivel === "err") ? "err" : errores.some(e => e.nivel === "warn") ? "warn" : "";
   const div = document.createElement("div");
   div.className = `tarjeta t-cursada ${rec ? "recursada" : ""} ${nivel}`;
