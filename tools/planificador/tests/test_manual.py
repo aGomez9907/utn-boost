@@ -48,6 +48,48 @@ class TestParseoPlanManual(unittest.TestCase):
         self.assertTrue(parsear_plan_manual({}).vacio)
 
 
+class TestNombreDelArchivo(unittest.TestCase):
+    """El export guardado con guion bajo se lee igual, pero avisando."""
+
+    def _copiar_datos(self, nombre: str) -> "Path":
+        import shutil
+        import tempfile
+        from pathlib import Path
+
+        destino = Path(tempfile.mkdtemp())
+        for archivo in FIXTURES.glob("*.json"):
+            shutil.copy(archivo, destino / archivo.name)
+        (destino / nombre).write_text(
+            json.dumps({"finales": {"AM2": "dic-2026"}}), encoding="utf-8"
+        )
+        self.addCleanup(shutil.rmtree, destino)
+        return destino
+
+    def test_alias_con_guion_bajo_se_lee(self):
+        from ..modelo import cargar
+
+        datos = cargar(self._copiar_datos("plan_manual.json"))
+        self.assertEqual(datos.plan_manual.finales, {"AM2": "dic-2026"})
+        self.assertEqual(datos.plan_manual.archivo, "plan_manual.json")
+
+    def test_alias_genera_aviso(self):
+        from ..grafo import validar
+        from ..modelo import cargar
+
+        validacion = validar(cargar(self._copiar_datos("plan_manual.json")))
+        aviso = next(p for p in validacion.avisos if p.codigo == "plan-manual")
+        self.assertIn("plan-manual.json", aviso.mensaje)
+
+    def test_nombre_canonico_no_avisa(self):
+        from ..grafo import validar
+        from ..modelo import cargar
+
+        datos = cargar(self._copiar_datos("plan-manual.json"))
+        self.assertEqual(datos.plan_manual.archivo, "plan-manual.json")
+        validacion = validar(datos)
+        self.assertEqual([p for p in validacion.avisos if p.codigo == "plan-manual"], [])
+
+
 class TestPinsDeFinales(CasoConDatos):
     def test_final_fijado_cambia_de_mesa(self):
         """AM2 fijado a dic-2026: deja sep libre y aparece en diciembre como 'fijado'."""

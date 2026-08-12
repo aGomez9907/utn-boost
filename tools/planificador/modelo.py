@@ -438,6 +438,7 @@ class PlanManual:
     intentos: dict[str, int] = field(default_factory=dict)
     max_materias: int | None = None
     generado: str | None = None
+    archivo: str | None = None  # de qué archivo se cargó (para avisar si no es el canónico)
 
     @property
     def vacio(self) -> bool:
@@ -598,11 +599,19 @@ def parsear_calendario(crudo: dict[str, Any]) -> Calendario:
     )
 
 
-def parsear_plan_manual(crudo: dict[str, Any] | None) -> PlanManual:
+ARCHIVO_PLAN_MANUAL = "plan-manual.json"
+# El tablero descarga `plan-manual.json`, pero es fácil que termine guardado con
+# guion bajo. Aceptamos la variante y avisamos: ignorarla en silencio dejaría un
+# plan que parece bien pero no respeta nada de lo que el usuario fijó.
+ALIAS_PLAN_MANUAL = ("plan_manual.json",)
+
+
+def parsear_plan_manual(crudo: dict[str, Any] | None, archivo: str | None = None) -> PlanManual:
     if not crudo:
         return PlanManual()
     tope = crudo.get("maxMateriasPorCuatrimestre")
     return PlanManual(
+        archivo=archivo,
         cursadas={str(k): str(v) for k, v in (crudo.get("cursadas") or {}).items()},
         finales={str(k): str(v) for k, v in (crudo.get("finales") or {}).items()},
         promociones=tuple(crudo.get("promociones") or ()),
@@ -651,7 +660,14 @@ def cargar(directorio: Path | str) -> DatosCarrera:
     crudo_calendario = _leer_json(base / "calendario.json")
     config = Config.desde_dict(_leer_json(base / "config.json", obligatorio=False))
     objetivos = parsear_objetivos(_leer_json(base / "objetivos.json", obligatorio=False))
-    plan_manual = parsear_plan_manual(_leer_json(base / "plan-manual.json", obligatorio=False))
+
+    nombre_plan = next(
+        (n for n in (ARCHIVO_PLAN_MANUAL, *ALIAS_PLAN_MANUAL) if (base / n).exists()),
+        ARCHIVO_PLAN_MANUAL,
+    )
+    plan_manual = parsear_plan_manual(
+        _leer_json(base / nombre_plan, obligatorio=False), archivo=nombre_plan
+    )
 
     materias = parsear_materias(crudo_estado, config)
     if plan_manual.intentos:

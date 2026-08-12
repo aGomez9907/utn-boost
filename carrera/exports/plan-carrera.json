@@ -1,6 +1,6 @@
 {
   "version": "2.0",
-  "generado": "2026-08-11",
+  "generado": "2026-08-12",
   "plan": "K08 (Sistemas)",
   "carrera": "Ingeniería en Sistemas de Información",
   "validacion": {
@@ -150,8 +150,30 @@
       "mensaje": "sin intentos usados (4 disponibles)"
     }
   ],
-  "promocionesAsumidas": [],
-  "planManual": null,
+  "promocionesAsumidas": [
+    "AN",
+    "GG"
+  ],
+  "planManual": {
+    "generado": "2026-08-12",
+    "cursadas": {
+      "Sim": "2C-2027",
+      "IA": "1C-2028",
+      "SG": "2C-2028"
+    },
+    "finales": {
+      "SySL": "feb-mar-2027",
+      "BD": "feb-mar-2027",
+      "IA": "dic-2028",
+      "SG": "dic-2028"
+    },
+    "promociones": [
+      "AN",
+      "GG"
+    ],
+    "intentosFinal": {},
+    "maxMateriasPorCuatrimestre": null
+  },
   "electivas": {
     "aprobadas": [
       "ELEC_QA",
@@ -207,8 +229,8 @@
         },
         "score": {
           "codigo": "AM2",
-          "total": 56.3,
-          "explicacion": "56.3/100 = urgencia 0 + impacto 29.2 + proximidad 22.1 + esfuerzo 5",
+          "total": 56.4,
+          "explicacion": "56.4/100 = urgencia 0 + impacto 29.2 + proximidad 22.2 + esfuerzo 5",
           "componentes": [
             {
               "nombre": "urgencia",
@@ -226,10 +248,10 @@
             },
             {
               "nombre": "proximidad",
-              "crudo": "final el 2026-09-22 (en 42 días)",
-              "normalizado": 0.885,
+              "crudo": "final el 2026-09-22 (en 41 días)",
+              "normalizado": 0.888,
               "peso": 0.25,
-              "aporte": 22.1
+              "aporte": 22.2
             },
             {
               "nombre": "esfuerzo",
@@ -277,8 +299,8 @@
         },
         "score": {
           "codigo": "F2",
-          "total": 35.2,
-          "explicacion": "35.2/100 = urgencia 4.2 + impacto 6.2 + proximidad 19.8 + esfuerzo 5",
+          "total": 35.3,
+          "explicacion": "35.3/100 = urgencia 4.2 + impacto 6.2 + proximidad 19.9 + esfuerzo 5",
           "componentes": [
             {
               "nombre": "urgencia",
@@ -296,10 +318,10 @@
             },
             {
               "nombre": "proximidad",
-              "crudo": "final el 2026-10-26 (en 76 días)",
-              "normalizado": 0.792,
+              "crudo": "final el 2026-10-26 (en 75 días)",
+              "normalizado": 0.795,
               "peso": 0.25,
-              "aporte": 19.8
+              "aporte": 19.9
             },
             {
               "nombre": "esfuerzo",
@@ -347,8 +369,8 @@
         },
         "score": {
           "codigo": "AdC",
-          "total": 72.9,
-          "explicacion": "72.9/100 = urgencia 25 + impacto 26.8 + proximidad 17.3 + esfuerzo 3.8",
+          "total": 73.0,
+          "explicacion": "73/100 = urgencia 25 + impacto 26.8 + proximidad 17.4 + esfuerzo 3.8",
           "componentes": [
             {
               "nombre": "urgencia",
@@ -366,10 +388,10 @@
             },
             {
               "nombre": "proximidad",
-              "crudo": "final el 2026-12-01 (en 112 días)",
-              "normalizado": 0.693,
+              "crudo": "final el 2026-12-01 (en 111 días)",
+              "normalizado": 0.696,
               "peso": 0.25,
-              "aporte": 17.3
+              "aporte": 17.4
             },
             {
               "nombre": "esfuerzo",
@@ -398,8 +420,8 @@
         "slug": null
       },
       {
-        "codigo": "SySL",
-        "nombre": "Sintaxis y Semántica de Lenguajes",
+        "codigo": "SSOO",
+        "nombre": "Sistemas Operativos",
         "ventana": "dic 2026",
         "ventanaClave": "dic-2026",
         "ventanaEstimada": false,
@@ -407,7 +429,7 @@
         "llamado": 2,
         "origen": "sugerido",
         "preparacion": {
-          "codigo": "SySL",
+          "codigo": "SSOO",
           "horas": 40.0,
           "diasUtiles": 14,
           "diasCalendario": 17,
@@ -416,30 +438,30 @@
           "origenHoras": "default por nivel 2 (config.json)"
         },
         "score": {
-          "codigo": "SySL",
-          "total": 77.4,
-          "explicacion": "77.4/100 = urgencia 20.8 + impacto 35 + proximidad 16.6 + esfuerzo 5",
+          "codigo": "SSOO",
+          "total": 50.8,
+          "explicacion": "50.8/100 = urgencia 16.7 + impacto 12.4 + proximidad 16.7 + esfuerzo 5",
           "componentes": [
             {
               "nombre": "urgencia",
-              "crudo": "regularizada hace ~5 años (2021): contenido a refrescar",
-              "normalizado": 0.833,
+              "crudo": "regularizada hace ~4 años (2022): contenido a refrescar",
+              "normalizado": 0.667,
               "peso": 0.25,
-              "aporte": 20.8
+              "aporte": 16.7
             },
             {
               "nombre": "impacto",
-              "crudo": "2 inmediatas, 3 directas, 5 aguas abajo → IyCS, SI",
-              "normalizado": 1.0,
+              "crudo": "0 inmediatas, 1 directas, 4 aguas abajo",
+              "normalizado": 0.353,
               "peso": 0.35,
-              "aporte": 35.0
+              "aporte": 12.4
             },
             {
               "nombre": "proximidad",
-              "crudo": "final el 2026-12-11 (en 122 días)",
-              "normalizado": 0.666,
+              "crudo": "final el 2026-12-11 (en 121 días)",
+              "normalizado": 0.668,
               "peso": 0.25,
-              "aporte": 16.6
+              "aporte": 16.7
             },
             {
               "nombre": "esfuerzo",
@@ -451,84 +473,14 @@
           ]
         },
         "regularidad": {
-          "codigo": "SySL",
+          "codigo": "SSOO",
           "situacion": "vigente",
           "vence": null,
           "diasRestantes": null,
           "supuesto": "la regularidad no vence (vigencia_regularidad.modo = no_vence)"
         },
         "intentos": {
-          "codigo": "SySL",
-          "usados": 0,
-          "maximo": 4,
-          "restantes": 4,
-          "situacion": "ok",
-          "mensaje": "sin intentos usados (4 disponibles)"
-        },
-        "slug": null
-      },
-      {
-        "codigo": "AN",
-        "nombre": "Análisis Numérico",
-        "ventana": "dic 2026",
-        "ventanaClave": "dic-2026",
-        "ventanaEstimada": false,
-        "fecha": "2026-12-22",
-        "llamado": 3,
-        "origen": "sugerido",
-        "preparacion": {
-          "codigo": "AN",
-          "horas": 35.0,
-          "diasUtiles": 12,
-          "diasCalendario": 14,
-          "inicio": "2026-12-08",
-          "examen": "2026-12-22",
-          "origenHoras": "default por nivel 3 (config.json)"
-        },
-        "score": {
-          "codigo": "AN",
-          "total": 60.0,
-          "explicacion": "60/100 = urgencia 5 + impacto 32.9 + proximidad 15.9 + esfuerzo 6.2",
-          "componentes": [
-            {
-              "nombre": "urgencia",
-              "crudo": "cursando: sin apuro propio todavía",
-              "normalizado": 0.2,
-              "peso": 0.25,
-              "aporte": 5.0
-            },
-            {
-              "nombre": "impacto",
-              "crudo": "2 inmediatas, 3 directas, 4 aguas abajo → IO, TpA",
-              "normalizado": 0.941,
-              "peso": 0.35,
-              "aporte": 32.9
-            },
-            {
-              "nombre": "proximidad",
-              "crudo": "final el 2026-12-22 (en 133 días)",
-              "normalizado": 0.636,
-              "peso": 0.25,
-              "aporte": 15.9
-            },
-            {
-              "nombre": "esfuerzo",
-              "crudo": "35 h estimadas (default por nivel 3 (config.json))",
-              "normalizado": 0.417,
-              "peso": 0.15,
-              "aporte": 6.2
-            }
-          ]
-        },
-        "regularidad": {
-          "codigo": "AN",
-          "situacion": "vigente",
-          "vence": null,
-          "diasRestantes": null,
-          "supuesto": "cursando: la regularidad arranca al cerrar la cursada"
-        },
-        "intentos": {
-          "codigo": "AN",
+          "codigo": "SSOO",
           "usados": 0,
           "maximo": 4,
           "restantes": 4,
@@ -544,20 +496,10 @@
         "severidad": "media",
         "involucra": [
           "AdC",
-          "SySL"
+          "SSOO"
         ],
-        "mensaje": "la preparación de AdC y la de SySL se pisan 8 días: necesitarías ~6 h/día en ese tramo",
-        "sugerencia": "empezá AdC antes o corré SySL de ventana"
-      },
-      {
-        "tipo": "preparacion-solapada",
-        "severidad": "media",
-        "involucra": [
-          "SySL",
-          "AN"
-        ],
-        "mensaje": "la preparación de SySL y la de AN se pisan 4 días: necesitarías ~6 h/día en ese tramo",
-        "sugerencia": "empezá SySL antes o corré AN de ventana"
+        "mensaje": "la preparación de AdC y la de SSOO se pisan 8 días: necesitarías ~6 h/día en ese tramo",
+        "sugerencia": "empezá AdC antes o corré SSOO de ventana"
       },
       {
         "tipo": "choque-con-parcial",
@@ -583,61 +525,25 @@
         "tipo": "choque-con-parcial",
         "severidad": "alta",
         "involucra": [
-          "SySL",
+          "SSOO",
           "AN"
         ],
-        "mensaje": "preparar SySL (desde 2026-11-24) cae encima del AN P2 del 2026-11-24: 2 días compartidos",
-        "sugerencia": "adelantá el arranque de SySL o rendilo en el llamado siguiente"
+        "mensaje": "preparar SSOO (desde 2026-11-24) cae encima del AN P2 del 2026-11-24: 2 días compartidos",
+        "sugerencia": "adelantá el arranque de SSOO o rendilo en el llamado siguiente"
       }
     ],
     "sinVentana": [
       "BD",
-      "GG",
-      "SSOO"
+      "SySL"
     ],
     "descartadas": [],
     "violaciones": []
   },
   "ranking": [
     {
-      "codigo": "SySL",
-      "total": 75.5,
-      "explicacion": "75.5/100 = urgencia 20.8 + impacto 33.1 + proximidad 16.6 + esfuerzo 5",
-      "componentes": [
-        {
-          "nombre": "urgencia",
-          "crudo": "regularizada hace ~5 años (2021): contenido a refrescar",
-          "normalizado": 0.833,
-          "peso": 0.25,
-          "aporte": 20.8
-        },
-        {
-          "nombre": "impacto",
-          "crudo": "2 inmediatas, 3 directas, 5 aguas abajo → IyCS, SI",
-          "normalizado": 0.944,
-          "peso": 0.35,
-          "aporte": 33.1
-        },
-        {
-          "nombre": "proximidad",
-          "crudo": "final el 2026-12-11 (en 122 días)",
-          "normalizado": 0.666,
-          "peso": 0.25,
-          "aporte": 16.6
-        },
-        {
-          "nombre": "esfuerzo",
-          "crudo": "40 h estimadas (default por nivel 2 (config.json))",
-          "normalizado": 0.333,
-          "peso": 0.15,
-          "aporte": 5.0
-        }
-      ]
-    },
-    {
       "codigo": "AdC",
-      "total": 71.4,
-      "explicacion": "71.4/100 = urgencia 25 + impacto 25.3 + proximidad 17.3 + esfuerzo 3.8",
+      "total": 71.5,
+      "explicacion": "71.5/100 = urgencia 25 + impacto 25.3 + proximidad 17.4 + esfuerzo 3.8",
       "componentes": [
         {
           "nombre": "urgencia",
@@ -655,10 +561,10 @@
         },
         {
           "nombre": "proximidad",
-          "crudo": "final el 2026-12-01 (en 112 días)",
-          "normalizado": 0.693,
+          "crudo": "final el 2026-12-01 (en 111 días)",
+          "normalizado": 0.696,
           "peso": 0.25,
-          "aporte": 17.3
+          "aporte": 17.4
         },
         {
           "nombre": "esfuerzo",
@@ -670,9 +576,44 @@
       ]
     },
     {
+      "codigo": "SySL",
+      "total": 58.9,
+      "explicacion": "58.9/100 = urgencia 20.8 + impacto 33.1 + proximidad 0 + esfuerzo 5",
+      "componentes": [
+        {
+          "nombre": "urgencia",
+          "crudo": "regularizada hace ~5 años (2021): contenido a refrescar",
+          "normalizado": 0.833,
+          "peso": 0.25,
+          "aporte": 20.8
+        },
+        {
+          "nombre": "impacto",
+          "crudo": "2 inmediatas, 3 directas, 5 aguas abajo → IyCS, SI",
+          "normalizado": 0.944,
+          "peso": 0.35,
+          "aporte": 33.1
+        },
+        {
+          "nombre": "proximidad",
+          "crudo": "sin ventana asignada",
+          "normalizado": 0.0,
+          "peso": 0.25,
+          "aporte": 0.0
+        },
+        {
+          "nombre": "esfuerzo",
+          "crudo": "40 h estimadas (default por nivel 2 (config.json))",
+          "normalizado": 0.333,
+          "peso": 0.15,
+          "aporte": 5.0
+        }
+      ]
+    },
+    {
       "codigo": "AM2",
-      "total": 56.3,
-      "explicacion": "56.3/100 = urgencia 0 + impacto 29.2 + proximidad 22.1 + esfuerzo 5",
+      "total": 56.4,
+      "explicacion": "56.4/100 = urgencia 0 + impacto 29.2 + proximidad 22.2 + esfuerzo 5",
       "componentes": [
         {
           "nombre": "urgencia",
@@ -690,80 +631,10 @@
         },
         {
           "nombre": "proximidad",
-          "crudo": "final el 2026-09-22 (en 42 días)",
-          "normalizado": 0.885,
+          "crudo": "final el 2026-09-22 (en 41 días)",
+          "normalizado": 0.888,
           "peso": 0.25,
-          "aporte": 22.1
-        },
-        {
-          "nombre": "esfuerzo",
-          "crudo": "40 h estimadas (default por nivel 2 (config.json))",
-          "normalizado": 0.333,
-          "peso": 0.15,
-          "aporte": 5.0
-        }
-      ]
-    },
-    {
-      "codigo": "AN",
-      "total": 52.4,
-      "explicacion": "52.4/100 = urgencia 5 + impacto 25.3 + proximidad 15.9 + esfuerzo 6.2",
-      "componentes": [
-        {
-          "nombre": "urgencia",
-          "crudo": "cursando: sin apuro propio todavía",
-          "normalizado": 0.2,
-          "peso": 0.25,
-          "aporte": 5.0
-        },
-        {
-          "nombre": "impacto",
-          "crudo": "1 inmediatas, 3 directas, 4 aguas abajo → IO",
-          "normalizado": 0.722,
-          "peso": 0.35,
-          "aporte": 25.3
-        },
-        {
-          "nombre": "proximidad",
-          "crudo": "final el 2026-12-22 (en 133 días)",
-          "normalizado": 0.636,
-          "peso": 0.25,
-          "aporte": 15.9
-        },
-        {
-          "nombre": "esfuerzo",
-          "crudo": "35 h estimadas (default por nivel 3 (config.json))",
-          "normalizado": 0.417,
-          "peso": 0.15,
-          "aporte": 6.2
-        }
-      ]
-    },
-    {
-      "codigo": "F2",
-      "total": 34.8,
-      "explicacion": "34.8/100 = urgencia 4.2 + impacto 5.8 + proximidad 19.8 + esfuerzo 5",
-      "componentes": [
-        {
-          "nombre": "urgencia",
-          "crudo": "regularizada hace ~1 años (2025): contenido a refrescar",
-          "normalizado": 0.167,
-          "peso": 0.25,
-          "aporte": 4.2
-        },
-        {
-          "nombre": "impacto",
-          "crudo": "0 inmediatas, 1 directas, 1 aguas abajo",
-          "normalizado": 0.167,
-          "peso": 0.35,
-          "aporte": 5.8
-        },
-        {
-          "nombre": "proximidad",
-          "crudo": "final el 2026-10-26 (en 76 días)",
-          "normalizado": 0.792,
-          "peso": 0.25,
-          "aporte": 19.8
+          "aporte": 22.2
         },
         {
           "nombre": "esfuerzo",
@@ -776,8 +647,8 @@
     },
     {
       "codigo": "SSOO",
-      "total": 33.4,
-      "explicacion": "33.4/100 = urgencia 16.7 + impacto 11.7 + proximidad 0 + esfuerzo 5",
+      "total": 50.1,
+      "explicacion": "50.1/100 = urgencia 16.7 + impacto 11.7 + proximidad 16.7 + esfuerzo 5",
       "componentes": [
         {
           "nombre": "urgencia",
@@ -795,10 +666,45 @@
         },
         {
           "nombre": "proximidad",
-          "crudo": "sin ventana asignada",
-          "normalizado": 0.0,
+          "crudo": "final el 2026-12-11 (en 121 días)",
+          "normalizado": 0.668,
           "peso": 0.25,
-          "aporte": 0.0
+          "aporte": 16.7
+        },
+        {
+          "nombre": "esfuerzo",
+          "crudo": "40 h estimadas (default por nivel 2 (config.json))",
+          "normalizado": 0.333,
+          "peso": 0.15,
+          "aporte": 5.0
+        }
+      ]
+    },
+    {
+      "codigo": "F2",
+      "total": 34.9,
+      "explicacion": "34.9/100 = urgencia 4.2 + impacto 5.8 + proximidad 19.9 + esfuerzo 5",
+      "componentes": [
+        {
+          "nombre": "urgencia",
+          "crudo": "regularizada hace ~1 años (2025): contenido a refrescar",
+          "normalizado": 0.167,
+          "peso": 0.25,
+          "aporte": 4.2
+        },
+        {
+          "nombre": "impacto",
+          "crudo": "0 inmediatas, 1 directas, 1 aguas abajo",
+          "normalizado": 0.167,
+          "peso": 0.35,
+          "aporte": 5.8
+        },
+        {
+          "nombre": "proximidad",
+          "crudo": "final el 2026-10-26 (en 75 días)",
+          "normalizado": 0.795,
+          "peso": 0.25,
+          "aporte": 19.9
         },
         {
           "nombre": "esfuerzo",
@@ -843,46 +749,11 @@
           "aporte": 6.2
         }
       ]
-    },
-    {
-      "codigo": "GG",
-      "total": 13.7,
-      "explicacion": "13.7/100 = urgencia 5 + impacto 0 + proximidad 0 + esfuerzo 8.7",
-      "componentes": [
-        {
-          "nombre": "urgencia",
-          "crudo": "cursando: sin apuro propio todavía",
-          "normalizado": 0.2,
-          "peso": 0.25,
-          "aporte": 5.0
-        },
-        {
-          "nombre": "impacto",
-          "crudo": "0 inmediatas, 0 directas, 0 aguas abajo",
-          "normalizado": 0.0,
-          "peso": 0.35,
-          "aporte": 0.0
-        },
-        {
-          "nombre": "proximidad",
-          "crudo": "sin ventana asignada",
-          "normalizado": 0.0,
-          "peso": 0.25,
-          "aporte": 0.0
-        },
-        {
-          "nombre": "esfuerzo",
-          "crudo": "25 h estimadas (default por nivel 5 (config.json))",
-          "normalizado": 0.583,
-          "peso": 0.15,
-          "aporte": 8.7
-        }
-      ]
     }
   ],
   "proyeccion": {
     "maxMateriasPorCuatrimestre": 5,
-    "graduacion": "2028-12-01",
+    "graduacion": "2028-12-22",
     "cuatrimestresRestantes": 5,
     "pisoTeoricoCuatrimestres": 3,
     "cadenaCritica": [
@@ -897,7 +768,9 @@
       "se aprueba la cursada de todo lo que se cursa",
       "se aprueba cada final en el primer intento",
       "no hay inscripción a materias nuevas en un cuatrimestre ya empezado",
-      "las anuales arrancan en 1C"
+      "las anuales arrancan en 1C",
+      "promocionan por parciales (sin final): AN, GG",
+      "se respetan 3 cursada(s) y 4 final(es) fijados en el tablero"
     ],
     "violaciones": [],
     "periodos": [
@@ -914,11 +787,11 @@
         "continua": [],
         "fijadas": [],
         "recursa": [],
-        "regulariza": [
+        "regulariza": [],
+        "promociona": [
           "AN",
           "GG"
         ],
-        "promociona": [],
         "finales": [
           {
             "codigo": "AM2",
@@ -940,8 +813,8 @@
             },
             "score": {
               "codigo": "AM2",
-              "total": 56.3,
-              "explicacion": "56.3/100 = urgencia 0 + impacto 29.2 + proximidad 22.1 + esfuerzo 5",
+              "total": 56.4,
+              "explicacion": "56.4/100 = urgencia 0 + impacto 29.2 + proximidad 22.2 + esfuerzo 5",
               "componentes": [
                 {
                   "nombre": "urgencia",
@@ -959,10 +832,10 @@
                 },
                 {
                   "nombre": "proximidad",
-                  "crudo": "final el 2026-09-22 (en 42 días)",
-                  "normalizado": 0.885,
+                  "crudo": "final el 2026-09-22 (en 41 días)",
+                  "normalizado": 0.888,
                   "peso": 0.25,
-                  "aporte": 22.1
+                  "aporte": 22.2
                 },
                 {
                   "nombre": "esfuerzo",
@@ -1010,8 +883,8 @@
             },
             "score": {
               "codigo": "F2",
-              "total": 35.2,
-              "explicacion": "35.2/100 = urgencia 4.2 + impacto 6.2 + proximidad 19.8 + esfuerzo 5",
+              "total": 35.3,
+              "explicacion": "35.3/100 = urgencia 4.2 + impacto 6.2 + proximidad 19.9 + esfuerzo 5",
               "componentes": [
                 {
                   "nombre": "urgencia",
@@ -1029,10 +902,10 @@
                 },
                 {
                   "nombre": "proximidad",
-                  "crudo": "final el 2026-10-26 (en 76 días)",
-                  "normalizado": 0.792,
+                  "crudo": "final el 2026-10-26 (en 75 días)",
+                  "normalizado": 0.795,
                   "peso": 0.25,
-                  "aporte": 19.8
+                  "aporte": 19.9
                 },
                 {
                   "nombre": "esfuerzo",
@@ -1080,8 +953,8 @@
             },
             "score": {
               "codigo": "AdC",
-              "total": 72.9,
-              "explicacion": "72.9/100 = urgencia 25 + impacto 26.8 + proximidad 17.3 + esfuerzo 3.8",
+              "total": 73.0,
+              "explicacion": "73/100 = urgencia 25 + impacto 26.8 + proximidad 17.4 + esfuerzo 3.8",
               "componentes": [
                 {
                   "nombre": "urgencia",
@@ -1099,10 +972,10 @@
                 },
                 {
                   "nombre": "proximidad",
-                  "crudo": "final el 2026-12-01 (en 112 días)",
-                  "normalizado": 0.693,
+                  "crudo": "final el 2026-12-01 (en 111 días)",
+                  "normalizado": 0.696,
                   "peso": 0.25,
-                  "aporte": 17.3
+                  "aporte": 17.4
                 },
                 {
                   "nombre": "esfuerzo",
@@ -1131,8 +1004,8 @@
             "slug": null
           },
           {
-            "codigo": "SySL",
-            "nombre": "Sintaxis y Semántica de Lenguajes",
+            "codigo": "SSOO",
+            "nombre": "Sistemas Operativos",
             "ventana": "dic 2026",
             "ventanaClave": "dic-2026",
             "ventanaEstimada": false,
@@ -1140,7 +1013,7 @@
             "llamado": 2,
             "origen": "sugerido",
             "preparacion": {
-              "codigo": "SySL",
+              "codigo": "SSOO",
               "horas": 40.0,
               "diasUtiles": 14,
               "diasCalendario": 17,
@@ -1149,79 +1022,9 @@
               "origenHoras": "default por nivel 2 (config.json)"
             },
             "score": {
-              "codigo": "SySL",
-              "total": 77.4,
-              "explicacion": "77.4/100 = urgencia 20.8 + impacto 35 + proximidad 16.6 + esfuerzo 5",
-              "componentes": [
-                {
-                  "nombre": "urgencia",
-                  "crudo": "regularizada hace ~5 años (2021): contenido a refrescar",
-                  "normalizado": 0.833,
-                  "peso": 0.25,
-                  "aporte": 20.8
-                },
-                {
-                  "nombre": "impacto",
-                  "crudo": "2 inmediatas, 3 directas, 5 aguas abajo → IyCS, SI",
-                  "normalizado": 1.0,
-                  "peso": 0.35,
-                  "aporte": 35.0
-                },
-                {
-                  "nombre": "proximidad",
-                  "crudo": "final el 2026-12-11 (en 122 días)",
-                  "normalizado": 0.666,
-                  "peso": 0.25,
-                  "aporte": 16.6
-                },
-                {
-                  "nombre": "esfuerzo",
-                  "crudo": "40 h estimadas (default por nivel 2 (config.json))",
-                  "normalizado": 0.333,
-                  "peso": 0.15,
-                  "aporte": 5.0
-                }
-              ]
-            },
-            "regularidad": {
-              "codigo": "SySL",
-              "situacion": "vigente",
-              "vence": null,
-              "diasRestantes": null,
-              "supuesto": "la regularidad no vence (vigencia_regularidad.modo = no_vence)"
-            },
-            "intentos": {
-              "codigo": "SySL",
-              "usados": 0,
-              "maximo": 4,
-              "restantes": 4,
-              "situacion": "ok",
-              "mensaje": "sin intentos usados (4 disponibles)"
-            },
-            "slug": null
-          },
-          {
-            "codigo": "SSOO",
-            "nombre": "Sistemas Operativos",
-            "ventana": "dic 2026",
-            "ventanaClave": "dic-2026",
-            "ventanaEstimada": false,
-            "fecha": "2026-12-22",
-            "llamado": 3,
-            "origen": "sugerido",
-            "preparacion": {
               "codigo": "SSOO",
-              "horas": 40.0,
-              "diasUtiles": 14,
-              "diasCalendario": 17,
-              "inicio": "2026-12-05",
-              "examen": "2026-12-22",
-              "origenHoras": "default por nivel 2 (config.json)"
-            },
-            "score": {
-              "codigo": "SSOO",
-              "total": 50.0,
-              "explicacion": "50/100 = urgencia 16.7 + impacto 12.4 + proximidad 15.9 + esfuerzo 5",
+              "total": 50.8,
+              "explicacion": "50.8/100 = urgencia 16.7 + impacto 12.4 + proximidad 16.7 + esfuerzo 5",
               "componentes": [
                 {
                   "nombre": "urgencia",
@@ -1239,10 +1042,10 @@
                 },
                 {
                   "nombre": "proximidad",
-                  "crudo": "final el 2026-12-22 (en 133 días)",
-                  "normalizado": 0.636,
+                  "crudo": "final el 2026-12-11 (en 121 días)",
+                  "normalizado": 0.668,
                   "peso": 0.25,
-                  "aporte": 15.9
+                  "aporte": 16.7
                 },
                 {
                   "nombre": "esfuerzo",
@@ -1271,16 +1074,16 @@
             "slug": null
           },
           {
-            "codigo": "AN",
-            "nombre": "Análisis Numérico",
+            "codigo": "BD",
+            "nombre": "Bases de Datos",
             "ventana": "feb-mar 2027 (est.)",
             "ventanaClave": "feb-mar-2027",
             "ventanaEstimada": true,
             "fecha": "2027-02-10",
             "llamado": 1,
-            "origen": "sugerido",
+            "origen": "fijado",
             "preparacion": {
-              "codigo": "AN",
+              "codigo": "BD",
               "horas": 35.0,
               "diasUtiles": 12,
               "diasCalendario": 14,
@@ -1289,79 +1092,9 @@
               "origenHoras": "default por nivel 3 (config.json)"
             },
             "score": {
-              "codigo": "AN",
-              "total": 48.7,
-              "explicacion": "48.7/100 = urgencia 5 + impacto 25 + proximidad 12.5 + esfuerzo 6.2",
-              "componentes": [
-                {
-                  "nombre": "urgencia",
-                  "crudo": "cursando: sin apuro propio todavía",
-                  "normalizado": 0.2,
-                  "peso": 0.25,
-                  "aporte": 5.0
-                },
-                {
-                  "nombre": "impacto",
-                  "crudo": "0 inmediatas, 3 directas, 4 aguas abajo",
-                  "normalizado": 0.714,
-                  "peso": 0.35,
-                  "aporte": 25.0
-                },
-                {
-                  "nombre": "proximidad",
-                  "crudo": "final el 2027-02-10 (en 183 días)",
-                  "normalizado": 0.499,
-                  "peso": 0.25,
-                  "aporte": 12.5
-                },
-                {
-                  "nombre": "esfuerzo",
-                  "crudo": "35 h estimadas (default por nivel 3 (config.json))",
-                  "normalizado": 0.417,
-                  "peso": 0.15,
-                  "aporte": 6.2
-                }
-              ]
-            },
-            "regularidad": {
-              "codigo": "AN",
-              "situacion": "vigente",
-              "vence": null,
-              "diasRestantes": null,
-              "supuesto": "cursando: la regularidad arranca al cerrar la cursada"
-            },
-            "intentos": {
-              "codigo": "AN",
-              "usados": 0,
-              "maximo": 4,
-              "restantes": 4,
-              "situacion": "ok",
-              "mensaje": "sin intentos usados (4 disponibles)"
-            },
-            "slug": null
-          },
-          {
-            "codigo": "BD",
-            "nombre": "Bases de Datos",
-            "ventana": "feb-mar 2027 (est.)",
-            "ventanaClave": "feb-mar-2027",
-            "ventanaEstimada": true,
-            "fecha": "2027-02-22",
-            "llamado": 2,
-            "origen": "sugerido",
-            "preparacion": {
               "codigo": "BD",
-              "horas": 35.0,
-              "diasUtiles": 12,
-              "diasCalendario": 14,
-              "inicio": "2027-02-08",
-              "examen": "2027-02-22",
-              "origenHoras": "default por nivel 3 (config.json)"
-            },
-            "score": {
-              "codigo": "BD",
-              "total": 42.8,
-              "explicacion": "42.8/100 = urgencia 12.5 + impacto 12.5 + proximidad 11.6 + esfuerzo 6.2",
+              "total": 41.5,
+              "explicacion": "41.5/100 = urgencia 12.5 + impacto 10.3 + proximidad 12.5 + esfuerzo 6.2",
               "componentes": [
                 {
                   "nombre": "urgencia",
@@ -1373,16 +1106,16 @@
                 {
                   "nombre": "impacto",
                   "crudo": "0 inmediatas, 1 directas, 3 aguas abajo",
-                  "normalizado": 0.357,
+                  "normalizado": 0.294,
                   "peso": 0.35,
-                  "aporte": 12.5
+                  "aporte": 10.3
                 },
                 {
                   "nombre": "proximidad",
-                  "crudo": "final el 2027-02-22 (en 195 días)",
-                  "normalizado": 0.466,
+                  "crudo": "final el 2027-02-10 (en 182 días)",
+                  "normalizado": 0.501,
                   "peso": 0.25,
-                  "aporte": 11.6
+                  "aporte": 12.5
                 },
                 {
                   "nombre": "esfuerzo",
@@ -1411,67 +1144,67 @@
             "slug": null
           },
           {
-            "codigo": "GG",
-            "nombre": "Gestión Gerencial",
+            "codigo": "SySL",
+            "nombre": "Sintaxis y Semántica de Lenguajes",
             "ventana": "feb-mar 2027 (est.)",
             "ventanaClave": "feb-mar-2027",
             "ventanaEstimada": true,
-            "fecha": "2027-03-06",
-            "llamado": 3,
-            "origen": "sugerido",
+            "fecha": "2027-02-22",
+            "llamado": 2,
+            "origen": "fijado",
             "preparacion": {
-              "codigo": "GG",
-              "horas": 25.0,
-              "diasUtiles": 9,
-              "diasCalendario": 11,
-              "inicio": "2027-02-23",
-              "examen": "2027-03-06",
-              "origenHoras": "default por nivel 5 (config.json)"
+              "codigo": "SySL",
+              "horas": 40.0,
+              "diasUtiles": 14,
+              "diasCalendario": 17,
+              "inicio": "2027-02-05",
+              "examen": "2027-02-22",
+              "origenHoras": "default por nivel 2 (config.json)"
             },
             "score": {
-              "codigo": "GG",
-              "total": 24.5,
-              "explicacion": "24.5/100 = urgencia 5 + impacto 0 + proximidad 10.8 + esfuerzo 8.7",
+              "codigo": "SySL",
+              "total": 66.3,
+              "explicacion": "66.3/100 = urgencia 20.8 + impacto 28.8 + proximidad 11.7 + esfuerzo 5",
               "componentes": [
                 {
                   "nombre": "urgencia",
-                  "crudo": "cursando: sin apuro propio todavía",
-                  "normalizado": 0.2,
+                  "crudo": "regularizada hace ~5 años (2021): contenido a refrescar",
+                  "normalizado": 0.833,
                   "peso": 0.25,
-                  "aporte": 5.0
+                  "aporte": 20.8
                 },
                 {
                   "nombre": "impacto",
-                  "crudo": "0 inmediatas, 0 directas, 0 aguas abajo",
-                  "normalizado": 0.0,
+                  "crudo": "2 inmediatas, 2 directas, 4 aguas abajo → IyCS, SI",
+                  "normalizado": 0.824,
                   "peso": 0.35,
-                  "aporte": 0.0
+                  "aporte": 28.8
                 },
                 {
                   "nombre": "proximidad",
-                  "crudo": "final el 2027-03-06 (en 207 días)",
-                  "normalizado": 0.433,
+                  "crudo": "final el 2027-02-22 (en 194 días)",
+                  "normalizado": 0.468,
                   "peso": 0.25,
-                  "aporte": 10.8
+                  "aporte": 11.7
                 },
                 {
                   "nombre": "esfuerzo",
-                  "crudo": "25 h estimadas (default por nivel 5 (config.json))",
-                  "normalizado": 0.583,
+                  "crudo": "40 h estimadas (default por nivel 2 (config.json))",
+                  "normalizado": 0.333,
                   "peso": 0.15,
-                  "aporte": 8.7
+                  "aporte": 5.0
                 }
               ]
             },
             "regularidad": {
-              "codigo": "GG",
+              "codigo": "SySL",
               "situacion": "vigente",
               "vence": null,
               "diasRestantes": null,
-              "supuesto": "cursando: la regularidad arranca al cerrar la cursada"
+              "supuesto": "la regularidad no vence (vigencia_regularidad.modo = no_vence)"
             },
             "intentos": {
-              "codigo": "GG",
+              "codigo": "SySL",
               "usados": 0,
               "maximo": 4,
               "restantes": 4,
@@ -1494,14 +1227,14 @@
           "IO",
           "IyCS",
           "SI",
-          "Sim"
+          "TpA"
         ],
         "nuevas": [
           "CD",
-          "Sim",
           "IO",
           "IyCS",
-          "SI"
+          "SI",
+          "TpA"
         ],
         "continua": [],
         "fijadas": [],
@@ -1511,7 +1244,7 @@
           "IO",
           "IyCS",
           "SI",
-          "Sim"
+          "TpA"
         ],
         "promociona": [],
         "finales": [
@@ -1535,8 +1268,8 @@
             },
             "score": {
               "codigo": "CD",
-              "total": 33.4,
-              "explicacion": "33.4/100 = urgencia 7.5 + impacto 18.7 + proximidad 1 + esfuerzo 6.2",
+              "total": 33.5,
+              "explicacion": "33.5/100 = urgencia 7.5 + impacto 18.7 + proximidad 1.1 + esfuerzo 6.2",
               "componentes": [
                 {
                   "nombre": "urgencia",
@@ -1554,10 +1287,10 @@
                 },
                 {
                   "nombre": "proximidad",
-                  "crudo": "final el 2027-07-27 (en 350 días)",
-                  "normalizado": 0.041,
+                  "crudo": "final el 2027-07-27 (en 349 días)",
+                  "normalizado": 0.044,
                   "peso": 0.25,
-                  "aporte": 1.0
+                  "aporte": 1.1
                 },
                 {
                   "nombre": "esfuerzo",
@@ -1595,25 +1328,21 @@
         "inicio": "2027-08-01",
         "fin": "2027-11-30",
         "cursa": [
-          "IA",
           "RD",
-          "SG",
-          "TpA"
+          "Sim"
         ],
         "nuevas": [
-          "RD",
-          "TpA",
-          "IA",
-          "SG"
+          "Sim",
+          "RD"
         ],
         "continua": [],
-        "fijadas": [],
+        "fijadas": [
+          "Sim"
+        ],
         "recursa": [],
         "regulariza": [
-          "IA",
           "RD",
-          "SG",
-          "TpA"
+          "Sim"
         ],
         "promociona": [],
         "finales": [
@@ -1656,7 +1385,7 @@
                 },
                 {
                   "nombre": "proximidad",
-                  "crudo": "final el 2027-09-22 (en 407 días)",
+                  "crudo": "final el 2027-09-22 (en 406 días)",
                   "normalizado": 0.0,
                   "peso": 0.25,
                   "aporte": 0.0
@@ -1726,7 +1455,7 @@
                 },
                 {
                   "nombre": "proximidad",
-                  "crudo": "final el 2027-12-01 (en 477 días)",
+                  "crudo": "final el 2027-12-01 (en 476 días)",
                   "normalizado": 0.0,
                   "peso": 0.25,
                   "aporte": 0.0
@@ -1796,7 +1525,7 @@
                 },
                 {
                   "nombre": "proximidad",
-                  "crudo": "final el 2027-12-11 (en 487 días)",
+                  "crudo": "final el 2027-12-11 (en 486 días)",
                   "normalizado": 0.0,
                   "peso": 0.25,
                   "aporte": 0.0
@@ -1866,7 +1595,7 @@
                 },
                 {
                   "nombre": "proximidad",
-                  "crudo": "final el 2027-12-22 (en 498 días)",
+                  "crudo": "final el 2027-12-22 (en 497 días)",
                   "normalizado": 0.0,
                   "peso": 0.25,
                   "aporte": 0.0
@@ -1898,8 +1627,8 @@
             "slug": null
           },
           {
-            "codigo": "IA",
-            "nombre": "Inteligencia Artificial",
+            "codigo": "TpA",
+            "nombre": "Tecnología para la Automatización",
             "ventana": "feb-mar 2028 (est.)",
             "ventanaClave": "feb-mar-2028",
             "ventanaEstimada": true,
@@ -1907,152 +1636,12 @@
             "llamado": 1,
             "origen": "sugerido",
             "preparacion": {
-              "codigo": "IA",
-              "horas": 25.0,
-              "diasUtiles": 9,
-              "diasCalendario": 11,
-              "inicio": "2028-01-30",
-              "examen": "2028-02-10",
-              "origenHoras": "default por nivel 5 (config.json)"
-            },
-            "score": {
-              "codigo": "IA",
-              "total": 16.2,
-              "explicacion": "16.2/100 = urgencia 7.5 + impacto 0 + proximidad 0 + esfuerzo 8.7",
-              "componentes": [
-                {
-                  "nombre": "urgencia",
-                  "crudo": "sin año de cursada: no hay señal de urgencia",
-                  "normalizado": 0.3,
-                  "peso": 0.25,
-                  "aporte": 7.5
-                },
-                {
-                  "nombre": "impacto",
-                  "crudo": "0 inmediatas, 0 directas, 0 aguas abajo",
-                  "normalizado": 0.0,
-                  "peso": 0.35,
-                  "aporte": 0.0
-                },
-                {
-                  "nombre": "proximidad",
-                  "crudo": "final el 2028-02-10 (en 548 días)",
-                  "normalizado": 0.0,
-                  "peso": 0.25,
-                  "aporte": 0.0
-                },
-                {
-                  "nombre": "esfuerzo",
-                  "crudo": "25 h estimadas (default por nivel 5 (config.json))",
-                  "normalizado": 0.583,
-                  "peso": 0.15,
-                  "aporte": 8.7
-                }
-              ]
-            },
-            "regularidad": {
-              "codigo": "IA",
-              "situacion": "no-aplica",
-              "vence": null,
-              "diasRestantes": null,
-              "supuesto": null
-            },
-            "intentos": {
-              "codigo": "IA",
-              "usados": 0,
-              "maximo": 4,
-              "restantes": 4,
-              "situacion": "ok",
-              "mensaje": "sin intentos usados (4 disponibles)"
-            },
-            "slug": null
-          },
-          {
-            "codigo": "SG",
-            "nombre": "Sistemas de Gestión",
-            "ventana": "feb-mar 2028 (est.)",
-            "ventanaClave": "feb-mar-2028",
-            "ventanaEstimada": true,
-            "fecha": "2028-02-22",
-            "llamado": 2,
-            "origen": "sugerido",
-            "preparacion": {
-              "codigo": "SG",
-              "horas": 25.0,
-              "diasUtiles": 9,
-              "diasCalendario": 11,
-              "inicio": "2028-02-11",
-              "examen": "2028-02-22",
-              "origenHoras": "default por nivel 5 (config.json)"
-            },
-            "score": {
-              "codigo": "SG",
-              "total": 16.2,
-              "explicacion": "16.2/100 = urgencia 7.5 + impacto 0 + proximidad 0 + esfuerzo 8.7",
-              "componentes": [
-                {
-                  "nombre": "urgencia",
-                  "crudo": "sin año de cursada: no hay señal de urgencia",
-                  "normalizado": 0.3,
-                  "peso": 0.25,
-                  "aporte": 7.5
-                },
-                {
-                  "nombre": "impacto",
-                  "crudo": "0 inmediatas, 0 directas, 0 aguas abajo",
-                  "normalizado": 0.0,
-                  "peso": 0.35,
-                  "aporte": 0.0
-                },
-                {
-                  "nombre": "proximidad",
-                  "crudo": "final el 2028-02-22 (en 560 días)",
-                  "normalizado": 0.0,
-                  "peso": 0.25,
-                  "aporte": 0.0
-                },
-                {
-                  "nombre": "esfuerzo",
-                  "crudo": "25 h estimadas (default por nivel 5 (config.json))",
-                  "normalizado": 0.583,
-                  "peso": 0.15,
-                  "aporte": 8.7
-                }
-              ]
-            },
-            "regularidad": {
-              "codigo": "SG",
-              "situacion": "no-aplica",
-              "vence": null,
-              "diasRestantes": null,
-              "supuesto": null
-            },
-            "intentos": {
-              "codigo": "SG",
-              "usados": 0,
-              "maximo": 4,
-              "restantes": 4,
-              "situacion": "ok",
-              "mensaje": "sin intentos usados (4 disponibles)"
-            },
-            "slug": null
-          },
-          {
-            "codigo": "TpA",
-            "nombre": "Tecnología para la Automatización",
-            "ventana": "feb-mar 2028 (est.)",
-            "ventanaClave": "feb-mar-2028",
-            "ventanaEstimada": true,
-            "fecha": "2028-03-06",
-            "llamado": 3,
-            "origen": "sugerido",
-            "preparacion": {
               "codigo": "TpA",
               "horas": 30.0,
               "diasUtiles": 10,
               "diasCalendario": 12,
-              "inicio": "2028-02-23",
-              "examen": "2028-03-06",
+              "inicio": "2028-01-29",
+              "examen": "2028-02-10",
               "origenHoras": "default por nivel 4 (config.json)"
             },
             "score": {
@@ -2076,7 +1665,7 @@
                 },
                 {
                   "nombre": "proximidad",
-                  "crudo": "final el 2028-03-06 (en 573 días)",
+                  "crudo": "final el 2028-02-10 (en 547 días)",
                   "normalizado": 0.0,
                   "peso": 0.25,
                   "aporte": 0.0
@@ -2106,51 +1695,23 @@
               "mensaje": "sin intentos usados (4 disponibles)"
             },
             "slug": null
-          }
-        ],
-        "cupo": 5,
-        "inscripcionAbierta": true
-      },
-      {
-        "cuatrimestre": "1C-2028",
-        "etiqueta": "1C 2028",
-        "inicio": "2028-03-01",
-        "fin": "2028-07-15",
-        "cursa": [
-          "PFinal",
-          "PPS",
-          "SSI"
-        ],
-        "nuevas": [
-          "PFinal",
-          "PPS",
-          "SSI"
-        ],
-        "continua": [],
-        "fijadas": [],
-        "recursa": [],
-        "regulariza": [
-          "PPS",
-          "SSI"
-        ],
-        "promociona": [],
-        "finales": [
+          },
           {
             "codigo": "SI",
             "nombre": "Seminario Integrador",
-            "ventana": "mayo 2028 (est.)",
-            "ventanaClave": "mayo-2028",
+            "ventana": "feb-mar 2028 (est.)",
+            "ventanaClave": "feb-mar-2028",
             "ventanaEstimada": true,
-            "fecha": "2028-05-19",
-            "llamado": 1,
+            "fecha": "2028-02-22",
+            "llamado": 2,
             "origen": "sugerido",
             "preparacion": {
               "codigo": "SI",
               "horas": 35.0,
               "diasUtiles": 12,
               "diasCalendario": 14,
-              "inicio": "2028-05-05",
-              "examen": "2028-05-19",
+              "inicio": "2028-02-08",
+              "examen": "2028-02-22",
               "origenHoras": "default por nivel 3 (config.json)"
             },
             "score": {
@@ -2174,7 +1735,7 @@
                 },
                 {
                   "nombre": "proximidad",
-                  "crudo": "final el 2028-05-19 (en 647 días)",
+                  "crudo": "final el 2028-02-22 (en 559 días)",
                   "normalizado": 0.0,
                   "peso": 0.25,
                   "aporte": 0.0
@@ -2204,7 +1765,40 @@
               "mensaje": "sin intentos usados (4 disponibles)"
             },
             "slug": null
-          },
+          }
+        ],
+        "cupo": 5,
+        "inscripcionAbierta": true
+      },
+      {
+        "cuatrimestre": "1C-2028",
+        "etiqueta": "1C 2028",
+        "inicio": "2028-03-01",
+        "fin": "2028-07-15",
+        "cursa": [
+          "IA",
+          "PFinal",
+          "PPS",
+          "SSI"
+        ],
+        "nuevas": [
+          "IA",
+          "PFinal",
+          "PPS",
+          "SSI"
+        ],
+        "continua": [],
+        "fijadas": [
+          "IA"
+        ],
+        "recursa": [],
+        "regulariza": [
+          "IA",
+          "PPS",
+          "SSI"
+        ],
+        "promociona": [],
+        "finales": [
           {
             "codigo": "PPS",
             "nombre": "Práctica Profesional Supervisada",
@@ -2244,7 +1838,7 @@
                 },
                 {
                   "nombre": "proximidad",
-                  "crudo": "final el 2028-07-27 (en 716 días)",
+                  "crudo": "final el 2028-07-27 (en 715 días)",
                   "normalizado": 0.0,
                   "peso": 0.25,
                   "aporte": 0.0
@@ -2285,16 +1879,22 @@
         "inicio": "2028-08-01",
         "fin": "2028-11-30",
         "cursa": [
-          "PFinal"
+          "PFinal",
+          "SG"
         ],
-        "nuevas": [],
+        "nuevas": [
+          "SG"
+        ],
         "continua": [
           "PFinal"
         ],
-        "fijadas": [],
+        "fijadas": [
+          "SG"
+        ],
         "recursa": [],
         "regulariza": [
-          "PFinal"
+          "PFinal",
+          "SG"
         ],
         "promociona": [],
         "finales": [
@@ -2337,7 +1937,7 @@
                 },
                 {
                   "nombre": "proximidad",
-                  "crudo": "final el 2028-09-22 (en 773 días)",
+                  "crudo": "final el 2028-09-22 (en 772 días)",
                   "normalizado": 0.0,
                   "peso": 0.25,
                   "aporte": 0.0
@@ -2369,21 +1969,161 @@
             "slug": null
           },
           {
-            "codigo": "PFinal",
-            "nombre": "Proyecto Final",
+            "codigo": "IA",
+            "nombre": "Inteligencia Artificial",
             "ventana": "dic 2028 (est.)",
             "ventanaClave": "dic-2028",
             "ventanaEstimada": true,
             "fecha": "2028-12-01",
             "llamado": 1,
+            "origen": "fijado",
+            "preparacion": {
+              "codigo": "IA",
+              "horas": 25.0,
+              "diasUtiles": 9,
+              "diasCalendario": 11,
+              "inicio": "2028-11-20",
+              "examen": "2028-12-01",
+              "origenHoras": "default por nivel 5 (config.json)"
+            },
+            "score": {
+              "codigo": "IA",
+              "total": 16.2,
+              "explicacion": "16.2/100 = urgencia 7.5 + impacto 0 + proximidad 0 + esfuerzo 8.7",
+              "componentes": [
+                {
+                  "nombre": "urgencia",
+                  "crudo": "sin año de cursada: no hay señal de urgencia",
+                  "normalizado": 0.3,
+                  "peso": 0.25,
+                  "aporte": 7.5
+                },
+                {
+                  "nombre": "impacto",
+                  "crudo": "0 inmediatas, 0 directas, 0 aguas abajo",
+                  "normalizado": 0.0,
+                  "peso": 0.35,
+                  "aporte": 0.0
+                },
+                {
+                  "nombre": "proximidad",
+                  "crudo": "final el 2028-12-01 (en 842 días)",
+                  "normalizado": 0.0,
+                  "peso": 0.25,
+                  "aporte": 0.0
+                },
+                {
+                  "nombre": "esfuerzo",
+                  "crudo": "25 h estimadas (default por nivel 5 (config.json))",
+                  "normalizado": 0.583,
+                  "peso": 0.15,
+                  "aporte": 8.7
+                }
+              ]
+            },
+            "regularidad": {
+              "codigo": "IA",
+              "situacion": "no-aplica",
+              "vence": null,
+              "diasRestantes": null,
+              "supuesto": null
+            },
+            "intentos": {
+              "codigo": "IA",
+              "usados": 0,
+              "maximo": 4,
+              "restantes": 4,
+              "situacion": "ok",
+              "mensaje": "sin intentos usados (4 disponibles)"
+            },
+            "slug": null
+          },
+          {
+            "codigo": "SG",
+            "nombre": "Sistemas de Gestión",
+            "ventana": "dic 2028 (est.)",
+            "ventanaClave": "dic-2028",
+            "ventanaEstimada": true,
+            "fecha": "2028-12-11",
+            "llamado": 2,
+            "origen": "fijado",
+            "preparacion": {
+              "codigo": "SG",
+              "horas": 25.0,
+              "diasUtiles": 9,
+              "diasCalendario": 11,
+              "inicio": "2028-11-30",
+              "examen": "2028-12-11",
+              "origenHoras": "default por nivel 5 (config.json)"
+            },
+            "score": {
+              "codigo": "SG",
+              "total": 16.2,
+              "explicacion": "16.2/100 = urgencia 7.5 + impacto 0 + proximidad 0 + esfuerzo 8.7",
+              "componentes": [
+                {
+                  "nombre": "urgencia",
+                  "crudo": "sin año de cursada: no hay señal de urgencia",
+                  "normalizado": 0.3,
+                  "peso": 0.25,
+                  "aporte": 7.5
+                },
+                {
+                  "nombre": "impacto",
+                  "crudo": "0 inmediatas, 0 directas, 0 aguas abajo",
+                  "normalizado": 0.0,
+                  "peso": 0.35,
+                  "aporte": 0.0
+                },
+                {
+                  "nombre": "proximidad",
+                  "crudo": "final el 2028-12-11 (en 852 días)",
+                  "normalizado": 0.0,
+                  "peso": 0.25,
+                  "aporte": 0.0
+                },
+                {
+                  "nombre": "esfuerzo",
+                  "crudo": "25 h estimadas (default por nivel 5 (config.json))",
+                  "normalizado": 0.583,
+                  "peso": 0.15,
+                  "aporte": 8.7
+                }
+              ]
+            },
+            "regularidad": {
+              "codigo": "SG",
+              "situacion": "no-aplica",
+              "vence": null,
+              "diasRestantes": null,
+              "supuesto": null
+            },
+            "intentos": {
+              "codigo": "SG",
+              "usados": 0,
+              "maximo": 4,
+              "restantes": 4,
+              "situacion": "ok",
+              "mensaje": "sin intentos usados (4 disponibles)"
+            },
+            "slug": null
+          },
+          {
+            "codigo": "PFinal",
+            "nombre": "Proyecto Final",
+            "ventana": "dic 2028 (est.)",
+            "ventanaClave": "dic-2028",
+            "ventanaEstimada": true,
+            "fecha": "2028-12-22",
+            "llamado": 3,
             "origen": "sugerido",
             "preparacion": {
               "codigo": "PFinal",
               "horas": 25.0,
               "diasUtiles": 9,
               "diasCalendario": 11,
-              "inicio": "2028-11-20",
-              "examen": "2028-12-01",
+              "inicio": "2028-12-11",
+              "examen": "2028-12-22",
               "origenHoras": "default por nivel 5 (config.json)"
             },
             "score": {
@@ -2407,7 +2147,7 @@
                 },
                 {
                   "nombre": "proximidad",
-                  "crudo": "final el 2028-12-01 (en 843 días)",
+                  "crudo": "final el 2028-12-22 (en 863 días)",
                   "normalizado": 0.0,
                   "peso": 0.25,
                   "aporte": 0.0
@@ -2454,14 +2194,14 @@
     },
     {
       "maxMateriasPorCuatrimestre": 4,
-      "graduacion": "2028-12-11",
+      "graduacion": "2028-12-22",
       "cuatrimestres": 5,
       "completa": true,
       "ultimoPeriodo": "2C 2028"
     },
     {
       "maxMateriasPorCuatrimestre": 5,
-      "graduacion": "2028-12-01",
+      "graduacion": "2028-12-22",
       "cuatrimestres": 5,
       "completa": true,
       "ultimoPeriodo": "2C 2028"
@@ -2509,7 +2249,7 @@
       "cuatrimestre": null,
       "antesDe": "2028-12-31",
       "resultado": "ajustado",
-      "motivo": "la proyección con 5 materias/cuatrimestre termina el 2028-12-01 (30 días antes del límite)",
+      "motivo": "la proyección con 5 materias/cuatrimestre termina el 2028-12-22 (9 días antes del límite)",
       "queHariaFalta": [
         "no hay margen para recursar ni desaprobar finales"
       ]
@@ -2522,7 +2262,7 @@
       "cuatrimestre": "1C-2028",
       "antesDe": null,
       "resultado": "alcanzable",
-      "motivo": "la proyección ya la ubica en 2C 2027 (pedido: 1C 2028)",
+      "motivo": "la proyección ya la ubica en 1C 2028 (pedido: 1C 2028)",
       "queHariaFalta": []
     }
   ]

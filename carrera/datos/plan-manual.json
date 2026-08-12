@@ -1,0 +1,19 @@
+{
+    "generado": "2026-08-12",
+    "cursadas": {
+      "Sim": "2C-2027",
+      "IA": "1C-2028",
+      "SG": "2C-2028"
+    },
+    "finales": {
+      "SySL": "feb-mar-2027",
+      "BD": "feb-mar-2027",
+      "IA": "dic-2028",
+      "SG": "dic-2028"
+    },
+    "promociones": [
+      "AN",
+      "GG"
+    ],
+    "intentosFinal": {}
+}

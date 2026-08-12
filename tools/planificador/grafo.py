@@ -8,7 +8,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field
 
-from .modelo import Correlativa, DatosCarrera, EstadoAcademico, Materia
+from .modelo import ARCHIVO_PLAN_MANUAL, Correlativa, DatosCarrera, EstadoAcademico, Materia
 
 
 @dataclass(frozen=True)
@@ -418,6 +418,15 @@ def validar(datos: DatosCarrera) -> Validacion:
 
     # 7. Referencias del plan manual (tablero) a materias inexistentes.
     manual = datos.plan_manual
+    if manual.archivo and manual.archivo != ARCHIVO_PLAN_MANUAL:
+        v.problemas.append(
+            Problema(
+                "aviso",
+                "plan-manual",
+                f"tus pins se leyeron de '{manual.archivo}': renombralo a "
+                f"'{ARCHIVO_PLAN_MANUAL}' (con guion) para que sea el nombre de siempre",
+            )
+        )
     referencias = (
         list(manual.cursadas)
         + list(manual.finales)
