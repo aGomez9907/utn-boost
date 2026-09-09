@@ -14,7 +14,7 @@
 | Recuperatorio 1er parcial | `primer-parcial/` | 2026-07-17 | rendido |
 | Recuperatorio 2do parcial | `segundo-parcial/` | 2026-07-17 | rendido |
 | Recuperatorio 2do parcial (2ª instancia) | `segundo-parcial/` | **2026-07-31** | **próximo** |
-| Final | `final/` _(carpeta a crear con /nueva-materia cuando se defina)_ | _(a definir)_ | pendiente |
+| Final | `final/` | **2026-09-22 / 2026-09-23** | **próximo** |
 
 > Los recuperatorios se preparan en la **carpeta de su parcial** (mismo temario, mismos
 > apuntes y mismo dataset de exámenes). El próximo (2026-07-31) es **solo del segundo
@@ -41,10 +41,26 @@
   indexarlo con `/indexar-examenes` — es la mejor pista para la 2ª instancia._
 - **Recuperatorio 2ª instancia (2026-07-31):** solo temario del **2º parcial**; se
   asume la estructura estándar del 2P (4 prácticos + 2 teóricos, 2 h).
-- **Final:** _(a documentar)_
+- **Final:** 4 problemas prácticos (P1–P4) + 2 teóricos (T1, T2), 2 horas. Estructura
+  constante en los 24 finales del dataset (2024-03 → 2026-07). **Condición de aprobación
+  (6 puntos): tres ejercicios correctamente resueltos, uno de T1 o T2 y dos de P1–P4.**
+  A diferencia de los parciales, el orden por posición NO es rígido: el mismo tema cae en
+  cualquier P según la fecha. El final **integra 1P y 2P**: casi la mitad de los ítems son
+  de varias variables (implícita, plano tangente, gradiente, extremos, direccional). Temas
+  con presencia dominante: flujo (96%), circulación/trabajo (92%), EDO (92%) y enunciado de
+  los teoremas integrales (83%). Nunca cayeron baricentro, longitud de curva, momento de
+  inercia ni superposición. Detalle en `final/estrategia.md`.
 
 ## Temario por evaluación
 
+- **Final:** unión del temario de ambos parciales. En la práctica el dataset muestra
+  dos bloques: **cálculo vectorial** (flujo directo y por Gauss, circulación por Green y
+  por Stokes, conservativos y función potencial, líneas de campo y equipotenciales,
+  integrales dobles/triples, área e integral de superficie, cambio de variables) y
+  **varias variables + EDO** (derivación implícita, plano tangente y recta normal,
+  gradiente y derivada direccional, regla de la cadena, extremos y Hessiano, Taylor y
+  aproximación lineal, curva en el espacio y punto regular, diferenciabilidad y
+  continuidad de funciones partidas, EDO de 1er y 2º orden, trayectorias ortogonales).
 - **Segundo parcial:** integrales dobles y triples (volumen, masa, baricentro,
   cambio de variables/Jacobiano, cilíndricas y esféricas), curvas (longitud, trabajo,
   circulación), Green, campos conservativos y función potencial, superficies (área,
@@ -67,7 +83,10 @@
   tomado el 2026-07-08) en `segundo-parcial/examenes/`. Primer parcial: **16 exámenes
   reales de contenido distinto** (+ 2 simulacros de cátedra, 2017–2026) indexados en
   `primer-parcial/examenes/INDICE.md`, con `resueltos/` (11 resoluciones de cátedra +
-  compilación) y `duplicados/` aparte.
+  compilación) y `duplicados/` aparte. **Final: 24 exámenes distintos** (2024-03-05 →
+  2026-07-28) indexados en `final/examenes/INDICE.md`, con `resueltos/` (12 resoluciones
+  + respuestas oficiales del 2024-07-23) y `duplicados/` aparte. 20 de los PDFs tienen
+  capa de texto; sólo 4 son escaneos que requirieron visión.
 
 ## Leyenda de tags (para `examenes/INDICE.md`)
 
@@ -84,9 +103,16 @@ Compartidos entre parciales: `#EDO` `#Demostracion`
 `#DerivacionImplicita` `#PlanoTangente` `#SuperficieParametrizada` `#CurvaEspacio`
 `#Taylor` `#Extremos`
 
+**Final** (usa la unión de ambas listas, más): `#MasaChapa` (integral de superficie
+escalar) `#LineasCampo` (líneas de campo / equipotenciales) `#PuntoRegular`
+`#EDOPrimerOrden` `#EDOSegundoOrden`, y dos tags de **forma de consigna**, no de tema:
+`#VoF` (verdadero-o-falso justificando) y `#PlantearIntegral` (plantear los límites sin
+calcular).
+
 ## Estado del material
 
 | Evaluación | Apuntes | INDICE | Estrategia | Poda | Plan | Registro | Flashcards | Machete | Simulacros |
 |---|---|---|---|---|---|---|---|---|---|
 | Segundo parcial (+recu) | ✅ 19 | ✅ 17 exámenes distintos | ✅ | ✅ | ✅ (recu 2ª inst. 2026-07-31) | ✅ (vacío, listo para usar) | ✅ 61 cartas | ✅ | ✅ 1 |
 | Primer parcial (+recu) | — | ✅ 16 reales + 2 sim. | ✅ | — | _(viejo, del 17/7)_ | — | — | ✅ | — |
+| **Final (2026-09-22/23)** | — (usa los del 2P + ambos machetes) | ✅ **24 finales** + 12 resueltos | ✅ | — | ✅ | ✅ | — | — | — |
