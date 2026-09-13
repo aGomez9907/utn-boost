@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Flashcards — Final · Análisis Matemático II</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<style>
+:root { color-scheme: light dark; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  line-height: 1.65; max-width: 820px; margin: 2.5rem auto; padding: 0 1.25rem;
+  color: #1a1a1a; background: #fff;
+}
+@media (prefers-color-scheme: dark) {
+  body { color: #e6e6e6; background: #16181c; }
+  a { color: #6cb6ff; }
+  details { background: #1f2228; border-color: #30343c; }
+  summary { background: #232730; }
+  blockquote { color: #aab; border-color: #30343c; }
+  code { background: #232730; }
+  th { background: #232730; }
+  th, td { border-color: #30343c; }
+  tbody tr:nth-child(even) { background: #1c1f24; }
+}
+h1, h2, h3 { line-height: 1.25; margin-top: 1.8rem; }
+h1 { border-bottom: 2px solid currentColor; padding-bottom: .3rem; }
+h2 { border-bottom: 1px solid #ddd; padding-bottom: .25rem; }
+a { color: #0969da; text-decoration: none; }
+a:hover { text-decoration: underline; }
+blockquote { margin: 1rem 0; padding: .2rem 1rem; border-left: 4px solid #ddd; color: #555; }
+code { background: #f3f4f6; padding: .12em .35em; border-radius: 4px; font-size: .9em; }
+details {
+  border: 1px solid #e1e4e8; border-radius: 8px; padding: 0 1rem; margin: .8rem 0;
+  background: #fafbfc;
+}
+details[open] { padding-bottom: .6rem; }
+summary {
+  cursor: pointer; font-weight: 600; padding: .7rem 1rem; margin: 0 -1rem;
+  background: #f1f3f5; border-radius: 8px; user-select: none;
+}
+details details { margin-left: .2rem; }
+.katex-display { overflow-x: auto; overflow-y: hidden; padding: .3rem 0; }
+.katex-error { color: #d1242f; }
+table { border-collapse: collapse; margin: 1rem 0; }
+th, td { border: 1px solid #c9ccd1; padding: .35rem .65rem; text-align: left; vertical-align: top; }
+th { background: #f1f3f5; }
+tbody tr:nth-child(even) { background: #f8f9fa; }
+@media print {
+  body { margin: 1.2cm; max-width: none; color: #000; background: #fff; }
+  summary { background: none; margin: 0; padding: .2rem 0; }
+  details { border-color: #ccc; background: #fff; padding: 0; }
+  a { color: #000; }
+  tr, blockquote, .katex-display { page-break-inside: avoid; }
+  thead { display: table-header-group; }
+  h1, h2, h3 { page-break-after: avoid; }
+  th, td { border-color: #999; }
+  th { background: #ececec; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  tbody tr:nth-child(even) { background: #f5f5f5; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}
+</style>
+</head>
+<body>
+<div id="content">Renderizando…</div>
+
+<script type="text/markdown" id="md-source">
+# Flashcards — Final · Análisis Matemático II
+
+> Mazo de repaso teórico. Fuente de preguntas: checklist de `estrategia.md` §4 y menú de 4
+> teóricos de `plan.md`. Fuente de respuestas: `../segundo-parcial/apuntes/md/` (vía el
+> mazo del 2º parcial, del que se reutilizan las cartas pertinentes) y
+> `../primer-parcial/repaso/machete.md` para el temario del 1P, que no tiene apuntes.
+> Las cartas marcadas ⚠️ declaran huecos del material: completarlas a mano.
+> Versión Anki: `flashcards-anki.tsv`.
+
+
+## Los 4 teóricos del plan (T-A a T-D) — 🔴 elegís UNO el día del examen
+
+### 1. [demostración] Demostrá que si $\vec{F}$ es conservativo con potencial $\varphi$, entonces $\int_{A\to B}\vec{F}\cdot d\lambda = \varphi(B)-\varphi(A)$ (T1 de 2022-11-24).
+
+<details><summary>Ver respuesta</summary>
+
+Sea $\lambda:[a,b]\to\mathbb{R}^n$ una curva $C^1$ contenida en el dominio, con $\lambda(a)=A$, $\lambda(b)=B$, y $\vec{F}=\nabla\varphi$.
+
+**Paso 1:** definí $h(t) = \varphi(\lambda(t))$. Por **regla de la cadena**:
+
+$$
+h'(t) = \nabla\varphi(\lambda(t))\cdot\lambda'(t) = \vec{F}(\lambda(t))\cdot\lambda'(t)
+$$
+
+**Paso 2:** entonces la integral de línea es la integral de $h'$:
+
+$$
+\int_\lambda \vec{F}\cdot d\lambda = \int_a^b \vec{F}(\lambda(t))\cdot\lambda'(t)\,dt = \int_a^b h'(t)\,dt
+$$
+
+**Paso 3:** por **regla de Barrow**:
+
+$$
+= h(b) - h(a) = \varphi(\lambda(b)) - \varphi(\lambda(a)) = \varphi(B) - \varphi(A) \quad\blacksquare
+$$
+
+La integral no depende de la curva, solo de los extremos. *(En el apunte 10 es la Proposición 2 del teorema de equivalencia; esta es la demostración estándar: regla de la cadena + Barrow.)*
+
+> **En el final:** Es **T-A** del plan. En el final cayó literal en `2024-03-05 T2a`, `2024-12-10 T2a`, `2025-09-25 T1a` y `2025-12-02 T1a`.
+
+_Fuente: `../segundo-parcial/apuntes/md/` → 10-campos-conservativos.md (Prop. 2)_
+
+</details>
+
+### 2. [enunciado] Enunciá el Teorema de Green (teorema del rotor en el plano) con hipótesis y tesis, incluyendo qué significa orientación positiva.
+
+<details><summary>Ver respuesta</summary>
+
+**Hipótesis:**
+- $\vec{F} = (f_1, f_2)$ es un campo vectorial en el plano, definido en un subconjunto de $\mathbb{R}^2$, de **clase $C^1$** (las derivadas parciales de las funciones componentes son continuas).
+- $D$ es una **región regular del plano** (limitada por curvas regulares que admiten recta tangente en cada punto), incluida dentro del dominio del campo, de modo que $\vec{F}$ pueda evaluarse en cada punto de $D$.
+
+**Tesis:** la integral del campo a lo largo de la curva frontera $\partial D$, orientada en sentido **positivo (antihorario)**, es igual a la integral doble del rotor de $\vec{F}$ sobre $D$:
+
+$$\oint_{\partial D} \vec{F} \cdot d\vec{r} = \iint_{D} \operatorname{rot} \vec{F} \, dx \, dy$$
+
+**Orientación positiva:** la región está orientada en sentido positivo si su borde $\partial D$ se recorre en sentido **antihorario** (convención); en sentido horario la orientación es negativa y la circulación cambia de signo. Relaciona una **integral de línea** sobre una curva cerrada con una **integral doble**.
+
+> **En el final:** Es **T-B** del plan. Enunciarlo fue `2026-05-19 T1a`, `2026-03-03 T1a` y `2024-12-03 T2a`; las tres veces pidieron además la carta siguiente.
+
+_Fuente: `../segundo-parcial/apuntes/md/` → 09-rotor-en-el-plano.md_
+
+</details>
+
+### 3. [enunciado] Enunciá el corolario del Teorema de Green para el cálculo de áreas. ¿Cómo se calcula el área de una región usando una circulación?
+
+<details><summary>Ver respuesta</summary>
+
+Si se elige **arbitrariamente** un campo vectorial $\vec{F}$ tal que su rotor valga $1$:
+
+$$\operatorname{rot} \vec{F} = 1$$
+
+entonces por Green la integral doble del rotor sobre $D$ es la integral de la función unitaria, que es el **área** de $D$:
+
+$$\oint_{\partial D} \vec{F} \cdot d\vec{r} = \iint_{D} 1 \, dx \, dy = \text{área}(D)$$
+
+**Conclusión:** para calcular el área de una región del plano, se elige un campo cuyo rotor valga $1$ (por ejemplo $\vec{F}(x,y) = (0, x)$, cuyo rotor es $\frac{\partial}{\partial x}(x) - \frac{\partial}{\partial y}(0) = 1$) y se calcula la circulación de ese campo alrededor del borde de la región, **orientado positivamente**.
+
+> **En el final:** Mitad de **T-B**: «deduzca una fórmula para el área plana». Otra elección válida es $\vec F=\tfrac12(-y,x)$, que da $A=\tfrac12\oint x\,dy-y\,dx$. El `2026-02-10 T2a` pide **dos** campos distintos.
+
+_Fuente: `../segundo-parcial/apuntes/md/` → 09-rotor-en-el-plano.md_
+
+</details>
+
+### 4. [enunciado] Enunciá el **Teorema del rotor (Stokes)**, con hipótesis y tesis.
+
+<details><summary>Ver respuesta</summary>
+
+**Hipótesis:**
+- $\vec{F}$ campo vectorial de (un subconjunto de) $\mathbb{R}^3 \to \mathbb{R}^3$, de **clase $C^1$** (todas sus derivadas parciales continuas).
+- $S$ superficie **simple y orientable** incluida en el dominio del campo, con parametrización $\sigma$ (sobre una región $D$ del plano) tal que el **borde de $S$ es una curva regular y simple**.
+- El **borde de $S$ orientado en correspondencia** con el campo de versores normales $\vec{n}$: caminando con la cabeza en la dirección de $\vec{n}$ y dejando la superficie a la izquierda.
+
+**Tesis:** la circulación (trabajo) de $\vec{F}$ a lo largo del borde de $S$ es igual al **flujo del rotor** de $\vec{F}$ a través de $S$:
+$$\oint_{\partial S} \vec{F} \cdot d\vec{r} = \iint_{S} \operatorname{rot}\vec{F} \cdot d\vec{S}$$
+
+> **En el final:** Es **T-C** del plan. Enunciarlo fue `2025-02-25 T1a`, `2026-07-14 T1a` y `2026-07-28 T2a`.
+
+_Fuente: `../segundo-parcial/apuntes/md/` → 16-rotor-en-el-espacio.md_
+
+</details>
+
+### 5. [enunciado] Enunciá formalmente el **Teorema de la Divergencia (Gauss)**, con hipótesis y tesis.
+
+<details><summary>Ver respuesta</summary>
+
+**Hipótesis:**
+- $\vec{F}: A \subseteq \mathbb{R}^3 \to \mathbb{R}^3$ campo vectorial de **clase $C^1$** (cada función componente tiene derivadas parciales continuas respecto de las tres variables).
+- $\Omega$ es una **región simple del espacio**, incluida dentro del dominio del campo (se puede evaluar $\vec{F}$ en cualquier punto de la región).
+- $\partial\Omega$ es la superficie frontera de $\Omega$ (superficie simple y orientable por partes, cerrada), **orientada en forma positiva**: normales hacia el exterior.
+
+**Tesis:** el flujo del campo a través de la frontera cerrada es igual a la integral triple de la divergencia sobre la región:
+$$\oiint_{\partial\Omega} \vec{F} \cdot d\vec{S} = \iiint_{\Omega} \operatorname{div}\vec{F}\,dx\,dy\,dz$$
+
+Relaciona una integral de superficie (flujo por superficie cerrada) con una integral triple.
+
+> **En el final:** Es **T-D** del plan. Enunciarlo fue `2025-02-18 T1a`, `2026-02-10 T1a` y `2026-02-24 T2a`.
+
+_Fuente: `../segundo-parcial/apuntes/md/` → 15-divergencia.md_
+
+</details>
+
+### 6. [método] ¿Cuándo conviene calcular un flujo con el **Teorema de la Divergencia** y cuándo por **definición** (flujo directo)?
+
+<details><summary>Ver respuesta</summary>
+
+**Conviene Gauss cuando:**
+- La superficie es **cerrada** (frontera de una región simple $\Omega$) y está orientada con normales al exterior — o se puede cerrar fácilmente.
+- La frontera tiene **varias caras** (ej. tetraedro: 4 trozos de plano): calcular el flujo cara por cara y sumar es laborioso; con Gauss es una sola integral triple.
+- La **divergencia es simple** (constante o factorizable). Si $\operatorname{div}\vec{F} = c$ constante: $\oiint_{\partial\Omega} \vec{F}\cdot d\vec{S} = c \cdot V_\Omega$ (constante por volumen). Ej.: $\vec{F}=(x,y,z)$ por el tetraedro de $x+y+z=1$ en el primer octante: $3 \cdot \frac{1}{6} = \frac{1}{2}$.
+- La región y el integrando sugieren esféricas/cilíndricas (ej. $\vec{F}=(x^3,y^3,z^3)$ por esfera de radio $R$: $\operatorname{div} = 3(x^2+y^2+z^2) = 3\rho^2$, resultado $\frac{12}{5}\pi R^5$).
+
+**Flujo directo (definición) cuando:**
+- La superficie es **abierta** (no encierra región) y no conviene cerrarla.
+- El campo **no está definido en algún punto interior** de la región (ej. carga en el origen): Gauss no se puede aplicar directamente sobre esa región.
+
+> **En el final:** Complemento de **T-D**: el `2026-02-10 T1a` pregunta si Gauss se aplica *en forma directa* a `x²−2x+y²=0, −1≤z≤1` — es un cilindro **abierto**, así que no: hay que cerrarlo con las tapas y restar.
+
+_Fuente: `../segundo-parcial/apuntes/md/` → 15-divergencia.md_
+
+</details>
+
+### 7. [enunciado] Definí **región simple del espacio** y **orientación positiva de su frontera** (las hipótesis geométricas del Teorema de la Divergencia).
+
+<details><summary>Ver respuesta</summary>
+
+**Región simple del espacio** ($\mathbb{R}^3$): región de integración del espacio tridimensional (donde se podrían resolver integrales triples) encerrada por superficies, de manera tal que toda su frontera es una **superficie simple y orientable por partes**. Imagen: un dado — sólido macizo cuyas seis caras, unidas, forman la superficie que lo encierra.
+
+**Orientación positiva de la frontera:** la superficie que envuelve a la región está orientada en forma positiva si sus vectores normales apuntan **hacia el exterior** de la región.
+
+**Superficie simple y orientable por partes:** varias superficies simples y orientables **pegadas en sus bordes**; las orientaciones son coherentes cuando en la curva de unión de dos piezas las orientaciones inducidas en los bordes son **opuestas** (ej. dado: los seis normales todos hacia el exterior, o todos hacia el interior).
+
+> **En el final:** Las hipótesis geométricas que suelen faltar cuando se enuncia Gauss de memoria.
+
+_Fuente: `../segundo-parcial/apuntes/md/` → 15-divergencia.md_
+
+</details>
+
+
+## Conservativos y función potencial — 🟠 T2 muy frecuente
+
+### 8. [enunciado] ¿Cuándo un campo vectorial $\vec{F}$ es **conservativo**? Definí función potencial (primitiva).
+
+<details><summary>Ver respuesta</summary>
+
+$\vec{F}: A\subseteq\mathbb{R}^n \to \mathbb{R}^n$ es **conservativo** si existe un campo escalar $\varphi$ tal que su gradiente es el campo:
+
+$$
+\nabla\varphi = \vec{F}
+$$
+
+Esa $\varphi$ se llama **función primitiva o potencial** de $\vec{F}$.
+
+Ejemplo: $\varphi(x,y)=xy$ es potencial de $\vec{F}=(y,x)$, porque $\nabla\varphi = (y,x) = \vec{F}$.
+
+> **En el final:** Definir función potencial fue `2025-07-15 T2a` y `2025-12-09 T2a`, ambas seguidas de «hallar la línea equipotencial»: es la curva de nivel $\varphi=k$ del potencial.
+
+_Fuente: `../segundo-parcial/apuntes/md/` → 10-campos-conservativos.md_
+
+</details>
+
+### 9. [demostración] **El T1 más tomado:** enunciá y demostrá la condición NECESARIA para que $\vec{F}=(f_1,f_2)$ admita función potencial. Indicá las hipótesis.
+
+<details><summary>Ver respuesta</summary>
+
+**Enunciado.** Hipótesis: $\vec{F}=(f_1,f_2)$ de clase $C^1$ y conservativo. Tesis:
+
+$$
+\frac{\partial f_1}{\partial y} = \frac{\partial f_2}{\partial x}
+$$
+
+**Demostración.**
+
+**Paso 1:** $\vec{F}$ conservativo $\Rightarrow$ existe $\varphi$ con $\nabla\varphi=\vec{F}$, es decir $\dfrac{\partial\varphi}{\partial x}=f_1$ y $\dfrac{\partial\varphi}{\partial y}=f_2$.
+
+**Paso 2:** derivar la primera respecto de $y$ y la segunda respecto de $x$:
+
+$$
+\frac{\partial^2\varphi}{\partial y\,\partial x} = \frac{\partial f_1}{\partial y}, \qquad \frac{\partial^2\varphi}{\partial x\,\partial y} = \frac{\partial f_2}{\partial x}
+$$
+
+**Paso 3:** como $\vec{F}\in C^1$, $\varphi\in C^2$, y por el **teorema de Schwarz** las derivadas cruzadas coinciden.
+
+**Paso 4:** por lo tanto $\dfrac{\partial f_1}{\partial y} = \dfrac{\partial f_2}{\partial x}$. $\blacksquare$
+
+Ojo: es solo **necesaria** — cumplirla NO garantiza que el campo sea conservativo (ver la carta del contraejemplo).
+
+> **En el final:** Fue el `2024-05-10 T1` del final (enunciar, demostrar y dar un ejemplo).
+
+_Fuente: `../segundo-parcial/apuntes/md/` → 10-campos-conservativos.md_
+
+</details>
+
+### 10. [enunciado] Contraejemplo clave: $\vec{F} = \left(\dfrac{-y}{x^2+y^2},\ \dfrac{x}{x^2+y^2}\right)$ en $\mathbb{R}^2-\{(0,0)\}$. ¿Cumple la condición necesaria? ¿Es conservativo?
+
+<details><summary>Ver respuesta</summary>
+
+**Cumple** la condición necesaria: ambas derivadas cruzadas dan $\dfrac{y^2-x^2}{(x^2+y^2)^2}$.
+
+**Pero NO es conservativo:** sobre una circunferencia de radio $r$ centrada en el origen,
+
+$$
+\oint \vec{F}\cdot d\lambda = \int_0^{2\pi}(\sin^2 t + \cos^2 t)\,dt = 2\pi \neq 0
+$$
+
+**Moraleja de examen:** cuando el dominio tiene agujeros, la condición necesaria no alcanza — hay que chequear la circulación alrededor del agujero.
+
+> **En el final:** Este campo es exactamente el del `2025-12-09 T2b`: allí lo restringen a $y>0$ (sin agujero) y por eso sí admite potencial con $\varphi(1,1)=\pi/4$.
+
+_Fuente: `../segundo-parcial/apuntes/md/` → 10-campos-conservativos.md (Ej. 4)_
+
+</details>
+
+
+## Cambio de variables — 🟠 T2 reciclado
+
+### 11. [enunciado] Enunciá el teorema de cambio de variables en integrales dobles: hipótesis sobre la transformación $g$ y tesis (fórmula con el jacobiano).
+
+<details><summary>Ver respuesta</summary>
+
+Se tiene una función continua $f$ sobre la región $D$ (variables $x, y$) y una transformación de coordenadas $g$ definida en $D^*$ (variables $u, v$) que manda los puntos de $D^*$ a $D$.
+
+**Hipótesis sobre $g$:**
+- Es **inyectiva**: a cada elemento de $D^*$ le corresponde uno y solo uno de $D$ (equivale a que admite inversa $g^{-1}$).
+- Tiene **derivadas parciales continuas**.
+- Su **jacobiano** (determinante de la matriz jacobiana) es **distinto de cero**, al menos en el **interior** de $D^*$ (lo que ocurra en el borde no importa).
+
+**Tesis:**
+
+$$\iint_{D} f(x,y)\,dx\,dy = \iint_{D^*} f\big(x(u,v),\, y(u,v)\big)\,\left| J \right|\,du\,dv$$
+
+Es el equivalente al método de sustitución de las integrales simples: se integra la función evaluada en las nuevas variables sobre $D^*$, multiplicando el integrando por el **módulo del jacobiano**.
+
+> **En el final:** Enunciarlo fue `2024-12-17 T2a` y `2025-09-25 T2a`.
+
+_Fuente: `../segundo-parcial/apuntes/md/` → 02-integrales-dobles-ii.md_
+
+</details>
+
+### 12. [fórmula] ¿Qué es la matriz jacobiana y el jacobiano de una transformación? Deducí que el jacobiano de las coordenadas polares vale $\rho$.
+
+<details><summary>Ver respuesta</summary>
+
+La **matriz jacobiana** es la matriz formada por todas las derivadas parciales de todas las funciones componentes. Para $x = x(\rho,\varphi)$, $y = y(\rho,\varphi)$:
+
+$$J = \begin{pmatrix} \dfrac{\partial x}{\partial \rho} & \dfrac{\partial x}{\partial \varphi} \\ \dfrac{\partial y}{\partial \rho} & \dfrac{\partial y}{\partial \varphi} \end{pmatrix}$$
+
+Al **determinante** de esa matriz se lo llama **jacobiano**.
+
+**Coordenadas polares:** $x = \rho\cos\varphi$, $y = \rho\sin\varphi$:
+
+$$J = \begin{vmatrix} \cos\varphi & -\rho\sin\varphi \\ \sin\varphi & \rho\cos\varphi \end{vmatrix} = \rho\cos^2\varphi + \rho\sin^2\varphi = \rho(\cos^2\varphi + \sin^2\varphi) = \rho$$
+
+Por lo tanto $J = \rho$. (Vale cero en el origen, pero eso no importa porque el jacobiano se exige distinto de cero sólo en el interior de $D^*$, no en la frontera.)
+
+> **En el final:** «Explique el cambio a polares y calcule el jacobiano» fue `2026-03-03 T2a`.
+
+_Fuente: `../segundo-parcial/apuntes/md/` → 02-integrales-dobles-ii.md_
+
+</details>
+
+### 13. [método] Ejercicio tipo T1: te dan área$(D)$ y una transformación (por ejemplo lineal), y te piden área$(D^*)$. ¿Qué rol cumple el módulo del jacobiano y cómo se razona?
+
+<details><summary>Ver respuesta</summary>
+
+El módulo del jacobiano **corrige las áreas** de las regiones de integración cuando la transformación las deforma: está asociado a la **relación entre los tamaños de las áreas** de $D$ y $D^*$.
+
+*Ejemplo del apunte* (cambio $u = x+y$, $v = x-y$, con $|J_g| = \frac{1}{2}$):
+- Área de $D$ (cuadrado de lado $\sqrt{2}$): $\text{área}(D) = 2$.
+- Área de $D^*$ (base de $1$ a $3$ mide $2$, altura de $-1$ a $1$ mide $2$): $\text{área}(D^*) = 4$.
+- Al pasar a $D^*$ el área **se agrandó** (de $2$ a $4$); para que la integral dé lo mismo hubo que multiplicar por $\frac{1}{2}$, que es exactamente el módulo del jacobiano.
+
+**Regla práctica:** como la transformación es **lineal**, el jacobiano es una **constante**, y entonces
+
+$$\text{área}(D) = \iint_{D^*} |J|\,du\,dv = |J| \cdot \text{área}(D^*)$$
+
+(caso $f \equiv 1$ del teorema). Conocida una de las dos áreas y $|J|$, se despeja la otra. Si el jacobiano no es constante (ej. polares, $J = \rho$), no se puede sacar de la integral.
+
+> **En el final:** Es el `2025-09-25 T2b` del final, con $\phi(u,v)=(u+2v,\,2u+v)$ y $\text{Área}(D)=12$ — idéntico al T1 del 2º parcial de 2016.
+
+_Fuente: `../segundo-parcial/apuntes/md/` → 02-integrales-dobles-ii.md_
+
+</details>
+
+
+## Métodos de los dos prácticos blindados — 🔴 flujo y circulación
+
+### 14. [fórmula] ¿Cómo se define el **flujo de un campo vectorial $\vec{F}$ a través de una superficie $S$** parametrizada por $\sigma$? (fórmula con el producto vectorial fundamental)
+
+<details><summary>Ver respuesta</summary>
+
+Sea $\vec{F}$ definido en $A \subseteq \mathbb{R}^3$ y $S$ una superficie simple y orientable (por partes) parametrizada por $\sigma: D \subseteq \mathbb{R}^2 \to \mathbb{R}^3$, **incluida en el dominio del campo**:
+$$\iint_S \vec{F} \cdot d\vec{S} = \iint_D \vec{F}(\sigma(u,v)) \cdot \left( \sigma'_u \times \sigma'_v \right) du\,dv$$
+
+Es la integral doble sobre $D$ del campo **evaluado en los puntos de la superficie**, producto escalar con el **producto vectorial de las derivadas parciales** de la parametrización ($\sigma'_u \times \sigma'_v$ = vector normal a $S$, no nulo si $S$ es regular).
+
+Interpretación física: si $\vec{F}$ es el campo de velocidades de un fluido, el flujo es el **caudal** ($\vec{F}\cdot\check{n}\,dS$ con $dS = \|\sigma'_u \times \sigma'_v\|\,du\,dv$; las normas se cancelan). Si $S$ es cerrada se puede agregar un circulito al signo integral, pero la integral es la misma.
+
+_Fuente: `../segundo-parcial/apuntes/md/` → 14-flujo.md_
+
+</details>
+
+### 15. [método] ¿Cómo se calcula el flujo cuando la superficie viene dada por una **ecuación cartesiana** $g(x,y,z) = 0$ (con $z$ dependiente de $x,y$)? ¿Cuándo NO sirve esta fórmula?
+
+<details><summary>Ver respuesta</summary>
+
+Si la superficie es el conjunto de nivel cero de $g$ y una variable depende de las otras dos (p. ej. $z = z(x,y)$, cumpliendo el teorema de la función implícita):
+$$\iint_S \vec{F} \cdot d\vec{S} = \iint_{D_{xy}} \vec{F} \cdot \frac{\nabla g}{\left| g'_z \right|}\, dx\, dy$$
+
+donde $\vec{F}$ se **evalúa en los puntos de la superficie** (reemplazando $z$ en términos de $x,y$) y $D_{xy}$ es la **proyección** de la superficie al plano $xy$.
+
+Ojo: a diferencia de campos escalares/áreas, NO se usa la norma del gradiente sino **el gradiente directamente** ($\nabla g$ es un vector normal; su sentido fija la orientación).
+
+**Restricción:** una variable debe depender de las otras dos. **No sirve** para una esfera completa: a un mismo $(x,y)$ le corresponderían dos imágenes (una arriba y otra abajo del plano $xy$).
+
+Ejemplo (paraboloide $z = x^2+y^2$, $z\le 1$): $g = z - x^2 - y^2$, $\nabla g = (-2x, -2y, 1)$, $g'_z = 1$, se integra sobre $x^2+y^2 \le 1$ pasando a polares.
+
+> **En el final:** La receta de todos los flujos por superficie abierta del banco B2 (paraboloide `z = 9 − x² − y²`, etc.).
+
+_Fuente: `../segundo-parcial/apuntes/md/` → 14-flujo.md_
+
+</details>
+
+### 16. [método] **Método:** calcular una circulación en el espacio usando el **Teorema de Stokes** (pasos, con el ejemplo de la intersección cilindro–plano).
+
+<details><summary>Ver respuesta</summary>
+
+**Paso 1:** Calcular $\operatorname{rot}\vec{F}$ con el determinante. (Ej.: $\vec{F} = (x^2, xy, z^2) \Rightarrow \operatorname{rot}\vec{F} = (0, 0, y)$.)
+
+**Paso 2:** Elegir una superficie $S$ cuyo **borde sea la curva** dada. (Ej.: curva intersección de $x^2+y^2=1$ y $x+y+z=1$ → se elige el trozo del plano encerrado dentro del cilindro.)
+
+**Paso 3:** Escribir $S$ como conjunto de nivel cero de $g$ y calcular el normal. (Ej.: $g = x+y+z-1$, $\nabla g = (1,1,1)$, $g'_z = 1$.) El flujo del rotor queda:
+$$\iint_{S} \operatorname{rot}\vec{F} \cdot \frac{\nabla g}{|g'_z|}\, dx\, dy \quad \text{sobre la proyección } S_{xy}$$
+
+**Paso 4:** Integrar sobre la proyección, pasando a **polares** si conviene. (Ej.: $\iint_{x^2+y^2\le 1} y\,dx\,dy = \int_0^{2\pi}\int_0^1 r^2\sin\varphi\,dr\,d\varphi = 0$ porque $\int_0^{2\pi}\sin\varphi\,d\varphi = 0$.)
+
+**Cuándo conviene:** cuando parametrizar la curva por definición genera integrandos trigonométricos laboriosos; con Stokes suele salir "en un renglón" (ej. del plano: flujo de $(0,0,2)$ → $2 \times$ área del triángulo proyectado $= 1$).
+
+**Verificar** que la orientación del borde esté en correspondencia con el normal elegido (superficie a la izquierda).
+
+> **En el final:** La receta del banco B4 (`2025-07-15 P1`, `2026-05-19 P1`, `2025-07-29 P1`).
+
+_Fuente: `../segundo-parcial/apuntes/md/` → 16-rotor-en-el-espacio.md_
+
+</details>
+
+
+## EDO de 2º orden — 🔴 el tercer práctico
+
+### 17. [fórmula] Los **3 casos de raíces** de la ecuación característica y la solución general de cada uno.
+
+<details><summary>Ver respuesta</summary>
+
+**Caso 1 — raíces reales distintas** ($m_1\neq m_2$):
+
+$$
+y = c_1\,e^{m_1 x} + c_2\,e^{m_2 x}
+$$
+
+**Caso 2 — raíz real doble** ($m=-p/2$):
+
+$$
+y = c_1\,e^{mx} + c_2\,x\,e^{mx}
+$$
+
+**Caso 3 — raíces complejas conjugadas** ($m = \alpha\pm\beta i$, con $\alpha=-\dfrac{p}{2}$, $\beta=\dfrac{\sqrt{4q-p^2}}{2}$):
+
+$$
+y = e^{\alpha x}\left[c_1\cos(\beta x) + c_2\sin(\beta x)\right]
+$$
+
+En la práctica: resolvé la característica y leé $\alpha$ y $\beta$ directo de las raíces ($\beta$ = coeficiente positivo de $x$ en las trigonométricas). Ejemplo: $m^2+2m+5=0 \Rightarrow m=-1\pm 2i \Rightarrow y=e^{-x}[c_1\cos 2x + c_2\sin 2x]$.
+
+> **En el final:** El `2026-07-28 P3` (`y″−4y′+4y = 25 sen x`) es el caso 2, raíz doble $m=2$.
+
+_Fuente: `../segundo-parcial/apuntes/md/` → 18 (con corrección de β)_
+
+</details>
+
+### 18. [método] **Coeficientes indeterminados:** ¿qué $y_p$ proponés según la forma de $f(x)$, y por qué funciona?
+
+<details><summary>Ver respuesta</summary>
+
+Requiere coeficientes constantes y $f(x)$ de forma "linda":
+
+- $f$ = **polinomio de grado $n$** $\Rightarrow$ proponer polinomio completo de grado $n$: $y_p = ax^n+\dots+b$.
+- $f$ = **seno o coseno** $\Rightarrow$ proponer $A\cos(\omega x)+B\sin(\omega x)$ (los dos, aunque $f$ tenga uno solo).
+- $f$ = **exponencial** $e^{kx}$ $\Rightarrow$ proponer $A\,e^{kx}$.
+- $f$ = **suma** de varios $\Rightarrow$ por superposición, proponer una $y_p$ para cada término y sumar.
+
+**Por qué funciona:** las derivadas conservan el formato (un polinomio deriva a polinomios, una exponencial a exponenciales), así que al reemplazar se pueden **comparar coeficientes** y despejar. En estos parciales el término derecho es siempre polinomio/constante/exponencial/coseno: coeficientes indeterminados alcanza para todos.
+
+_Fuente: `../segundo-parcial/apuntes/md/` → 19_
+
+</details>
+
+### 19. [método] **Resonancia:** ¿cuándo multiplicás la propuesta de $y_p$ por $x$ o por $x^2$? ¿Cuál es la señal práctica?
+
+<details><summary>Ver respuesta</summary>
+
+Cuando $f(x)$ contiene $e^{m_1 x}$ con $m_1$ **raíz de la ecuación característica**:
+
+- raíz **simple** $\Rightarrow$ multiplicar la propuesta por $x$: $y_p = x\cdot(\text{propuesta})$.
+- raíz **doble** ($m_1=m_2$) $\Rightarrow$ multiplicar por $x^2$.
+
+**Señal práctica:** si al comparar coeficientes el sistema da **incompatible**, multiplicá por $x$; si vuelve a dar incompatible, por $x^2$.
+
+(Ojo: una constante en $f$ es $e^{0x}$ — hay resonancia si $m=0$ es raíz, como en $y''+4y'=8$.)
+
+_Fuente: `../segundo-parcial/apuntes/md/` → 19_
+
+</details>
+
+
+## Plan B del teórico: varias variables — 🟡 sin apuntes, desde el machete 1P
+
+### 20. [fórmula] Derivada direccional **por definición** en $(0,0)$ de una función partida, y cómo se decide después la continuidad (plan B del T2).
+
+<details><summary>Ver respuesta</summary>
+
+$$
+f'\big((0,0),(a,b)\big)=\lim_{t\to0}\frac{f(ta,tb)-f(0,0)}{t}
+$$
+
+Reemplazar y ver si el límite depende de $(a,b)$ o no existe (para $f_x$: $(a,b)=(1,0)$). Después:
+
+- **Continuidad en $(0,0)$:** ¿$\lim_{(x,y)\to(0,0)}f=f(0,0)$? Para negarlo, dos trayectorias ($y=mx$, $y=kx^2$) con límites distintos. Para afirmarlo, acotar / polares.
+- **V/F «discontinua / no admite derivada en ninguna dirección»:** calcular el límite (para continuidad) y la derivada direccional por definición (para la 2ª); justificar cada una.
+
+Cayó en el final como `2025-07-29 T2b` y `2024-07-23 P1`.
+
+_Fuente: `../primer-parcial/repaso/machete.md` §10_
+
+</details>
+
+### 21. [fórmula] Derivada direccional **máxima, mínima y nula**: valor y dirección en cada caso. ¿Qué pasa si el vector dado no es unitario?
+
+<details><summary>Ver respuesta</summary>
+
+$$
+\nabla f=(f_x,f_y,\dots),\qquad f'(A,\hat u)=\nabla f(A)\cdot\hat u\quad(\hat u\ \text{unitario})
+$$
+
+| Piden | Respuesta |
+|---|---|
+| derivada direccional **máxima** | $\lVert\nabla f(A)\rVert$, en dirección $\hat u=\dfrac{\nabla f}{\lVert\nabla f\rVert}$ |
+| **mínima** (máximo decrecimiento) | $-\lVert\nabla f(A)\rVert$, en dirección $-\dfrac{\nabla f}{\lVert\nabla f\rVert}$ |
+| dirección de derivada **nula** | las $\perp\nabla f$: en 2D $\hat u=\pm\dfrac{(-f_y,\,f_x)}{\lVert\nabla f\rVert}$ |
+
+Justificación: $f'(A,\hat u)=\nabla f\cdot\hat u=\lVert\nabla f\rVert\cos\theta$, máximo en $\theta=0$, nulo en $\theta=\pi/2$.
+
+**OJO dirección vs. versor:** si dan un vector $\bar v$ NO unitario, la «derivada direccional según $\bar v$» de esta cátedra es $\nabla f\cdot\bar v$ (sin normalizar) salvo que aclaren «unitario».
+
+Es el `2026-07-28 P4` (máximo decrecimiento) y el `2024-10-09 P3` (direcciones nulas).
+
+_Fuente: `../primer-parcial/repaso/machete.md` §1 y §10_
+
+</details>
+
+### 22. [enunciado] Enunciá la **regla de la cadena** (forma matricial), con hipótesis.
+
+<details><summary>Ver respuesta</summary>
+
+$g$ diferenciable en $A$ y $f$ diferenciable en $g(A)$ $\Rightarrow$ $h=f\circ g$ es diferenciable en $A$, con
+
+$$
+Dh(A)=Df(g(A))\cdot Dg(A)
+$$
+
+(producto de matrices jacobianas). Es el `2024-12-03 T1a`, y la herramienta de todos los «direccional de $h = f\circ g$» del final.
+
+_Fuente: `../primer-parcial/repaso/machete.md` §10_
+
+</details>
+
+### 23. [fórmula] Derivación **implícita**: fórmulas de $f_x$, $f_y$ para $z=f(x,y)$ dada por $F(x,y,z)=0$, y qué hay que verificar para justificar (teorema de la función implícita).
+
+<details><summary>Ver respuesta</summary>
+
+$$
+f_x=-\frac{F_x}{F_z},\qquad f_y=-\frac{F_y}{F_z}\qquad(F_z\ne0)
+$$
+
+- Primero hallá el punto base: reemplazá $(x,y)$ dados y despejá $z_0$ (probá enteros que hagan $\ln(\cdot)=\ln 1=0$ o el exponente $=0$).
+- **Teorema de la función implícita** (para justificar): $F(P)=0$, $F\in C^1$ y $F_z(P)\ne0$ $\Rightarrow$ $z=f(x,y)$ existe y es $C^1$ en un entorno.
+- Función $z=g(u,v)$ dada por $G(u,v,z)=0$: igual, $g_u=-G_u/G_z$, $g_v=-G_v/G_z$.
+
+Es la herramienta de `B6`, el ejercicio más reciclado del final (`xz+z+y+ln(z−xy)=10`).
+
+_Fuente: `../primer-parcial/repaso/machete.md` §3_
+
+</details>
+
+### 24. [método] Criterio del **Hessiano** para clasificar puntos críticos, y cómo se buscan extremos **absolutos sobre una región** cerrada.
+
+<details><summary>Ver respuesta</summary>
+
+1. **Puntos críticos:** resolver $\nabla f=(f_x,f_y)=(0,0)$.
+2. **Hessiano** en cada crítico:
+
+$$
+H=\begin{pmatrix}f_{xx}&f_{xy}\\ f_{xy}&f_{yy}\end{pmatrix},\qquad D=f_{xx}f_{yy}-f_{xy}^{2}
+$$
+
+| Caso | Conclusión |
+|---|---|
+| $D>0,\ f_{xx}>0$ | mínimo local |
+| $D>0,\ f_{xx}<0$ | máximo local |
+| $D<0$ | punto silla (no extremo) |
+| $D=0$ | no decide → analizar a mano (signo de $f-f(P)$) |
+
+- **Extremos sobre una región** (p. ej. $x^2+y^2\le4$): críticos interiores **+** frontera (parametrizar la frontera o Lagrange $\nabla f=\lambda\nabla g$) → comparar valores. Es el `2026-05-19 P4`.
+
+Enunciar el criterio fue el `2025-05-20 T1a`.
+
+_Fuente: `../primer-parcial/repaso/machete.md` §5_
+
+</details>
+
+### 25. [demostración] Demostrá que si $f$ es diferenciable en $X_0$ entonces $f'(X_0,\check u)=\nabla f(X_0)\cdot\check u$ para todo versor $\check u$ (`2026-07-28 T1a`, el final más reciente).
+
+<details><summary>Ver respuesta</summary>
+
+⚠️ **Hueco en el material del repo.** No hay apuntes del primer parcial y el machete 1P sólo trae la consecuencia (§10: «Derivada direccional máxima $=\lVert\nabla f\rVert$» y «Diferenciable ⇒ continua: de la definición de diferenciabilidad, $\lim_{h\to0}[f(A+h)-f(A)]=0$»), no la demostración.
+
+Lo que sí dice el machete y sirve de esqueleto: la demostración arranca de la **definición de diferenciabilidad** (el incremento $f(X_0+h)-f(X_0)$ es $\nabla f(X_0)\cdot h$ más un resto que tiende a cero más rápido que $\lVert h\rVert$) y toma $h=t\,\check u$ en la definición de derivada direccional.
+
+**Completar a mano del libro/cuaderno** y anotarla en esta carta. Hasta que esté escrita, este teórico NO está en el menú del examen; el plan cubre con T-A a T-D.
+
+_Fuente: `../primer-parcial/repaso/machete.md` §10 (parcial)_
+
+</details>
+
+### 26. [enunciado] Definiciones que piden textual en T1/T2: campo escalar **diferenciable** en un punto; **máximo/mínimo local**, **absoluto**, **punto silla**; **continuidad** en un punto.
+
+<details><summary>Ver respuesta</summary>
+
+⚠️ **Hueco en el material del repo.** El checklist de `estrategia.md` §4 las lista (cayeron en `2025-12-16 T2a`, `2024-12-17 T1a`, `2024-07-23 T2a`, `2025-02-25 T2a`, `2025-12-02 T2a`), pero no hay apuntes del primer parcial y el machete 1P no trae las definiciones formales — sólo sus usos:
+
+- Continuidad en $(0,0)$: «¿$\lim_{(x,y)\to(0,0)}f=f(0,0)$?» (machete §10).
+- Diferenciable ⇒ continua (machete §10).
+- Clasificación por Hessiano (machete §5), que presupone las definiciones de extremo local y punto silla.
+
+**Completar a mano del libro/cuaderno** las cuatro definiciones y anotarlas acá. Son el plan B del teórico: si un examen no trae ninguno de T-A a T-D, T2 casi siempre es un «defina X» de esta lista.
+
+_Fuente: `../primer-parcial/repaso/machete.md` §5 y §10 (parcial)_
+
+</details>
+
+
+---
+
+*Generado el 2026-09-13 desde `estrategia.md` §4 (checklist teórico), `plan.md` (menú T-A a T-D),
+`../segundo-parcial/repaso/flashcards.md` (cartas 1, 3, 5, 7, 25, 26, 27, 30, 33, 35, 37, 38, 39, 42, 43, 45, 53, 57, 58, extraídas de
+`../segundo-parcial/apuntes/md/`) y `../primer-parcial/repaso/machete.md` §1, §3, §5, §10.*
+
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/markdown-it@14.1.0/dist/markdown-it.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/markdown-it-texmath@1.0.0/texmath.js"></script>
+<script>
+  const source = document.getElementById("md-source").textContent;
+  const md = window.markdownit({ html: true, linkify: true })
+    .use(window.texmath, {
+      engine: window.katex,
+      delimiters: "dollars",
+      katexOptions: { throwOnError: false },
+    });
+  document.getElementById("content").innerHTML = md.render(source);
+</script>
+</body>
+</html>
