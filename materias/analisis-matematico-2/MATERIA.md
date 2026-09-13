@@ -115,4 +115,4 @@ calcular).
 |---|---|---|---|---|---|---|---|---|---|
 | Segundo parcial (+recu) | ✅ 19 | ✅ 17 exámenes distintos | ✅ | ✅ | ✅ (recu 2ª inst. 2026-07-31) | ✅ (vacío, listo para usar) | ✅ 61 cartas | ✅ | ✅ 1 |
 | Primer parcial (+recu) | — | ✅ 16 reales + 2 sim. | ✅ | — | _(viejo, del 17/7)_ | — | — | ✅ | — |
-| **Final (2026-09-22/23)** | — (usa los del 2P + ambos machetes) | ✅ **24 finales** + 12 resueltos | ✅ | — | ✅ | ✅ | — | — | — |
+| **Final (2026-09-22)** | — (usa los del 2P + ambos machetes) | ✅ **24 finales** + 12 resueltos | ✅ | — | ✅ (recalculado 2026-09-13) | ✅ | ✅ 26 cartas | ✅ unificado 1P+2P | — |
