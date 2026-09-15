@@ -1,0 +1,349 @@
+# Liderazgo: conceptos básicos, rasgos, situacional y ruta-meta
+
+> Fuente: fuentes/respuestas-finales-por-unidad.docx (unidad VII, págs. 49–58 del libro) + examenes/2013-2019_compilado-preguntas-respuestas.docx (respuestas de parciales)
+
+---
+
+## Índice
+
+- [unidad VII, p. 49–58] — Cómo se genera el liderazgo (jefatura ≠ liderazgo, imperativo del grupo, función colectiva)
+- [unidad VII, p. 49–58] — Tipos elementales de liderazgo: autócrata, demócrata, paternalista (continuo autocrático-democrático)
+- 📝 Pregunta de parcial — 201?-09-26 (P3): cómo se genera el liderazgo y tipos elementales
+- 📝 Pregunta de parcial — 2015-11-19 (P3): continuo autocrático-democrático
+- [unidad VII, p. 49–58] — Teoría de los rasgos: los 6 rasgos
+- [unidad VII, p. 49–58] — Críticas a la teoría de los rasgos
+- 📝 Pregunta de parcial — 2013-05-07 (P3): teoría de los rasgos y por qué no alcanza
+- [unidad VII, p. 49–58] — Cómo surgen las teorías contingentes de liderazgo
+- [unidad II, p. 8–21] — Qué es una relación contingente (el par "si–entonces")
+- [unidad VII, p. 49–58] — Liderazgo situacional: énfasis en los subalternos y dos dimensiones
+- [parcial 2019-05-14] — Los 4 estilos: dirigir / instruir / apoyar / delegar
+- [unidad VII, p. 49–58] — Por qué la situacional es una teoría de contingencia
+- 📝 Pregunta de parcial — 2019-05-14 (P3): liderazgo situacional
+- 📝 Pregunta de parcial — 2018-05-02 Tema A (P3): liderazgo situacional
+- 📝 Pregunta de parcial — 2014-05-06 Tema A (P1): situacional, ¿es de contingencia?
+- 📝 Pregunta de parcial — 2014-05-06 Tema 1 (P3): situacional, fundamentos, si es contingente y por qué
+- 📝 Pregunta de parcial — sin fecha (juego A) (P2): situacional, por qué se la considera contingente
+- [unidad VII, p. 49–58] — Teoría de la ruta-meta: esencia y origen del nombre
+- [parcial 2018-05-02] — Los 4 comportamientos de liderazgo (director, apoyador, participativo, orientado a logros)
+- [unidad VII, p. 49–58] — Factores contingentes de la ruta-meta (ambientales y de los subordinados)
+- 📝 Pregunta de parcial — 2018-05-02 Tema B (P3): teoría ruta-meta
+- 📝 Pregunta de parcial — 2014-05-06 Tema 2 (P4): por qué importan las teorías contingentes + ruta-meta
+- 📝 Pregunta de parcial — sin fecha (foto) (P1): ruta-meta, variables contingentes independientes y dependientes
+
+---
+
+## Cómo se genera el liderazgo — [unidad VII, p. 49–58]
+
+### Jefatura ≠ liderazgo — [parcial 201?-09-26]
+
+- El liderazgo se relaciona con **una determinada situación** y **no es lo mismo que una jefatura**.
+- La **jefatura es poder formal**; el **liderazgo es informal** y está **restringido a un tiempo y un lugar**.
+- A veces el liderazgo **puede coincidir** con la autoridad formal (pero no necesariamente).
+
+### El mecanismo: imperativo del grupo → líder
+
+- Una **situación dada genera un imperativo en el grupo**.
+- Un **individuo puede hacer conscientes a los demás** de ese imperativo, y así aquéllos **servirán voluntariamente** al imperativo.
+- En la medida en que dicho individuo sea capaz de **liberar capacidades colectivas y aptitudes emocionales** dirigidas a ese fin, **se convertirá en líder**.
+
+### El liderazgo es una función colectiva
+
+- Luego, el liderazgo es una **función colectiva**: **no reside fundamentalmente en el individuo** —por dominante o eficaz que sea— sino en la **situación real**.
+- Que el líder sea **elegido por el grupo no asegura que sea el más indicado** para dirigirlo: solo asegura que **representa en la conciencia de los demás los sentimientos y aspiraciones del grupo**. [parcial 201?-09-26]
+
+## Tipos elementales de liderazgo (continuo autocrático-democrático) — [unidad VII, p. 49–58]
+
+- **Autócrata:** concentra el **poder y la responsabilidad**, impidiendo de hecho el **desarrollo de los demás**.
+- **Demócrata:** da **participación**, **orienta**, **delega** y tiende a obtener **soluciones colectivas**.
+- **Paternalista:** bajo su apariencia "democrática" y benevolente, termina **decidiendo siempre todo por sí mismo**.
+
+<details>
+<summary>📝 Pregunta de parcial — 201?-09-26 (P3): cómo se genera el liderazgo y tipos elementales</summary>
+
+¿Cómo se genera o se produce el fenómeno del Liderazgo? Describa brevemente los tipos elementales de Liderazgo más conocidos.
+
+<details>
+<summary>Ver respuesta (del compilado)</summary>
+
+**Cómo se genera:**
+
+- El liderazgo se relaciona con una determinada situación y no es lo mismo que una jefatura: la jefatura es poder formal, mientras que el liderazgo es informal y restringido a un tiempo y lugar.
+- A veces el liderazgo puede coincidir con la autoridad formal.
+- El liderazgo se genera cuando una situación dada crea un imperativo en el grupo; un individuo puede hacer conscientes a los demás de ese imperativo y así aquéllos servirían voluntariamente al imperativo.
+- En la medida en que dicho individuo sea capaz de liberar capacidades colectivas y aptitudes emocionales dirigidas a ese fin, se convertirá en líder → el liderazgo es una función colectiva.
+- Que el líder sea elegido por el grupo no asegura que sea el más indicado para dirigirlo, solo que representa en la conciencia de los demás los sentimientos y aspiraciones del grupo.
+
+**Tipos elementales:**
+
+- **Autócrata:** concentra el poder y la responsabilidad, impidiendo el desarrollo de los demás.
+- **Demócrata:** da participación, orienta, delega y tiende a obtener soluciones colectivas.
+- **Paternalista:** bajo su apariencia democrática y benevolente termina decidiendo todo siempre por sí mismo.
+
+</details>
+
+</details>
+
+<details>
+<summary>📝 Pregunta de parcial — 2015-11-19 (P3): continuo autocrático-democrático</summary>
+
+Liderazgo: continuo autocrático-democrático.
+
+<details>
+<summary>Ver respuesta (del compilado)</summary>
+
+- **Líder autócrata:** concentra el poder y la responsabilidad, impidiendo el desarrollo de los demás.
+- **Líderes demócratas:** dan participación, orientan, delegan y tienden a obtener soluciones colectivas.
+- **Líderes paternalistas:** bajo su apariencia democrática y benevolente terminan decidiendo todo siempre por sí mismos.
+
+</details>
+
+</details>
+
+## Teoría de los rasgos — [unidad VII, p. 49–58]
+
+- Idea central: un líder se define por **características específicas** que distinguen a quienes son líderes de quienes no lo son.
+- Se distinguieron **6 rasgos** que los líderes parecen tener:
+
+### Los 6 rasgos — [parcial 2013-05-07]
+
+1. **Empuje:** alto nivel de esfuerzo. Alto deseo de logro; son ambiciosos, tienen mucha energía, son persistentes y tienen mucha iniciativa.
+2. **Deseo de dirigir:** disposición a asumir responsabilidades.
+3. **Honestidad e integridad:** construyen relaciones de confianza entre ellos y sus subalternos al no engañarlos y al mostrar consistencia entre sus palabras y los hechos.
+4. **Confianza en sí mismos:** para convencer a los subalternos de lo correcto de las metas y decisiones.
+5. **Inteligencia:** para reunir, resumir e interpretar mucha información, y ser capaces de generar iniciativas, resolver problemas y tomar decisiones correctas.
+6. **Conocimiento relativo al trabajo.**
+
+## Críticas a la teoría de los rasgos — [unidad VII, p. 49–58]
+
+- Los investigadores **no pudieron identificar una serie de rasgos que siempre distinguieran** a los líderes de los seguidores, ni a los líderes efectivos de los que no lo son. No se encontraron los rasgos certeros que definen a un líder porque **no todo aplica para los distintos tipos de organizaciones**. [parcial 2013-05-07]
+- Los **rasgos en sí mismos no son suficientes** para explicar el liderazgo.
+- Las explicaciones basadas exclusivamente en los rasgos **dejan de lado la interacción del líder con sus subordinados**, así como los **factores situacionales**.
+
+<details>
+<summary>📝 Pregunta de parcial — 2013-05-07 (P3): teoría de los rasgos y por qué no alcanza</summary>
+
+Explique características de la Teoría de Rasgos. Indique por qué no alcanza con esta teoría.
+
+<details>
+<summary>Ver respuesta (del compilado)</summary>
+
+**Qué plantea:** características especiales que distinguen a los líderes. Se distinguieron 6 rasgos que los líderes parecen tener:
+
+- **Empuje:** alto nivel de esfuerzo. Alto deseo de logro, son ambiciosos, tienen mucha energía, son persistentes y tienen mucha iniciativa.
+- **Deseo de dirigir:** disposición a asumir responsabilidades.
+- **Honestidad e integridad:** construyen relaciones de confianza entre ellos y sus subalternos al no engañarlos y mostrar consistencia entre sus palabras y los hechos.
+- **Confianza en sí mismos:** convencer a los subalternos de lo correcto de las metas y decisiones.
+- **Inteligencia:** inteligencia para reunir, resumir e interpretar mucha información, y ser capaces de generar iniciativas, resolver problemas y tomar decisiones correctas.
+- **Conocimiento relativo al trabajo.**
+
+**Por qué no alcanza:**
+
+- No se encontraron los rasgos certeros que definen a un líder porque no todo aplica para los distintos tipos de organizaciones.
+- Dejan de lado la interacción del líder con sus subordinados, así como los factores situacionales.
+
+</details>
+
+</details>
+
+## Cómo surgen las teorías contingentes de liderazgo — [unidad VII, p. 49–58]
+
+- Era evidente que **ni los rasgos personales del líder ni sus comportamientos permitían predecir su éxito**.
+- De manera que **nuevos estudios se guiaron por la Teoría de la Contingencia**, intentando **relacionar el estilo de liderazgo con variables "independientes" de la situación de trabajo**.
+- Con esto, la **efectividad del líder dependería de proceder adecuadamente a las condiciones reinantes**.
+- Se desarrollaron varios enfoques: las teorías **situacional** y **ruta-meta**.
+
+### Qué es una relación contingente — [unidad II, p. 8–21]
+
+- La **relación contingente** es una **relación funcional entre dos o más variables**, que puede expresarse por el par **"si–entonces"**: el condicional **"si" denota la variable independiente** y el consecuente **"entonces" señala la variable dependiente**.
+- **No existe una única manera de mejor organizar**: las organizaciones necesitan ser sistemáticamente ajustadas a las condiciones ambientales. La teoría no rechaza los principios de las diversas corrientes, sino que **condiciona su aplicación a las circunstancias**, a la contingencia (es decir, "a lo que puede suceder").
+- La administración de contingencia se ocupa de la relación entre **variables circundantes pertinentes** y **conceptos y técnicas de administración apropiados**, que lleven al logro eficaz de objetivos.
+
+## Liderazgo situacional — [unidad VII, p. 49–58]
+
+### Énfasis en los subalternos
+
+- Es una **teoría de contingencia que hace énfasis en los subalternos**.
+- El liderazgo de éxito se alcanza al **seleccionar el estilo de liderazgo adecuado**, el cual es **contingente a la conjunción** de:
+  - la **capacidad para desempeñar las tareas específicas del puesto (madurez)**, y
+  - la **disposición de los subordinados a cumplirlas**.
+- El énfasis en los subalternos para determinar la efectividad del liderazgo refleja realmente que **son ellos quienes aceptan o rechazan al líder**.
+- **Sin tomar en cuenta lo que el líder haga, la efectividad depende de las acciones de sus subalternos.**
+
+### Las dos dimensiones del comportamiento del líder
+
+El liderazgo situacional se expresa en dos dimensiones del comportamiento del líder:
+
+1. Hacia el **eficaz cumplimiento de las tareas**: **capacitando y entrenando**.
+2. Hacia la **intensidad del apoyo** que brinde al subordinado a través de sus **relaciones interpersonales**: **estimulando y motivando**.
+
+### Los 4 estilos: dirigir / instruir / apoyar / delegar — [parcial 2019-05-14]
+
+Para el autor de la teoría, los términos dispuestos respecto de la acción que debe tomar el líder en cada situación tienen un significado bien determinado:
+
+- **DIRIGIR:** implica **estructurar, controlar y supervisar**.
+  - Vale para las personas que **carecen de competencia, pero tienen interés y entusiasmo**.
+  - Necesitan **directivas y supervisión** para iniciarse en su cometido.
+- **INSTRUIR:** **orientar y ayudar**.
+  - Sirve para las personas que **poseen alguna competencia, pero les falta interés**.
+  - Necesitan **dirección y supervisión** porque todavía son relativamente novatas, y también necesitan **apoyo y elogios** para forjar su autoestima, así como **intervenir en las decisiones**, para restaurar su interés.
+- **APOYAR:** **elogiar, escuchar y dar facilidades**.
+  - Es lo que se debe hacer con quienes **poseen competencia, pero carecen de seguridad en sí mismos o de motivación**.
+  - No necesitan que se les ordenen muchas cosas, pues ya saben lo que deben hacer, pero conviene **ayudarles a reforzar su seguridad y su motivación**.
+- **DELEGAR:** **traspasar la responsabilidad de las decisiones cotidianas**.
+  - Es lo que procede con el personal que **tiene competencia, así como interés**.
+  - Son capaces de **trabajar por cuenta propia** en un proyecto, bajo **escasa supervisión** y sin pedir ayuda, y están dispuestos a hacerlo.
+
+Resumen de la correspondencia estilo ↔ subordinado:
+
+| Estilo | Competencia del subordinado | Interés / motivación del subordinado |
+|---|---|---|
+| Dirigir | carece | tiene interés y entusiasmo |
+| Instruir | alguna | le falta interés |
+| Apoyar | tiene | le falta seguridad o motivación |
+| Delegar | tiene | tiene interés |
+
+### Por qué es una teoría de contingencia — [unidad VII, p. 49–58]
+
+Lo que dicen las fuentes, juntado:
+
+- El liderazgo situacional **es una teoría de contingencia que hace énfasis en los subalternos**: son ellos quienes aceptan o rechazan al líder. [parcial 2019-05-14]
+- El estilo de liderazgo adecuado **es contingente a la conjunción** de la capacidad (madurez) y la disposición de los subordinados: la efectividad del líder **depende de proceder adecuadamente a las condiciones reinantes**.
+- Encaja con la definición de relación contingente de la unidad II: una relación funcional **"si–entonces"** entre variables, donde el **"si"** es la variable independiente (la situación de trabajo: capacidad y disposición de los subordinados) y el **"entonces"** la dependiente (el estilo de liderazgo a adoptar). [unidad II, p. 8–21]
+- Las teorías contingentes surgieron justamente para **relacionar el estilo de liderazgo con variables "independientes" de la situación de trabajo**, después de que ni los rasgos ni los comportamientos del líder alcanzaran para predecir su éxito.
+
+<details>
+<summary>📝 Pregunta de parcial — 2019-05-14 (P3): liderazgo situacional</summary>
+
+Describa la teoría de liderazgo situacional.
+
+<details>
+<summary>Ver respuesta (del compilado)</summary>
+
+- El liderazgo situacional es una teoría de contingencia que hace énfasis en los subalternos: son ellos quienes aceptan o rechazan al líder.
+- El liderazgo situacional se expresa en dos dimensiones del comportamiento del líder: hacia el eficaz cumplimiento de las tareas, capacitando y entrenando; y hacia la intensidad del apoyo que brinde al subordinado a través de sus relaciones interpersonales, estimulando y motivando.
+- Para el autor de la teoría, los términos dispuestos respecto de la acción que debe tomar el líder en cada situación tienen un significado bien determinado:
+  - **DIRIGIR:** implica estructurar, controlar y supervisar. Vale para las personas que carecen de competencia, pero tienen interés y entusiasmo. Necesitan directivas y supervisión para iniciarse en su cometido.
+  - **INSTRUIR:** orientar y ayudar. Sirve para las personas que poseen alguna competencia, pero les falta interés. Necesitan dirección y supervisión porque todavía son relativamente novatas, y también necesitan apoyo y elogios para forjar su autoestima, así como intervenir en las decisiones, para restaurar su interés.
+  - **APOYAR:** elogiar, escuchar y dar facilidades. Es lo que se debe hacer con quienes poseen competencia, pero carecen de seguridad en sí mismos o de motivación. No necesitan que se les ordenen muchas cosas, pues ya saben lo que deben hacer, pero conviene ayudarles a reforzar su seguridad y su motivación.
+  - **DELEGAR:** traspasar la responsabilidad de las decisiones cotidianas. Es lo que procede con el personal que tiene competencia, así como interés. Son capaces de trabajar por cuenta propia en un proyecto, bajo escasa supervisión, y sin pedir ayuda, y están dispuestos a hacerlo.
+
+</details>
+
+</details>
+
+<details>
+<summary>📝 Pregunta de parcial — 2018-05-02 Tema A (P3): liderazgo situacional</summary>
+
+Explique la teoría de liderazgo situacional.
+
+<details>
+<summary>Ver respuesta (del compilado)</summary>
+
+- El liderazgo situacional hace referencia a que es importante saber la conjunción de la capacidad para desempeñar las tareas específicas del puesto y la disposición de los subordinados para cumplirlas.
+- Para el autor de la teoría, los términos dispuestos respecto de la acción que debe tomar el líder en cada situación tienen un significado bien determinado:
+  - **DIRIGIR:** implica estructurar, controlar y supervisar. Vale para las personas que carecen de competencia, pero tienen interés y entusiasmo. Necesitan directivas y supervisión para iniciarse en su cometido.
+  - **INSTRUIR:** orientar y ayudar. Sirve para las personas que poseen alguna competencia, pero les falta interés. Necesitan dirección y supervisión porque todavía son relativamente novatas, y también necesitan apoyo y elogios para forjar su autoestima, así como intervenir en las decisiones, para restaurar su interés.
+  - **APOYAR:** elogiar, escuchar y dar facilidades. Es lo que se debe hacer con quienes poseen competencia, pero carecen de seguridad en sí mismos o de motivación. No necesitan que se les ordenen muchas cosas, pues ya saben lo que deben hacer, pero conviene ayudarles a reforzar su seguridad y su motivación.
+  - **DELEGAR:** traspasar la responsabilidad de las decisiones cotidianas. Es lo que procede con el personal que tiene competencia, así como interés. Son capaces de trabajar por cuenta propia en un proyecto, bajo escasa supervisión, y sin pedir ayuda, y están dispuestos a hacerlo.
+
+</details>
+
+</details>
+
+<details>
+<summary>📝 Pregunta de parcial — 2014-05-06 Tema A (P1): situacional, ¿es de contingencia?</summary>
+
+Teoría situacional del liderazgo. ¿Es de contingencia?
+
+*(sin respuesta en la fuente; armarla con la teoría de arriba)*
+
+</details>
+
+<details>
+<summary>📝 Pregunta de parcial — 2014-05-06 Tema 1 (P3): situacional, fundamentos, si es contingente y por qué</summary>
+
+Liderazgo: explicar la teoría situacional de liderazgo, fundamentos, y si es contingente y por qué.
+
+*(sin respuesta en la fuente; armarla con la teoría de arriba)*
+
+</details>
+
+<details>
+<summary>📝 Pregunta de parcial — sin fecha (juego A) (P2): situacional, por qué se la considera contingente</summary>
+
+¿En qué consiste la Teoría situacional? ¿Por qué se la considera una teoría contingente?
+
+*(sin respuesta en la fuente; armarla con la teoría de arriba)*
+
+</details>
+
+## Teoría de la ruta-meta — [unidad VII, p. 49–58]
+
+### Esencia
+
+- La esencia de la teoría es que el **rol del líder es apoyar a sus subordinados** para **alcanzar sus metas**, y **proporcionar la dirección adecuada y/o el apoyo** para asegurarse de que **sus metas sean compatibles con los objetivos generales del grupo u organización**.
+
+### Origen del nombre "ruta-meta"
+
+- El término "ruta-meta" se deriva de la creencia de que los **líderes efectivos esclarecen el camino** para ayudar a sus subalternos a que vayan **desde donde se encuentran hasta la consecución de las metas de su trabajo**, y de que **la jornada por el camino sea más fácil al reducir obstáculos y dificultades**.
+
+### Los 4 comportamientos de liderazgo — [parcial 2018-05-02]
+
+Para poner a prueba estas afirmaciones, se identificaron cuatro comportamientos de liderazgo:
+
+- **Líder director:** permite que sus subordinados **sepan qué se espera de ellos**, **programa el trabajo** a realizar y proporciona una **guía específica de cómo cumplir las tareas**.
+- **Líder apoyador:** es **amistoso** y muestra su **interés por las necesidades** de los subordinados.
+- **Líder participativo:** **consulta** con sus subordinados y **considera sus sugerencias** antes de tomar una decisión.
+- **Líder orientado a logros:** establece **metas desafiantes** y espera que los subordinados se desempeñen a su **más alto nivel**.
+
+### Factores contingentes de la ruta-meta — [unidad VII, p. 49–58]
+
+- **Factores ambientales:**
+  - Estructura de las tareas
+  - Sistemas de autoridad formal
+  - Grupo de trabajo
+- **Factores de los subordinados:**
+  - Autocontrol
+  - Experiencia
+  - Habilidad
+
+<details>
+<summary>📝 Pregunta de parcial — 2018-05-02 Tema B (P3): teoría ruta-meta</summary>
+
+Explique la teoría de liderazgo ruta-meta.
+
+<details>
+<summary>Ver respuesta (del compilado)</summary>
+
+- La esencia de la teoría es que el rol del líder es apoyar a sus subalternos para alcanzar sus metas, y proporcionar la dirección necesaria y/o el apoyo para asegurarse de que sus metas sean compatibles con los objetivos generales del grupo o de la organización.
+- Para poner a prueba estas afirmaciones, se identificaron cuatro comportamientos de liderazgo:
+  - **Líder director:** permite que sus subordinados sepan qué se espera de ellos, programa el trabajo a realizar y proporciona una guía específica de cómo cumplir las tareas.
+  - **Líder apoyador:** es amistoso y muestra su interés por las necesidades de los subordinados.
+  - **Líder participativo:** consulta con sus subordinados y considera sus sugerencias antes de tomar una decisión.
+  - **Líder orientado a logros:** establece metas desafiantes y espera que los subordinados se desempeñen a su más alto nivel.
+
+</details>
+
+</details>
+
+<details>
+<summary>📝 Pregunta de parcial — 2014-05-06 Tema 2 (P4): por qué importan las teorías contingentes + ruta-meta</summary>
+
+Liderazgo. Por qué son importantes las teorías contingentes. Teoría de la Ruta-Meta.
+
+*(sin respuesta en la fuente; armarla con la teoría de arriba)*
+
+</details>
+
+<details>
+<summary>📝 Pregunta de parcial — sin fecha (foto) (P1): ruta-meta, variables contingentes independientes y dependientes</summary>
+
+Teoría de la Ruta-Meta del liderazgo: describa detalladamente las variables contingentes independientes y dependientes del modelo.
+
+*(sin respuesta en la fuente; armarla con la teoría de arriba)*
+
+</details>
+
+---
+
+*Generado el 2026-09-15. Fuentes: `fuentes/respuestas-finales-por-unidad.docx` (unidad VII «Liderazgo – Conceptos básicos y nuevos modelos», págs. 49–58 del libro; unidad II «Teoría de la contingencia», págs. 8–21) y `examenes/2013-2019_compilado-preguntas-respuestas.docx` (respuestas de los parciales 2013-05-07, 2015-11-19, 201?-09-26, 2018-05-02 Temas A y B, 2019-05-14). Preguntas sin respuesta tomadas de `examenes/INDICE.md`.*
