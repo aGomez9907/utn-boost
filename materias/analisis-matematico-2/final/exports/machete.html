@@ -105,6 +105,9 @@ tbody tr:nth-child(even) { background: #f8f9fa; }
 | "exprese mediante **dos integrales distintas**" | proyectar sobre dos planos coordenados | §7.2 |
 | **área de una superficie** / $\iint_S y\,d\sigma$ | $dS$ de una gráfica | §7.3 |
 | área$(D^*)$ sabiendo área$(D)$; integral en polares ↔ cartesianas | cambio de variables | §7.1 |
+| la región es una **elipse** ($9x^2+y^2\le9$, $x^2+4y^2\le4$, $z=1-\frac{x^2}{4}-y^2$…) | polares elípticas, $\lvert J\rvert=ab\rho$; área $\pi ab$ | §7.4 |
+| necesito el área / volumen / centroide de una figura conocida, o $\int\cos^2$, $\int\operatorname{sen}^3$… | tablas de figuras e integrales | §7.4 |
+| flujo por superficie abierta pero el campo trae $e^{-xz}$ u otra cosa que no se integra, y la divergencia es fácil | Gauss cerrando con tapa (no directo) | §1.4 |
 | V/F sobre función partida en $(0,0)$: continua, diferenciable, plano tangente | definiciones | §5.5 |
 | "enuncie / defina / demuestre" | elegir el que sepas | §8 |
 
@@ -491,6 +494,81 @@ $$
 2. Encontrá $D$ (proyección) a partir de las condiciones.
 3. Si es una integral escalar $\iint_S h\,d\sigma$, reemplazá $z$ por $g$ en $h$ e integrá sobre $D$. Un $\iint_D y\,dA$ sobre un disco corrido es $\bar y\cdot$área$(D)$ con $\bar y$ el centro del disco.
 
+### 7.4 Figuras conocidas: coordenadas, áreas, volúmenes e integrales que se repiten
+
+**Polares elípticas.** Para una región $\dfrac{x^2}{a^2}+\dfrac{y^2}{b^2}\le1$ (o un paraboloide/cilindro cuya proyección es esa elipse), las polares comunes no sirven porque el borde no queda en $\rho=$ cte. Se usa:
+
+$$
+x=a\,\rho\cos\varphi,\qquad y=b\,\rho\operatorname{sen}\varphi,\qquad \rho\in[0,1],\ \varphi\in[0,2\pi],\qquad \lvert J\rvert=a\,b\,\rho
+$$
+
+Con eso $\dfrac{x^2}{a^2}+\dfrac{y^2}{b^2}=\rho^2$, la elipse es $\rho\le1$ y el jacobiano es $ab\rho$ (no $\rho$). Primero llevá la ecuación a la forma $\frac{x^2}{a^2}+\frac{y^2}{b^2}=1$ para leer $a$ y $b$: $9x^2+y^2\le9$ → $x^2+\frac{y^2}{9}\le1$ → $a=1$, $b=3$. $x^2+4y^2\le4$ → $\frac{x^2}{4}+y^2\le1$ → $a=2$, $b=1$. Cuarto de elipse en el primer cuadrante: $\varphi\in[0,\pi/2]$. Si la elipse está corrida ($\frac{x^2}{4}+y^2=2y$ → $\frac{x^2}{4}+(y-1)^2=1$), sumale el centro: $y=1+\rho\operatorname{sen}\varphi$.
+
+**Elipsoide** $\frac{x^2}{a^2}+\frac{y^2}{b^2}+\frac{z^2}{c^2}\le1$: esféricas escaladas $x=a\rho\operatorname{sen}\theta\cos\varphi$, $y=b\rho\operatorname{sen}\theta\operatorname{sen}\varphi$, $z=c\rho\cos\theta$, $\rho\in[0,1]$, $\lvert J\rvert=abc\,\rho^2\operatorname{sen}\theta$.
+
+**Áreas planas** (cuando $\sqrt{1+g_x^2+g_y^2}$ o $Q_x-P_y$ o $\operatorname{div}f$ es constante, el problema termina acá):
+
+| Figura | Área |
+|---|---|
+| disco de radio $R$ (centrado o corrido, da igual) | $\pi R^2$ |
+| semidisco / cuarto de disco | $\tfrac12\pi R^2$ / $\tfrac14\pi R^2$ |
+| elipse de semiejes $a,b$ | $\pi ab$ |
+| cuarto de elipse (1er cuadrante) | $\tfrac14\pi ab$ |
+| triángulo de vértices $A,B,C$ | $\tfrac12\lvert(B-A)\times(C-A)\rvert$ (en el plano: $\tfrac12\lvert\det\rvert$) |
+| triángulo de interceptos $(a,0)$, $(0,b)$ | $\tfrac12 ab$ |
+| corona $r\le\rho\le R$ | $\pi(R^2-r^2)$ |
+| sector de ángulo $\alpha$ y radio $R$ | $\tfrac12\alpha R^2$ |
+
+**Volúmenes** (para Gauss con divergencia constante, y para chequear un volumen calculado):
+
+| Cuerpo | Volumen |
+|---|---|
+| esfera radio $R$ | $\tfrac43\pi R^3$ (semiesfera: la mitad; un octante: $\tfrac16\pi R^3$) |
+| elipsoide de semiejes $a,b,c$ | $\tfrac43\pi abc$ |
+| cilindro radio $R$, altura $h$ | $\pi R^2h$ |
+| cilindro elíptico $\frac{x^2}{a^2}+\frac{y^2}{b^2}\le1$, altura $h$ | $\pi abh$ |
+| cono radio $R$, altura $h$ (también el cono $z=\sqrt{x^2+y^2}$ bajo $z=h$: $R=h$) | $\tfrac13\pi R^2h$ |
+| paraboloide $z=h-\frac{x^2+y^2}{k}$ sobre $z\ge0$ (base radio $R=\sqrt{kh}$) | $\tfrac12\pi R^2h$ — la **mitad** del cilindro que lo contiene |
+| paraboloide elíptico $z=c\big(1-\frac{x^2}{a^2}-\frac{y^2}{b^2}\big)$ sobre $z\ge0$ | $\tfrac12\pi abc$ |
+| entre dos paraboloides / paraboloide y plano | proyectar, restar techo − piso, polares (§7.2); no hay atajo |
+| tetraedro de interceptos $a,b,c$ | $\tfrac{abc}6$ |
+| cuña $0\le z\le h$ sobre un semidisco | $\tfrac12\pi R^2h$ |
+
+**Centroides**, para integrales del tipo $\iint_D x\,dA$ o $\iint_D y\,dA$ que aparecen en flujos y en Green: $\iint_D x\,dA=\bar x\cdot\text{área}(D)$, con $\bar x$ el centro geométrico.
+
+| Región | $(\bar x,\bar y)$ |
+|---|---|
+| disco o elipse centrados en $(x_0,y_0)$ | $(x_0,y_0)$ — por eso $\iint x\,dA$ y $\iint y\,dA$ dan $0$ si está centrada en el origen |
+| semidisco $y\ge0$ de radio $R$ | $\big(0,\tfrac{4R}{3\pi}\big)$ |
+| cuarto de disco (1er cuadrante) | $\big(\tfrac{4R}{3\pi},\tfrac{4R}{3\pi}\big)$ |
+| triángulo de vértices $A,B,C$ | $\tfrac13(A+B+C)$ |
+| tetraedro de interceptos $a,b,c$ | $\big(\tfrac a4,\tfrac b4,\tfrac c4\big)$ (sirve para $\iiint y\,dV=\tfrac b4\cdot V$) |
+
+**Integrales trigonométricas que salen siempre** (en polares, cilíndricas y parametrizaciones):
+
+| Integral | Valor |
+|---|---|
+| $\int_0^{2\pi}\cos\varphi\,d\varphi=\int_0^{2\pi}\operatorname{sen}\varphi\,d\varphi=\int_0^{2\pi}\operatorname{sen}\varphi\cos\varphi\,d\varphi$ | $0$ |
+| $\int_0^{2\pi}\cos^2\varphi\,d\varphi=\int_0^{2\pi}\operatorname{sen}^2\varphi\,d\varphi$ | $\pi$ |
+| $\int_0^{\pi}\operatorname{sen}\varphi\,d\varphi$ | $2$ |
+| $\int_0^{\pi}\operatorname{sen}^2\varphi\,d\varphi=\int_0^{\pi}\cos^2\varphi\,d\varphi$ | $\pi/2$ |
+| $\int_0^{2\pi}\cos^3\varphi\,d\varphi=\int_0^{2\pi}\operatorname{sen}^3\varphi\,d\varphi$ | $0$ (toda potencia impar sobre una vuelta completa) |
+| $\int_0^{\pi/2}\operatorname{sen}\varphi\cos\varphi\,d\varphi$ | $\tfrac12$ |
+| $\int_0^R\rho^n\,d\rho$ | $\tfrac{R^{n+1}}{n+1}$; con $\sqrt{1+4\rho^2}\,\rho$ (área de paraboloide): $\tfrac1{12}\big[(1+4R^2)^{3/2}-1\big]$ |
+
+Regla mental: sobre una vuelta completa, cualquier término con una potencia impar de $\cos$ o de $\operatorname{sen}$ (o el producto $\operatorname{sen}\cos$) integra $0$; los cuadrados dan $\pi$. Eso es lo que hace que en Stokes y en Gauss "desaparezcan" los términos con $x$, $y$ o $xy$ sobre un disco centrado.
+
+**$dS$ de superficies que se repiten:**
+
+| Superficie | $dS$ | Área |
+|---|---|---|
+| plano $z=ax+by+c$ | $\sqrt{1+a^2+b^2}\,dA$ | $\sqrt{1+a^2+b^2}\cdot$área$(D)$ |
+| cono $z=\sqrt{x^2+y^2}$ | $\sqrt2\,dA$ | $\sqrt2\cdot$área$(D)$ |
+| cono $z=k\sqrt{x^2+y^2}$ | $\sqrt{1+k^2}\,dA$ | $\sqrt{1+k^2}\cdot$área$(D)$ |
+| esfera de radio $R$ | $R^2\operatorname{sen}\theta\,d\theta\,d\varphi$ | $4\pi R^2$ (casquete $z\ge h$: $2\pi R(R-h)$) |
+| cilindro $x^2+y^2=R^2$ | $R\,dt\,dz$ | $2\pi Rh$ |
+| paraboloide $z=x^2+y^2$ sobre $\rho\le R$ | $\sqrt{1+4\rho^2}\,\rho\,d\rho\,d\varphi$ | $\tfrac\pi6\big[(1+4R^2)^{3/2}-1\big]$ |
+
 ---
 
 ## 8 · Teóricos: los cuatro del plan (elegís UNO)
@@ -520,6 +598,7 @@ Sólo sirven **después** de hacer el ejercicio: comparás tu número con este. 
 |---|---|---|
 | `2025-07-15 P4` | flujo de $(-y,x,xz)$ por el cilindro $x^2+y^2=2x$, $z\le4-x^2-y^2$, 1er octante | $4$ con normal saliente (`2025-12-02 P4` es el mismo cilindro con otro campo) |
 | `2025-07-15 P3` | volumen de $(x-1)^2+y^2\le z\le5-2x$ | $8\pi$ (proyección $x^2+y^2\le4$, integrando $4-\rho^2$) |
+| `2025-12-09 P2` | flujo de $(3x+yz,\ xy\,e^{-xz},\ e^{-xz})$ por $z=1-\frac{x^2}{4}-y^2$ sobre el plano $xy$, normal $z^+$ | **Gauss con tapa**, no directo: $\operatorname{div}f=3$; volumen bajo el paraboloide elíptico ($a=2$, $b=1$, $c=1$) $=\tfrac12\pi\cdot2\cdot1\cdot1=\pi$ → $\iiint=3\pi$; tapa $z=0$ con normal saliente $(0,0,-1)$: $\Phi_T=-\iint e^{0}\,dA=-\pi ab=-2\pi$; $\Phi_S=3\pi-(-2\pi)=5\pi$ |
 | `2025-09-25 T2b` | área$(D^*)$ con $\phi(u,v)=(u+2v,\,2u+v)$ y área$(D)=12$ | $J=-3$ → área$(D^*)=4$ |
 | `2025-07-15 T2b` | línea equipotencial de $\frac{(2x,2y)}{x^2+y^2}$ por $(1,0)$ con $\varphi(1,0)=3$ | $\varphi=\ln(x^2+y^2)+3$ → $x^2+y^2=1$ |
 | `2026-07-28 P3` | solución general de $y''-4y'+4y=25\operatorname{sen}x$ | $(C_1+C_2x)e^{2x}+4\cos x+3\operatorname{sen}x$ |
