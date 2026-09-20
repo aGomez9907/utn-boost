@@ -143,7 +143,11 @@ $$
 
 La idea: **la normal sin normalizar ya trae el $dS$ adentro**, así que nunca calculás $\lVert r_u\times r_v\rVert$. Pasos:
 
-1. **Escribí la superficie como gráfica** de una variable en función de las otras dos, o parametrizala. Para las que caen siempre, la normal ya está calculada:
+1. **Elegí los dos parámetros.** Toda superficie se recorre con dos parámetros; hay dos maneras de elegirlos:
+   - **Gráfica (la cómoda):** si de la ecuación podés **despejar una variable de forma única** en función de las otras dos —$z=g(x,y)$, o $y=g(x,z)$, o $x=g(y,z)$—, los parámetros son esas dos coordenadas: $r(x,y)=(x,\,y,\,g(x,y))$. La ventaja es que el producto vectorial ya está hecho, $r_x\times r_y=(-g_x,-g_y,1)$, y la región de integración es la **proyección** de la superficie sobre el plano de las dos variables libres. Sirve para paraboloides, planos, conos, semiesferas, $y=x^2$…
+   - **Parametrización con otros parámetros (ángulo, altura, dos ángulos):** cuando **no se puede despejar de forma única**. Cilindro $x^2+y^2=R^2$: para un $(x,y)$ del borde hay infinitos $z$ → parámetros $(t,z)$. Esfera completa: a cada $(x,y)$ le corresponden dos $z$ → $(\theta,\varphi)$, o partirla en dos semiesferas. Acá sí hacés $r_u\times r_v$ a mano.
+
+   Regla: primero probá despejar; si sale único, es gráfica y la normal está en la tabla. Si no, parametrizás. Las normales de las superficies que caen siempre:
 
 | Superficie | $N$ (sin normalizar) | Hacia dónde apunta |
 |---|---|---|
