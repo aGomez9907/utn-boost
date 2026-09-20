@@ -17,6 +17,10 @@
 
 ## Sesiones
 
+## 2026-09-17 a 2026-09-19 — sin sesiones
+
+- **Nota:** no se estudió. El 2026-09-20 se confirma que la mesa pasa al **2026-09-29**; plan recalculado a 9 días con AG el 28.
+
 ## 2026-09-16 — Flujo (D1 del plan, terminado 3 días tarde)
 
 - **Material:**

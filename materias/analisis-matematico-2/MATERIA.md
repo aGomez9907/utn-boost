@@ -14,7 +14,7 @@
 | Recuperatorio 1er parcial | `primer-parcial/` | 2026-07-17 | rendido |
 | Recuperatorio 2do parcial | `segundo-parcial/` | 2026-07-17 | rendido |
 | Recuperatorio 2do parcial (2ª instancia) | `segundo-parcial/` | **2026-07-31** | **próximo** |
-| Final | `final/` | **2026-09-22 / 2026-09-23** | **próximo** |
+| Final | `final/` | **2026-09-29** _(movido del 22)_ | **próximo** |
 
 > Los recuperatorios se preparan en la **carpeta de su parcial** (mismo temario, mismos
 > apuntes y mismo dataset de exámenes). El próximo (2026-07-31) es **solo del segundo
@@ -115,4 +115,4 @@ calcular).
 |---|---|---|---|---|---|---|---|---|---|
 | Segundo parcial (+recu) | ✅ 19 | ✅ 17 exámenes distintos | ✅ | ✅ | ✅ (recu 2ª inst. 2026-07-31) | ✅ (vacío, listo para usar) | ✅ 61 cartas | ✅ | ✅ 1 |
 | Primer parcial (+recu) | — | ✅ 16 reales + 2 sim. | ✅ | — | _(viejo, del 17/7)_ | — | — | ✅ | — |
-| **Final (2026-09-22)** | — (usa los del 2P + ambos machetes) | ✅ **24 finales** + 12 resueltos | ✅ | — | ✅ (recalculado 2026-09-13) | ✅ | ✅ 26 cartas | ✅ unificado 1P+2P | — |
+| **Final (2026-09-29)** | — (usa los del 2P + ambos machetes) | ✅ **24 finales** + 12 resueltos | ✅ | — | ✅ (recalculado 2026-09-20) | ✅ | ✅ 26 cartas | ✅ unificado 1P+2P | — |

@@ -1,7 +1,7 @@
 # Estrategia — Final de Análisis Matemático II
 
-> **Mesa objetivo:** 2026-09-22 / 2026-09-23 (ventana `sep` de `carrera/datos/calendario.json`).
-> **Hoy:** 2026-09-09 → quedan **13 días**.
+> **Mesa objetivo:** **2026-09-29** (movida del 22; ventana `sep` de `carrera/datos/calendario.json`).
+> **Actualizado:** 2026-09-20 → quedan **9 días**, con el 1P de Administración Gerencial el 28.
 > **Objetivo declarado en `carrera/datos/objetivos.json`:** `am2-septiembre` — sacarse AM2
 > de encima en este llamado.
 > **Evidencia:** 24 finales reales (2024-03-05 → 2026-07-28) indexados en
