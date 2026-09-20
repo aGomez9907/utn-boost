@@ -120,7 +120,14 @@ tbody tr:nth-child(even) { background: #f8f9fa; }
 Primero mirá la superficie, no el campo:
 
 - **¿Encierra un cuerpo?** (dicen "frontera de", "superficie cerrada", o es esfera/cubo/cilindro con tapas) → **Gauss** (§1.2).
-- **¿Es un trozo abierto?** (paraboloide con $z\ge0$, un plano recortado, un cilindro sin tapas, "$z=g(x,y)$ con tal condición") → **directo** (§1.3). Si el campo es feo pero la divergencia es fácil, **cerrar con tapa** (§1.4).
+- **¿Es un trozo abierto?** (paraboloide con $z\ge0$, un plano recortado, un cilindro sin tapas, "$z=g(x,y)$ con tal condición") → hay dos caminos, **directo** (§1.3) o **cerrar con tapa** (§1.4), y la pregunta que decide no es la superficie sino *cuánto cuesta cerrar y cuánto cuesta $f\cdot N$*:
+
+| Elegí… | Cuando… | Casos reales |
+|---|---|---|
+| **Gauss con tapa** | el campo trae algo que no se integra ($\operatorname{sen}(yz)$, $e^{-xz}$, $h(x,z)$ desconocida, $\ln x^2$) **y** la divergencia es constante o corta **y** cerrar es **una** tapa plana (disco en $z=k$) | `2025-09-25 P2`, `2025-12-09 P2`, `2026-03-03 P4`, `2025-05-20 P3` — **siempre que el campo tenga una función desconocida o trascendente, es esto** |
+| **Directo** | la superficie es un **plano** (normal constante); o cerrar necesita **dos o más tapas** (primer octante, cilindro con techo curvo); o $f\cdot N$ sale simple/constante; o Gauss no se puede (campo no definido dentro del cuerpo) | `2025-12-09 P1` ($f\cdot N=4$), `2024-10-09 P1`, `2025-07-15 P4` (cilindro, 1er octante), `2026-02-10 P2` ($f\cdot N=x^2$), `2025-12-16 P3` (simetría → $0$) |
+
+Chequeo obligatorio antes de escribir nada, en este orden: (a) calculá $\operatorname{div}f$ mentalmente, son tres derivadas; (b) si es constante o corta y cerrar es una tapa → Gauss; (c) si no, mirá $f\cdot N$: si es polinomio simple → directo. **Nunca** arrancar la integral directa sin haber mirado la divergencia.
 
 ### 1.2 Gauss (superficie cerrada, normal saliente)
 
@@ -602,6 +609,7 @@ Sólo sirven **después** de hacer el ejercicio: comparás tu número con este. 
 |---|---|---|
 | `2025-07-15 P4` | flujo de $(-y,x,xz)$ por el cilindro $x^2+y^2=2x$, $z\le4-x^2-y^2$, 1er octante | $4$ con normal saliente (`2025-12-02 P4` es el mismo cilindro con otro campo) |
 | `2025-07-15 P3` | volumen de $(x-1)^2+y^2\le z\le5-2x$ | $8\pi$ (proyección $x^2+y^2\le4$, integrando $4-\rho^2$) |
+| `2025-09-25 P2` | flujo de $(x+\operatorname{sen}(yz),\ y+\operatorname{sen}(xz),\ 3z+2)$ por $z=9-x^2-y^2$, $z\ge0$, normal $z^+$ | **Gauss con tapa**: $\operatorname{div}=5$; volumen bajo el paraboloide $\tfrac12\pi\cdot9\cdot9=\tfrac{81\pi}{2}$ → $\iiint=\tfrac{405\pi}{2}$; tapa $z=0$ saliente $(0,0,-1)$: $\Phi_T=-\iint2\,dA=-18\pi$; $\Phi_S=\tfrac{405\pi}{2}+18\pi=\tfrac{441\pi}{2}$. (Directo también sale porque los senos son impares e integran $0$, pero hay que verlo.) |
 | `2025-12-09 P2` | flujo de $(3x+yz,\ xy\,e^{-xz},\ e^{-xz})$ por $z=1-\frac{x^2}{4}-y^2$ sobre el plano $xy$, normal $z^+$ | **Gauss con tapa**, no directo: $\operatorname{div}f=3$; volumen bajo el paraboloide elíptico ($a=2$, $b=1$, $c=1$) $=\tfrac12\pi\cdot2\cdot1\cdot1=\pi$ → $\iiint=3\pi$; tapa $z=0$ con normal saliente $(0,0,-1)$: $\Phi_T=-\iint e^{0}\,dA=-\pi ab=-2\pi$; $\Phi_S=3\pi-(-2\pi)=5\pi$ |
 | `2025-09-25 T2b` | área$(D^*)$ con $\phi(u,v)=(u+2v,\,2u+v)$ y área$(D)=12$ | $J=-3$ → área$(D^*)=4$ |
 | `2025-07-15 T2b` | línea equipotencial de $\frac{(2x,2y)}{x^2+y^2}$ por $(1,0)$ con $\varphi(1,0)=3$ | $\varphi=\ln(x^2+y^2)+3$ → $x^2+y^2=1$ |
