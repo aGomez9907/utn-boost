@@ -637,6 +637,38 @@ Sólo sirven **después** de hacer el ejercicio: comparás tu número con este. 
 
 Los que tienen resolución de cátedra en `resueltos/` mandan sobre esta tabla si difieren: los resultados de acá los calculó Claude, no la cátedra.
 
+### Los 25 V/F de los finales (todos son T1/T2), con respuesta
+
+Un T suele ser (a) "enuncie X" + (b) un V/F que aplica X. Sin el (b) el T está a medias. Practicalos tapando la columna de la derecha.
+
+| Examen | Proposición (resumida) | V/F | Por qué (la justificación que hay que escribir) |
+|---|---|---|---|
+| `2024-03-05 T1a` | circulación de $(y^2-g(y-x),\ y^2+g(y-x))$ por la frontera de $x\ge y^2$, $x\le2-y^2$, sentido negativo, es $3\sqrt2$ | **F** | Green: $Q_x-P_y=-g'-(2y-g')=-2y$; la región es simétrica en $y$ → la integral da $0$, no $3\sqrt2$ |
+| `2024-03-05 T1b` | implícita + Hessiano dado ⇒ extremo local | — | falta verificar $\nabla f=0$ en el punto; la transcripción no alcanza para decidirlo |
+| `2024-07-23 T1a` | flujo de $(x+y,y+z,x+z)$ por la semiesfera $x^2+y^2+(z-1)^2=1$, $z\ge1$, vale $\pi/2$ | **F** | Gauss con tapa $z=1$: $\operatorname{div}=3$, $\iiint=3\cdot\tfrac23\pi=2\pi$; tapa saliente $(0,0,-1)$: $-\iint(x+1)\,dA=-\pi$; $\Phi_S=2\pi+\pi=3\pi$ |
+| `2024-07-23 T1b` | plano tangente a $z=f+x^2$ en $(1,2,4)$ es $z=2x+2$, con $f$ máximo local $3$ en $(1,2)$ | **V** | máximo local ⇒ $\nabla f(1,2)=0$; $z_x=2x=2$, $z_y=0$; plano $z=4+2(x-1)=2x+2$ |
+| `2024-10-09 T2a` | no existe $\lim_{(0,0)}\frac{x^2y^3}{x^2+y^2}$ | **F** | $\big|\frac{x^2}{x^2+y^2}\big|\le1$ ⇒ $|f|\le|y|^3\to0$: el límite existe y vale $0$ (la función no es continua porque $f(0,0)=2$, pero eso es otra cosa) |
+| `2024-10-09 T2b` | $\iiint_V x$ en cilíndricas es $\int_0^{\pi/2}\!\int_0^2\!\int_0^r r^2\cos\theta\,dz\,dr\,d\theta$ | **F** | integrando $x\cdot r=r^2\cos\theta$ ✓, pero $V$: $r\le z\le4$, así que $z$ va de $r$ a $4$, no de $0$ a $r$ |
+| `2024-12-10 T1a` | $x=0$ es solución singular de $xy'=4x^2$ | — | depende de la definición de solución singular que use la cátedra; general $y=2x^2+C$ |
+| `2024-12-10 T1b` | $zx+\ln(z+y)=0$ ⇒ $z'_x=z(y+z)\,z'_y$ | **V** | $F_x=z$, $F_y=\frac1{z+y}$, $F_z=x+\frac1{z+y}$; $z'_x=-F_x/F_z$, $z'_y=-F_y/F_z$ ⇒ $z'_x/z'_y=F_x/F_y=z(z+y)$ |
+| `2025-05-20 T2a` | $(3,0,0)$ es punto regular y simple de $(2t+1,\,t^2-t,\,t^2-1)$ | **V** | $2t+1=3$ sólo para $t=1$ (simple); $\lambda'(1)=(2,1,2)\ne\bar0$ (regular) |
+| `2025-05-20 T2b` | circulación de $(y\,g(x),y^2,z^2)$, $g>0$, por el borde de $x+y+z=4$ orientado $(4,0,0)\to(0,0,4)\to(0,4,0)$ es positiva | **V** | Stokes: $\operatorname{rot}f=(0,0,-g(x))$; esa orientación induce normal $\propto(-1,-1,-1)$; $\operatorname{rot}f\cdot n=g(x)/\sqrt3>0$ |
+| `2025-07-15 T1a` | derivada direccional de $f(xy,x-y)$ en $(1,2)$ hacia $(3,5)$ es $-11/5$ | — | la matriz $Df$ transcripta es $2\times2$ y no cierra con $f$ escalar; no se puede decidir desde el índice |
+| `2025-07-15 T1b` | $(x^2+y^4)\sqrt{xy}$ tiene mínimo global en $(0,0)$ | **V** | en el dominio ($xy\ge0$) es $f\ge0=f(0,0)$ |
+| `2025-07-29 T1a` | recta normal al gráfico de la implícita $xz+z+y+\ln(z-xy)=10$ en $(2,1)$ es paralela a $\{-2x-y+8=0,\ z=3\}$ | **F** | B6: dirección de la normal $\propto(2,-1,4)$; la recta dada tiene dirección $(-1,2,0)$; no proporcionales |
+| `2025-07-29 T1b` | Maclaurin $3+2x^2+y^2$ ⇒ $(0,0)$ mínimo local | **V** | sin términos lineales ⇒ $\nabla f=0$; $H=\operatorname{diag}(4,2)$, $D>0$, $f_{xx}>0$ |
+| `2025-12-16 T1a` | volumen de $x^2+y^2+z^2\le12$, $x^2+y^2\le z$ es $\int_0^{2\pi}\!\int_0^{\sqrt{12}}\!\int_{r^2}^{\sqrt{12-r^2}}r\,dz\,dr\,d\theta$ | **F** | intersección $r^2+r^4=12$ ⇒ $r^2=3$: $r$ llega hasta $\sqrt3$, no $\sqrt{12}$ (más allá el "techo" queda debajo del "piso") |
+| `2025-12-16 T1b` | circulación de $(\cos(x^2)+y^2,\ \operatorname{sen}(y^2)+2xy)$ por cualquier circunferencia es nula | **V** | $Q_x-P_y=2y-2y=0$ en todo $\mathbb R^2$ ⇒ conservativo ⇒ circulación cerrada nula |
+| `2026-02-10 T2b` | circulación de $(y,-x)$ por la semicircunferencia de radio 3, $y\ge0$, es $24\pi$ | **F** | $r(t)=(3\cos t,3\operatorname{sen}t)$, $f\cdot r'=-9$ ⇒ $\int_0^\pi=-9\pi$ (o $+9\pi$ al revés); nunca $24\pi$ |
+| `2026-02-24 T1a` | todo campo diferenciable en un punto es derivable ahí | **V** | diferenciable ⇒ $f'(A,\hat u)=\nabla f\cdot\hat u$ existe para todo $\hat u$ |
+| `2026-02-24 T1b` | $y=x^2+3x$ es solución de $xy'-y=x^3$ por $(1,3)$ | **F** | $x(2x+3)-x^2-3x=x^2\ne x^3$ (pasa por $(1,3)$ pero no resuelve la ecuación) |
+| `2026-05-19 T2a` | plano tangente a $x^3z+xy-xz^2=-3$ en $(1,-1,2)$ ⟂ recta tangente a $(t^2,2t+1,2t^2)$ ahí | **F** | $\nabla F=(1,1,-3)$; $t=-1$, $\lambda'=(-2,2,-4)$; perpendiculares ⇔ $\nabla F\parallel\lambda'$, y no lo son |
+| `2026-05-19 T2b` | $xy=k$ ⟂ $x^2+y^2=R^2$ | **F** | pendientes $-y/x$ y $-x/y$, producto $=1\ne-1$ |
+| `2026-07-14 T2a` | $xy+x^3+y^2$ no tiene máximos locales | **V** | $f_{yy}=2>0$ en todo punto ⇒ ningún crítico puede ser máximo |
+| `2026-07-14 T2b` | $\int_0^{2\pi}\!\int_0^3\!\int_r^{\sqrt{9-r^2}}r\,dz\,dr\,d\theta$ es el volumen de esfera radio 3 ∩ cono | **F** | $r$ debe llegar a $3/\sqrt2$ (intersección), no a $3$ |
+| `2026-07-28 T1b` | $\frac{2x^2y}{x^2+y^2}$ es diferenciable en $(0,0)$ | **F** | parciales $0$, pero $\frac{f(h,h)}{\sqrt{2}|h|}=\frac{h}{\sqrt2|h|}\not\to0$ |
+| `2026-07-28 T2b` | circulación de $(x^2,1,z)$ por el triángulo $A\to B\to C\to A$ es nula | **V** | $\operatorname{rot}f=\bar0$ en $\mathbb R^3$ ⇒ conservativo ⇒ circulación cerrada nula (o Stokes: flujo de $\bar0$) |
+
 ---
 
 ## 10 · OJO — errores que cuestan puntos
