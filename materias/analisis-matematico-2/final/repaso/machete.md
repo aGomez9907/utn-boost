@@ -251,7 +251,10 @@ La solución es $y=y_H+y_p$: la general de la homogénea más una particular de 
 | separable | $y'=A(x)B(y)$ | $\int\frac{dy}{B(y)}=\int A(x)\,dx$ |
 | lineal | $y'+P(x)y=Q(x)$ | $\mu=e^{\int P\,dx}$; $y=\frac1\mu\big(\int\mu Q\,dx+C\big)$ |
 | exacta | $M\,dx+N\,dy=0$ con $M_y=N_x$ | es $d\varphi=0$: armá $\varphi$ como en §2.1 y la solución es $\varphi=C$ |
-| no exacta | $M_y\ne N_x$ | probá multiplicar por $x^k$ o $y^k$ hasta que sea exacta |
+| no exacta | $M_y\ne N_x$ | probá multiplicar por $x^k$ o $y^k$ hasta que sea exacta; o reescribila como lineal si se puede (`2024-07-23 P4`: $(2y-4x^2)dx+x\,dy=0$ es $y'+\tfrac2xy=4x$) |
+| homogénea | $y'=F(y/x)$, p. ej. $y'=\frac{x+y}{x-y}$ | sustitución $y=ux$ ($y'=u+xu'$) → queda separable en $u$. Cayó una vez (`2024-03-05 P2`, líneas de campo) |
+
+En los finales la de 1er orden casi nunca es un problema solo: aparece adentro de líneas de campo ($y'=Q/P$), de trayectorias ortogonales, o de un Green ("la curva solución de…"). La que más se repite es la **lineal**; con $\mu=e^{\int P\,dx}$ y la separable cubrís 6 de las 7 veces que cayó.
 
 **Trayectorias ortogonales.** Dos curvas son ortogonales si sus pendientes en el punto de cruce multiplican $-1$.
 
@@ -555,6 +558,9 @@ Sólo sirven **después** de hacer el ejercicio: comparás tu número con este. 
 | `2025-12-09 P4` | $\lim_{x\to+\infty}$ de la general de $y''+2y'+y=2e^{-x}$ | $y_G=(C_1+C_2x)e^{-x}+x^2e^{-x}$ → límite $0$ |
 | `2025-02-18 P1` | $y''=6x$ con $y(0)=y'(0)=0$ | $\varphi(x)=x^3$ |
 | `2024-07-30 T2b` | líneas de campo de $(-x,\,2y-4x^2)$ | $y'+\tfrac2xy=4x$ → $y=x^2+C/x^2$ |
+| `2025-12-16 P4` | $y'=\frac{2\sec^2(2x)-y}{x}$, $y(\pi)=0$; $\lim_{x\to0}y_p$ vs. extremo de $g=x^2y^2+2$ | $(xy)'=2\sec^2(2x)$ → $xy=\tan(2x)+C$, $C=0$ → $y_p=\tan(2x)/x$ → límite $2$ = mínimo global de $g$ (en el origen) ✓ |
+| `2024-07-23 P4` | $(2y-4x^2)dx+x\,dy=0$ por $(1,1)$ | lineal con $\mu=x^2$: $x^2y=x^4+C$, $C=0$ → $y=x^2$ (respuestas oficiales en `resueltos/2024-07-23_respuestas-oficiales.pdf`) |
+| `2025-02-11 P3` | curva ortogonal a $xy=K$ por $(5,3)$ | pendiente de la familia $-y/x$ → ortogonal $y'=x/y$ → $y^2-x^2=C$ → $y^2-x^2=-16$; parametrización para $x,y>0$: $x=4\cosh t$, $y=4\operatorname{senh}t$ |
 | `2026-03-03 P3` / `2024-12-03 P4` | $a$ para $y=kx^3\perp x^2+ay^2=C$ / $b$ con $y=kx^4$ | $a=3$ / $b=4$ |
 | `2026-05-19 T2b` | ¿$xy=k$ ortogonal a $x^2+y^2=R^2$? | **Falso** (producto de pendientes $=1$); la ortogonal de $xy=k$ es $y^2-x^2=K$ |
 | B6: `2024-05-10 P2` ≡ `2026-03-03 P2` ≡ `2025-07-29 T1a` | $xz+z+y+\ln(z-xy)=10$ cerca de $(2,1)$ | $z_0=3$; $F_x=2$, $F_y=-1$, $F_z=4$ → $\nabla f(2,1)=(-\tfrac12,\tfrac14)$; recta normal al gráfico con dirección $(2,-1,4)$; el V/F "paralela a $\{-2x-y+8=0,\ z=3\}$" es **Falso** (esa recta tiene dirección $(-1,2,0)$) |
