@@ -13,7 +13,7 @@
 | Segundo parcial | `segundo-parcial/` | _(a definir)_ | pendiente |
 | Final | `final/` | _(a definir)_ | pendiente |
 
-> Ojo con el calendario: `analisis-matematico-2` (final el 2026-09-22) y `analisis-numerico`
+> Ojo con el calendario: `analisis-matematico-2` (final el 2026-09-29) y `analisis-numerico`
 > (1P el 2026-10-06) también figuran `cursando`. Las skills van a preguntar qué materia usar
 > cuando no se dé la ruta explícita. El 1P de AG cae **6 días después del final de AM2**.
 
@@ -122,6 +122,6 @@ electrónica) `#ClasificacionComunicacion` (formal / informal) `#EscuchaActiva` 
 
 | Evaluación | Apuntes | INDICE | Estrategia | Poda | Plan | Registro | Flashcards | Machete | Simulacros |
 |---|---|---|---|---|---|---|---|---|---|
-| **Primer parcial (2026-09-28)** | ✅ 7 (uno por unidad, generados desde las respuestas del compilado y de `fuentes/`; html + pdf) | ✅ 12 hojas / 9 instancias | ✅ | — (los apuntes ya son solo lo que cae) | pendiente | ✅ (vacío) | — | — | — |
+| **Primer parcial (2026-09-28)** | ✅ 7 (uno por unidad, generados desde las respuestas del compilado y de `fuentes/`; html + pdf) | ✅ 12 hojas / 9 instancias | ✅ | — (los apuntes ya son solo lo que cae) | ✅ (2026-09-23, 5 días) | ✅ (vacío) | — | — | — |
 | Segundo parcial | — | pendiente (3 archivos sin indexar) | — | — | — | ✅ (vacío) | — | — | — |
 | Final | — | — | — | — | — | ✅ (vacío) | — | — | — |

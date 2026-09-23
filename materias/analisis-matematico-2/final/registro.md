@@ -8,14 +8,29 @@
 
 | Tema | Practicado | Último resultado | Tendencia |
 |---|---|---|---|
-| #Flujo | 3× | 🟡 | → |
+| #Flujo | 4× | 🟡 | → |
 | #Divergencia | 2× | 🟡 | → |
+| #Circulacion | 5× | 🟡 | → |
+| #Green | (parte de las 5) | 🟡 | → |
+| #Stokes | (parte de las 5) | 🟡 | → |
+| #EDOSegundoOrden | 3× | 🟡 | → |
+| Teóricos T-A…T-D | 0× | — | — |
 
-**Errores recurrentes detectados:** _(ninguno registrado aún)_
+**Errores recurrentes detectados:** _(sin detalle: las sesiones del 20 al 22 se informaron sólo con cantidades)_
+
+**Inseguridad declarada (2026-09-23):** en flujo, circulación y EDO «tengo más noción que del resto, pero no me siento seguro». Se trata con simulacros cronometrados, no con más ejercicios sueltos.
 
 ---
 
 ## Sesiones
+
+## 2026-09-20 a 2026-09-22 — Circulación, un flujo más y EDO (informado el 2026-09-23)
+
+- **Material:** 1 flujo (el 4º; no se indicó cuál), 5 circulaciones entre Green y Stokes, 3 EDO de 2º orden. Sin detalle de exámenes ni de errores.
+- **Temas:** #Flujo #Circulacion #Green #Stokes #EDOSegundoOrden
+- **Resultado:** 🟡 en los tres temas (declarado: «no me siento seguro»)
+- **Errores puntuales:** no especificados.
+- **Nota:** los teóricos (T-A…T-D), B6, varias variables y el cilindro `2025-07-15 P4` del plan del 20/9 no se hicieron (o no se informaron). Plan recalculado el 2026-09-23 a 5 días + víspera, con el 1P de AG el 28.
 
 ## 2026-09-17 a 2026-09-19 — sin sesiones
 
